@@ -1,0 +1,20 @@
+experiment:
+  beta: 1.0
+  gamma: 0.8
+
+cases:
+  - {family: lorentzian_like_2d,     n: 30, seed: 13030}
+  - {family: lorentzian_like_3d,     n: 30, seed: 23030}
+  - {family: KR_like,                n: 30, seed: 33030}
+  - {family: transitive_percolation, n: 30, seed: 43030}
+  - {family: lorentzian_like_2d,     n: 40, seed: 13040}
+  - {family: lorentzian_like_3d,     n: 40, seed: 23040}
+  - {family: KR_like,                n: 40, seed: 33040}
+  - {family: transitive_percolation, n: 40, seed: 43040}
+  - {family: lorentzian_like_2d,     n: 44, seed: 13044}
+  - {family: lorentzian_like_3d,     n: 44, seed: 23044}
+  - {family: KR_like,                n: 44, seed: 33044}
+  - {family: transitive_percolation, n: 44, seed: 43044}
+
+output:
+  directory: outputs_exploratory/compressibility_validation

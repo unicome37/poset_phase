@@ -1,0 +1,40 @@
+experiment:
+  n_values: [20]
+  gammas: [0.0, 0.2, 0.4, 0.8, 1.2, 1.6, 2.0]
+  beta: 1.0
+  samples_per_family: 8
+  sis_runs: 32
+  action_modes: [A1, A2, A3]
+
+normalization:
+  method: robust_zscore
+  group_by: [n]
+
+bootstrap:
+  enabled: true
+  n_bootstrap: 200
+  seed: 12345
+  value_col: score_norm
+  value_std_col: score_norm_std_est
+
+calibration:
+  n_values: [8, 10]
+  families: [absolute_layered, KR_like, lorentzian_like_2d]
+  samples_per_family: 2
+  sis_runs: 16
+
+plots:
+  directory: plots
+
+diagnostics:
+  n_values: [20]
+  families: [multi_layer_random, lorentzian_like_2d, lorentzian_like_3d, transitive_percolation]
+  samples_per_family: 8
+
+output:
+  directory: outputs_gamma_scan
+  raw_samples_csv: raw_samples.csv
+  summary_csv: summary.csv
+  bootstrap_csv: bootstrap_summary.csv
+  calibration_raw_csv: calibration_raw.csv
+  calibration_summary_csv: calibration_summary.csv

@@ -1,0 +1,17 @@
+reference:
+  family: lorentzian_like_2d
+  samples: 40
+  lower_quantile: 0.1
+  upper_quantile: 0.9
+  seed_base: 340000
+
+experiment:
+  n_values: [30, 40, 44]
+  accepted_target: 6
+  rejected_target: 24
+  max_attempts: 4000
+  seed_base: 960000
+
+output:
+  directory: outputs_exploratory/mlr_survivor_profile
+  top_k: 10

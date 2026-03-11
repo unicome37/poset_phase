@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Large output files (keep CSV reports, skip intermediate caches)
+outputs_*/*/cache/
+outputs_*/**/le_cache/
+*.pkl
+
+# Zenodo package (generated, not tracked)
+zenodo_release/
+*.zip
+
+# Backup files
+*_old.md

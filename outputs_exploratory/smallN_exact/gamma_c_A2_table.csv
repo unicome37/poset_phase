@@ -1,0 +1,13 @@
+﻿n,family_b,gamma_c_est
+10,KR_like,8.977362504173513
+12,KR_like,0.6536755876525828
+14,KR_like,0.842269608959678
+16,KR_like,0.7513936178037848
+10,multi_layer_random,0.3832733333568662
+12,multi_layer_random,0.3647545722075683
+14,multi_layer_random,0.5890914759012379
+16,multi_layer_random,0.4595932498052762
+10,transitive_percolation,0.1460149609235098
+12,transitive_percolation,0.2407787316940625
+14,transitive_percolation,0.2755223621665804
+16,transitive_percolation,0.2617988694219641

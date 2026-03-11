@@ -1,0 +1,16 @@
+reference:
+  family: lorentzian_like_2d
+  samples: 40
+  lower_quantile: 0.1
+  upper_quantile: 0.9
+  seed_base: 340000
+
+experiment:
+  n_values: [30, 40, 44]
+  families:
+    lorentzian_like_2d: 12
+    multi_layer_random: 8
+  seed_base: 760000
+
+output:
+  directory: outputs_exploratory/window_entropy_bias_check

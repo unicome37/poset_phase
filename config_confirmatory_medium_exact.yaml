@@ -1,0 +1,29 @@
+experiment:
+  n_values: [20, 24, 28, 32, 36, 40]
+  families:
+    - KR_like
+    - lorentzian_like_2d
+    - lorentzian_like_3d
+  gammas: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.5, 2.0]
+  beta: 1.0
+  samples_per_family: 2
+  sis_runs: 32
+  action_modes: [A1, A2, A3]
+  exact_threshold: 40
+
+normalization:
+  method: robust_zscore
+  group_by: [n]
+
+bootstrap:
+  enabled: true
+  n_bootstrap: 200
+  seed: 12345
+  value_col: score_norm
+  value_std_col: score_norm_std_est
+
+output:
+  directory: outputs_confirmatory/medium_exact
+  raw_samples_csv: raw_samples.csv
+  summary_csv: summary.csv
+  bootstrap_csv: bootstrap_summary.csv

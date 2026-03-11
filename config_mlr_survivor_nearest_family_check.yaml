@@ -1,0 +1,12 @@
+input:
+  profile_raw_csv: outputs_exploratory/mlr_survivor_profile/mlr_survivor_profile_raw.csv
+
+experiment:
+  families:
+    - lorentzian_like_2d
+    - multi_layer_random
+  centroid_samples: 24
+  centroid_seed_base: 1290000
+
+output:
+  directory: outputs_exploratory/mlr_survivor_nearest_family_check

@@ -1,0 +1,28 @@
+experiment:
+  beta: 1.0
+  gamma: 0.8
+  n_values: [30, 40]
+  families:
+    - lorentzian_like_2d
+    - lorentzian_like_3d
+    - KR_like
+    - transitive_percolation
+    - multi_layer_random
+    - absolute_layered
+    - interval_order
+  criteria:
+    - width_only
+    - width_and_comp
+  accepted_target: 8
+  max_attempts: 500
+  seed_base: 360000
+
+reference:
+  family: lorentzian_like_2d
+  samples: 40
+  lower_quantile: 0.1
+  upper_quantile: 0.9
+  seed_base: 240000
+
+output:
+  directory: outputs_exploratory/controlled_compressibility_wide

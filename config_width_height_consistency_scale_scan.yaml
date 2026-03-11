@@ -1,0 +1,12 @@
+experiment:
+  n_values: [20, 24, 28, 32, 36, 40, 44]
+  families:
+    - KR_like
+    - lorentzian_like_2d
+  gammas: [0.0, 0.1, 0.2, 0.4, 0.6, 0.8, 1.0, 1.5, 2.0]
+  beta: 1.0
+  samples_per_family: 2
+  scale_factors: [0.7, 0.85, 1.0, 1.15, 1.3, 1.5, 1.8, 2.2]
+
+output:
+  directory: outputs_exploratory/width_height_consistency_scale_scan

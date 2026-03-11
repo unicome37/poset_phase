@@ -1,0 +1,16 @@
+cases:
+  - {family: lorentzian_like_2d, n: 10, seed: 10010}
+  - {family: KR_like,            n: 10, seed: 20010}
+  - {family: lorentzian_like_2d, n: 20, seed: 10020}
+  - {family: lorentzian_like_2d, n: 30, seed: 10030}
+  - {family: KR_like,            n: 30, seed: 20030}
+  - {family: lorentzian_like_2d, n: 40, seed: 10040}
+  - {family: KR_like,            n: 40, seed: 20040}
+  - {family: transitive_percolation, n: 40, seed: 30040}
+  - {family: lorentzian_like_2d, n: 44, seed: 10044}
+  - {family: KR_like,            n: 44, seed: 20044}
+  - {family: transitive_percolation, n: 44, seed: 30044}
+  - {family: lorentzian_like_2d, n: 48, seed: 10048}
+
+output:
+  directory: outputs_confirmatory/exact_timing

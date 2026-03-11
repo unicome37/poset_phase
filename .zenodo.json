@@ -1,0 +1,27 @@
+{
+    "title": "poset_phase: Action-Weighted Poset Ensemble Analysis — Code, Data, and Figures",
+    "description": "Exact numerical framework for studying geometric phase transitions in finite partially ordered sets (posets). Includes the complete codebase for computing exact linear extension counts, action-weighted ensemble comparisons, ablation experiments, and non-circular replacement analysis. Accompanies the manuscript: 'Bounded Geometric Phase Transition in Finite Causal Posets with Exact Entropy'.",
+    "upload_type": "software",
+    "license": {
+        "id": "MIT"
+    },
+    "creators": [
+        {
+            "name": "Anonymous",
+            "affiliation": "Independent Researcher"
+        }
+    ],
+    "keywords": [
+        "posets",
+        "causal sets",
+        "phase transition",
+        "linear extensions",
+        "discrete quantum gravity",
+        "combinatorics",
+        "Kleitman-Rothschild",
+        "Lorentzian geometry"
+    ],
+    "access_right": "open",
+    "related_identifiers": [],
+    "notes": "This software accompanies a manuscript currently under preparation. AI tools (Claude, Anthropic) assisted with code development and analysis."
+}

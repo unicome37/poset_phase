@@ -1,0 +1,8 @@
+input:
+  raw_csv: outputs_exploratory/pairwise_compressibility_duel/pairwise_duel_raw.csv
+
+experiment:
+  zetas: [0.0, 0.25, 0.5, 1.0, 2.0, 3.0, 4.0, 5.0, 6.0]
+
+output:
+  directory: outputs_exploratory/pairwise_cg_normalization_check

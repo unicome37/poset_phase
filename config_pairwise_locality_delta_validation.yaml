@@ -1,0 +1,10 @@
+input:
+  pairs_csv: outputs_exploratory/mlr_survivor_matched_lor2d/mlr_survivor_matched_pairs.csv
+  residual_raw_csv: outputs_exploratory/matched_residual_freedom_check/matched_residual_freedom_raw.csv
+
+experiment:
+  n_permutations: 2000
+  seed: 20260311
+
+output:
+  directory: outputs_exploratory/pairwise_locality_delta_validation

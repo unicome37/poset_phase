@@ -1,0 +1,9 @@
+input:
+  raw_csv: outputs_exploratory/hierarchy_integration_validation/hierarchy_integration_validation_raw.csv
+
+experiment:
+  n_permutations: 2000
+  seed: 20260311
+
+output:
+  directory: outputs_exploratory/locality_dominance_validation

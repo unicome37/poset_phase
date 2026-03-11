@@ -1,0 +1,10 @@
+experiment:
+  n_values: [20, 24, 28, 32, 36, 40, 44]
+  samples_per_family: 2
+  factor_min: 0.2
+  factor_max: 3.0
+  coarse_step: 0.1
+  refine_step: 0.01
+
+output:
+  directory: outputs_exploratory/width_height_consistency_adaptive_threshold

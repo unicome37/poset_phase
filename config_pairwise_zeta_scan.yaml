@@ -1,0 +1,9 @@
+input:
+  raw_csv: outputs_exploratory/pairwise_compressibility_duel/pairwise_duel_raw.csv
+
+experiment:
+  variants: [raw_cg, zscore_cg]
+  zetas: [0.0, 0.5, 1.0, 2.0, 3.0, 4.0, 5.0]
+
+output:
+  directory: outputs_exploratory/pairwise_zeta_scan
