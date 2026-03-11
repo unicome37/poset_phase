@@ -106,9 +106,13 @@ if __name__ == "__main__":
                 )
 
     base_df = pd.DataFrame(base_rows)
-    mean_dim_proxy = float(base_df["geo_dim_proxy_penalty"].mean())
-    mean_dim_consistency = float(base_df["geo_dim_consistency"].mean())
-    matched_weight = 8.0 * mean_dim_proxy / mean_dim_consistency if mean_dim_consistency > 0 else 8.0
+    fixed_weight = exp_cfg.get("fixed_matched_weight")
+    if fixed_weight is not None:
+        matched_weight = float(fixed_weight)
+    else:
+        mean_dim_proxy = float(base_df["geo_dim_proxy_penalty"].mean())
+        mean_dim_consistency = float(base_df["geo_dim_consistency"].mean())
+        matched_weight = 8.0 * mean_dim_proxy / mean_dim_consistency if mean_dim_consistency > 0 else 8.0
 
     rows = []
     for row in base_df.to_dict(orient="records"):
