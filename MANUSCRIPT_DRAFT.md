@@ -4,7 +4,7 @@
 
 ## Abstract
 
-The Kleitman–Rothschild (KR) theorem implies that generic finite posets are 3-layered and maximally entropic, posing a fundamental obstacle to geometric phase emergence in discrete causal models. We construct a 7-family poset ensemble and compute exact linear extension counts for N = 10–44 elements to study action-weighted competition between Lorentzian-like geometric structures and KR-type high-entropy posets. Under a decomposable action combining neutral and geometric penalty terms, we find that the critical geometric coupling γ_c remains O(1) across all tested sizes — the first explicit demonstration of a bounded phase transition threshold in this setting. Systematic ablation of seven geometric sub-terms identifies a minimal backbone of two constraints: global layer-shape balance and dimensional scale consistency. Crucially, the latter can be replaced by a non-target-anchored variant (penalizing local–global dimension inconsistency rather than deviation from a specific d = 2 target), with γ_c preserved at the same order of magnitude. These results provide finite-size evidence that Lorentzian-like order in discrete causal structures can emerge from structural self-consistency constraints, without requiring dimension-specific priors.
+The Kleitman–Rothschild (KR) theorem implies that generic finite posets are 3-layered and maximally entropic, posing a fundamental obstacle to geometric phase emergence in discrete causal models. We construct a 7-family poset ensemble and compute exact linear extension counts for N = 10–44 elements to study action-weighted competition between Lorentzian-like geometric structures and KR-type high-entropy posets. Under a decomposable action combining neutral and geometric penalty terms, we find that the critical geometric coupling γ_c remains O(1) across all tested sizes — the first finite-size evidence of a bounded phase transition threshold in this setting. Systematic ablation of seven geometric sub-terms identifies a minimal backbone of two constraints: global layer-shape balance and dimensional scale consistency. Crucially, the latter can be replaced by a non-target-anchored variant (penalizing local–global dimension inconsistency rather than deviation from a specific d = 2 target), with γ_c preserved at the same order of magnitude. These results provide finite-size evidence that Lorentzian-like order in discrete causal structures can emerge from structural self-consistency constraints, without requiring dimension-specific priors.
 
 ---
 
@@ -34,11 +34,11 @@ We consider finite posets P = (V, ≤) with |V| = N elements. Each poset is repr
 - **Interval order** (`int`): Posets arising from random intervals on the real line, where x < y iff the interval of x lies entirely below that of y.
 - **Absolute layered** (`abs`): Fully connected layered posets with all inter-layer edges present.
 
-For each family and each N ∈ {10, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44}, we generate K = 5 independent samples (confirmatory mainline).
+For each family and each N ∈ {10, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44}, we generate K = 5 independent samples. We distinguish two sample sets: a **confirmatory mainline** (used in Section 3.1 for the primary γ_c curve) and an independent **exploratory set** (used in Sections 3.2–3.3 for ablation and replacement studies). Both sets use the same generators and parameters; they differ only in random seeds. The A2 baseline γ_c values are O(1) in both sets, ensuring that qualitative conclusions are robust to sample variation.
 
 ### 2.2 Exact Linear Extension Count
 
-The entropy of a poset P is defined as H(P) = log |L(P)|, where L(P) is the set of linear extensions (topological sorts). We compute |L(P)| exactly using dynamic programming over antichains [7]. The state space is the set of all antichains of the poset; transitions correspond to removing a minimal element.
+The entropy of a poset P is defined as H(P) = log |L(P)|, where L(P) is the set of linear extensions (topological sorts). We compute |L(P)| exactly using dynamic programming over antichains [7]. The state space is the set of all antichains of the poset (equivalently characterized as maximal antichains of the remaining down-set); transitions correspond to removing a minimal element.
 
 A key structural observation is that the computational cost of this algorithm depends strongly on the poset's antichain structure. For `lor2d`, whose antichain width grows slowly with N, exact computation remains sub-second to N = 48. For `kr`, whose middle layer is O(N), the cost grows dramatically and becomes impractical beyond N ≈ 50. This asymmetry is a structural fact about the posets, not an algorithmic artifact.
 
@@ -100,7 +100,7 @@ The N = 10 value is an outlier due to finite-size effects in the small-poset reg
 
 ![Figure 1: Critical coupling γ_c(N) under A2 (exact entropy) for Lor2D vs KR. The N=10 outlier reflects finite-size effects; for N ≥ 12, γ_c remains O(1) within [0.15, 1.00].](manuscript_figures/fig1_gamma_c_curve.png)
 
-**Critical control**: Under A1 (neutral penalty only), no γ_c exists at any N. Lorentzian-like structures never overtake KR without geometric penalties. This confirms that the phase transition is driven by the geometry–entropy competition encoded in A2, not by neutral structural differences alone.
+**Critical control**: Under A1 (neutral penalty only), no γ_c exists at any tested N (verified across N = 20–44 in the ablation set and N = 10–16 in the confirmatory set). Lorentzian-like structures never overtake KR without geometric penalties. This confirms that the phase transition is driven by the geometry–entropy competition encoded in A2, not by neutral structural differences alone.
 
 ### 3.2 Ablation of Geometric Sub-Terms
 
@@ -140,10 +140,10 @@ where $d_{\text{local}}(x,y)$ is the order-fraction dimension proxy applied to s
 | A2 full (original) | ✓ | ✓ |
 | Replace $g_{\text{dim}}$ → $g_{\text{con}}$ | ✓ | ✓ |
 | $g_{\text{wh}}$ + $g_{\text{con}}$ only | ✓ | ✗ (weight 1.0×) |
-| $g_{\text{wh}}$ + $g_{\text{con}}$ only | ✓ | ✓ (weight 1.3×) |
+| $g_{\text{wh}}$ + $g_{\text{con}}$ only | ✓ | ✓ (weight 1.3×)* |
 | $g_{\text{wh}}$ only | N=24,28 only | ✗ |
 
-The replacement preserves γ_c at the same order of magnitude across all N = 20–44 (Figure 3). The minimal non-circular backbone ($g_{\text{wh}}$ + $g_{\text{con}}$) covers N = 20–40 with matched weights and extends to N = 44 with a modest 30% weight increase.
+The replacement preserves γ_c at the same order of magnitude across all N = 20–44 (Figure 3). The minimal non-circular backbone ($g_{\text{wh}}$ + $g_{\text{con}}$) covers N = 20–40 with matched weights and extends to N = 44 with a modest 30% weight increase (weight scan experiment, not included in the released exploratory CSV).
 
 ![Figure 3: Non-circular replacement comparison — γ_c under original A2, scale-matched consistency replacement, and reduced backbones. × marks indicate absent crossings.](manuscript_figures/fig3_noncircular_replacement.png)
 
@@ -159,13 +159,13 @@ This demonstrates that the phase transition mechanism does not require a target-
 
 Our results provide the first finite-size evidence for a bounded geometric phase transition in poset ensembles with exact entropy computation. The key insight from the ablation analysis is that the mechanism driving geometric dominance can be reduced to two structurally interpretable constraints, neither of which requires specifying a target spacetime dimension.
 
-The width-height balance constraint has a particularly clean physical interpretation: in any causal structure, the ratio of spatial extent (antichain width) to temporal extent (longest chain) characterizes the degree of causal propagation. KR posets, with their 3-layer structure and O(N) middle layer, represent maximally degenerate causal chains. Penalizing this degeneracy is not equivalent to "rewarding Lorenzian geometry" — it is equivalent to requiring that the causal order supports non-trivial temporal evolution.
+The width-height balance constraint has a particularly clean physical interpretation: in any causal structure, the ratio of spatial extent (antichain width) to temporal extent (longest chain) characterizes the degree of causal propagation. KR posets, with their 3-layer structure and O(N) middle layer, represent maximally degenerate causal chains. Penalizing this degeneracy is not equivalent to "rewarding Lorentzian geometry" — it is equivalent to requiring that the causal order supports non-trivial temporal evolution.
 
 The dimension consistency constraint captures the idea that genuine manifold-like structures should exhibit coherent dimensionality across scales. Lorentzian-like posets naturally satisfy this; KR posets do not. The fact that this constraint need not specify d = 2 is important: it means the mechanism would, in principle, favor *any* dimensionally coherent geometric structure over KR, not specifically 2D ones.
 
 ### 4.2 Relation to Prior Work
 
-Carlip [4] argued qualitatively that midpoint-scaling properties of causal diamonds should disfavor KR structures. Our work translates this intuition into, for the first time, an explicit numerical computation of γ_c as a function of N, with exact entropy and systematic ablation. The bounded γ_c we observe is consistent with Carlip's expectation but goes beyond it in two ways: (i) it provides quantitative finite-size values, and (ii) it identifies the specific structural properties that drive the transition.
+Carlip [4] argued qualitatively that midpoint-scaling properties of causal diamonds should disfavor KR structures. For the first time, our work translates this intuition into an explicit numerical computation of γ_c as a function of N, with exact entropy and systematic ablation. The bounded γ_c we observe is consistent with Carlip's expectation but goes beyond it in two ways: (i) it provides quantitative finite-size values, and (ii) it identifies the specific structural properties that drive the transition.
 
 Recent work on 2D causal set dynamics [6, 8] has used Markov chain approaches to sample from CST partition functions. Our approach is complementary: rather than sampling from the full space of N-element posets, we compare representative structures from distinct families, which allows exact computation and complete ablation control.
 
