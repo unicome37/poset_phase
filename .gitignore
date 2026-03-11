@@ -26,5 +26,18 @@ outputs_*/**/le_cache/
 zenodo_release/
 *.zip
 
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.bbl
+*.blg
+
+# Compiled PDFs (regenerated from .tex sources)
+*.pdf
+
 # Backup files
 *_old.md
