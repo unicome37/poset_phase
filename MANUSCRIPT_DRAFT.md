@@ -209,10 +209,10 @@ The non-circular replacement result also opens a conceptual direction: if the mi
 
 ## Acknowledgments
 
-**AI Assistance Statement**: This work was conducted in collaboration with large language model assistants (Claude, Anthropic). The AI contributed to experimental design, Python code implementation, data analysis, theoretical interpretation, and manuscript drafting. All scientific decisions, theoretical motivations, and final interpretations were made by the human author, who takes full responsibility for the content. The complete codebase is publicly available at [GitHub URL — TBD] for independent verification and reproduction.
+**AI Assistance Statement**: This work was conducted in collaboration with large language model assistants (Claude, Anthropic). The AI contributed to experimental design, Python code implementation, data analysis, theoretical interpretation, and manuscript drafting. All scientific decisions, theoretical motivations, and final interpretations were made by the human author, who takes full responsibility for the content. The complete codebase is publicly available at [https://github.com/unicome37/poset_phase](https://github.com/unicome37/poset_phase) for independent verification and reproduction.
 
 ---
 
 ## Code and Data Availability
 
-All code, configuration files, and output data are available at: [GitHub repository URL — TBD]
+All code, configuration files, and output data are available at: [https://github.com/unicome37/poset_phase](https://github.com/unicome37/poset_phase)
