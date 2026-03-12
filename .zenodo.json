@@ -1,6 +1,6 @@
 {
-    "title": "poset_phase v2.0.0: Action-Weighted Poset Ensemble Analysis — Including Prediction A (Dimension-Agnostic Geometric Dominance)",
-    "description": "Exact numerical framework for studying geometric phase transitions in finite partially ordered sets (posets). v2.0.0 adds Prediction A: demonstrating that consistency-based actions (without dimension-specific priors) naturally select higher-dimensional Lorentzian structures. Includes code for 4D Lorentzian family generation, dimension scan experiments (N=20–72), seed sensitivity analysis, geometric ablation, and two complete LaTeX manuscripts. Companion paper: 'Bounded Geometric Phase Transition in Finite Causal Posets with Exact Entropy'. Prediction A paper: 'Dimension-Agnostic Geometric Dominance in Finite Causal Posets: Higher-Dimensional Lorentzian Structures Emerge Under Consistency-Based Actions'.",
+    "title": "poset_phase v2.1.0: Action-Weighted Poset Ensemble Analysis — Prediction A Manuscript Refinements",
+    "description": "Exact numerical framework for studying geometric phase transitions in finite partially ordered sets (posets). v2.1.0 refines Prediction A manuscript: claim calibration ('systematic' replaces 'unconditional'), expanded seed sensitivity (N=68+72, 42/42 wins), two-tier K=8/K=4 sampling design, g_mcon multi-estimator consistency penalty, Conclusion section, and full MDPI/standard manuscript sync. Includes code for 4D Lorentzian family generation, dimension scan experiments (N=20–72), seed sensitivity analysis, geometric ablation, wcon sensitivity scan, and two complete LaTeX manuscripts.",
     "upload_type": "software",
     "license": {
         "id": "MIT"
@@ -29,11 +29,11 @@
     "access_right": "open",
     "related_identifiers": [
         {
-            "identifier": "10.5281/zenodo.18963421",
+            "identifier": "10.5281/zenodo.18980658",
             "relation": "isNewVersionOf",
             "scheme": "doi"
         }
     ],
     "notes": "This software accompanies two manuscripts: (1) 'Bounded Geometric Phase Transition in Finite Causal Posets with Exact Entropy' (companion paper), and (2) 'Dimension-Agnostic Geometric Dominance in Finite Causal Posets' (Prediction A). AI tools (Claude, Anthropic) assisted with code development and analysis.",
-    "version": "2.0.0"
+    "version": "2.1.0"
 }
