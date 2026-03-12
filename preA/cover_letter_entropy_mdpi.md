@@ -25,9 +25,9 @@ I am pleased to submit the enclosed manuscript for consideration in *Entropy*. T
 
 2. **Ablation.** Systematic removal of action components identifies a single term ($g_{\text{dim}}$, the target-anchored dimension proxy) as the dominant source of low-dimensional bias. This parallels the companion paper's finding that the same term is the critical backbone for the 2D phase transition.
 
-3. **Replacement.** Replacing $g_{\text{dim}}$ with the non-target-anchored consistency penalty $g_{\text{con}}$ yields unconditional 4D dominance (92/98 configurations), with the 4D signal surviving inside a full geometric action package.
+3. **Replacement.** Replacing $g_{\text{dim}}$ with the non-target-anchored consistency penalty $g_{\text{con}}$ yields systematic 4D dominance across the tested grid (92/98 configurations on a $14\,N \times 7\,\gamma$ grid), with the 4D signal surviving inside a full geometric action package.
 
-4. **Scaling and robustness.** The margin of victory grows monotonically from +7 ($N = 20$) to +57 ($N = 72$). Three independent generator seeds at $N = 72$ confirm 100% win rate (21/21) under consistency variants, versus 43% under the original action.
+4. **Scaling and robustness.** The margin of victory shows a strong upward trend from +7 ($N = 20$) to +57 ($N = 72$), with finite-size dips at $N = 44$ and $N = 64$. Three independent generator seeds at $N = 68$ and $N = 72$ confirm 100% win rate (42/42 configurations) under consistency variants, versus 43% under the original action.
 
 **Novelty.** This is the first finite-size numerical evidence that dimensional consistency constraints, without dimension-specific priors, naturally favor higher-dimensional Lorentzian structures in discrete causal order ensembles — a nontrivial step toward turning "why 3+1?" from a metaphysical presupposition into a quantitatively testable structural question.
 
