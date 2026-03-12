@@ -33,7 +33,7 @@ I am pleased to submit the enclosed manuscript for consideration in *Entropy*. T
 
 **Declarations.**
 - This manuscript is original, has not been published elsewhere, and is not under consideration by another journal.
-- Code and data: https://github.com/unicome37/poset_phase (Zenodo archive: https://doi.org/10.5281/zenodo.18963421).
+- Code and data: https://github.com/unicome37/poset_phase (Zenodo archive: https://doi.org/10.5281/zenodo.18980657).
 - AI Assistance: Large language model assistants (Claude, Anthropic) contributed to code implementation, data analysis, and manuscript drafting. All scientific decisions were made by the human author. This is fully disclosed in the manuscript.
 - No external funding was received.
 - The author declares no conflicts of interest.

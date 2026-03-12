@@ -1,6 +1,6 @@
 # poset_phase — Action-Weighted Poset Ensemble Analysis
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18963421.svg)](https://doi.org/10.5281/zenodo.18963421)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.18980657.svg)](https://doi.org/10.5281/zenodo.18980657)
 
 Exact numerical framework for studying geometric phase transitions in finite partially ordered sets (posets). Investigates whether Lorentzian-like structures can emerge as competitive phases against high-entropy non-geometric structures in action-weighted poset ensembles.
 
@@ -189,7 +189,7 @@ If you use this code, please cite:
   title = {poset\_phase: Action-Weighted Poset Ensemble Analysis},
   year = {2026},
   url = {https://github.com/unicome37/poset_phase},
-  doi = {10.5281/zenodo.18963421}
+  doi = {10.5281/zenodo.18980657}
 }
 ```
 
