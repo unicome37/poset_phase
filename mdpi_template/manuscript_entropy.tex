@@ -1,0 +1,314 @@
+%  LaTeX support: latex@mdpi.com
+%=================================================================
+\documentclass[entropy,article,submit,pdftex,moreauthors]{Definitions/mdpi}
+
+%=================================================================
+% MDPI internal commands
+\firstpage{1}
+\makeatletter
+\setcounter{page}{\@firstpage}
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{2026}
+\copyrightyear{2026}
+\datereceived{ }
+\daterevised{ }
+\dateaccepted{ }
+\datepublished{ }
+
+%=================================================================
+\Title{Bounded Geometric Phase Transition in Finite Causal Posets with Exact Entropy}
+
+\Author{Gang Zhang $^{1}$*}
+
+\address{%
+$^{1}$ \quad Independent Researcher; unicome@gmail.com}
+
+\corres{Correspondence: unicome@gmail.com}
+
+%=================================================================
+\abstract{The Kleitman--Rothschild (KR) theorem implies that generic finite posets are 3-layered and maximally entropic, posing a fundamental obstacle to geometric phase emergence in discrete causal models. We construct a 7-family poset ensemble and compute exact linear extension counts for $N = 10$--$44$ elements to study action-weighted competition between Lorentzian-like geometric structures and KR-type high-entropy posets. Under a decomposable action combining neutral and geometric penalty terms, we find that the critical geometric coupling $\gamma_c$ remains $O(1)$ across all tested sizes --- the first finite-size evidence of a bounded phase transition threshold in this setting. Systematic ablation of seven geometric sub-terms identifies a minimal backbone of two constraints: global layer-shape balance and dimensional scale consistency. Crucially, the latter can be replaced by a non-target-anchored variant (penalizing local--global dimension inconsistency rather than deviation from a specific $d = 2$ target), with $\gamma_c$ preserved at the same order of magnitude. These results provide finite-size evidence that Lorentzian-like order in discrete causal structures can emerge from structural self-consistency constraints, without requiring dimension-specific priors.}
+
+\keyword{causal sets; posets; phase transition; linear extensions; Kleitman--Rothschild; discrete quantum gravity; Lorentzian geometry; dimensional consistency}
+
+%=================================================================
+\begin{document}
+
+\section{Introduction}
+
+The hypothesis that spacetime is fundamentally discrete --- a locally finite partial order (poset) whose elements are causally related events --- lies at the heart of causal set theory (CST)~\cite{bombelli1987,sorkin2005}. A central challenge for this program is the \emph{entropy catastrophe}: the Kleitman--Rothschild (KR) theorem~\cite{kleitman1975} establishes that, asymptotically, almost all labeled finite posets consist of three layers with bipartite random connectivity and maximal linear extension count. If one weights posets by the pure combinatorial entropy $H = \log(\text{number of linear extensions})$, the partition function is overwhelmingly dominated by these non-geometric, KR-type structures. Geometric order --- the kind of layered, causally propagating structure that would correspond to a Lorentzian manifold under coarse-graining --- occupies an exponentially small fraction of the configuration space.
+
+Several strategies have been proposed to address this. Carlip~\cite{carlip2017} argued that midpoint-scaling properties of causal intervals can suppress KR dominance, shifting the effective measure toward geometric posets. Surya~\cite{surya2019} developed a formal CST partition function framework. Loomis and Carlip~\cite{loomis2018} performed 2D causal set simulations using Markov chain Monte Carlo. However, no prior work has demonstrated an explicit, finite-size phase transition threshold $\gamma_c$ that separates a KR-dominated phase from a geometrically competitive phase, computed with exact (non-approximate) entropy across a wide range of poset sizes.
+
+In this work, we take a direct numerical approach. We construct an ensemble of seven structurally distinct poset families, compute exact linear extension counts using dynamic programming for $N$ up to 44, and define a decomposable action with separately controllable neutral and geometric penalty terms. Our main finding is that the critical coupling $\gamma_c$ for Lorentzian-like 2D posets to overtake KR posets remains bounded and $O(1)$ across all tested sizes.
+
+To address the natural concern that this result might be circular --- that geometric penalties simply ``reward looking geometric'' --- we perform a systematic ablation study. We identify which of seven geometric sub-terms are necessary for the phase transition and which are dispensable. The two critical drivers are (i)~a global layer-shape constraint that penalizes degenerate causal chain depth, and (ii)~a dimensional proxy. We then replace the latter with a \emph{non-target-anchored} alternative that penalizes local--global dimension inconsistency without specifying any target dimension. The phase transition survives this replacement, establishing that the mechanism does not require a dimension-specific prior.
+
+%=================================================================
+\section{Framework}
+
+\subsection{Poset Ensemble}
+
+We consider finite posets $P = (V, \leq)$ with $|V| = N$ elements. Each poset is represented by its transitive reduction (Hasse diagram). We generate samples from seven structurally distinct families:
+
+\begin{itemize}[nosep]
+    \item \textbf{Lorentzian-like 2D} (\texttt{lor2d}): Layered posets mimicking 2D causal diamond structure, with layer sizes following a diamond profile and inter-layer edges determined by spatial proximity.
+    \item \textbf{Lorentzian-like 3D} (\texttt{lor3d}): Three-dimensional analogue with broader layers and correspondingly lower comparable fraction.
+    \item \textbf{KR-like} (\texttt{kr}): Three-layer bipartite posets with random inter-layer edges, approximating the KR structure that dominates the entropy landscape.
+    \item \textbf{Multi-layer random} (\texttt{mlr}): Random layered posets with uniformly drawn layer count and random inter-layer connectivity.
+    \item \textbf{Transitive percolation} (\texttt{tp}): Posets generated by transitive closure of a random DAG on a totally ordered set with independent edge probability.
+    \item \textbf{Interval order} (\texttt{int}): Posets arising from random intervals on the real line, where $x < y$ iff the interval of $x$ lies entirely below that of $y$.
+    \item \textbf{Absolute layered} (\texttt{abs}): Fully connected layered posets with all inter-layer edges present.
+\end{itemize}
+
+For each family and each $N \in \{10, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44\}$, we generate $K = 5$ independent samples. We distinguish two sample sets: a \textbf{confirmatory mainline} (used in Section~\ref{sec:bounded} for the primary $\gamma_c$ curve) and an independent \textbf{exploratory set} (used in Sections~\ref{sec:ablation}--\ref{sec:replacement} for ablation and replacement studies). Both sets use the same generators and parameters; they differ only in random seeds.
+
+\subsection{Exact Linear Extension Count}
+
+The entropy of a poset $P$ is defined as $H(P) = \log |L(P)|$, where $L(P)$ is the set of linear extensions (topological sorts). We compute $|L(P)|$ exactly using dynamic programming over antichains~\cite{brightwell1991}. The state space is the set of all antichains of the poset (equivalently characterized as maximal antichains of the remaining down-set); transitions correspond to removing a minimal element.
+
+A key structural observation is that the computational cost of this algorithm depends strongly on the poset's antichain structure. For \texttt{lor2d}, whose antichain width grows slowly with $N$, exact computation remains sub-second to $N = 48$. For \texttt{kr}, whose middle layer is $O(N)$, the cost grows dramatically and becomes impractical beyond $N \approx 50$.
+
+\begin{table}[H]
+\caption{Exact linear extension computation time.\label{tab:timing}}
+\begin{tabular}{ccc}
+\toprule
+\boldmath$N$ & \texttt{lor2d} Time & \texttt{kr} Time \\
+\midrule
+30 & 0.02\,s & 0.31\,s \\
+40 & 0.07\,s & 14.3\,s \\
+44 & 0.09\,s & 54.0\,s \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Action Definition}
+
+We define three action paths to separate neutral and geometric contributions:
+\begin{align}
+    A_1 &= -\beta H + \gamma \cdot I_{\text{neutral}} \label{eq:A1} \\
+    A_2 &= -\beta H + \gamma \cdot (I_{\text{neutral}} + I_{\text{geometric}}) \label{eq:A2} \\
+    A_3 &= -\beta H + \gamma \cdot I_{\text{geometric}} \label{eq:A3}
+\end{align}
+where $\beta = 1$ throughout, and $\gamma$ is the geometric coupling constant.
+
+The \textbf{neutral penalty} $I_{\text{neutral}}$ comprises terms that do not reference any specific geometric structure: comparable fraction deviation, degree variance, and layer entropy.
+
+The \textbf{geometric penalty} $I_{\text{geometric}}$ is decomposed into seven sub-terms (Table~\ref{tab:subterms}).
+
+\begin{table}[H]
+\caption{Geometric sub-terms and their physical motivations.\label{tab:subterms}}
+\begin{tabular}{lll}
+\toprule
+\textbf{Sub-Term} & \textbf{Symbol} & \textbf{Physical Motivation} \\
+\midrule
+Width-height balance & $g_{\text{wh}}$ & Penalizes degenerate causal depth \\
+Dimension proxy & $g_{\text{dim}}$ & Penalizes deviation from effective dimension target \\
+Interval shape & $g_{\text{int}}$ & Penalizes non-diamond-shaped causal intervals \\
+Comparability window & $g_{\text{cmp}}$ & Penalizes extreme comparable fraction \\
+Cover density & $g_{\text{cov}}$ & Penalizes sparse/dense covering relations \\
+Interval profile & $g_{\text{prf}}$ & Penalizes irregular interval size distribution \\
+Layer smoothness & $g_{\text{lyr}}$ & Penalizes irregular layer size variation \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Each sub-term is normalized to $[0, 1]$ per poset.
+
+\subsection{Phase Transition Criterion}
+
+For each $N$, we compute the mean action scores $\bar{S}_{\text{lor2d}}(\gamma)$ and $\bar{S}_{\text{kr}}(\gamma)$ across samples. The critical coupling is defined as:
+\begin{equation}
+    \gamma_c(N) = \inf\bigl\{\gamma > 0 : \bar{S}_{\text{lor2d}}(\gamma) < \bar{S}_{\text{kr}}(\gamma)\bigr\}
+    \label{eq:gamma_c}
+\end{equation}
+If $\gamma_c$ exists and remains bounded as $N$ increases, this constitutes evidence for a geometric phase transition.
+
+%=================================================================
+\section{Results}
+
+\subsection{Bounded $\gamma_c$ Under $A_2$}\label{sec:bounded}
+
+Under the full action $A_2$, $\gamma_c$ exists for all tested $N$ and remains $O(1)$ (Table~\ref{tab:gamma_c}, Figure~\ref{fig:gamma_c}).
+
+\begin{table}[H]
+\caption{Critical coupling $\gamma_c$ under $A_2$ (confirmatory mainline, exact entropy).\label{tab:gamma_c}}
+\begin{tabular}{cccccccccccc}
+\toprule
+\boldmath$N$ & 10 & 12 & 14 & 16 & 20 & 24 & 28 & 32 & 36 & 40 & 44 \\
+\midrule
+$\gamma_c$ & 9.19 & 0.74 & 0.78 & 0.69 & 0.15 & 0.26 & 1.00 & 0.69 & 0.57 & 0.25 & 0.15 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The $N = 10$ value is an outlier due to finite-size effects. For $N \geq 12$, all values lie within $[0.15, 1.00]$.
+
+\begin{figure}[H]
+    \includegraphics[width=0.9\textwidth]{manuscript_figures/fig1_gamma_c_curve.pdf}
+    \caption{Critical coupling $\gamma_c(N)$ under $A_2$ for Lor2D vs KR (exact entropy). Inset shows $N \geq 12$ detail.\label{fig:gamma_c}}
+\end{figure}
+
+\textbf{Critical control}: Under $A_1$ (neutral penalty only), no $\gamma_c$ exists at any tested $N$, confirming that the phase transition is driven by the geometry--entropy competition encoded in $A_2$.
+
+\subsection{Ablation of Geometric Sub-Terms}\label{sec:ablation}
+
+We systematically remove each of the seven geometric sub-terms from $A_2$ and re-compute $\gamma_c$ (Table~\ref{tab:ablation}, Figure~\ref{fig:ablation}).
+
+\begin{table}[H]
+\caption{Single-term ablation results ($N = 20$--$44$, exploratory set).\label{tab:ablation}}
+\begin{tabular}{lll}
+\toprule
+\textbf{Removed Sub-Term} & \boldmath$\gamma_c$ \textbf{at} $N=20$\textbf{--}$44$ & \textbf{Role} \\
+\midrule
+None (full $A_2$) & Exists at all $N$ & Baseline \\
+$g_{\text{wh}}$ (width-height) & Fails from $N \geq 36$ & \textbf{Critical} \\
+$g_{\text{dim}}$ (dimension proxy) & Fails at $N = 36, 44$ & \textbf{Critical} \\
+$g_{\text{int}}$ (interval shape) & All $N$, shifted higher & Enhancer \\
+$g_{\text{cmp}}$ (comparability) & All $N$ & Non-critical \\
+$g_{\text{cov}}$ (cover density) & All $N$ & Non-critical \\
+$g_{\text{prf}}$ (interval profile) & All $N$ & Non-critical \\
+$g_{\text{lyr}}$ (layer smoothness) & All $N$ & Non-critical \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\textbf{Combined ablation}: Removing both critical drivers ($g_{\text{wh}}$ and $g_{\text{dim}}$) simultaneously causes $\gamma_c$ to vanish at all $N$. Removing all interval terms while keeping the two critical drivers preserves $\gamma_c$ at all $N$ (with a modest upward shift).
+
+This establishes a clear \textbf{backbone--shell structure}:
+\begin{itemize}[nosep]
+    \item \textbf{Backbone} (necessary): $g_{\text{wh}} + g_{\text{dim}}$
+    \item \textbf{Shell} (enhancing but not necessary): all other sub-terms
+\end{itemize}
+
+\begin{figure}[H]
+    \includegraphics[width=0.95\textwidth]{manuscript_figures/fig2_ablation_summary.pdf}
+    \caption{Ablation heatmap showing $\gamma_c$ for each variant and $N$. Dashes indicate absent phase transitions. Red-bordered rows mark the two critical sub-terms.\label{fig:ablation}}
+\end{figure}
+
+\subsection{Non-Circular Replacement}\label{sec:replacement}
+
+The dimension proxy $g_{\text{dim}}$ penalizes deviation from a target dimension $d = 2$, raising a circularity concern. We construct a replacement term, $g_{\text{con}}$ (\textbf{dimension consistency}):
+\begin{equation}
+    g_{\text{con}}(P) = \text{Var}[d_{\text{local}}] + \bigl(\overline{d}_{\text{local}} - d_{\text{global}}\bigr)^2
+    \label{eq:gcon}
+\end{equation}
+where $d_{\text{local}}(x,y)$ is the order-fraction dimension proxy applied to sampled causal intervals with $|I| \geq 4$, and $d_{\text{global}}$ is the same estimator applied to the full poset. The penalty $g_{\text{con}}$ does not penalize any specific dimension --- it penalizes dimensional \emph{inconsistency} across scales.
+
+\begin{table}[H]
+\caption{Non-circular replacement results (exploratory set).\label{tab:replacement}}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Configuration} & $N = 20$\textbf{--}$40$ & $N = 44$ \\
+\midrule
+$A_2$ full (original) & $\checkmark$ & $\checkmark$ \\
+Replace $g_{\text{dim}} \to g_{\text{con}}$ (scale-matched) & $\checkmark$ & $\checkmark$ \\
+$g_{\text{wh}} + g_{\text{con}}$ only & $\checkmark$ & $\times$ (weight $1.0\times$) \\
+$g_{\text{wh}} + g_{\text{con}}$ only & $\checkmark$ & $\checkmark$ (weight $1.3\times$) \\
+$g_{\text{wh}}$ only & $N=24,28$ only & $\times$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+    \includegraphics[width=0.9\textwidth]{manuscript_figures/fig3_noncircular_replacement.pdf}
+    \caption{Non-circular replacement comparison --- $\gamma_c$ under original $A_2$, scale-matched consistency replacement, and reduced backbones.\label{fig:replacement}}
+\end{figure}
+
+%=================================================================
+\section{Discussion}
+
+\subsection{Interpretation}
+
+Our results provide the first finite-size evidence for a bounded geometric phase transition in poset ensembles with exact entropy computation. The width-height balance constraint has a clean physical interpretation: penalizing degenerate causal depth is equivalent to requiring non-trivial temporal evolution. The dimension consistency constraint captures the idea that genuine manifold-like structures should exhibit coherent dimensionality across scales --- and need not specify $d = 2$.
+
+\subsection{Relation to Prior Work}
+
+Carlip~\cite{carlip2017} argued qualitatively that midpoint-scaling properties of causal diamonds should disfavor KR structures. For the first time, our work translates this intuition into an explicit numerical computation of $\gamma_c$ as a function of $N$ with exact entropy and systematic ablation. Recent work on 2D causal set dynamics~\cite{loomis2018,cunningham2020} has used Markov chain approaches; our approach is complementary, allowing exact computation and complete ablation control.
+
+\subsection{Limitations}
+
+\begin{enumerate}[nosep]
+    \item \textbf{Finite size}: $N = 44$ is far from any thermodynamic limit.
+    \item \textbf{Family coverage}: Seven families do not exhaust all posets.
+    \item \textbf{Generator dependence}: Structural properties depend on generator parameters.
+    \item \textbf{Weight sensitivity}: The minimal non-circular backbone requires weight adjustment at $N = 44$.
+    \item \textbf{Estimator calibration}: The dimension proxy $d_{\text{eff}}(r)$ is calibrated at $R_{2,\text{ref}} = 0.5009$ (2D Minkowski). A fully dimension-agnostic estimator would further strengthen the non-circularity claim.
+\end{enumerate}
+
+\subsection{Outlook}
+
+The most important next step is pushing exact computation to larger $N$. The non-circular replacement result suggests that causal chain non-degeneracy and dimensional scale consistency may serve as order parameters for detecting geometric phases in discrete quantum gravity models more broadly.
+
+%=================================================================
+\vspace{6pt}
+
+\authorcontributions{Conceptualization, methodology, software, analysis, writing --- all by the sole author with AI assistance as described in the Acknowledgments.}
+
+\funding{This research received no external funding.}
+
+\dataavailability{All code, configuration files, and output data are available at: \url{https://github.com/unicome37/poset_phase}. Archived version with DOI: \url{https://doi.org/10.5281/zenodo.18963421}.}
+
+\acknowledgments{\textbf{AI Assistance Statement}: This work was conducted in collaboration with large language model assistants (Claude, Anthropic). The AI contributed to experimental design, Python code implementation, data analysis, theoretical interpretation, and manuscript drafting. All scientific decisions, theoretical motivations, and final interpretations were made by the human author, who takes full responsibility for the content.}
+
+\conflictsofinterest{The author declares no conflicts of interest.}
+
+%=================================================================
+\begin{adjustwidth}{-\extralength}{0cm}
+
+\reftitle{References}
+
+\begin{thebibliography}{8}
+
+\bibitem{bombelli1987}
+Bombelli, L.; Lee, J.; Meyer, D.; Sorkin, R.D.
+Space-Time as a Causal Set.
+\textit{Phys.\ Rev.\ Lett.} \textbf{1987}, \textit{59}, 521.
+
+\bibitem{sorkin2005}
+Sorkin, R.D.
+Causal Sets: Discrete Gravity.
+In \textit{Lectures on Quantum Gravity}; Gomberoff, A., Marolf, D., Eds.; Springer: Berlin, Germany, 2005.
+arXiv:gr-qc/0309009.
+
+\bibitem{kleitman1975}
+Kleitman, D.J.; Rothschild, B.L.
+Asymptotic Enumeration of Partial Orders on a Finite Set.
+\textit{Trans.\ Amer.\ Math.\ Soc.} \textbf{1975}, \textit{205}, 205--220.
+
+\bibitem{carlip2017}
+Carlip, S.
+Dimension and Dimensional Reduction in Quantum Gravity.
+\textit{Class.\ Quantum Grav.} \textbf{2017}, \textit{34}, 193001.
+https://doi.org/10.1088/1361-6382/aa8535.
+
+\bibitem{surya2019}
+Surya, S.
+The Causal Set Approach to Quantum Gravity.
+\textit{Living Rev.\ Relativ.} \textbf{2019}, \textit{22}, 5.
+https://doi.org/10.1007/s41114-019-0023-1.
+
+\bibitem{loomis2018}
+Loomis, S.P.; Carlip, S.
+Suppression of Non-Manifold-Like Sets in the Causal Set Path Integral.
+\textit{Class.\ Quantum Grav.} \textbf{2018}, \textit{35}, 024002.
+https://doi.org/10.1088/1361-6382/aa980b.
+
+\bibitem{brightwell1991}
+Brightwell, G.; Winkler, P.
+Counting Linear Extensions.
+\textit{Order} \textbf{1991}, \textit{8}, 225--242.
+
+\bibitem{cunningham2020}
+Cunningham, W.J.; Surya, S.
+Dimensionally Restricted Causal Set Quantum Gravity: Examples in Two and Three Dimensions.
+\textit{Class.\ Quantum Grav.} \textbf{2020}, \textit{37}, 054002.
+https://doi.org/10.1088/1361-6382/ab60b7.
+
+\end{thebibliography}
+
+\end{adjustwidth}
+
+\end{document}

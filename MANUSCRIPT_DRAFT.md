@@ -216,3 +216,5 @@ The non-circular replacement result also opens a conceptual direction: if the mi
 ## Code and Data Availability
 
 All code, configuration files, and output data are available at: [https://github.com/unicome37/poset_phase](https://github.com/unicome37/poset_phase)
+
+Archived version with DOI: [https://doi.org/10.5281/zenodo.18963421](https://doi.org/10.5281/zenodo.18963421)
