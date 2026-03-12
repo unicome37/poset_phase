@@ -4,9 +4,10 @@ from functools import lru_cache
 import math
 
 from generators import Poset
+from entropy_exact_c import ExactCBackendUnavailable, count_linear_extensions_exact_c
 
 
-def count_linear_extensions_exact(poset: Poset) -> int:
+def count_linear_extensions_exact_python(poset: Poset) -> int:
     n = poset.n
     preds = []
     for j in range(n):
@@ -31,6 +32,15 @@ def count_linear_extensions_exact(poset: Poset) -> int:
         return total
 
     return dp(0)
+
+
+def count_linear_extensions_exact(poset: Poset, prefer_c: bool = True) -> int:
+    if prefer_c:
+        try:
+            return count_linear_extensions_exact_c(poset)
+        except ExactCBackendUnavailable:
+            pass
+    return count_linear_extensions_exact_python(poset)
 
 
 def log_linear_extensions_exact(poset: Poset) -> float:

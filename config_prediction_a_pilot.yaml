@@ -1,0 +1,26 @@
+experiment:
+  n_values: [20, 24, 28, 32, 36, 40]
+  families:
+    - lorentzian_like_2d
+    - lorentzian_like_3d
+    - lorentzian_like_4d
+    - KR_like
+  gammas: [0.0, 0.2, 0.4, 0.8, 1.2, 1.6, 2.0]
+  variants:
+    - A2_full
+    - width_height_dim_consistency
+    - width_height_dim_multi_consistency
+    - A2_no_comp_window
+  beta: 1.0
+  samples_per_family: 8
+  sis_runs: 2048
+  exact_threshold: 40
+  family_exact_thresholds:
+    lorentzian_like_2d: 60
+    lorentzian_like_3d: 40
+    lorentzian_like_4d: 40
+    KR_like: 40
+  consistency_weight: 0.682882
+
+output:
+  directory: outputs_exploratory/prediction_a_pilot

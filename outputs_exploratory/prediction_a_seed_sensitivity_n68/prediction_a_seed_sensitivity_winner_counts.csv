@@ -1,0 +1,13 @@
+﻿seed_label,variant,winner_family,wins
+offset_0,A2_full,KR_like,4
+offset_0,A2_full,lorentzian_like_4d,3
+offset_0,A2_replace_dim_with_consistency,lorentzian_like_4d,7
+offset_0,A2_replace_dim_with_multi_consistency,lorentzian_like_4d,7
+offset_100000,A2_full,KR_like,4
+offset_100000,A2_full,lorentzian_like_4d,3
+offset_100000,A2_replace_dim_with_consistency,lorentzian_like_4d,7
+offset_100000,A2_replace_dim_with_multi_consistency,lorentzian_like_4d,7
+offset_50000,A2_full,KR_like,4
+offset_50000,A2_full,lorentzian_like_4d,3
+offset_50000,A2_replace_dim_with_consistency,lorentzian_like_4d,7
+offset_50000,A2_replace_dim_with_multi_consistency,lorentzian_like_4d,7

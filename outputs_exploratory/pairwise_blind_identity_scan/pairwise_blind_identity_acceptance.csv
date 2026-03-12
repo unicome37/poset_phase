@@ -1,0 +1,5 @@
+﻿family,n,attempts,accepted,acceptance_rate
+lorentzian_like_2d,30,19,8,0.42105263157894735
+multi_layer_random,30,524,8,0.015267175572519083
+lorentzian_like_2d,40,11,8,0.7272727272727273
+multi_layer_random,40,2375,8,0.003368421052631579

@@ -1,0 +1,4 @@
+﻿n,point_estimate,estimate_label,seed_min,seed_max,seed_note,fully_locked
+44,1.41,exact/mainline,1.38,1.48,one additional offset did not cross by current upper bound 1.50,no
+48,1.69,exact,1.66,1.7,three tested offsets all crossed,yes
+52,1.9,mixed near-wall (sp4 seed mean),1.72,2.2,"sp4 seeds crossed at 1.72, 1.78, and 2.20 after tail scan; ultrafine baseline was 1.754",yes

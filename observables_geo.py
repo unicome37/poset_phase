@@ -61,10 +61,40 @@ def estimate_dimension_proxy_from_order_fraction(r: float) -> float:
     return float(np.clip(d_eff, 0.5, 8.0))
 
 
+def estimate_dimension_proxy_from_chain_depth(n: int, height_layers: float) -> float:
+    """Rough dimension proxy from chain-depth scaling."""
+    n = max(int(n), 2)
+    h = max(float(height_layers), 1.000001)
+    d_eff = np.log(n) / np.log(h)
+    return float(np.clip(d_eff, 0.5, 8.0))
+
+
+def estimate_dimension_proxy_from_width_scaling(n: int, width_layers: float) -> float:
+    """Rough dimension proxy from width scaling."""
+    n = max(int(n), 2)
+    w = min(max(float(width_layers), 1.000001), float(n) - 1e-6)
+    alpha = np.log(w) / np.log(n)
+    alpha = float(np.clip(alpha, 1e-6, 1.0 - 1e-6))
+    d_eff = 1.0 / (1.0 - alpha)
+    return float(np.clip(d_eff, 0.5, 8.0))
+
+
 def dimension_penalty_from_order_fraction(poset: Poset, d_target: float = 2.0) -> tuple[float, float]:
     r = comparable_fraction(poset)
     d_eff = estimate_dimension_proxy_from_order_fraction(r)
     return float((d_eff - d_target) ** 2), float(d_eff)
+
+
+def dimension_proxy_views(poset: Poset) -> dict[str, float]:
+    layers = layer_profile(poset)
+    height_layers = float(len(layers)) if len(layers) else 1.0
+    width_layers = float(layers.max()) if len(layers) else 1.0
+    comp = comparable_fraction(poset)
+    return {
+        "d_order": estimate_dimension_proxy_from_order_fraction(comp),
+        "d_chain": estimate_dimension_proxy_from_chain_depth(poset.n, height_layers),
+        "d_width": estimate_dimension_proxy_from_width_scaling(poset.n, width_layers),
+    }
 
 
 def _comparable_fraction_from_closure(closure: np.ndarray) -> float:
@@ -107,6 +137,23 @@ def dimension_consistency_penalty(
     mismatch = float((mean_local - global_d_eff) ** 2)
     total = var_local + mismatch
     return float(total), float(global_d_eff), mean_local, var_local, int(len(local))
+
+
+def multi_estimator_dimension_consistency_penalty(
+    poset: Poset,
+    max_pairs: int = 64,
+    min_interval_size: int = 4,
+) -> tuple[float, float, float, float, int]:
+    """Strengthen dim_consistency by requiring cross-estimator agreement."""
+    views = dimension_proxy_views(poset)
+    global_values = np.asarray(list(views.values()), dtype=float)
+    cross_view_var = float(global_values.var(ddof=0))
+
+    base_total, global_d_eff, mean_local, var_local, local_count = dimension_consistency_penalty(
+        poset, max_pairs=max_pairs, min_interval_size=min_interval_size
+    )
+    total = float(base_total + cross_view_var)
+    return total, float(global_d_eff), float(mean_local), float(var_local + cross_view_var), int(local_count)
 
 
 def cover_density(poset: Poset) -> float:
@@ -277,6 +324,8 @@ def geometric_components(poset: Poset) -> dict[str, float]:
     width_height = width_height_balance_penalty(poset)
     dim_penalty, d_eff = dimension_penalty_from_order_fraction(poset)
     dim_consistency, global_d_eff, local_mean_d_eff, local_var_d_eff, local_dim_count = dimension_consistency_penalty(poset)
+    dim_multi_consistency, _, _, multi_var_d_eff, _ = multi_estimator_dimension_consistency_penalty(poset)
+    views = dimension_proxy_views(poset)
     comparability = comparability_window_penalty(poset)
     cover = cover_density_penalty(poset)
     interval_profile = interval_profile_penalty(poset)
@@ -291,6 +340,11 @@ def geometric_components(poset: Poset) -> dict[str, float]:
         "geo_dim_consistency_local_mean_d_eff": local_mean_d_eff,
         "geo_dim_consistency_local_var_d_eff": local_var_d_eff,
         "geo_dim_consistency_local_count": float(local_dim_count),
+        "geo_dim_multi_consistency": dim_multi_consistency,
+        "geo_dim_multi_consistency_var": multi_var_d_eff,
+        "geo_d_order": views["d_order"],
+        "geo_d_chain": views["d_chain"],
+        "geo_d_width": views["d_width"],
         "geo_comparability_window": comparability,
         "geo_cover_density": cover,
         "geo_interval_profile": interval_profile,

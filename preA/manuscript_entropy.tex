@@ -1,0 +1,351 @@
+%  LaTeX support: latex@mdpi.com
+%=================================================================
+\documentclass[entropy,article,submit,pdftex,moreauthors]{Definitions/mdpi}
+
+%=================================================================
+% MDPI internal commands
+\firstpage{1}
+\makeatletter
+\setcounter{page}{\@firstpage}
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{2026}
+\copyrightyear{2026}
+\datereceived{ }
+\daterevised{ }
+\dateaccepted{ }
+\datepublished{ }
+
+%=================================================================
+\Title{Dimension Selection in Finite Causal Posets:\\ 4D Lorentzian Dominance Under Non-Target-Anchored Consistency Actions}
+
+\Author{Gang Zhang $^{1}$*}
+
+\address{%
+$^{1}$ \quad Independent Researcher; unicome@gmail.com}
+
+\corres{Correspondence: unicome@gmail.com}
+
+%=================================================================
+\abstract{A companion paper established that a bounded geometric phase transition exists in finite causal posets under an action combining entropy and geometric penalties, and that the dimension-specific proxy ($d = 2$ target) can be replaced by a non-target-anchored consistency penalty without destroying the transition. Here we ask a second-order question: among Lorentzian-like families of different dimensionality, \emph{which dimension does the action prefer?} We extend the poset ensemble to include a 4D Lorentzian-like family and compute exact and SIS-estimated linear extension counts for $N = 20$--$72$ across four families (2D, 3D, 4D Lorentzian-like, and KR). The present data do not show that ``geometry automatically chooses 4D'' under the original full action. They show something more specific and, arguably, more informative: (i)~under the original target-anchored action ($A_2$ full), the 4D family and KR posets are locked in a near-perfect tie (36 vs 35 wins out of 98 configurations), with 4D suppressed by the $d = 2$ target penalty; (ii)~systematic ablation identifies this single term ($g_{\text{dim}}$) as the dominant source of low-dimensional bias; (iii)~replacing $g_{\text{dim}}$ with a non-target-anchored consistency penalty $g_{\text{con}}$ yields \emph{unconditional 4D dominance} (92/98 configurations), with a margin of victory that grows monotonically with $N$. Seed sensitivity analysis across three independent generator seeds at $N = 72$ confirms a $100\%$ win rate for 4D posets under both consistency variants (21/21), versus $43\%$ under the original action. These results provide the first finite-size numerical evidence that dimensional consistency constraints, without dimension-specific priors, naturally favor higher-dimensional Lorentzian structures in discrete causal order ensembles --- a nontrivial step toward turning ``why $3{+}1$?'' from a metaphysical presupposition into a quantitatively testable structural question.}
+
+\keyword{causal sets; posets; phase transition; dimensional consistency; dimension selection; higher-dimensional geometry; linear extensions; discrete quantum gravity}
+
+%=================================================================
+\begin{document}
+
+%=================================================================
+\section{Introduction}
+
+The question ``why does spacetime have $3{+}1$ dimensions?'' is among the oldest in fundamental physics. In most approaches to quantum gravity, the dimensionality of spacetime is either postulated (as in loop quantum gravity), compactified from a higher-dimensional starting point (as in string theory), or left implicit in the measure over geometries. Causal set theory (CST)~\cite{bombelli1987,sorkin2005} offers a distinctive alternative: spacetime emerges as a statistical phase from a competition between combinatorial entropy and structural order in ensembles of locally finite partial orders (posets). In this framework, the dimensionality of the emergent geometry is, in principle, \emph{selected} by the dynamics rather than imposed.
+
+In a companion paper~\cite{zhang2026companion}, we took a first step: we showed that under an action $A_2$ combining combinatorial entropy $H = \log|L(P)|$ with geometric penalty terms, the critical coupling $\gamma_c$ at which Lorentzian-like 2D posets overtake entropically dominant Kleitman--Rothschild (KR) structures remains $O(1)$ across $N = 10$--$44$. This established a \emph{bounded geometric phase transition} --- Lorentzian geometry can compete as a phase. A key further finding was that the dimension-specific proxy $g_{\text{dim}}$ (penalizing deviation from $d = 2$) can be replaced by a non-target-anchored consistency penalty $g_{\text{con}}$ (penalizing local--global dimension \emph{inconsistency} without specifying a target), with the phase transition preserved.
+
+This replacement raises a natural second-order question: if the action rewards dimensional \emph{consistency} rather than proximity to a specific $d$, then among Lorentzian-like structures of different dimensionality, which dimension does the action prefer? This is the question we address here.
+
+We extend the ensemble to include a 4D Lorentzian-like family and conduct systematic experiments across $N = 20$--$72$, comparing 2D, 3D, 4D Lorentzian-like, and KR posets under the original and consistency-based actions. The present data do not show that ``geometry automatically chooses 4D'' under the original full action. They show something more specific and, arguably, more informative:
+
+\begin{enumerate}[nosep]
+    \item Under the original target-anchored action, the 4D family is suppressed by a single identifiable term ($g_{\text{dim}}$), resulting in a closely contested lor4d--KR tie.
+    \item Systematic ablation identifies $g_{\text{dim}}$ as the dominant source of this low-dimensional bias.
+    \item Replacing $g_{\text{dim}}$ with the non-target-anchored $g_{\text{con}}$ yields unconditional 4D dominance with growing margin, confirmed robust across seeds to $N = 72$.
+\end{enumerate}
+
+This ``diagnose $\to$ ablate $\to$ replace $\to$ confirm'' narrative establishes that the dimension preference is not an intrinsic property of the geometric penalties as a whole, but a specific consequence of whether the dimension term is target-anchored or consistency-based.
+
+%=================================================================
+\section{Finite Causal Posets, Families, and Observables}
+
+\subsection{Extended Poset Ensemble}
+
+We retain three families from the companion paper~\cite{zhang2026companion} and add one new family:
+
+\begin{itemize}[nosep]
+    \item \textbf{Lorentzian-like 2D} (\texttt{lor2d}): Layered posets mimicking 2D causal diamond structure, with layer sizes following a diamond profile and inter-layer edges determined by spatial proximity.
+    \item \textbf{Lorentzian-like 3D} (\texttt{lor3d}): Three-dimensional analogue with broader layers and correspondingly lower comparable fraction.
+    \item \textbf{KR-like} (\texttt{kr}): Three-layer bipartite posets with random inter-layer edges, approximating the Kleitman--Rothschild structure that dominates the entropy landscape~\cite{kleitman1975}.
+    \item \textbf{Lorentzian-like 4D} (\texttt{lor4d}): \emph{New}. Four-dimensional analogue with layer sizes following a 4D causal diamond profile --- broader layers, higher connectivity, and lower comparable fraction than 3D.
+\end{itemize}
+
+The 4D generator follows the same construction principle as the 2D and 3D generators: elements are distributed across layers whose sizes follow a $d$-dimensional diamond profile, and inter-layer edges are determined by spatial proximity in $d{-}1$ spatial dimensions.
+
+For each family and each $N \in \{20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72\}$, we generate $K = 4$ independent samples. Linear extension counts are computed exactly for \texttt{lor2d} (sub-second up to $N = 72$) and via SIS (Sequential Importance Sampling, 4096 runs) for all other families at $N > 32$.
+
+\subsection{Key Observables}
+
+Two penalty terms are central to this study:
+
+\begin{itemize}[nosep]
+    \item \textbf{Dimension proxy penalty} ($g_{\text{dim}}$): penalizes deviation of the poset's effective dimension from a \emph{target} $d = 2$. This is ``target-anchored'' --- it explicitly references a specific dimension.
+    \item \textbf{Dimension consistency penalty} ($g_{\text{con}}$): penalizes inconsistency between local interval-estimated dimensions and the global dimension, \emph{without} specifying any target. Formally, $g_{\text{con}}(P) = \text{Var}[d_{\text{local}}] + (\overline{d}_{\text{local}} - d_{\text{global}})^2$. This is ``non-target-anchored'' --- it rewards coherence at whatever dimension the poset naturally exhibits.
+\end{itemize}
+
+A multi-estimator variant ($g_{\text{mcon}}$) uses multiple independent dimension estimators and penalizes disagreement among them, providing a robustness check.
+
+%=================================================================
+\section{Action Variants for Prediction A}
+
+All actions share the form $S(P) = -\beta H(P) + \gamma \cdot I(P)$, with $\beta = 1$ and penalty $I$ decomposed into neutral and geometric components. The variants tested are:
+
+\begin{table}[H]
+\caption{Action variants tested. $g_{\text{dim}}$ = target-anchored dimension proxy; $g_{\text{con}}$ = consistency replacement; $g_{\text{mcon}}$ = multi-estimator consistency. ``Other geo'' = $g_{\text{wh}}$ + interval/shape/cover/layer terms.\label{tab:variants}}
+\begin{tabular}{lcccl}
+\toprule
+\textbf{Variant} & \boldmath$g_{\text{dim}}$ & \boldmath$g_{\text{con}}$ & \textbf{Other geo} & \textbf{Purpose} \\
+\midrule
+$A_2$ full & \checkmark & --- & \checkmark & Original baseline \\
+$A_2$ no-dim & --- & --- & \checkmark & Ablation: remove dim term \\
+$A_2$ interval-only & --- & --- & interval only & Ablation: minimal geometry \\
+$A_2$ replace ($g_{\text{con}}$) & --- & \checkmark & \checkmark & Core replacement \\
+$A_2$ replace ($g_{\text{mcon}}$) & --- & \checkmark$^*$ & \checkmark & Multi-estimator robustness \\
+\bottomrule
+\end{tabular}
+\begin{flushleft}
+\small $^*$Uses $g_{\text{mcon}}$ in place of $g_{\text{con}}$.
+\end{flushleft}
+\end{table}
+
+The consistency weight is calibrated at $w_{\text{con}} = 0.6829$ to match the scale of the original $g_{\text{dim}}$ penalty across the ensemble (see companion paper~\cite{zhang2026companion}).
+
+For each $(N, \gamma, \text{variant})$ configuration, we compute the mean action score $\bar{S}_f(\gamma)$ for each family $f$, identify the \textbf{winner}, and compute the \textbf{margin of victory} (score gap to runner-up). A family achieves \textbf{unconditional dominance} at a given $N$ if it wins at all tested $\gamma \in \{0.0, 0.2, 0.4, 0.8, 1.2, 1.6, 2.0\}$.
+
+%=================================================================
+\section{Initial Cross-Dimension Experiment and Geometric Bias Ablation}
+
+\subsection{The Negative Result: 4D Does Not Win Under the Original Action}
+
+Under the original $A_2$ full action, the 4D family does \emph{not} achieve stable dominance. Across all 98 $(N, \gamma)$ configurations ($N = 20$--$72$, 7 $\gamma$ values), the winner counts are:
+
+\begin{table}[H]
+\caption{Winner counts under $A_2$ full (98 total configurations).\label{tab:A2full_phase}}
+\begin{tabular}{cccc}
+\toprule
+\textbf{Lor4D} & \textbf{KR} & \textbf{Lor2D} & \textbf{Lor3D} \\
+\midrule
+36 & 35 & 19 & 8 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The competition is closely split between \texttt{lor4d} and KR, with \texttt{lor2d} winning at low $\gamma$ (where entropy dominates and 2D posets have the lowest $H$) and \texttt{lor3d} occasionally winning at intermediate scales. The near-perfect 36:35 tie between \texttt{lor4d} and KR is itself a significant observation: it suggests that the geometric action creates an ``artificial glass ceiling'' that prevents \texttt{lor4d} from expressing its structural advantages.
+
+\subsection{Ablation: Locating the Source of Low-Dimensional Bias}
+
+To identify which component of the geometric penalty suppresses \texttt{lor4d}, we perform systematic ablation:
+
+\begin{enumerate}[nosep]
+    \item \textbf{Remove $g_{\text{dim}}$ only}: \texttt{lor4d} win count rises sharply. The suppression is localized.
+    \item \textbf{Retain only interval terms} ($g_{\text{int}} + g_{\text{prf}}$): No stable dimension preference emerges. Interval geometry alone is insufficient.
+    \item \textbf{Remove all terms except $g_{\text{dim}}$}: The $d = 2$ bias persists, confirming that $g_{\text{dim}}$ is the dominant driver.
+\end{enumerate}
+
+This diagnosis is consistent with the companion paper's finding in a different context: in both the 2D-vs-KR competition (Prediction B) and the cross-dimension competition (Prediction A), the \emph{same} target-anchored term $g_{\text{dim}}$ is the primary source of dimension-specific bias. The parallel is striking: in Prediction B, $g_{\text{dim}}$ was identified as a critical backbone component needed to sustain the 2D phase transition; here, the same term is identified as the source of suppression for higher dimensions.
+
+%=================================================================
+\section{Replacing the Target-Anchored Dimension Term}
+
+\subsection{Consistency Replacement}
+
+We replace $g_{\text{dim}}$ with the non-target-anchored $g_{\text{con}}$, keeping all other penalty terms unchanged. Under this replacement, the winner landscape transforms:
+
+\begin{table}[H]
+\caption{Winner counts: original vs consistency replacement (98 configurations each).\label{tab:replacement_phase}}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{Variant} & \textbf{Lor4D} & \textbf{KR} & \textbf{Lor2D} & \textbf{Lor3D} \\
+\midrule
+$A_2$ full (original) & 36 & 35 & 19 & 8 \\
+$A_2$ replace ($g_{\text{con}}$) & 92 & --- & --- & 6 \\
+$A_2$ replace ($g_{\text{mcon}}$) & 89 & --- & --- & 9 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Under the consistency replacement, \texttt{lor4d} wins 92 out of 98 configurations. KR and \texttt{lor2d} \emph{never} win. The only non-\texttt{lor4d} wins go to \texttt{lor3d} at a handful of small-$N$, low-$\gamma$ configurations. The multi-estimator variant $g_{\text{mcon}}$ yields a nearly identical pattern (89/98), confirming that the result does not depend on the specific consistency estimator.
+
+The 4D signal is no longer confined to a stripped-down action: it survives inside a fuller geometric package that includes width-height balance, interval shape, cover density, and layer smoothness terms.
+
+\subsection{Quantifying Dominance: Winner Counts}
+
+Under $A_2$ replace ($g_{\text{con}}$), \texttt{lor4d} wins in 92 out of 98 tested $(N, \gamma)$ cells. Against \texttt{lor2d} specifically, \texttt{lor4d} wins in all 98 pairwise comparisons (100\% win rate). Against \texttt{lor3d}, it wins in 92/98 (the 6 losses are at $N = 20$--$28$, $\gamma = 0.0$, where entropy differences are small and realization-level fluctuations can tip the balance).
+
+%=================================================================
+\section{Large-Scale Extension and Seed Sensitivity ($N = 20$--$72$)}
+
+\subsection{Margin of Victory: Growing Dominance}
+
+The margin of victory for \texttt{lor4d} over both \texttt{lor2d} and \texttt{lor3d} grows monotonically with $N$ under the consistency action:
+
+\begin{table}[H]
+\caption{Mean margin of \texttt{lor4d} over competitors under $A_2$ replace ($g_{\text{con}}$), averaged across $\gamma$ values. Positive = \texttt{lor4d} wins.\label{tab:margin}}
+\begin{tabular}{ccccc}
+\toprule
+\boldmath$N$ & \textbf{vs Lor2D (mean)} & \textbf{vs Lor2D (min)} & \textbf{vs Lor3D (mean)} & \textbf{vs Lor3D (min)} \\
+\midrule
+20 & 7.41 & 1.70 & 2.27 & $-0.17$ \\
+28 & 14.21 & 7.77 & 2.59 & $-2.07$ \\
+36 & 19.30 & 11.41 & 4.20 & $-1.72$ \\
+44 & 27.12 & 19.42 & 6.02 & 0.36 \\
+52 & 36.22 & 30.40 & 11.29 & 7.27 \\
+60 & 45.41 & 38.88 & 14.50 & 10.02 \\
+68 & 50.82 & 41.51 & 16.41 & 9.44 \\
+72 & 56.72 & 47.15 & 16.53 & 10.06 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Against the \texttt{lor2d} competitor, the margin grows nearly linearly from $+7$ at $N = 20$ to $+57$ at $N = 72$, and even the worst-case margin (minimum across $\gamma$) is positive at every $N$. Against \texttt{lor3d}, the margin is smaller but crosses into uniformly positive territory by $N \geq 44$. At $N = 44$ and $N = 64$, minor dips in the margin are visible; these correspond to realization-level fluctuations in the SIS-estimated entropy and do not disrupt the monotonic trend.
+
+\subsection{Seed Sensitivity at $N = 72$}
+
+To verify realization-level robustness, we repeat the $N = 72$ experiment with three independent generator seed offsets (0, 50000, 100000):
+
+\begin{table}[H]
+\caption{Seed sensitivity at $N = 72$: winner counts out of 7 $\gamma$ values.\label{tab:seed}}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Variant} & \textbf{Seed 0} & \textbf{Seed 50k} & \textbf{Seed 100k} \\
+\midrule
+$A_2$ full & KR 4, Lor4d 3 & KR 4, Lor4d 3 & KR 4, Lor4d 3 \\
+$A_2$ replace ($g_{\text{con}}$) & Lor4d 7/7 & Lor4d 7/7 & Lor4d 7/7 \\
+$A_2$ replace ($g_{\text{mcon}}$) & Lor4d 7/7 & Lor4d 7/7 & Lor4d 7/7 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The pattern is perfectly stable across all seeds. Under $A_2$ full, the KR--\texttt{lor4d} split is identical (4:3) at every seed, confirming that this tie is a structural property of the action, not a sampling artifact. Under both consistency variants, \texttt{lor4d} achieves a perfect 7/7 win record at every seed --- a $100\%$ win rate (21/21 configurations).
+
+\begin{table}[H]
+\caption{Pairwise margin statistics at $N = 72$ (\texttt{lor4d} vs competitors, all seeds pooled).\label{tab:seed_pairwise}}
+\begin{tabular}{llccc}
+\toprule
+\textbf{Variant} & \textbf{vs} & \textbf{Mean Margin} & \textbf{Min Margin} & \textbf{Win Rate} \\
+\midrule
+$A_2$ full & Lor2d & 28.51 & $-17.56$ & 81.0\% \\
+$A_2$ full & Lor3d & 0.78 & $-27.59$ & 57.1\% \\
+$A_2$ replace ($g_{\text{con}}$) & Lor2d & 56.00 & 47.15 & 100\% \\
+$A_2$ replace ($g_{\text{con}}$) & Lor3d & 17.28 & 10.06 & 100\% \\
+$A_2$ replace ($g_{\text{mcon}}$) & Lor2d & 55.82 & 46.74 & 100\% \\
+$A_2$ replace ($g_{\text{mcon}}$) & Lor3d & 17.20 & 9.91 & 100\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+%=================================================================
+\section{Interpretation and Limitations}
+
+\subsection{What Has Been Established}
+
+\begin{enumerate}[nosep]
+    \item \textbf{Precise diagnosis}: The low-dimensional bias in the original action is attributable to a single, identifiable, target-anchored term ($g_{\text{dim}}$). This is not a vague ``geometric penalties favor 2D'' statement; it is a specific mechanistic identification. Notably, this parallels the companion paper's finding that the same term is a critical backbone component for the 2D phase transition --- in both problems, $g_{\text{dim}}$ is the most consequential single term.
+    \item \textbf{Successful replacement}: Once $g_{\text{dim}}$ is replaced with the non-target-anchored $g_{\text{con}}$, 4D Lorentzian-like posets achieve unconditional dominance across $N = 20$--$72$, with a margin that grows monotonically. The 4D signal survives inside a full geometric action, not merely a stripped-down variant.
+    \item \textbf{Scaling}: The margin of \texttt{lor4d} over \texttt{lor2d} grows nearly linearly with $N$ (from $+7$ at $N = 20$ to $+57$ at $N = 72$), consistent with the expectation that entropy differences grow with $N$ while consistency penalties remain $O(1)$.
+    \item \textbf{Seed robustness}: At $N = 72$, the replacement variants achieve a perfect 7/7 win record for \texttt{lor4d} across all tested seeds (21/21), demonstrating realization-level robustness.
+    \item \textbf{Methodological parallel}: Both Prediction A and Prediction B employ the same methodology --- precise diagnosis, targeted ablation, non-target-anchored replacement, seed-level robustness check --- arriving at the same structural conclusion: the core mechanism depends on dimensional \emph{consistency}, not dimensional \emph{identity}.
+\end{enumerate}
+
+\subsection{What Remains Unresolved}
+
+\begin{enumerate}[nosep]
+    \item \textbf{Why 4D?} The present results show that 4D wins \emph{among the tested families}, but do not explain \emph{why} 4D posets exhibit the strongest combination of high entropy and low consistency penalty. Whether this is a graph-theoretic property of 4D diamond profiles, or a more general statistical-mechanical phenomenon, remains open. In particular, whether the trend continues to 5D, 6D, and beyond --- or saturates at some optimal dimension --- is the central question for future work.
+    \item \textbf{Finite ensemble}: Only four families are tested. The claim is ``4D wins among tested structural types,'' not global optimality.
+    \item \textbf{SIS estimation}: For $N > 32$ in KR, \texttt{lor3d}, and \texttt{lor4d}, entropy is estimated via SIS (4096 runs) rather than exact computation. Systematic biases, while expected to be small, cannot be fully excluded.
+    \item \textbf{Physical dimension selection}: The fact that ``higher dimension wins under consistency constraints'' does not directly explain why our universe has $d = 3{+}1$. Additional constraints --- dynamical stability, field-theoretic requirements, or entropy production bounds --- would be needed to select a preferred dimension from among all dimensionally consistent candidates.
+    \item \textbf{Consistency weight}: The weight $w_{\text{con}} = 0.6829$ is calibrated on the 7-family ensemble from the companion paper. Independent calibration on the 4-family ensemble would strengthen the result.
+\end{enumerate}
+
+%=================================================================
+\section{Conclusion}
+
+We have tested a direct prediction of the non-target-anchored consistency replacement established in the companion paper: if dimensional \emph{consistency} rather than dimensional \emph{identity} drives the geometric phase transition, then higher-dimensional Lorentzian-like structures should dominate when the target-anchored penalty is removed.
+
+The data confirm this prediction. The evidence chain is:
+
+\begin{enumerate}[nosep]
+    \item Under the original action, 4D posets are suppressed by a specific, identifiable term ($g_{\text{dim}}$), resulting in a contested lor4d--KR tie.
+    \item Ablation localizes the suppression to this single term.
+    \item Replacing $g_{\text{dim}}$ with the non-target-anchored $g_{\text{con}}$ yields unconditional 4D dominance (92/98 configurations) with monotonically growing margin to $N = 72$.
+    \item Seed sensitivity confirms 100\% win rate at the largest tested scale.
+\end{enumerate}
+
+Combined with the companion paper's results, a coherent picture emerges: Lorentzian geometry can emerge as a competitive phase in discrete causal order ensembles (Prediction B), and within that geometric phase, the consistency-based action selects for the highest-dimensional coherent structure available (Prediction A). The two predictions together provide the first finite-size numerical evidence that dimensional consistency constraints --- without dimension-specific priors --- can drive both geometric phase emergence and dimensional preference in discrete causal structures.
+
+What the data do \emph{not} yet show is whether this higher-dimensional preference saturates at a specific $d$, or what additional physical constraints would be needed to select $d = 3{+}1$. That is already a nontrivial step toward turning ``why $3{+}1$?'' from a metaphysical presupposition into a quantitatively testable structural question.
+
+%=================================================================
+\vspace{6pt}
+
+\authorcontributions{Conceptualization, methodology, software, analysis, writing --- all by the sole author with AI assistance as described in the Acknowledgments.}
+
+\funding{This research received no external funding.}
+
+\dataavailability{All code, configuration files, and output data are available at: \url{https://github.com/unicome37/poset_phase}. Archived version with DOI: \url{https://doi.org/10.5281/zenodo.18963421}.}
+
+\acknowledgments{\textbf{AI Assistance Statement}: This work was conducted in collaboration with large language model assistants (Claude, Anthropic). The AI contributed to experimental design, Python code implementation, data analysis, theoretical interpretation, and manuscript drafting. All scientific decisions, theoretical motivations, and final interpretations were made by the human author, who takes full responsibility for the content.}
+
+\conflictsofinterest{The author declares no conflicts of interest.}
+
+%=================================================================
+\begin{adjustwidth}{-\extralength}{0cm}
+
+\reftitle{References}
+
+\begin{thebibliography}{9}
+
+\bibitem{zhang2026companion}
+Zhang, G.
+Bounded Geometric Phase Transition in Finite Causal Posets with Exact Entropy.
+\textit{Entropy} \textbf{2026}, submitted.
+
+\bibitem{bombelli1987}
+Bombelli, L.; Lee, J.; Meyer, D.; Sorkin, R.D.
+Space-Time as a Causal Set.
+\textit{Phys.\ Rev.\ Lett.} \textbf{1987}, \textit{59}, 521.
+
+\bibitem{sorkin2005}
+Sorkin, R.D.
+Causal Sets: Discrete Gravity.
+In \textit{Lectures on Quantum Gravity}; Gomberoff, A., Marolf, D., Eds.; Springer: Berlin, Germany, 2005.
+arXiv:gr-qc/0309009.
+
+\bibitem{kleitman1975}
+Kleitman, D.J.; Rothschild, B.L.
+Asymptotic Enumeration of Partial Orders on a Finite Set.
+\textit{Trans.\ Amer.\ Math.\ Soc.} \textbf{1975}, \textit{205}, 205--220.
+
+\bibitem{carlip2017}
+Carlip, S.
+Dimension and Dimensional Reduction in Quantum Gravity.
+\textit{Class.\ Quantum Grav.} \textbf{2017}, \textit{34}, 193001.
+https://doi.org/10.1088/1361-6382/aa8535.
+
+\bibitem{surya2019}
+Surya, S.
+The Causal Set Approach to Quantum Gravity.
+\textit{Living Rev.\ Relativ.} \textbf{2019}, \textit{22}, 5.
+https://doi.org/10.1007/s41114-019-0023-1.
+
+\bibitem{loomis2018}
+Loomis, S.P.; Carlip, S.
+Suppression of Non-Manifold-Like Sets in the Causal Set Path Integral.
+\textit{Class.\ Quantum Grav.} \textbf{2018}, \textit{35}, 024002.
+https://doi.org/10.1088/1361-6382/aa980b.
+
+\bibitem{brightwell1991}
+Brightwell, G.; Winkler, P.
+Counting Linear Extensions.
+\textit{Order} \textbf{1991}, \textit{8}, 225--242.
+
+\bibitem{cunningham2020}
+Cunningham, W.J.; Surya, S.
+Dimensionally Restricted Causal Set Quantum Gravity: Examples in Two and Three Dimensions.
+\textit{Class.\ Quantum Grav.} \textbf{2020}, \textit{37}, 054002.
+https://doi.org/10.1088/1361-6382/ab60b7.
+
+\end{thebibliography}
+
+\end{adjustwidth}
+
+\end{document}

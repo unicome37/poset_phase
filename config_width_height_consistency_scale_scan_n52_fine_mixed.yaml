@@ -1,0 +1,18 @@
+experiment:
+  n_values: [52]
+  families:
+    - KR_like
+    - lorentzian_like_2d
+  gammas: [0.0, 0.1, 0.2, 0.4, 0.6, 0.8, 1.0, 1.5, 2.0]
+  beta: 1.0
+  samples_per_family: 2
+  fixed_matched_weight: 0.682882
+  scale_factors: [1.80, 1.82, 1.84, 1.86, 1.88, 1.90, 1.92, 1.94, 1.96, 1.98, 2.00, 2.02, 2.04, 2.06]
+  exact_threshold: 44
+  family_exact_thresholds:
+    lorentzian_like_2d: 60
+    KR_like: 44
+  sis_runs: 4096
+
+output:
+  directory: outputs_exploratory/width_height_consistency_scale_scan_n52_fine_mixed

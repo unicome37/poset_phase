@@ -7,10 +7,10 @@ import pandas as pd
 import yaml
 
 from action import action_value
-from entropy_exact import log_linear_extensions_exact
 from experiment import FAMILIES
 from observables import neutral_penalty
 from observables_geo import geometric_components
+from runtime_utils import estimate_entropy_by_family
 
 
 def load_config(path: str | Path) -> dict:
@@ -81,6 +81,11 @@ if __name__ == "__main__":
     samples_per_family = int(exp_cfg.get("samples_per_family", 2))
     families = tuple(exp_cfg["families"])
     scan_factors = tuple(float(x) for x in exp_cfg["scale_factors"])
+    sis_runs = int(exp_cfg.get("sis_runs", 512))
+    default_exact_threshold = int(exp_cfg.get("exact_threshold", 44))
+    family_exact_thresholds = {
+        str(k): int(v) for k, v in (exp_cfg.get("family_exact_thresholds", {}) or {}).items()
+    }
 
     base_rows = []
     for n in n_values:
@@ -89,7 +94,14 @@ if __name__ == "__main__":
             for sample_id in range(samples_per_family):
                 seed = 1000 * n + sample_id
                 poset = generator(n=n, seed=seed)
-                log_h = log_linear_extensions_exact(poset)
+                log_h, entropy_method = estimate_entropy_by_family(
+                    poset,
+                    family=family,
+                    sis_runs=sis_runs,
+                    seed=seed,
+                    default_exact_threshold=default_exact_threshold,
+                    family_exact_thresholds=family_exact_thresholds,
+                )
                 neutral = neutral_penalty(poset)
                 geo = geometric_components(poset)
                 base_rows.append(
@@ -100,6 +112,7 @@ if __name__ == "__main__":
                         "seed": seed,
                         "beta": beta,
                         "log_H": log_h,
+                        "entropy_method": entropy_method,
                         "penalty_neutral": neutral,
                         **geo,
                     }
@@ -142,6 +155,7 @@ if __name__ == "__main__":
             std_score=("score", "std"),
             mean_penalty=("penalty_effective", "mean"),
             mean_log_H=("log_H", "mean"),
+            entropy_method=("entropy_method", lambda s: ",".join(sorted(set(str(x) for x in s)))),
             count=("score", "count"),
         )
         .reset_index()

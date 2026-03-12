@@ -1,0 +1,4 @@
+﻿n,n_runs,mean_c_threshold,min_c_threshold,max_c_threshold,std_c_threshold
+44,1,1.38,1.38,1.38,
+48,3,1.6833333333333333,1.66,1.7,0.020816659994661264
+52,1,1.754,1.754,1.754,

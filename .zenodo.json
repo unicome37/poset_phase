@@ -1,14 +1,15 @@
 {
-    "title": "poset_phase: Action-Weighted Poset Ensemble Analysis — Code, Data, and Figures",
-    "description": "Exact numerical framework for studying geometric phase transitions in finite partially ordered sets (posets). Includes the complete codebase for computing exact linear extension counts, action-weighted ensemble comparisons, ablation experiments, and non-circular replacement analysis. Accompanies the manuscript: 'Bounded Geometric Phase Transition in Finite Causal Posets with Exact Entropy'.",
+    "title": "poset_phase v2.0.0: Action-Weighted Poset Ensemble Analysis — Including Prediction A (Dimension-Agnostic Geometric Dominance)",
+    "description": "Exact numerical framework for studying geometric phase transitions in finite partially ordered sets (posets). v2.0.0 adds Prediction A: demonstrating that consistency-based actions (without dimension-specific priors) naturally select higher-dimensional Lorentzian structures. Includes code for 4D Lorentzian family generation, dimension scan experiments (N=20–72), seed sensitivity analysis, geometric ablation, and two complete LaTeX manuscripts. Companion paper: 'Bounded Geometric Phase Transition in Finite Causal Posets with Exact Entropy'. Prediction A paper: 'Dimension-Agnostic Geometric Dominance in Finite Causal Posets: Higher-Dimensional Lorentzian Structures Emerge Under Consistency-Based Actions'.",
     "upload_type": "software",
     "license": {
         "id": "MIT"
     },
     "creators": [
         {
-            "name": "Anonymous",
-            "affiliation": "Independent Researcher"
+            "name": "Zhang, Gang",
+            "affiliation": "Independent Researcher",
+            "orcid": ""
         }
     ],
     "keywords": [
@@ -19,9 +20,20 @@
         "discrete quantum gravity",
         "combinatorics",
         "Kleitman-Rothschild",
-        "Lorentzian geometry"
+        "Lorentzian geometry",
+        "dimension selection",
+        "dimensional consistency",
+        "higher-dimensional geometry",
+        "4D Lorentzian"
     ],
     "access_right": "open",
-    "related_identifiers": [],
-    "notes": "This software accompanies a manuscript currently under preparation. AI tools (Claude, Anthropic) assisted with code development and analysis."
+    "related_identifiers": [
+        {
+            "identifier": "10.5281/zenodo.18963421",
+            "relation": "isNewVersionOf",
+            "scheme": "doi"
+        }
+    ],
+    "notes": "This software accompanies two manuscripts: (1) 'Bounded Geometric Phase Transition in Finite Causal Posets with Exact Entropy' (companion paper), and (2) 'Dimension-Agnostic Geometric Dominance in Finite Causal Posets' (Prediction A). AI tools (Claude, Anthropic) assisted with code development and analysis.",
+    "version": "2.0.0"
 }

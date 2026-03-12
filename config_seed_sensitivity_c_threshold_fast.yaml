@@ -1,0 +1,22 @@
+experiment:
+  n_values: [44, 48, 52]
+  families:
+    - KR_like
+    - lorentzian_like_2d
+  gammas: [0.0, 0.2, 0.4, 0.6, 0.8, 1.0, 1.5, 2.0]
+  beta: 1.0
+  samples_per_family: 2
+  fixed_matched_weight: 0.682882
+  exact_threshold: 40
+  family_exact_thresholds:
+    lorentzian_like_2d: 60
+    KR_like: 40
+  sis_runs: 4096
+  seed_offsets: [0, 50000, 100000]
+  per_n_scale_factors:
+    44: [1.38, 1.40, 1.41, 1.42, 1.44]
+    48: [1.66, 1.68, 1.69, 1.70, 1.72]
+    52: [1.748, 1.752, 1.754, 1.756, 1.760]
+
+output:
+  directory: outputs_exploratory/seed_sensitivity_c_threshold_fast

@@ -1,0 +1,4 @@
+﻿seed_label,n,c_threshold_est,threshold_status,scale_factor_min,scale_factor_max
+offset_0,52,1.756,crossing_recovered,1.748,2.2
+offset_100000,52,1.9,crossing_recovered,1.748,2.2
+offset_50000,52,1.9,crossing_recovered,1.748,2.2
