@@ -1,0 +1,5 @@
+pairwise_csv: d:/Kiro/outputs_exploratory/mlr_survivor_matched_lor2d/mlr_survivor_matched_pairs.csv
+residual_csv: d:/Kiro/outputs_exploratory/matched_residual_freedom_check/matched_residual_freedom_raw.csv
+output_dir: d:/Kiro/outputs_exploratory/prediction_c_pairwise_validation
+seed: 42
+n_perm: 2000

@@ -1,6 +1,6 @@
 {
-    "title": "poset_phase v2.1.0: Action-Weighted Poset Ensemble Analysis — Prediction A Manuscript Refinements",
-    "description": "Exact numerical framework for studying geometric phase transitions in finite partially ordered sets (posets). v2.1.0 refines Prediction A manuscript: claim calibration ('systematic' replaces 'unconditional'), expanded seed sensitivity (N=68+72, 42/42 wins), two-tier K=8/K=4 sampling design, g_mcon multi-estimator consistency penalty, Conclusion section, and full MDPI/standard manuscript sync. Includes code for 4D Lorentzian family generation, dimension scan experiments (N=20–72), seed sensitivity analysis, geometric ablation, wcon sensitivity scan, and two complete LaTeX manuscripts.",
+    "title": "poset_phase v3.0.0: Action-Weighted Poset Ensemble Analysis — Prediction C: Hierarchy Depth Predicts Entropy",
+    "description": "Exact numerical framework for studying geometric phase transitions in finite partially ordered sets (posets). v3.0.0 adds Prediction C: a three-tier correlational study showing hierarchy depth observables (HII composite) predict combinatorial entropy in finite causal posets. Tier 1: all-family partial correlation r = -0.578 (320 samples). Tier 2: matched-pair r = -0.834 (46 Lor2D-MLR pairs, N=30-56), stable across three filter stringencies. Tier 3: CG stability linkage r = -0.874 (92 samples). Includes Simpson's Paradox diagnosis, component decomposition, and full manuscript (788 lines, 14 tables). Previous versions include Prediction B (bounded phase transition threshold, γ_c = O(1)) and Prediction A (4D Lorentzian dominance, N=20-72).",
     "upload_type": "software",
     "license": {
         "id": "MIT"
@@ -21,9 +21,12 @@
         "combinatorics",
         "Kleitman-Rothschild",
         "Lorentzian geometry",
+        "hierarchy integration",
+        "combinatorial entropy",
+        "Simpson paradox",
+        "coarse-graining",
+        "matched-pair analysis",
         "dimension selection",
-        "dimensional consistency",
-        "higher-dimensional geometry",
         "4D Lorentzian"
     ],
     "access_right": "open",
@@ -34,6 +37,6 @@
             "scheme": "doi"
         }
     ],
-    "notes": "This software accompanies two manuscripts: (1) 'Bounded Geometric Phase Transition in Finite Causal Posets with Exact Entropy' (companion paper), and (2) 'Dimension-Agnostic Geometric Dominance in Finite Causal Posets' (Prediction A). AI tools (Claude, Anthropic) assisted with code development and analysis.",
-    "version": "2.1.0"
+    "notes": "This software accompanies three manuscripts: (1) Prediction B — 'Bounded Geometric Phase Transition in Finite Causal Posets with Exact Entropy', (2) Prediction A — 'Dimension-Agnostic Geometric Dominance in Finite Causal Posets', (3) Prediction C — 'Hierarchy Depth Observables Predict Combinatorial Entropy in Finite Causal Posets: A Three-Tier Correlational Study'. AI tools (Claude, Anthropic) assisted with code development and analysis.",
+    "version": "3.0.0"
 }

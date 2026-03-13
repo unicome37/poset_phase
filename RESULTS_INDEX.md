@@ -72,6 +72,22 @@
 - `outputs_exploratory/smoke`
   - 最小链路烟雾测试
 
+- `outputs_exploratory/prediction_c_comprehensive`
+  - 来源配置：`config_prediction_c_comprehensive.yaml`
+  - 来源脚本：`prediction_c_comprehensive.py`
+  - 作用：Prediction C 三层综合验证——因果层级整合 (HII) 与 log_H 的偏相关 (Tier 1)、配对Δ分析 (Tier 2)、CG 稳定性关联 (Tier 3)
+  - 关键文件：
+    - `tier1_overall_summary.csv` — 总体偏相关
+    - `tier1_by_family.csv` — 8 族分解
+    - `tier1_components.csv` — 组件级偏相关
+    - `tier2_pairwise_summary.csv` — 34 配对Δ相关汇总
+    - `tier3_cg_linkage_summary.csv` — CG 稳定性关联
+  - 精确表述文档：`PredictionC_精确表述与验证报告.md`
+  - 核心结论：
+    - 跨族 HII→log_H: r=-0.836 (p<0.001, 34 配对)
+    - HII→CG_switch_rate: r=-0.835 (p<0.001, 68 样本)
+    - Simpson's Paradox 根因为尺度变量 N，控制后方向翻转
+
 ## Rule
 
 简单规则：

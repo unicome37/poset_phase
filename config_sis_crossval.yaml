@@ -1,0 +1,13 @@
+calibration:
+  n_values: [20, 24, 28, 32, 36]
+  families:
+    - KR_like
+    - lorentzian_like_3d
+    - lorentzian_like_4d
+  samples_per_family: 4
+  sis_runs: 4096
+
+output:
+  directory: outputs_exploratory/sis_crossval
+  calibration_raw_csv: sis_crossval_raw.csv
+  calibration_summary_csv: sis_crossval_summary.csv

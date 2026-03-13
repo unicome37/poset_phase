@@ -6,15 +6,19 @@ Exact numerical framework for studying geometric phase transitions in finite par
 
 ## Papers
 
-This repository accompanies two manuscripts:
+This repository accompanies three manuscripts:
 
-1. **Companion Paper (Prediction B)**: "Bounded Geometric Phase Transition in Finite Causal Posets with Exact Entropy"
+1. **Prediction B** (Companion Paper): "Bounded Geometric Phase Transition in Finite Causal Posets with Exact Entropy"
    - Manuscripts: `manuscript.tex` / `manuscript_foundphys.tex` / `mdpi_template/entropy_manuscript.tex`
    - Establishes bounded γ_c across N=10–44; ablation-verified non-circularity
 
 2. **Prediction A**: "Dimension-Agnostic Geometric Dominance in Finite Causal Posets: Higher-Dimensional Lorentzian Structures Emerge Under Consistency-Based Actions"
    - Manuscripts: `preA/manuscript.tex` / `preA/manuscript_entropy.tex`
    - 4D Lorentzian unconditional dominance under consistency actions (N=20–72); seed-robust 100% win rate
+
+3. **Prediction C**: "Hierarchy Depth Observables Predict Combinatorial Entropy in Finite Causal Posets: A Three-Tier Correlational Study"
+   - Manuscript: `preC/MANUSCRIPT_PredictionC_Full.md`
+   - Three-tier validation: HII–entropy correlation r = −0.834 (Tier 2, 46 matched pairs); Simpson's Paradox diagnosed and resolved
 
 ## Key Results
 
@@ -33,6 +37,18 @@ This repository accompanies two manuscripts:
 5. **Growing margin of victory**: The margin of 4D over 2D/3D grows monotonically with N (+7 at N=20 → +57 at N=72).
 
 6. **Seed robustness**: At N=72 across 3 independent generator seeds, 4D posets win 100% under both consistency variants (21/21), vs 43% under original target-anchored action.
+
+### Prediction C — Hierarchy Depth Predicts Entropy
+
+7. **Negative correlation at fixed N**: The Hierarchy Integration Index (HII) — a 5-component composite z-score of depth observables — correlates negatively with log H at fixed N: partial r = −0.578 (Tier 1, 8 families, 320 samples).
+
+8. **Strong matched-pair signal**: Lor2D–MLR matched-pair r(ΔHII, Δlog H) = −0.834 (46 pairs, N=30–56), stable across three filter stringencies (variation < 0.005).
+
+9. **Simpson's Paradox diagnosed**: Naïve cross-N r = +0.336 reverses to −0.578 after controlling for N, establishing N as the dominant sign-determining confound.
+
+10. **Coarse-graining linkage**: layer_count predicts CG switch rate at r = −0.874 (Tier 3, 92 samples), extending the association chain to identity stability (classifier-contingent).
+
+11. **Component decomposition**: `layer_count` and `mean_layer_gap` carry most of the signal; full HII never exceeds its best constituent.
 
 ## Installation
 
@@ -83,6 +99,22 @@ python noncyclic_dim_replacement_gamma_c.py --config config_noncyclic_dim_replac
 python benchmark_exact_timing.py --config config_exact_timing.yaml
 ```
 
+### Prediction C — Three-tier HII–entropy analysis
+
+```bash
+# Tier 1: All-family partial correlation (N=10–16)
+python prediction_c_comprehensive.py --config config_prediction_c_comprehensive.yaml
+
+# Tier 2: Matched-pair validation (Lor2D vs MLR, N=30–56)
+python prediction_c_pairwise_validation.py --config config_prediction_c_pairwise_validation_nearwall_moderate.yaml
+
+# Tier 3: Extended CG stability (N=30–56)
+python prediction_c_switch_enhancement_scan.py --config config_prediction_c_tier3_extended.yaml
+
+# Simpson's Paradox analysis
+python _simpson_analysis.py
+```
+
 ## Project Structure
 
 ### Core Modules
@@ -110,6 +142,18 @@ python benchmark_exact_timing.py --config config_exact_timing.yaml
 | `mlr_survivor_profile.py` | MLR window survivor structural profiling |
 | `pairwise_locality_delta_validation.py` | Paired locality delta ↔ ΔlogH validation |
 | `gamma_c_report.py` | γ_c extraction from summary CSV |
+
+### Prediction C Scripts
+
+| File | Description |
+|------|-------------|
+| `prediction_c_comprehensive.py` | Three-tier HII–entropy validation driver |
+| `prediction_c_pairwise_validation.py` | Tier 2 matched-pair Δ-analysis |
+| `prediction_c_pooled_regression.py` | Pooled regression analysis |
+| `prediction_c_bronze_matched_validation.py` | Bronze-level matched validation |
+| `prediction_c_switch_enhancement_scan.py` | Tier 3 CG switch enhancement scan |
+| `_simpson_analysis.py` | Simpson's Paradox diagnosis and resolution |
+| `augment_prediction_c_features.py` | Feature augmentation for C analysis |
 
 ### Prediction A Scripts
 
@@ -143,6 +187,12 @@ Results are stratified into two evidence tiers:
   - `prediction_a_seed_sensitivity_n{68,72}/` — Seed robustness analysis
   - `prediction_a_geometric_ablation/` — Prediction A ablation results
   - `prediction_a_dim_replacement*/` — Prediction A dimension replacement experiments
+  - `prediction_c_comprehensive/` — Prediction C Tier 1 all-family results
+  - `prediction_c_pairwise_validation_nearwall_moderate/` — Prediction C Tier 2 (46 matched pairs)
+  - `prediction_c_tier3_extended/` — Prediction C Tier 3 CG stability (92 samples)
+  - `frozen_exploratory_submodel_{52,56}_moderate/` — Near-wall duel data
+  - `matched_residual_freedom_check_nearwall_moderate/` — Residual metrics
+  - `mlr_survivor_matched_lor2d_nearwall_moderate/` — MLR survivors for matching
 
 See `RESULTS_INDEX.md` for full index.
 
@@ -156,6 +206,9 @@ All experiments are driven by YAML config files (`config_*.yaml`). Key frozen co
 | `config_confirmatory_medium_exact_scan.yaml` | Confirmatory N=20–44 exact |
 | `config_geometric_ablation_gamma_c.yaml` | Ablation experiment |
 | `config_noncyclic_dim_replacement_gamma_c.yaml` | Non-cyclic replacement |
+| `config_prediction_c_comprehensive.yaml` | Prediction C three-tier validation |
+| `config_prediction_c_pairwise_validation_nearwall_moderate.yaml` | Prediction C Tier 2 (P5–P95) |
+| `config_prediction_c_tier3_extended.yaml` | Prediction C Tier 3 extended |
 
 ## Candidate Poset Families
 
@@ -182,14 +235,24 @@ where H = log(linear extensions) and I = structure penalty.
 
 ## Citation
 
-If you use this code, please cite:
+If you use this code, please cite the software and the relevant paper(s):
 
-```
+```bibtex
 @software{poset_phase_2026,
-  title = {poset\_phase: Action-Weighted Poset Ensemble Analysis},
-  year = {2026},
-  url = {https://github.com/unicome37/poset_phase},
-  doi = {10.5281/zenodo.18980657}
+  title   = {poset\_phase: Action-Weighted Poset Ensemble Analysis},
+  author  = {Zhang, Gang},
+  year    = {2026},
+  url     = {https://github.com/unicome37/poset_phase},
+  doi     = {10.5281/zenodo.18980657}
+}
+
+@article{zhang2026predC,
+  title   = {Hierarchy Depth Observables Predict Combinatorial Entropy in Finite
+             Causal Posets: A Three-Tier Correlational Study},
+  author  = {Zhang, Gang},
+  journal = {Entropy},
+  year    = {2026},
+  note    = {Submitted}
 }
 ```
 

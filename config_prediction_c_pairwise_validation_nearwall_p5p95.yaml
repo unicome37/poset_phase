@@ -1,0 +1,5 @@
+pairwise_csv: d:/Kiro/理论体系/poset_phase/outputs_exploratory/mlr_survivor_matched_lor2d_nearwall_p5p95/mlr_survivor_matched_pairs.csv
+residual_csv: d:/Kiro/理论体系/poset_phase/outputs_exploratory/matched_residual_freedom_check_nearwall_p5p95/matched_residual_freedom_raw.csv
+output_dir: d:/Kiro/理论体系/poset_phase/outputs_exploratory/prediction_c_pairwise_validation_nearwall_p5p95
+seed: 42
+n_perm: 5000

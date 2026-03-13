@@ -1,0 +1,35 @@
+experiment:
+  beta: 1.0
+  consistency_weight: 0.6
+  exact_threshold: 36
+  families:
+  - lorentzian_like_2d
+  - lorentzian_like_3d
+  - lorentzian_like_4d
+  - KR_like
+  family_exact_thresholds:
+    KR_like: 36
+    lorentzian_like_2d: 60
+    lorentzian_like_3d: 36
+    lorentzian_like_4d: 36
+  gammas:
+  - 0.0
+  - 0.2
+  - 0.4
+  - 0.8
+  - 1.2
+  - 1.6
+  - 2.0
+  multi_consistency_weight: 0.6
+  n_values:
+  - 20
+  - 24
+  - 28
+  - 32
+  - 36
+  samples_per_family: 4
+  sis_runs: 2048
+  variants:
+  - width_height_dim_consistency
+output:
+  directory: outputs_exploratory\wcon_sensitivity\w0p6000

@@ -1,0 +1,26 @@
+experiment:
+  beta: 1.0
+  gamma: 0.8
+  n_values: [52]
+  families:
+    - lorentzian_like_2d
+    - multi_layer_random
+  accepted_target: 6
+  max_attempts: 150000
+  seed_base: 1460000
+
+reference:
+  family: lorentzian_like_2d
+  samples: 96
+  lower_quantile: 0.05
+  upper_quantile: 0.95
+  seed_base: 1340000
+
+coarse_grain:
+  keep_ratios: [0.8, 0.6]
+  repeats: 3
+  centroid_samples: 12
+  centroid_seed_base: 1990000
+
+output:
+  directory: outputs_exploratory/frozen_exploratory_submodel_52_moderate/duel

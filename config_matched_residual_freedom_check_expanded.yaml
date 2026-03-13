@@ -1,0 +1,5 @@
+input:
+  pairs_csv: outputs_exploratory/mlr_survivor_matched_lor2d_expanded/mlr_survivor_matched_pairs.csv
+
+output:
+  directory: outputs_exploratory/matched_residual_freedom_check_expanded

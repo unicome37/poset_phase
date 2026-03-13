@@ -78,7 +78,7 @@ where $\Delta t_{ij} = t_j - t_i$, followed by transitive closure. For \texttt{l
 
 The key structural consequence of higher dimensionality: \texttt{lor4d} has (i)~higher entropy $H$ (lower comparable fraction due to the stricter causal condition in more spatial dimensions yields more linear extensions), (ii)~higher $g_{\text{dim}}$ penalty (since $d_{\text{eff}} \approx 4 \neq 2$), and (iii)~\emph{lower} $g_{\text{con}}$ penalty (strong internal dimensional coherence).
 
-For each family and each $N \in \{20, 24, 28, \ldots, 72\}$ (14 sizes), we generate $K$ independent samples per family: $K = 8$ for $N \leq 40$ (exact computation regime) and $K = 4$ for $N > 40$ (SIS regime). This two-tier design reflects the increasing computational cost of linear extension counting at larger $N$. Linear extension counts~\cite{brightwell1991} are computed exactly for \texttt{lor2d} at all $N$ (sub-second up to $N = 72$) and via SIS (Sequential Importance Sampling, 4096 runs) for other families at $N > 32$. The SIS coefficient of variation for $\log|L(P)|$ is typically below $5\%$ at $N = 72$. Since the entropy term $H$ appears linearly in the action and margins of victory grow with $N$ (Table~\ref{tab:margin}), SIS noise is subdominant for the main results but may contribute to the marginal wins/losses at small~$N$.
+For each family and each $N \in \{20, 24, 28, \ldots, 72\}$ (14 sizes), we generate $K$ independent samples per family: $K = 8$ for $N \leq 40$ (exact computation regime) and $K = 4$ for $N > 40$ (SIS regime). This two-tier design reflects the increasing computational cost of linear extension counting at larger $N$. Linear extension counts~\cite{brightwell1991} are computed exactly for \texttt{lor2d} at all $N$ (sub-second up to $N = 72$) and via SIS (Sequential Importance Sampling, 4096 runs) for other families at $N > 32$. The SIS coefficient of variation for $\log|L(P)|$ is typically below $5\%$ at $N = 72$. Since the entropy term $H$ appears linearly in the action and margins of victory grow with $N$ (Table~\ref{tab:margin}), SIS noise is subdominant for the main results but may contribute to the marginal wins/losses at small~$N$. As a cross-check, we compare SIS ($R = 4096$) against exact counts at $N = 20$--$36$ for \texttt{KR}, \texttt{lor3d}, and \texttt{lor4d} (4 samples each): the mean absolute error in $\log|L(P)|$ is $0.074$ at $N = 28$--$32$ (the switchover region), or $\sim 2.3\%$ of the typical entropy magnitude --- well below the observed winning margins of $3$--$7$ points.
 
 \subsection{Action Variants}
 
@@ -260,6 +260,32 @@ $A_2$ multi-con. & Lor3d & 17.20 & 9.91 & 100\% \\
     \caption{Winner phase comparison across action variants. Left: $A_2$ full shows a contested lor4d--KR split. Right: $A_2$ consistency shows systematic lor4d dominance across the tested grid.\label{fig:phase}}
 \end{figure}
 
+\subsection{Consistency Weight Sensitivity}\label{sec:wcon}
+
+The consistency weight $w_{\text{con}} = 0.6829$ was calibrated on the companion paper's 7-family ensemble. To verify that 4D dominance does not depend critically on this choice, we repeat the full $N = 20$--$36$ grid (variant $A_2$ consistency, 35 configurations) across eight weight values spanning nearly a factor of four.
+
+\begin{table}[H]
+\centering
+\caption{Sensitivity of 4D dominance to the consistency weight $w_{\text{con}}$. Each row reports the number of configurations (out of 35) won by each family across the $N = 20$--$36$, $\gamma \in \{0, 0.2, \ldots, 2.0\}$ grid.}
+\label{tab:wcon}
+\begin{tabular}{ccccc}
+\toprule
+$w_{\text{con}}$ & \textbf{Lor4D} & \textbf{Lor3D} & \textbf{KR} & \textbf{Lor2D} \\
+\midrule
+0.30 & 32 (91.4\%) & 3 & 0 & 0 \\
+0.40 & 32 (91.4\%) & 3 & 0 & 0 \\
+0.50 & 32 (91.4\%) & 3 & 0 & 0 \\
+0.60 & 32 (91.4\%) & 3 & 0 & 0 \\
+\textbf{0.6829} & \textbf{32 (91.4\%)} & \textbf{3} & \textbf{0} & \textbf{0} \\
+0.80 & 33 (94.3\%) & 2 & 0 & 0 \\
+1.00 & 34 (97.1\%) & 1 & 0 & 0 \\
+1.20 & 34 (97.1\%) & 1 & 0 & 0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The 4D win rate is remarkably stable: $\geq 91\%$ across the entire tested range $w_{\text{con}} \in [0.3, 1.2]$, and in fact \emph{increases} at larger weights. The 3 (or fewer) losses all occur at $N = 20$, $\gamma \geq 1.6$ --- the smallest-$N$, strongest-penalty corner where finite-size effects dominate. Neither KR nor \texttt{lor2d} ever wins at any tested weight. This confirms that the 4D selection is a structural property of the consistency mechanism, not an artifact of the specific weight calibration.
+
 %=================================================================
 \section{Discussion and Limitations}
 
@@ -277,10 +303,10 @@ Carlip~\cite{carlip2017} argued that dimensional reduction is generic in quantum
 
 \begin{enumerate}[nosep]
     \item \textbf{Finite ensemble}: Only four families are tested; the claim is ``4D wins among tested types,'' not global optimality.
-    \item \textbf{SIS estimation}: For $N > 32$ in KR, \texttt{lor3d}, and \texttt{lor4d}, entropy is estimated via SIS (4096 runs). Systematic biases cannot be fully excluded.
+    \item \textbf{SIS estimation}: For $N > 32$ in KR, \texttt{lor3d}, and \texttt{lor4d}, entropy is estimated via SIS (4096 runs). At the exact/SIS crossover ($N = 28$--$32$), the mean absolute error is $0.074$ in $\log|L|$ ($\sim 2.3\%$), but systematic biases at larger $N$ cannot be fully excluded.
     \item \textbf{Generator dependence}: The 4D generator's structural properties determine its penalty values; different 4D constructions might yield different results.
     \item \textbf{Physical dimension selection}: ``Higher dimension wins'' does not directly explain why our universe has $d = 3{+}1$. Additional constraints would be needed.
-    \item \textbf{Consistency weight}: $w_{\text{con}} = 0.6829$ is calibrated on the companion paper's 7-family ensemble.
+    \item \textbf{Consistency weight}: $w_{\text{con}} = 0.6829$ is calibrated on the companion paper's 7-family ensemble; however, Section~\ref{sec:wcon} shows that dominant 4D selection persists across $(0.3, 1.2)$.
 \end{enumerate}
 
 \subsection{Outlook}

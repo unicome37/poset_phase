@@ -1,0 +1,14 @@
+tier3:
+  duel_csvs:
+    - outputs_exploratory/pairwise_compressibility_duel_expanded/pairwise_duel_raw.csv
+    - outputs_exploratory/frozen_exploratory_submodel_44_expanded/duel/pairwise_duel_raw.csv
+    - outputs_exploratory/frozen_exploratory_submodel_48_expanded/duel/pairwise_duel_raw.csv
+    - outputs_exploratory/frozen_exploratory_submodel_52_moderate/duel/pairwise_duel_raw.csv
+    - outputs_exploratory/frozen_exploratory_submodel_56_moderate/duel/pairwise_duel_raw.csv
+
+experiment:
+  n_permutations: 2000
+  seed: 20260313
+
+output:
+  directory: outputs_exploratory/prediction_c_tier3_extended

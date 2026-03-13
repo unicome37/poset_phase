@@ -1,0 +1,30 @@
+inputs:
+  csvs:
+    - outputs_exploratory/prediction_a_dim_replacement_sp8/prediction_a_ablation_raw.csv
+    - outputs_exploratory/prediction_a_dim_replacement/prediction_a_ablation_raw.csv
+    - outputs_exploratory/prediction_a_geometric_ablation/prediction_a_ablation_raw.csv
+    - outputs_exploratory/prediction_a_pilot_fast/prediction_a_raw.csv
+    - outputs_exploratory/prediction_a_dim_replacement_n44_n48/prediction_a_ablation_raw.csv
+    - outputs_exploratory/prediction_a_n52_mixed/prediction_a_ablation_raw.csv
+    - outputs_exploratory/prediction_a_n56_mixed/prediction_a_ablation_raw.csv
+    - outputs_exploratory/prediction_a_n60_mixed/prediction_a_ablation_raw.csv
+    - outputs_exploratory/prediction_a_n64_mixed/prediction_a_ablation_raw.csv
+    - ../../outputs_exploratory/prediction_a_n68_mixed/prediction_a_ablation_raw.csv
+    - outputs_exploratory/prediction_a_n72_mixed/prediction_a_ablation_raw.csv
+    - ../../outputs_exploratory/prediction_a_seed_sensitivity_n64/prediction_a_seed_sensitivity_raw.csv
+    - outputs_exploratory/prediction_a_seed_sensitivity_n68/prediction_a_seed_sensitivity_raw.csv
+    - outputs_exploratory/prediction_a_seed_sensitivity_n72/prediction_a_seed_sensitivity_raw.csv
+    - ../../outputs_exploratory/width_height_consistency_scale_scan/width_height_consistency_scale_scan_raw.csv
+    - ../../outputs_exploratory/width_height_consistency_scale_scan_low/width_height_consistency_scale_scan_raw.csv
+    - ../../outputs_exploratory/width_height_consistency_scale_scan_mid/width_height_consistency_scale_scan_raw.csv
+    - ../../outputs_exploratory/width_height_consistency_scale_scan_mid_sp4/width_height_consistency_scale_scan_raw.csv
+    - ../../outputs_exploratory/width_height_consistency_scale_scan_n44_fine/width_height_consistency_scale_scan_raw.csv
+    - outputs_exploratory/width_height_consistency_scale_scan_n48_fine/width_height_consistency_scale_scan_raw.csv
+    - outputs_exploratory/width_height_consistency_scale_scan_n48_sp2/width_height_consistency_scale_scan_raw.csv
+    - outputs_exploratory/width_height_consistency_scale_scan_n48_n52_mixed/width_height_consistency_scale_scan_raw.csv
+    - outputs_exploratory/width_height_consistency_scale_scan_n52_fine_mixed/width_height_consistency_scale_scan_raw.csv
+    - outputs_exploratory/width_height_consistency_scale_scan_n52_lower_mixed/width_height_consistency_scale_scan_raw.csv
+    - outputs_exploratory/width_height_consistency_scale_scan_n52_ultrafine_mixed/width_height_consistency_scale_scan_raw.csv
+
+output:
+  directory: outputs_exploratory/prediction_c_bronze_augmented_pilot

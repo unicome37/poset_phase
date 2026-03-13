@@ -1,0 +1,38 @@
+input:
+  matched_pair_raw_csv: outputs_exploratory/prediction_c_pairwise_validation_nearwall_expanded/prediction_c_pairwise_validation_raw.csv
+  matched_pair_switch_csv: outputs_exploratory/mlr_survivor_matched_lor2d_nearwall_expanded/mlr_survivor_matched_pairs.csv
+  switch_duel_raw_files:
+    - n: 30
+      path: D:/Kiro/outputs_exploratory/pairwise_compressibility_duel/pairwise_duel_raw.csv
+    - n: 40
+      path: D:/Kiro/outputs_exploratory/pairwise_compressibility_duel/pairwise_duel_raw.csv
+    - n: 44
+      path: D:/Kiro/理论体系/poset_phase/outputs_exploratory/frozen_exploratory_submodel_44_expanded/duel/pairwise_duel_raw.csv
+    - n: 48
+      path: D:/Kiro/理论体系/poset_phase/outputs_exploratory/frozen_exploratory_submodel_48_expanded/duel/pairwise_duel_raw.csv
+    - n: 52
+      path: D:/Kiro/理论体系/poset_phase/outputs_exploratory/frozen_exploratory_submodel_52_expanded/duel/pairwise_duel_raw.csv
+    - n: 56
+      path: D:/Kiro/理论体系/poset_phase/outputs_exploratory/frozen_exploratory_submodel_56_expanded/duel/pairwise_duel_raw.csv
+
+experiment:
+  eta_depth_grid: [0.0, 0.25, 0.5, 0.75, 1.0, 1.25, 1.5, 2.0, 2.5, 3.0]
+  features:
+    - name: layer_count_adv_scaled
+      source_col: layer_count_delta_mlr_minus_lor2d
+      sign: -1.0
+    - name: mean_layer_gap_adv_scaled
+      source_col: mean_layer_gap_delta_mlr_minus_lor2d
+      sign: -1.0
+    - name: hierarchy_integration_adv_scaled
+      source_col: hierarchy_integration_delta_index
+      sign: -1.0
+    - name: layer_count_gap_joint_adv_scaled
+      components:
+        - feature: layer_count_adv_scaled
+          weight: 1.0
+        - feature: mean_layer_gap_adv_scaled
+          weight: 1.0
+
+output:
+  directory: outputs_exploratory/prediction_c_switch_enhancement_scan_nearwall_expanded

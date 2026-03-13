@@ -1,0 +1,26 @@
+experiment:
+  beta: 1.0
+  gamma: 0.8
+  n_values: [30, 40]
+  families:
+    - lorentzian_like_2d
+    - multi_layer_random
+  accepted_target: 12
+  max_attempts: 6000
+  seed_base: 760000
+
+reference:
+  family: lorentzian_like_2d
+  samples: 40
+  lower_quantile: 0.1
+  upper_quantile: 0.9
+  seed_base: 640000
+
+coarse_grain:
+  keep_ratios: [0.8, 0.6]
+  repeats: 3
+  centroid_samples: 12
+  centroid_seed_base: 1290000
+
+output:
+  directory: outputs_exploratory/pairwise_compressibility_duel_expanded

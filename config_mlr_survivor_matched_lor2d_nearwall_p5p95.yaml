@@ -1,0 +1,10 @@
+input:
+  raw_csvs:
+    - outputs_exploratory/pairwise_compressibility_duel_expanded/pairwise_duel_raw.csv
+    - outputs_exploratory/frozen_exploratory_submodel_44_expanded/duel/pairwise_duel_raw.csv
+    - outputs_exploratory/frozen_exploratory_submodel_48_expanded/duel/pairwise_duel_raw.csv
+    - outputs_exploratory/frozen_exploratory_submodel_52_p5p95/duel/pairwise_duel_raw.csv
+    - outputs_exploratory/frozen_exploratory_submodel_56_p5p95/duel/pairwise_duel_raw.csv
+
+output:
+  directory: outputs_exploratory/mlr_survivor_matched_lor2d_nearwall_p5p95
