@@ -313,6 +313,8 @@ To visualize the within-$N$ relationship without regression residuals, we comput
 
 The correlation is consistently negative at all four $N$ values. The attenuation from $-0.86$ at $N = 10$ to $-0.53$ at $N = 16$ is consistent with increasing within-family entropy variance at larger $N$, which introduces noise that dilutes the cross-family signal.
 
+![Figure 1. Simpson's Paradox in the HII–log H relationship. Each colour represents one fixed-N slice (N = 10, 12, 14, 16); solid lines show within-N regressions (all negative). The dashed grey line is the aggregate (naïve) regression across all N values, which is positive (r ≈ +0.12). Controlling for N reverses the apparent direction of the correlation.](manuscript_figures/fig1_simpsons_paradox.png)
+
 #### Interim conclusion
 
 Tier 1 confirms the predicted negative direction once $N$ is controlled. However, the naïve analysis without $N$ control yields the opposite sign. This methodological finding motivates the matched-pair design of Tier 2, which eliminates $N$ as a confound by construction.
@@ -356,6 +358,8 @@ A critical robustness test: does the correlation depend on how strictly the MLR 
 | Rescue | P0–P100 | 30–56 | 50 | $-0.839$ |
 
 The correlation coefficient varies by less than 0.005 across the three stringency levels. This near-invariance is a strong robustness check: it indicates that the HII–$\log H$ relationship is not an artifact of the particular MLR-filtering protocol. Even under maximal relaxation (P0–P100, where any MLR sample within the Lor2D min–max range is accepted), the correlation is indistinguishable from the stringent version.
+
+![Figure 2. Tier 2 matched-pair Δ-correlation. Each point is one Lor2D–MLR pair at the same N; ΔHII = HII_MLR − HII_Lor2D and Δlog H = log H_MLR − log H_Lor2D. The black line is the overall linear fit (r = −0.834, p < 0.001). Colours indicate the poset size N of each pair.](manuscript_figures/fig2_tier2_delta_correlation.png)
 
 #### Interpretation
 
@@ -575,6 +579,8 @@ Two patterns emerge:
 1. **`layer_count` is the single strongest predictor in 2 of 3 analyses** (fixed-$N$ and Tier 3), and a close second in Tier 2. Together with its high correlation partner `mean_layer_gap`, the layer-depth pair accounts for the bulk of the signal.
 
 2. **The five-component HII composite never exceeds its best constituent.** In the fixed-$N$ analysis, HII ($|r| = 0.649$) actually *underperforms* all individual components. In Tiers 2 and 3, HII lies between the top and bottom components. Equal weighting dilutes the strongest signal (layer_count) with weaker ones (reduction_edge_density).
+
+![Figure 3. Component-level absolute correlation |r| across three independent analyses. Blue: fixed N = 14 cross-family correlation; orange: Tier 2 matched-pair Δ-method (46 pairs); green: Tier 3 coarse-graining stability (92 samples). The dashed grey line marks |r| = 0.8. layer_count and mean_layer_gap consistently dominate; the HII composite never exceeds its best constituent.](manuscript_figures/fig3_component_decomposition.png)
 
 ---
 

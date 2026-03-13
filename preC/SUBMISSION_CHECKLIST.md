@@ -10,14 +10,20 @@
 
 ### 1. 稿件文件
 - [x] `preC/MANUSCRIPT_PredictionC_Full.md` — 完整稿件 (788 lines / 8,720 words / 14 tables)
+- [x] `preC/manuscript_predictionC.tex` — MDPI Entropy LaTeX 模板格式（投稿用）
+- [x] `preC/Definitions/` — MDPI LaTeX 模板定义文件（与 preA 相同）
 - [x] 标题："Hierarchy Depth Observables Predict Combinatorial Entropy in Finite Causal Posets: A Three-Tier Correlational Study"
 - [x] 摘要 ≈ 190 words（Entropy 要求 ~200 words）
 - [x] 关键词：causal posets, hierarchy integration, combinatorial entropy, linear extensions, coarse-graining stability, Simpson's Paradox, causal set theory
+- [x] `preC/manuscript_predictionC.pdf` — 编译好的 PDF（14 页）
+- [x] `preC/manuscript_figures/` — 论文图表（fig1 Simpson's Paradox, fig2 Tier 2 Δ-相关, fig3 成分分解）
+- [x] `preC/generate_figures.py` — 图表生成脚本（可复现）
 
 ### 2. Cover Letter
-- [x] `preC/CoverLetter_PredictionC.md`
-- [ ] 填写日期 [INSERT DATE]
-- [ ] 确认推荐审稿人信息
+- [x] `preC/cover_letter_entropy_mdpi.md` — 正式投稿版（含操作步骤，与 preA 格式一致）
+- [x] `preC/CoverLetter_PredictionC.md` — 早期版本
+- [x] 日期：March 13, 2026
+- [x] 推荐审稿人：Surya / Brightwell / Major / Glaser
 
 ### 3. 参考文献
 - [x] [1] Prediction B — Zhang, G. *Entropy* 2026, submitted.
