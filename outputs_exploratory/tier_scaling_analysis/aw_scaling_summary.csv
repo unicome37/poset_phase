@@ -1,0 +1,13 @@
+tier,family,mean_aw_sqrtN,std_aw_sqrtN,n_samples
+Tier-1,lorentzian_like_2d,1.3703,0.177,60
+Tier-2,random_layered_k8_uniform,1.711,0.2847,60
+Tier-2,random_layered_k6_longjump,1.7575,0.2393,60
+Tier-2,random_layered_k6_uniform,1.9024,0.3363,60
+Tier-2,random_layered_k6_middle_heavy,2.0001,0.2833,60
+Tier-2,random_layered_k4_uniform,2.0231,0.3231,60
+Tier-2,random_layered_k6_tapered,2.0478,0.3464,60
+Tier-1,lorentzian_like_3d,2.3571,0.2915,60
+Tier-1,transitive_percolation,2.537,0.3256,60
+Tier-2,multi_layer_random,2.693,0.8413,60
+Tier-1,KR_like,3.0909,0.5331,60
+Tier-1,lorentzian_like_4d,3.1407,0.4358,60

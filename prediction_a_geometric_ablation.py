@@ -143,13 +143,14 @@ if __name__ == "__main__":
     family_exact_thresholds = {
         str(k): int(v) for k, v in (exp_cfg.get("family_exact_thresholds", {}) or {}).items()
     }
+    seed_offset = int(exp_cfg.get("seed_offset", 0))
 
     rows = []
     for n in n_values:
         for family in families:
             generator = FAMILIES[family]
             for sample_id in range(samples_per_family):
-                seed = 800000 + 1000 * n + sample_id
+                seed = 800000 + seed_offset + 1000 * n + sample_id
                 poset = generator(n=n, seed=seed)
                 log_h, entropy_method = estimate_entropy_by_family(
                     poset,
