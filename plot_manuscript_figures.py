@@ -3,6 +3,8 @@
 Fig 1: gamma_c(N) curve under A2 (confirmatory mainline) with inset
 Fig 2: Ablation summary – heatmap matrix
 Fig 3: Non-circular replacement comparison
+Fig 4: Exact timing frontier
+Fig 5: N=52/56 mixed Lor2D vs KR comparison
 """
 from __future__ import annotations
 
@@ -252,8 +254,216 @@ def fig3_noncircular_replacement():
     print("Fig 3 saved.")
 
 
+# ── Fig 4: Exact timing frontier ───────────────────────────────────
+
+def fig4_exact_timing_frontier():
+    confirm = pd.read_csv("outputs_confirmatory/exact_timing/exact_timing_summary.csv")
+    frontier = pd.read_csv(
+        "outputs_exploratory/lor2d_exact_timing_frontier/lor2d_exact_timing_frontier.csv"
+    )
+
+    fig, ax = plt.subplots(figsize=(6.5, 4))
+
+    # Lor2D frontier across all currently probed sizes
+    ax.semilogy(
+        frontier["n"],
+        frontier["time_seconds"],
+        "o-",
+        color=BLUE,
+        linewidth=1.6,
+        markersize=5,
+        markeredgecolor="white",
+        markeredgewidth=0.5,
+        label="Lor2D exact frontier",
+        zorder=3,
+    )
+
+    # Confirmatory comparison families
+    kr = confirm.dropna(subset=["KR_like"])[["n", "KR_like"]].copy()
+    tp = confirm.dropna(subset=["transitive_percolation"])[["n", "transitive_percolation"]].copy()
+
+    ax.semilogy(
+        kr["n"],
+        kr["KR_like"],
+        "s--",
+        color=RED,
+        linewidth=1.2,
+        markersize=4.5,
+        markeredgecolor="white",
+        markeredgewidth=0.4,
+        label="KR exact (confirmatory)",
+        alpha=0.95,
+    )
+    ax.semilogy(
+        tp["n"],
+        tp["transitive_percolation"],
+        "D-.",
+        color=GRAY,
+        linewidth=1.1,
+        markersize=4.2,
+        markeredgecolor="white",
+        markeredgewidth=0.4,
+        label="TP exact (confirmatory)",
+        alpha=0.9,
+    )
+
+    milestones = frontier[frontier["n"].isin([48, 72, 88, 104])].copy()
+    ax.scatter(
+        milestones["n"],
+        milestones["time_seconds"],
+        color=AMBER,
+        s=28,
+        zorder=4,
+        label="Lor2D milestones",
+    )
+    for _, row in milestones.iterrows():
+        ax.annotate(
+            f"{int(row['n'])}",
+            xy=(row["n"], row["time_seconds"]),
+            xytext=(0, 7),
+            textcoords="offset points",
+            fontsize=7,
+            color=GRAY,
+            ha="center",
+        )
+
+    ax.axvline(44, color=GRAY, linestyle=":", linewidth=0.7, alpha=0.5)
+    ax.text(45.2, 70, "confirmatory\nboundary", fontsize=7, color=GRAY, va="center")
+
+    ax.set_xlabel(r"Poset size $N$")
+    ax.set_ylabel("Exact runtime (s, log scale)")
+    ax.set_title("Asymmetric exact frontier: Lor2D stays tractable beyond KR")
+    ax.set_xlim(8, 108)
+    ax.grid(True, which="both", alpha=0.2, linewidth=0.5)
+    ax.legend(loc="upper left", fontsize=7.5, frameon=True)
+
+    fig.savefig(OUT_DIR / "fig4_exact_timing_frontier.png")
+    fig.savefig(OUT_DIR / "fig4_exact_timing_frontier.pdf")
+    plt.close(fig)
+    print("Fig 4 saved.")
+
+
+# ── Fig 5: N=52/56 mixed Lor2D vs KR comparison ───────────────────
+
+def fig5_mixed_lor2d_vs_kr():
+    n52 = pd.read_csv(
+        "outputs_exploratory/prediction_a_n52_mixed/prediction_a_ablation_summary.csv"
+    )
+    n56 = pd.read_csv(
+        "outputs_exploratory/prediction_a_n56_mixed/prediction_a_ablation_summary.csv"
+    )
+    df = pd.concat([n52, n56], ignore_index=True)
+    df = df[
+        (df["variant"] == "A2_full")
+        & (df["family"].isin(["lorentzian_like_2d", "KR_like"]))
+        & (df["n"].isin([52, 56]))
+    ].copy()
+
+    pivot_mean = (
+        df.pivot_table(index=["n", "gamma"], columns="family", values="mean_score")
+        .reset_index()
+        .rename_axis(None, axis=1)
+    )
+    pivot_std = (
+        df.pivot_table(index=["n", "gamma"], columns="family", values="std_score")
+        .reset_index()
+        .rename_axis(None, axis=1)
+    )
+    merged = pivot_mean.merge(
+        pivot_std,
+        on=["n", "gamma"],
+        suffixes=("_mean", "_std"),
+    )
+    merged["delta_kr_minus_lor2d"] = (
+        merged["KR_like_mean"] - merged["lorentzian_like_2d_mean"]
+    )
+    merged.to_csv(OUT_DIR / "fig5_mixed_lor2d_vs_kr.csv", index=False)
+
+    fig, axes = plt.subplots(1, 2, figsize=(7.2, 3.8), sharey=True)
+
+    for ax, n in zip(axes, [52, 56]):
+        sub = (
+            df[df["n"] == n]
+            .sort_values(["family", "gamma"])
+            .copy()
+        )
+        lor = sub[sub["family"] == "lorentzian_like_2d"]
+        kr = sub[sub["family"] == "KR_like"]
+
+        ax.plot(
+            lor["gamma"], lor["mean_score"],
+            "o-", color=BLUE, linewidth=1.6, markersize=4.8,
+            markeredgecolor="white", markeredgewidth=0.5,
+            label="Lor2D",
+            zorder=3,
+        )
+        ax.fill_between(
+            lor["gamma"],
+            lor["mean_score"] - lor["std_score"],
+            lor["mean_score"] + lor["std_score"],
+            color=BLUE, alpha=0.12, linewidth=0,
+        )
+
+        ax.plot(
+            kr["gamma"], kr["mean_score"],
+            "s-", color=RED, linewidth=1.6, markersize=4.6,
+            markeredgecolor="white", markeredgewidth=0.5,
+            label="KR-like",
+            zorder=3,
+        )
+        ax.fill_between(
+            kr["gamma"],
+            kr["mean_score"] - kr["std_score"],
+            kr["mean_score"] + kr["std_score"],
+            color=RED, alpha=0.12, linewidth=0,
+        )
+
+        delta_last = float(
+            kr.loc[kr["gamma"] == 2.0, "mean_score"].iloc[0]
+            - lor.loc[lor["gamma"] == 2.0, "mean_score"].iloc[0]
+        )
+        ax.axvline(2.0, color=GRAY, linestyle=":", linewidth=0.7, alpha=0.5)
+        ax.annotate(
+            rf"$\Delta A_{{KR-L2D}}={delta_last:.2f}$",
+            xy=(2.0, lor.loc[lor["gamma"] == 2.0, "mean_score"].iloc[0]),
+            xytext=(-6, 12 if n == 52 else 16),
+            textcoords="offset points",
+            fontsize=7,
+            color=GRAY,
+            ha="right",
+            bbox=dict(boxstyle="round,pad=0.18", fc="white", ec="0.8", lw=0.5, alpha=0.95),
+        )
+        ax.text(
+            0.06, 0.08,
+            "no crossing up to $\\gamma=2.0$",
+            transform=ax.transAxes,
+            fontsize=7,
+            color=GRAY,
+        )
+        ax.set_title(rf"$N={n}$")
+        ax.set_xlabel(r"$\gamma$")
+        ax.grid(True, alpha=0.2, linewidth=0.5)
+        ax.set_xlim(-0.03, 2.05)
+        ax.set_xticks([0.0, 0.4, 0.8, 1.2, 1.6, 2.0])
+
+    axes[0].set_ylabel(r"Mean action score under $A_2^{\rm full}$")
+    axes[0].legend(loc="upper right", fontsize=8, frameon=True)
+
+    fig.suptitle(
+        r"Near-wall mixed comparison: Lor2D vs KR under $A_2^{\rm full}$",
+        y=1.02,
+        fontsize=12,
+    )
+    fig.savefig(OUT_DIR / "fig5_mixed_lor2d_vs_kr.png")
+    fig.savefig(OUT_DIR / "fig5_mixed_lor2d_vs_kr.pdf")
+    plt.close(fig)
+    print("Fig 5 saved.")
+
+
 if __name__ == "__main__":
     fig1_gamma_c_curve()
     fig2_ablation_summary()
     fig3_noncircular_replacement()
+    fig4_exact_timing_frontier()
+    fig5_mixed_lor2d_vs_kr()
     print(f"\nAll figures saved to {OUT_DIR.resolve()}")

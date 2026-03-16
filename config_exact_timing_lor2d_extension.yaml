@@ -1,0 +1,8 @@
+cases:
+  - {family: lorentzian_like_2d, n: 60, seed: 14060}
+  - {family: lorentzian_like_2d, n: 64, seed: 14064}
+  - {family: lorentzian_like_2d, n: 68, seed: 14068}
+  - {family: lorentzian_like_2d, n: 72, seed: 14072}
+
+output:
+  directory: outputs_exploratory/exact_timing_lor2d_extension

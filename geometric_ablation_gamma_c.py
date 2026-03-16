@@ -10,23 +10,12 @@ from action import action_value
 from entropy_exact import log_linear_extensions_exact
 from experiment import FAMILIES
 from observables import neutral_penalty
-from observables_geo import geometric_components
-
-
-GEOMETRIC_WEIGHTS = {
-    "geo_width_height": 2.0,
-    "geo_dim_proxy_penalty": 8.0,
-    "geo_comparability_window": 6.0,
-    "geo_cover_density": 3.0,
-    "geo_interval_profile": 5.0,
-    "geo_interval_shape": 5.0,
-    "geo_layer_smoothness": 2.0,
-}
+from observables_geo import DEFAULT_GEOMETRIC_WEIGHTS, geometric_components, geometric_penalty_from_components
 
 
 VARIANT_DROPS = {
     "A2_full": [],
-    "A1_neutral_only": list(GEOMETRIC_WEIGHTS.keys()),
+    "A1_neutral_only": list(DEFAULT_GEOMETRIC_WEIGHTS.keys()),
     "drop_geo_width_height": ["geo_width_height"],
     "drop_geo_dim_proxy_penalty": ["geo_dim_proxy_penalty"],
     "drop_geo_comparability_window": ["geo_comparability_window"],
@@ -48,6 +37,32 @@ VARIANT_DROPS = {
         "geo_dim_proxy_penalty",
     ],
 }
+
+
+def resolve_variants(config: dict) -> dict[str, dict[str, object]]:
+    variant_cfg = config["experiment"].get("variants")
+    if not variant_cfg:
+        return {
+            name: {"drops": list(drops), "weight_overrides": {}}
+            for name, drops in VARIANT_DROPS.items()
+        }
+
+    resolved: dict[str, dict[str, object]] = {}
+    for name, spec in variant_cfg.items():
+        resolved[name] = {
+            "drops": list(spec.get("drops", [])),
+            "weight_overrides": dict(spec.get("weight_overrides", {})),
+        }
+    return resolved
+
+
+def build_variant_weights(drops: list[str], weight_overrides: dict[str, float]) -> dict[str, float]:
+    weights = dict(DEFAULT_GEOMETRIC_WEIGHTS)
+    for key in drops:
+        weights[key] = 0.0
+    for key, value in weight_overrides.items():
+        weights[key] = float(value)
+    return weights
 
 
 def load_config(path: str | Path) -> dict:
@@ -122,8 +137,8 @@ if __name__ == "__main__":
     beta = float(exp_cfg.get("beta", 1.0))
     samples_per_family = int(exp_cfg.get("samples_per_family", 2))
     families = tuple(exp_cfg["families"])
-
-    variants = list(VARIANT_DROPS.keys())
+    variant_specs = resolve_variants(config)
+    variants = list(variant_specs.keys())
 
     rows = []
     for n in n_values:
@@ -138,11 +153,12 @@ if __name__ == "__main__":
                 geo_total = float(geo["geo_total"])
 
                 variant_penalties = {}
-                for variant_name in variants:
-                    removed = 0.0
-                    for dropped in VARIANT_DROPS[variant_name]:
-                        removed += GEOMETRIC_WEIGHTS[dropped] * float(geo[dropped])
-                    variant_penalties[variant_name] = neutral + geo_total - removed
+                for variant_name, variant_spec in variant_specs.items():
+                    weights = build_variant_weights(
+                        drops=variant_spec["drops"],
+                        weight_overrides=variant_spec["weight_overrides"],
+                    )
+                    variant_penalties[variant_name] = neutral + geometric_penalty_from_components(geo, weights=weights)
 
                 for gamma in gammas:
                     for variant_name, penalty in variant_penalties.items():
@@ -178,8 +194,13 @@ if __name__ == "__main__":
         .sort_values(["variant", "n", "gamma", "mean_score"])
     )
 
-    reports = [estimate_gamma_crossing(summary_df, variant_name, "lorentzian_like_2d", "KR_like") for variant_name in variants]
-    report_df = pd.concat(reports, ignore_index=True)
+    reports = [
+        report
+        for variant_name in variants
+        for report in [estimate_gamma_crossing(summary_df, variant_name, "lorentzian_like_2d", "KR_like")]
+        if not report.empty
+    ]
+    report_df = pd.concat(reports, ignore_index=True) if reports else pd.DataFrame()
 
     raw_df.to_csv(out_dir / "geometric_ablation_raw.csv", index=False, encoding="utf-8-sig")
     summary_df.to_csv(out_dir / "geometric_ablation_summary.csv", index=False, encoding="utf-8-sig")

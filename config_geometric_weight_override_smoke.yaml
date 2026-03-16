@@ -1,0 +1,29 @@
+experiment:
+  n_values: [20]
+  families:
+    - KR_like
+    - lorentzian_like_2d
+  gammas: [0.0, 0.4, 0.8]
+  beta: 1.0
+  samples_per_family: 1
+  variants:
+    A2_full:
+      drops: []
+    A2_half_dim_proxy:
+      weight_overrides:
+        geo_dim_proxy_penalty: 4.0
+    A2_no_dim_proxy:
+      drops:
+        - geo_dim_proxy_penalty
+    A1_neutral_only:
+      drops:
+        - geo_width_height
+        - geo_dim_proxy_penalty
+        - geo_comparability_window
+        - geo_cover_density
+        - geo_interval_profile
+        - geo_interval_shape
+        - geo_layer_smoothness
+
+output:
+  directory: outputs_exploratory/geometric_weight_override_smoke

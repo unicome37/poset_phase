@@ -1,0 +1,48 @@
+experiment:
+  n_values: [20, 28, 36, 44, 52, 56]
+  families:
+    - lorentzian_like_2d
+    - KR_like
+    - random_layered_k4_uniform
+    - random_layered_k6_uniform
+    - random_layered_k8_uniform
+    - random_layered_k6_tapered
+    - random_layered_k6_middle_heavy
+    - random_layered_k6_longjump
+  gammas: [0.0, 0.2, 0.4, 0.8, 1.2, 1.6, 2.0]
+  variants:
+    - A2_full
+    - A2_replace_dim_with_consistency
+  pairwise_targets:
+    - left: lorentzian_like_2d
+      right: KR_like
+    - left: lorentzian_like_2d
+      right: random_layered_k4_uniform
+    - left: lorentzian_like_2d
+      right: random_layered_k6_uniform
+    - left: lorentzian_like_2d
+      right: random_layered_k8_uniform
+    - left: lorentzian_like_2d
+      right: random_layered_k6_tapered
+    - left: lorentzian_like_2d
+      right: random_layered_k6_middle_heavy
+    - left: lorentzian_like_2d
+      right: random_layered_k6_longjump
+  consistency_weight: 0.682882
+  multi_consistency_weight: 0.682882
+  beta: 1.0
+  samples_per_family: 4
+  sis_runs: 4096
+  exact_threshold: 32
+  family_exact_thresholds:
+    lorentzian_like_2d: 60
+    KR_like: 32
+    random_layered_k4_uniform: 32
+    random_layered_k6_uniform: 32
+    random_layered_k8_uniform: 32
+    random_layered_k6_tapered: 32
+    random_layered_k6_middle_heavy: 32
+    random_layered_k6_longjump: 32
+
+output:
+  directory: outputs_exploratory/prediction_b_candidate_expansion_layered

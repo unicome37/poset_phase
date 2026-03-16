@@ -88,6 +88,19 @@
     - HII→CG_switch_rate: r=-0.835 (p<0.001, 68 样本)
     - Simpson's Paradox 根因为尺度变量 N，控制后方向翻转
 
+- `outputs_exploratory/prediction_bac_bridge`
+  - 来源配置：`config_prediction_bac_bridge.yaml`
+  - 来源脚本：`prediction_bac_bridge.py`
+  - 作用：桥接 Prediction B、A、C，检验 B 的有界相变是否沿 C 的层级深度机制展开，以及 A 是否延续同一机制
+  - 关键文件：
+    - `prediction_bac_relation_summary.csv`
+    - `prediction_bac_bridge_report.md`
+    - `prediction_a_family_depth_summary.csv`
+    - `prediction_b_family_depth_summary.csv`
+  - 核心结论：
+    - B↔C：`Lor2D` 相对 `KR_like` 的层级优势同时对应更低惩罚和更低 `log_H`，形成有限 `gamma_c`
+    - A↔C：`Lor4D` 在 `N=20..72` 上从未高于 `Lor2D` 或 `Lor3D` 的 HII，因此 A 的 4D 优势并不等同于“更深层级”
+
 ## Rule
 
 简单规则：

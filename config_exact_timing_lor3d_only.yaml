@@ -1,0 +1,7 @@
+cases:
+  - {family: lorentzian_like_3d, n: 48, seed: 12048}
+  - {family: lorentzian_like_3d, n: 52, seed: 12052}
+  - {family: lorentzian_like_3d, n: 56, seed: 12056}
+
+output:
+  directory: outputs_exploratory/exact_timing_lor_push

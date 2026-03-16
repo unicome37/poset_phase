@@ -4,20 +4,31 @@
 
 Exact numerical framework for studying geometric phase transitions in finite partially ordered sets (posets). Investigates whether Lorentzian-like structures can emerge as competitive phases against high-entropy non-geometric structures in action-weighted poset ensembles.
 
+## Preprints
+
+| Paper | DOI | Status |
+|---|---|---|
+| Prediction B | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19048146.svg)](https://doi.org/10.5281/zenodo.19048146) | Preprint |
+| Prediction A | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19048324.svg)](https://doi.org/10.5281/zenodo.19048324) | Preprint |
+| Prediction C | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19048405.svg)](https://doi.org/10.5281/zenodo.19048405) | Preprint |
+
 ## Papers
 
 This repository accompanies three manuscripts:
 
 1. **Prediction B** (Companion Paper): "Bounded Geometric Phase Transition in Finite Causal Posets with Exact Entropy"
    - Manuscripts: `manuscript.tex` / `manuscript_foundphys.tex` / `mdpi_template/entropy_manuscript.tex`
+   - Preprint: [DOI:10.5281/zenodo.19048146](https://doi.org/10.5281/zenodo.19048146)
    - Establishes bounded γ_c across N=10–44; ablation-verified non-circularity
 
 2. **Prediction A**: "Dimension-Agnostic Geometric Dominance in Finite Causal Posets: Higher-Dimensional Lorentzian Structures Emerge Under Consistency-Based Actions"
    - Manuscripts: `preA/manuscript.tex` / `preA/manuscript_entropy.tex`
+   - Preprint: [DOI:10.5281/zenodo.19048324](https://doi.org/10.5281/zenodo.19048324)
    - 4D Lorentzian unconditional dominance under consistency actions (N=20–72); seed-robust 100% win rate
 
 3. **Prediction C**: "Hierarchy Depth Observables Predict Combinatorial Entropy in Finite Causal Posets: A Three-Tier Correlational Study"
    - Manuscript: `preC/MANUSCRIPT_PredictionC_Full.md`
+   - Preprint: [DOI:10.5281/zenodo.19048405](https://doi.org/10.5281/zenodo.19048405)
    - Three-tier validation: HII–entropy correlation r = −0.834 (Tier 2, 46 matched pairs); Simpson's Paradox diagnosed and resolved
 
 ## Key Results
@@ -115,6 +126,12 @@ python prediction_c_switch_enhancement_scan.py --config config_prediction_c_tier
 python _simpson_analysis.py
 ```
 
+### Prediction B/A/C bridge analysis
+
+```bash
+python prediction_bac_bridge.py --config config_prediction_bac_bridge.yaml
+```
+
 ## Project Structure
 
 ### Core Modules
@@ -154,6 +171,7 @@ python _simpson_analysis.py
 | `prediction_c_switch_enhancement_scan.py` | Tier 3 CG switch enhancement scan |
 | `_simpson_analysis.py` | Simpson's Paradox diagnosis and resolution |
 | `augment_prediction_c_features.py` | Feature augmentation for C analysis |
+| `prediction_bac_bridge.py` | Bridge analysis: B↔C mechanism and A↔C relation test |
 
 ### Prediction A Scripts
 
@@ -187,6 +205,7 @@ Results are stratified into two evidence tiers:
   - `prediction_a_seed_sensitivity_n{68,72}/` — Seed robustness analysis
   - `prediction_a_geometric_ablation/` — Prediction A ablation results
   - `prediction_a_dim_replacement*/` — Prediction A dimension replacement experiments
+  - `prediction_bac_bridge/` — Bridge analysis across Prediction B, A, and C
   - `prediction_c_comprehensive/` — Prediction C Tier 1 all-family results
   - `prediction_c_pairwise_validation_nearwall_moderate/` — Prediction C Tier 2 (46 matched pairs)
   - `prediction_c_tier3_extended/` — Prediction C Tier 3 CG stability (92 samples)

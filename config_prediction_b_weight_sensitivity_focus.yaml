@@ -1,0 +1,14 @@
+experiment:
+  n_values: [36, 44]
+  families:
+    - KR_like
+    - lorentzian_like_2d
+  gammas: [0.0, 0.2, 0.4, 0.8, 1.2, 1.6, 2.0]
+  beta: 1.0
+  samples_per_family: 2
+  weight_scans:
+    geo_dim_proxy_penalty: [4.0, 8.0]
+    geo_width_height: [1.0, 2.0]
+
+output:
+  directory: outputs_exploratory/prediction_b_weight_sensitivity_focus

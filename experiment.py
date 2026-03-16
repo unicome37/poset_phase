@@ -18,6 +18,12 @@ from generators import (
     generate_lorentzian_like_3d,
     generate_lorentzian_like_4d,
     generate_multi_layer_random,
+    generate_random_layered_k4_uniform,
+    generate_random_layered_k6_middle_heavy,
+    generate_random_layered_k6_tapered,
+    generate_random_layered_k6_longjump,
+    generate_random_layered_k6_uniform,
+    generate_random_layered_k8_uniform,
     generate_transitive_percolation,
 )
 from normalization import add_normalized_columns, add_size_scaled_columns
@@ -34,6 +40,12 @@ FAMILIES = {
     "transitive_percolation": generate_transitive_percolation,
     "interval_order": generate_interval_order,
     "multi_layer_random": generate_multi_layer_random,
+    "random_layered_k4_uniform": generate_random_layered_k4_uniform,
+    "random_layered_k6_uniform": generate_random_layered_k6_uniform,
+    "random_layered_k8_uniform": generate_random_layered_k8_uniform,
+    "random_layered_k6_tapered": generate_random_layered_k6_tapered,
+    "random_layered_k6_middle_heavy": generate_random_layered_k6_middle_heavy,
+    "random_layered_k6_longjump": generate_random_layered_k6_longjump,
 }
 
 

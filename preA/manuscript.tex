@@ -41,7 +41,7 @@ A companion paper established that a bounded geometric phase transition exists i
 % ════════════════════════════════════════════════════════════════════
 \section{Introduction}
 
-The question ``why does spacetime have $3{+}1$ dimensions?'' is among the oldest in fundamental physics. In most approaches to quantum gravity, the dimensionality of spacetime is either postulated (as in loop quantum gravity), compactified from a higher-dimensional starting point (as in string theory), or left implicit in the measure over geometries. Carlip~\cite{carlip2017} has argued that dimensional reduction at short distances is generic across quantum gravity approaches, but the question of why the \emph{large-scale} dimension is $3{+}1$ remains open. Causal set theory (CST)~\cite{bombelli1987,sorkin2005} offers a distinctive setting for this question: spacetime emerges as a statistical phase from a competition between combinatorial entropy and structural order in ensembles of locally finite partial orders (posets). In this framework, the dimensionality of the emergent geometry is, in principle, \emph{selected} by the dynamics rather than imposed --- making the transition from \emph{a priori} dimensionality to \emph{emergent} dimensionality concrete and numerically testable.
+The question ``why does spacetime have $3{+}1$ dimensions?'' is among the oldest in fundamental physics. In most approaches to quantum gravity, the dimensionality of spacetime is either postulated (as in loop quantum gravity), compactified from a higher-dimensional starting point (as in string theory), or left implicit in the measure over geometries. Carlip~\cite{carlip2017} has argued that dimensional reduction at short distances is generic across quantum gravity approaches, but the question of why the \emph{large-scale} dimension is $3{+}1$ remains open. Causal set theory (CST)~\cite{bombelli1987,sorkin2005} offers a distinctive setting for this question: spacetime emerges as a statistical phase from a competition between combinatorial entropy and structural order in ensembles of locally finite partial orders (posets). In this framework, the dimensionality of the emergent geometry is, in principle, \emph{selected} by the dynamics rather than imposed --- making the transition from \emph{a priori} dimensionality to \emph{emergent} dimensionality concrete and numerically testable. The Benincasa--Dowker (BD) action~\cite{benincasa2010} provides a standard discrete action for CST with a known continuum limit; dynamics based on it has yielded evidence for continuum phases in 2D~\cite{surya2012,loomis2018} and dimensionally restricted models~\cite{cunningham2020}. Reviews of the CST program can be found in Henson~\cite{henson2006}, Dowker~\cite{dowker2005}, and Surya~\cite{surya2019}.
 
 In a companion paper~\cite{zhang2026companion} (which introduces the action, penalty terms, and phase transition framework used here), we took a first step: we showed that under an action $A_2$ combining combinatorial entropy $H = \log|L(P)|$ with geometric penalty terms, the critical coupling $\gamma_c$ at which Lorentzian-like 2D posets overtake entropically dominant Kleitman--Rothschild (KR) structures~\cite{kleitman1975} remains $O(1)$ across $N = 10$--$44$. This established a \emph{bounded geometric phase transition} --- Lorentzian geometry can compete as a phase. A key further finding was that the dimension-specific proxy $g_{\text{dim}}$ (penalizing deviation from $d = 2$) can be replaced by a non-target-anchored consistency penalty $g_{\text{con}}$ (penalizing local--global dimension \emph{inconsistency} without specifying a target), with the phase transition preserved.
 
@@ -318,7 +318,9 @@ Both Prediction A and the companion paper's Prediction B employ the same methodo
 
 \subsection{Relation to Prior Work}
 
-Carlip~\cite{carlip2017} argued that dimensional reduction is generic in quantum gravity approaches. Surya~\cite{surya2019} and Loomis and Carlip~\cite{loomis2018} studied causal set dynamics numerically. Cunningham and Surya~\cite{cunningham2020} investigated dimensionally restricted causal set models, showing that restricting to 2D and 3D manifold-like orders alters the phase structure. Our work provides a complementary perspective: rather than asking whether spacetime dimensionality \emph{flows}, we ask whether a specific dimension can be \emph{selected} by consistency constraints in a discrete statistical ensemble. The finite-size evidence presented here suggests that such selection is possible, at least among the tested families.
+Carlip~\cite{carlip2017} argued that dimensional reduction is generic in quantum gravity approaches. Surya~\cite{surya2019} and Loomis and Carlip~\cite{loomis2018} studied causal set dynamics numerically. Cunningham and Surya~\cite{cunningham2020} investigated dimensionally restricted causal set models, showing that restricting to 2D and 3D manifold-like orders alters the phase structure. Surya~\cite{surya2012} and Glaser~\cite{glaser2018} provided evidence for continuum phases and finite-size scaling in 2D CST. Our work provides a complementary perspective: rather than asking whether spacetime dimensionality \emph{flows}, we ask whether a specific dimension can be \emph{selected} by consistency constraints in a discrete statistical ensemble. The finite-size evidence presented here suggests that such selection is possible, at least among the tested families.
+
+\textbf{Relation to the Benincasa--Dowker action.} Our action $A_2$, like that of the companion paper~\cite{zhang2026companion}, is a decomposable penalty functional designed for ablation studies, not a discretization of the Einstein--Hilbert action. The standard BD action~\cite{benincasa2010,benincasa2011} is a single composite quantity that does not directly permit the kind of term-by-term ablation that identifies the source of low-dimensional bias (Section~\ref{sec:ablation}). Whether BD-action-weighted ensembles exhibit the same dimensional preference under consistency constraints is a natural and important question for future work.
 
 \subsection{Limitations}
 
@@ -338,12 +340,12 @@ Three directions are natural: (i)~extending to 5D, 6D, and beyond to test whethe
 
 We have shown that replacing the target-anchored dimension proxy $g_{\text{dim}}$ with a non-target-anchored consistency penalty $g_{\text{con}}$ in a finite causal poset ensemble produces systematic 4D Lorentzian dominance across the tested families and parameter grid (92 of 98 configurations), with a margin that shows a strong upward trend with system size. Systematic ablation localizes the low-dimensional bias in the original action to a single term, and seed sensitivity at $N = 68$ and $N = 72$ confirms the robustness of the result (42/42 wins across three seeds). These findings demonstrate that dimensional selection without dimensional priors is achievable in discrete causal order ensembles, providing a concrete, numerically testable step toward understanding why spacetime might prefer higher-dimensional Lorentzian structure.
 % ── References ──────────────────────────────────────────────────────
-\begin{thebibliography}{9}
+\begin{thebibliography}{16}
 
 \bibitem{zhang2026companion}
 G.~Zhang,
 ``Bounded Geometric Phase Transition in Finite Causal Posets with Exact Entropy,''
-\textit{Entropy} (2026), submitted.
+Preprint (2026). \url{https://doi.org/10.5281/zenodo.19048146}.
 Code and data: \url{https://doi.org/10.5281/zenodo.18980657}.
 
 \bibitem{bombelli1987}
@@ -390,6 +392,48 @@ W.~J.~Cunningham and S.~Surya,
 ``Dimensionally restricted causal set quantum gravity: Examples in two and three dimensions,''
 \textit{Class.\ Quantum Grav.} \textbf{37}, 054002 (2020).
 arXiv:1908.11647. DOI:~10.1088/1361-6382/ab60b7.
+
+\bibitem{benincasa2010}
+D.~M.~T.~Benincasa and F.~Dowker,
+``The scalar curvature of a causal set,''
+\textit{Phys.\ Rev.\ Lett.} \textbf{104}, 181301 (2010).
+arXiv:0911.2725. DOI:~10.1103/PhysRevLett.104.181301.
+
+\bibitem{benincasa2011}
+D.~M.~T.~Benincasa, F.~Dowker, and B.~Schmitzer,
+``The random discrete action for two-dimensional spacetime,''
+\textit{Class.\ Quantum Grav.} \textbf{28}, 105018 (2011).
+arXiv:1011.5191. DOI:~10.1088/0264-9381/28/10/105018.
+
+\bibitem{rideout2000}
+D.~P.~Rideout and R.~D.~Sorkin,
+``A classical sequential growth dynamics for causal sets,''
+\textit{Phys.\ Rev.\ D} \textbf{61}, 024002 (2000).
+arXiv:gr-qc/9904062. DOI:~10.1103/PhysRevD.61.024002.
+
+\bibitem{henson2006}
+J.~Henson,
+``The causal set approach to quantum gravity,''
+in \textit{Approaches to Quantum Gravity}, ed.\ D.~Oriti
+(Cambridge University Press, 2009). arXiv:gr-qc/0601121.
+
+\bibitem{dowker2005}
+F.~Dowker,
+``Causal sets and the deep structure of spacetime,''
+in \textit{100 Years of Relativity}, ed.\ A.~Ashtekar
+(World Scientific, 2005). arXiv:gr-qc/0508109.
+
+\bibitem{surya2012}
+S.~Surya,
+``Evidence for the continuum in 2D causal set quantum gravity,''
+\textit{Class.\ Quantum Grav.} \textbf{29}, 132001 (2012).
+arXiv:1110.6244. DOI:~10.1088/0264-9381/29/13/132001.
+
+\bibitem{glaser2018}
+L.~Glaser,
+``Finite size scaling in 2d causal set quantum gravity,''
+\textit{Class.\ Quantum Grav.} \textbf{35}, 045002 (2018).
+arXiv:1706.06432. DOI:~10.1088/1361-6382/aa9540.
 
 \end{thebibliography}
 

@@ -1,0 +1,9 @@
+﻿scan_name,weight_name,weight_value,n,left_family,right_family,gamma_c_est,status,min_delta_score,max_delta_score
+geo_dim_proxy_penalty=4,geo_dim_proxy_penalty,4.0,36,lorentzian_like_2d,KR_like,1.6687384016469853,crossing,-3.413646648688605,17.19632846258763
+geo_dim_proxy_penalty=4,geo_dim_proxy_penalty,4.0,44,lorentzian_like_2d,KR_like,1.7749740681530621,crossing,-2.9847968594990704,23.54367330392482
+geo_dim_proxy_penalty=8,geo_dim_proxy_penalty,8.0,36,lorentzian_like_2d,KR_like,1.4050568655551658,crossing,-7.281440208779308,17.19632846258763
+geo_dim_proxy_penalty=8,geo_dim_proxy_penalty,8.0,44,lorentzian_like_2d,KR_like,1.4589676124667994,crossing,-8.730755686472776,23.54367330392482
+geo_width_height=1,geo_width_height,1.0,36,lorentzian_like_2d,KR_like,1.8894069641592852,crossing,-1.0065561343148133,17.19632846258763
+geo_width_height=1,geo_width_height,1.0,44,lorentzian_like_2d,KR_like,1.9270877372485535,crossing,-0.8907858531241217,23.54367330392482
+geo_width_height=2,geo_width_height,2.0,36,lorentzian_like_2d,KR_like,1.4050568655551658,crossing,-7.281440208779308,17.19632846258763
+geo_width_height=2,geo_width_height,2.0,44,lorentzian_like_2d,KR_like,1.4589676124667994,crossing,-8.730755686472776,23.54367330392482

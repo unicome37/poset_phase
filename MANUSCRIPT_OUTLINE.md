@@ -56,7 +56,9 @@
 
 ### 2.2 Entropy: Exact Linear Extensions
 - DP algorithm over antichains for counting linear extensions
-- Computational complexity: Lor2D remains sub-second to N=48; KR becomes expensive at N≥40
+- Computational complexity: Lor2D remains sub-second to N=48, about 3.8 s at N=72, about 33.8 s at N=88, and about 127.4 s at N=104; KR becomes expensive at N≥40. Use [lor2d_exact_timing_frontier.png](/d:/Kiro/理论体系/poset_phase/outputs_exploratory/lor2d_exact_timing_frontier/lor2d_exact_timing_frontier.png) and [lor2d_exact_timing_frontier.csv](/d:/Kiro/理论体系/poset_phase/outputs_exploratory/lor2d_exact_timing_frontier/lor2d_exact_timing_frontier.csv) as the compact frontier summary.
+- Manuscript figure set now includes [fig4_exact_timing_frontier.pdf](/d:/Kiro/理论体系/poset_phase/manuscript_figures/fig4_exact_timing_frontier.pdf) and [fig4_exact_timing_frontier.png](/d:/Kiro/理论体系/poset_phase/manuscript_figures/fig4_exact_timing_frontier.png), showing the Lor2D frontier against KR/TP confirmatory exact timings.
+- Manuscript figure set now also includes [fig5_mixed_lor2d_vs_kr.pdf](/d:/Kiro/理论体系/poset_phase/manuscript_figures/fig5_mixed_lor2d_vs_kr.pdf), [fig5_mixed_lor2d_vs_kr.png](/d:/Kiro/理论体系/poset_phase/manuscript_figures/fig5_mixed_lor2d_vs_kr.png), and source table [fig5_mixed_lor2d_vs_kr.csv](/d:/Kiro/理论体系/poset_phase/manuscript_figures/fig5_mixed_lor2d_vs_kr.csv), showing the near-wall mixed A2_full comparison between Lor2D and KR at N=52 and 56.
 - This asymmetry is a structural fact (antichain width), not an algorithmic artifact
 
 ### 2.3 Action Paths
@@ -145,6 +147,10 @@
   - `dim_consistency`: dimensional scale coherence (no target required)
 - Lor2D wins not because the action "knows" d=2, but because Lor2D structures naturally satisfy both constraints
 - This is emergence, not prior
+- Evidence chain should be written explicitly:
+  - confirmatory exact window `N=10–44` establishes bounded `γ_c`
+  - one-sided exact frontier shows `Lor2D` remains tractable up to `N=104`
+  - mixed near-wall `N=52/56` extends the competition without overclaiming a crossing
 
 ### 4.2 Relation to Prior Work
 - Carlip (2017): argued for KR suppression via midpoint scaling; our work provides the first explicit finite-size γ_c computation
@@ -153,6 +159,7 @@
 
 ### 4.3 Limitations and Outlook
 - **Finite-size**: N = 10–44 is far from thermodynamic limit. The key open question is whether γ_c remains bounded as N → ∞.
+- **Boundary wording**: `N=52/56` mixed scans should be presented as near-degeneracy evidence, not as confirmatory continuation of the exact bounded-window result.
 - **Family coverage**: 7 families do not exhaust all posets. The claim is "competitive phase among tested families," not global dominance.
 - **Weight sensitivity**: The consistency-only backbone at N=44 requires mild weight adjustment (1.3×), suggesting the minimal backbone is at criticality edge for larger N.
 - **Exploratory extensions** (Supplemental): Two-sieve framework, MLR survivor analysis, and paired locality validation provide additional structural context but are not part of the confirmatory chain.
@@ -186,6 +193,8 @@ dim_consistency_penalty definition, weight scan, trend analysis.
 1. **Fig. 1**: γ_c(N) for N=10–44 under A2 (main result)
 2. **Fig. 2**: Ablation summary — bar chart showing γ_c survival pattern
 3. **Fig. 3**: Non-circular replacement comparison — γ_c under A2_full vs replace_dim_consistency
+4. **Fig. 4**: Exact timing frontier — single-sided exact tractability of `Lor2D` versus KR/TP timing wall
+5. **Fig. 5**: Near-wall mixed extension — `Lor2D` vs `KR` at `N=52,56`, showing high-γ near-degeneracy without crossing
 
 ---
 

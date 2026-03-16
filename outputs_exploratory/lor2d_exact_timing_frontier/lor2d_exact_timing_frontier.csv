@@ -1,0 +1,15 @@
+n,time_seconds,source_csv,time_class
+10,0.0001002999997581,d:\Kiro\理论体系\poset_phase\outputs_confirmatory\exact_timing\exact_timing_summary.csv,sub-second
+20,0.002378300003329,d:\Kiro\理论体系\poset_phase\outputs_confirmatory\exact_timing\exact_timing_summary.csv,sub-second
+30,0.0206948999984888,d:\Kiro\理论体系\poset_phase\outputs_confirmatory\exact_timing\exact_timing_summary.csv,sub-second
+40,0.0726620999994338,d:\Kiro\理论体系\poset_phase\outputs_confirmatory\exact_timing\exact_timing_summary.csv,sub-second
+44,0.0871740000002319,d:\Kiro\理论体系\poset_phase\outputs_confirmatory\exact_timing\exact_timing_summary.csv,sub-second
+48,0.2203026000024692,d:\Kiro\理论体系\poset_phase\outputs_confirmatory\exact_timing\exact_timing_summary.csv,sub-second
+60,1.4161254999999071,d:\Kiro\理论体系\poset_phase\outputs_exploratory\exact_timing_lor2d_extension\exact_timing_summary.csv,seconds
+64,3.278229800002009,d:\Kiro\理论体系\poset_phase\outputs_exploratory\exact_timing_lor2d_extension\exact_timing_summary.csv,seconds
+68,3.6868840999959502,d:\Kiro\理论体系\poset_phase\outputs_exploratory\exact_timing_lor2d_extension\exact_timing_summary.csv,seconds
+72,3.8400227000020095,d:\Kiro\理论体系\poset_phase\outputs_exploratory\exact_timing_lor2d_extension\exact_timing_summary.csv,seconds
+80,11.440681699998096,d:\Kiro\outputs_exploratory\exact_timing_lor2d_extension_n80_n88\exact_timing_summary.csv,tens-of-seconds
+88,33.76065750000271,d:\Kiro\outputs_exploratory\exact_timing_lor2d_extension_n80_n88\exact_timing_summary.csv,tens-of-seconds
+96,26.337511199999422,d:\Kiro\outputs_exploratory\exact_timing_lor2d_extension_n96_n104\exact_timing_summary.csv,tens-of-seconds
+104,127.42380689999844,d:\Kiro\outputs_exploratory\exact_timing_lor2d_extension_n96_n104\exact_timing_summary.csv,minute-scale

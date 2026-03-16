@@ -40,7 +40,7 @@ $^{1}$ \quad Independent Researcher; unicome@gmail.com}
 
 The hypothesis that spacetime is fundamentally discrete --- a locally finite partial order (poset) whose elements are causally related events --- lies at the heart of causal set theory (CST)~\cite{bombelli1987,sorkin2005}. A central challenge for this program is the \emph{entropy catastrophe}: the Kleitman--Rothschild (KR) theorem~\cite{kleitman1975} establishes that, asymptotically, almost all labeled finite posets consist of three layers with bipartite random connectivity and maximal linear extension count. If one weights posets by the pure combinatorial entropy $H = \log(\text{number of linear extensions})$, the partition function is overwhelmingly dominated by these non-geometric, KR-type structures. Geometric order --- the kind of layered, causally propagating structure that would correspond to a Lorentzian manifold under coarse-graining --- occupies an exponentially small fraction of the configuration space.
 
-Several strategies have been proposed to address this. Carlip~\cite{carlip2017} argued that midpoint-scaling properties of causal intervals can suppress KR dominance, shifting the effective measure toward geometric posets. Surya~\cite{surya2019} developed a formal CST partition function framework. Loomis and Carlip~\cite{loomis2018} performed 2D causal set simulations using Markov chain Monte Carlo. However, no prior work has demonstrated an explicit, finite-size phase transition threshold $\gamma_c$ that separates a KR-dominated phase from a geometrically competitive phase, computed with exact (non-approximate) entropy across a wide range of poset sizes.
+Several strategies have been proposed to address this. The Benincasa--Dowker (BD) action~\cite{benincasa2010,benincasa2011} provides a discrete analogue of the Einstein--Hilbert action on causal sets, with a well-defined continuum limit; dynamics based on this action has been studied in 2D~\cite{surya2012,loomis2018} and in dimensionally restricted settings~\cite{cunningham2020}. Separately, the classical sequential growth dynamics of Rideout and Sorkin~\cite{rideout2000} provides a stochastic framework for causal set evolution. Carlip~\cite{carlip2017} argued that midpoint-scaling properties of causal intervals can suppress KR dominance, shifting the effective measure toward geometric posets. Surya~\cite{surya2019} developed a formal CST partition function framework (see also the reviews by Henson~\cite{henson2006} and Dowker~\cite{dowker2005}). Loomis and Carlip~\cite{loomis2018} performed 2D causal set simulations using Markov chain Monte Carlo, and Glaser~\cite{glaser2018} investigated finite-size scaling in 2D causal set quantum gravity. However, no prior work has demonstrated an explicit, finite-size phase transition threshold $\gamma_c$ that separates a KR-dominated phase from a geometrically competitive phase, computed with exact (non-approximate) entropy across a wide range of poset sizes.
 
 In this work, we take a direct numerical approach. We construct an ensemble of seven structurally distinct poset families, compute exact linear extension counts using dynamic programming for $N$ up to 44, and define a decomposable action with separately controllable neutral and geometric penalty terms. Our main finding is that the critical coupling $\gamma_c$ for Lorentzian-like 2D posets to overtake KR posets remains bounded and $O(1)$ across all tested sizes.
 
@@ -242,6 +242,8 @@ Carlip~\cite{carlip2017} argued qualitatively that midpoint-scaling properties o
 
 The most important next step is pushing exact computation to larger $N$. The non-circular replacement result suggests that causal chain non-degeneracy and dimensional scale consistency may serve as order parameters for detecting geometric phases in discrete quantum gravity models more broadly.
 
+\textbf{Relation to the Benincasa--Dowker action.} The standard discrete action in CST is the Benincasa--Dowker (BD) action~\cite{benincasa2010,benincasa2011}, which provides a direct discretization of the Einstein--Hilbert action with a known continuum limit. Our action $A_2$ differs from the BD action in both form and purpose: $A_2$ is constructed as a decomposable penalty functional for ablation studies, with each sub-term targeting a specific structural property. It is not a discretization of any known continuum action. The advantage of decomposability is that systematic ablation can identify which structural constraints drive geometric phase emergence --- a diagnostic that the BD action, as a single composite quantity, does not directly provide. Whether the BD action itself produces a bounded $\gamma_c$ in our sense is an important open question.
+
 Two companion papers extend this work in complementary directions. Prediction~A~\cite{zhang2026predA} asks which dimensionality the consistency-based action prefers, finding systematic 4D Lorentzian dominance up to $N = 72$. Prediction~C~\cite{zhang2026predC} identifies hierarchy depth observables as the structural mechanism behind the entropy hierarchy observed here, completing the explanatory chain from ``which structures win?'' to ``why do they win?''
 
 %=================================================================
@@ -262,7 +264,7 @@ Two companion papers extend this work in complementary directions. Prediction~A~
 
 \reftitle{References}
 
-\begin{thebibliography}{8}
+\begin{thebibliography}{18}
 
 \bibitem{bombelli1987}
 Bombelli, L.; Lee, J.; Meyer, D.; Sorkin, R.D.
@@ -309,16 +311,64 @@ Dimensionally Restricted Causal Set Quantum Gravity: Examples in Two and Three D
 \textit{Class.\ Quantum Grav.} \textbf{2020}, \textit{37}, 054002.
 https://doi.org/10.1088/1361-6382/ab60b7.
 
+\bibitem{benincasa2010}
+Benincasa, D.M.T.; Dowker, F.
+The Scalar Curvature of a Causal Set.
+\textit{Phys.\ Rev.\ Lett.} \textbf{2010}, \textit{104}, 181301.
+https://doi.org/10.1103/PhysRevLett.104.181301.
+
+\bibitem{benincasa2011}
+Benincasa, D.M.T.; Dowker, F.; Schmitzer, B.
+The Random Discrete Action for Two-Dimensional Spacetime.
+\textit{Class.\ Quantum Grav.} \textbf{2011}, \textit{28}, 105018.
+https://doi.org/10.1088/0264-9381/28/10/105018.
+
+\bibitem{rideout2000}
+Rideout, D.P.; Sorkin, R.D.
+A Classical Sequential Growth Dynamics for Causal Sets.
+\textit{Phys.\ Rev.\ D} \textbf{2000}, \textit{61}, 024002.
+https://doi.org/10.1103/PhysRevD.61.024002.
+
+\bibitem{henson2006}
+Henson, J.
+The Causal Set Approach to Quantum Gravity.
+In \textit{Approaches to Quantum Gravity}; Oriti, D., Ed.; Cambridge University Press: Cambridge, UK, 2009.
+arXiv:gr-qc/0601121.
+
+\bibitem{dowker2005}
+Dowker, F.
+Causal Sets and the Deep Structure of Spacetime.
+In \textit{100 Years of Relativity}; Ashtekar, A., Ed.; World Scientific: Singapore, 2005.
+arXiv:gr-qc/0508109.
+
+\bibitem{surya2012}
+Surya, S.
+Evidence for the Continuum in 2D Causal Set Quantum Gravity.
+\textit{Class.\ Quantum Grav.} \textbf{2012}, \textit{29}, 132001.
+https://doi.org/10.1088/0264-9381/29/13/132001.
+
+\bibitem{glaser2018}
+Glaser, L.
+Finite Size Scaling in 2D Causal Set Quantum Gravity.
+\textit{Class.\ Quantum Grav.} \textbf{2018}, \textit{35}, 045002.
+https://doi.org/10.1088/1361-6382/aa9540.
+
+\bibitem{glaser2014}
+Glaser, L.; Surya, S.
+Towards a Definition of Locality in a Manifoldlike Causal Set.
+\textit{Phys.\ Rev.\ D} \textbf{2013}, \textit{88}, 124026.
+https://doi.org/10.1103/PhysRevD.88.124026.
+
 \bibitem{zhang2026predA}
 Zhang, G.
 Dimensional Selection Without Dimensional Priors: 4D Lorentzian Dominance in Finite Causal Poset Ensembles Under Consistency-Based Actions.
-\textit{Entropy} \textbf{2026}, submitted.
+Preprint (2026). \url{https://doi.org/10.5281/zenodo.19048324}.
 Code and data: \url{https://doi.org/10.5281/zenodo.18980657}.
 
 \bibitem{zhang2026predC}
 Zhang, G.
 Hierarchy Depth Observables Predict Combinatorial Entropy in Finite Causal Posets: A Three-Tier Correlational Study.
-\textit{Entropy} \textbf{2026}, submitted.
+Preprint (2026). \url{https://doi.org/10.5281/zenodo.19048405}.
 Code and data: \url{https://doi.org/10.5281/zenodo.18980657}.
 
 \end{thebibliography}

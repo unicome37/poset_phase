@@ -31,6 +31,43 @@ def _random_layer_split(n: int, n_layers: int, rng: np.random.Generator) -> list
     return list(np.split(np.arange(n), cuts))
 
 
+def _split_with_sizes(indices: np.ndarray, sizes: list[int]) -> list[np.ndarray]:
+    cuts = np.cumsum(sizes[:-1])
+    return list(np.split(indices, cuts))
+
+
+def _layer_sizes_by_mode(
+    n: int,
+    n_layers: int,
+    mode: str,
+    rng: np.random.Generator,
+) -> list[int]:
+    if n_layers > n:
+        raise ValueError(f"n_layers={n_layers} cannot exceed n={n}")
+
+    if mode == "uniform":
+        base = [1] * n_layers
+        for _ in range(n - n_layers):
+            base[int(rng.integers(0, n_layers))] += 1
+        return base
+
+    if mode == "tapered":
+        weights = np.linspace(n_layers, 1.0, n_layers)
+    elif mode == "middle_heavy":
+        center = (n_layers - 1) / 2.0
+        idx = np.arange(n_layers)
+        weights = np.maximum(1.0, n_layers - np.abs(idx - center) * 2.0)
+    else:
+        raise ValueError(f"Unsupported imbalance mode: {mode}")
+
+    sizes = np.ones(n_layers, dtype=int)
+    remaining = n - n_layers
+    if remaining > 0:
+        probs = weights / weights.sum()
+        sizes += rng.multinomial(remaining, probs)
+    return sizes.tolist()
+
+
 def generate_absolute_layered(
     n: int,
     n_layers: int = 4,
@@ -63,11 +100,7 @@ def generate_transitive_percolation(
     seed: int | None = None,
 ) -> Poset:
     rng = np.random.default_rng(seed)
-    adj = np.zeros((n, n), dtype=bool)
-    for i in range(n):
-        for j in range(i + 1, n):
-            if rng.random() < p:
-                adj[i, j] = True
+    adj = np.triu(rng.random((n, n)) < p, k=1)
     return Poset(transitive_closure(adj))
 
 
@@ -76,12 +109,9 @@ def generate_lorentzian_like_2d(n: int, seed: int | None = None) -> Poset:
     t = rng.random(n)
     x = rng.random(n)
 
-    adj = np.zeros((n, n), dtype=bool)
-    for i in range(n):
-        for j in range(n):
-            dt = t[j] - t[i]
-            if dt > 0 and dt >= abs(x[j] - x[i]):
-                adj[i, j] = True
+    dt = t[None, :] - t[:, None]
+    dx = np.abs(x[None, :] - x[:, None])
+    adj = (dt > 0.0) & (dt >= dx)
     return Poset(transitive_closure(adj))
 
 
@@ -91,12 +121,10 @@ def generate_lorentzian_like_3d(n: int, seed: int | None = None) -> Poset:
     x = rng.random(n)
     y = rng.random(n)
 
-    adj = np.zeros((n, n), dtype=bool)
-    for i in range(n):
-        for j in range(n):
-            dt = t[j] - t[i]
-            if dt > 0 and dt * dt >= (x[j] - x[i]) ** 2 + (y[j] - y[i]) ** 2:
-                adj[i, j] = True
+    dt = t[None, :] - t[:, None]
+    dx2 = (x[None, :] - x[:, None]) ** 2
+    dy2 = (y[None, :] - y[:, None]) ** 2
+    adj = (dt > 0.0) & ((dt * dt) >= (dx2 + dy2))
     return Poset(transitive_closure(adj))
 
 
@@ -107,16 +135,11 @@ def generate_lorentzian_like_4d(n: int, seed: int | None = None) -> Poset:
     y = rng.random(n)
     z = rng.random(n)
 
-    adj = np.zeros((n, n), dtype=bool)
-    for i in range(n):
-        for j in range(n):
-            dt = t[j] - t[i]
-            if dt > 0 and dt * dt >= (
-                (x[j] - x[i]) ** 2
-                + (y[j] - y[i]) ** 2
-                + (z[j] - z[i]) ** 2
-            ):
-                adj[i, j] = True
+    dt = t[None, :] - t[:, None]
+    dx2 = (x[None, :] - x[:, None]) ** 2
+    dy2 = (y[None, :] - y[:, None]) ** 2
+    dz2 = (z[None, :] - z[:, None]) ** 2
+    adj = (dt > 0.0) & ((dt * dt) >= (dx2 + dy2 + dz2))
     return Poset(transitive_closure(adj))
 
 
@@ -130,11 +153,7 @@ def generate_interval_order(
     lengths = rng.exponential(mean_length, size=n)
     ends = starts + lengths
 
-    adj = np.zeros((n, n), dtype=bool)
-    for i in range(n):
-        for j in range(n):
-            if ends[i] < starts[j]:
-                adj[i, j] = True
+    adj = ends[:, None] < starts[None, :]
     return Poset(transitive_closure(adj))
 
 
@@ -153,3 +172,49 @@ def generate_multi_layer_random(
             mask = rng.random((len(layers[i]), len(layers[j]))) < p
             adj[np.ix_(layers[i], layers[j])] = mask
     return Poset(transitive_closure(adj))
+
+
+def generate_random_layered(
+    n: int,
+    n_layers: int = 6,
+    imbalance_mode: str = "uniform",
+    adjacent_p: float = 0.35,
+    skip_p: float = 0.08,
+    seed: int | None = None,
+) -> Poset:
+    rng = np.random.default_rng(seed)
+    permuted = rng.permutation(n)
+    sizes = _layer_sizes_by_mode(n, n_layers, imbalance_mode, rng)
+    layers = _split_with_sizes(permuted, sizes)
+
+    adj = np.zeros((n, n), dtype=bool)
+    for i in range(len(layers)):
+        for j in range(i + 1, len(layers)):
+            p = adjacent_p if j == i + 1 else skip_p
+            mask = rng.random((len(layers[i]), len(layers[j]))) < p
+            adj[np.ix_(layers[i], layers[j])] = mask
+    return Poset(transitive_closure(adj))
+
+
+def generate_random_layered_k4_uniform(n: int, seed: int | None = None) -> Poset:
+    return generate_random_layered(n=n, n_layers=4, imbalance_mode="uniform", adjacent_p=0.38, skip_p=0.06, seed=seed)
+
+
+def generate_random_layered_k6_uniform(n: int, seed: int | None = None) -> Poset:
+    return generate_random_layered(n=n, n_layers=6, imbalance_mode="uniform", adjacent_p=0.34, skip_p=0.08, seed=seed)
+
+
+def generate_random_layered_k8_uniform(n: int, seed: int | None = None) -> Poset:
+    return generate_random_layered(n=n, n_layers=8, imbalance_mode="uniform", adjacent_p=0.30, skip_p=0.10, seed=seed)
+
+
+def generate_random_layered_k6_tapered(n: int, seed: int | None = None) -> Poset:
+    return generate_random_layered(n=n, n_layers=6, imbalance_mode="tapered", adjacent_p=0.34, skip_p=0.08, seed=seed)
+
+
+def generate_random_layered_k6_middle_heavy(n: int, seed: int | None = None) -> Poset:
+    return generate_random_layered(n=n, n_layers=6, imbalance_mode="middle_heavy", adjacent_p=0.34, skip_p=0.08, seed=seed)
+
+
+def generate_random_layered_k6_longjump(n: int, seed: int | None = None) -> Poset:
+    return generate_random_layered(n=n, n_layers=6, imbalance_mode="uniform", adjacent_p=0.32, skip_p=0.16, seed=seed)

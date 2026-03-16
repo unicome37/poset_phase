@@ -1,0 +1,14 @@
+﻿variant,n,left_family,right_family,gamma_c_est,status,min_delta_score,max_delta_score
+A2_full,20,lorentzian_like_2d,KR_like,0.413392536052997,crossing,-3.7271470120917876,3.9853725011946146
+A1_neutral_only,20,lorentzian_like_2d,KR_like,,no_cross_left_never_wins,3.9853725011946146,3.987697501194617
+drop_geo_width_height,20,lorentzian_like_2d,KR_like,0.5464479306174158,crossing,-1.8492145149064925,3.9853725011946146
+drop_geo_dim_proxy_penalty,20,lorentzian_like_2d,KR_like,,no_cross_left_never_wins,0.6354546499580707,3.9853725011946146
+drop_geo_comparability_window,20,lorentzian_like_2d,KR_like,0.41003307479730655,crossing,-3.7903368181859705,3.9853725011946146
+drop_geo_cover_density,20,lorentzian_like_2d,KR_like,0.4136207225949696,crossing,-3.722892164446357,3.9853725011946146
+drop_geo_interval_profile,20,lorentzian_like_2d,KR_like,0.4258744390811876,crossing,-3.5011016995917856,3.9853725011946146
+drop_geo_interval_shape,20,lorentzian_like_2d,KR_like,0.4959923340513097,crossing,-2.442747012091786,3.9853725011946146
+drop_geo_layer_smoothness,20,lorentzian_like_2d,KR_like,0.41461824393554386,crossing,-3.7043470120917874,3.9853725011946146
+drop_width_height_plus_dim,20,lorentzian_like_2d,KR_like,,no_cross_left_never_wins,2.5133871471433693,3.9853725011946146
+drop_all_interval_terms,20,lorentzian_like_2d,KR_like,0.5140696318259825,crossing,-2.2167016995917876,3.9853725011946146
+interval_terms_only,20,lorentzian_like_2d,KR_like,,no_cross_left_never_wins,2.4772521886946137,3.9853725011946146
+non_dim_non_width_only,20,lorentzian_like_2d,KR_like,,no_cross_left_never_wins,2.5133871471433693,3.9853725011946146

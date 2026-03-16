@@ -1,0 +1,11 @@
+experiment:
+  n_values: [20]
+  families:
+    - KR_like
+    - lorentzian_like_2d
+  gammas: [0.0, 0.4, 0.8]
+  beta: 1.0
+  samples_per_family: 1
+
+output:
+  directory: outputs_exploratory/geometric_ablation_gamma_c_smoke

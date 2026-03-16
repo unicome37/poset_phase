@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from collections.abc import Mapping
+
 import numpy as np
 
 from generators import Poset
@@ -158,22 +160,13 @@ def multi_estimator_dimension_consistency_penalty(
 
 def cover_density(poset: Poset) -> float:
     """Density of the transitive reduction (Hasse diagram) edges."""
-    c = poset.closure
+    c = poset.closure.astype(np.uint8, copy=False)
     n = poset.n
-    cover_count = 0
-
-    for i in range(n):
-        succ = np.where(c[i])[0]
-        for j in succ:
-            is_cover = True
-            mid = np.where(c[i] & c[:, j])[0]
-            if len(mid) > 0:
-                is_cover = False
-            if is_cover:
-                cover_count += 1
-
+    has_intermediate = (c @ c).astype(bool, copy=False)
+    cover_mask = poset.closure & ~has_intermediate
+    np.fill_diagonal(cover_mask, False)
     total = n * (n - 1) / 2
-    return float(cover_count / total) if total else 0.0
+    return float(cover_mask.sum() / total) if total else 0.0
 
 
 def cover_density_penalty(
@@ -307,20 +300,36 @@ def local_layer_smoothness_penalty(poset: Poset) -> float:
     return float((diffs * diffs).mean())
 
 
-def geometric_penalty(poset: Poset) -> float:
-    dim_penalty, _ = dimension_penalty_from_order_fraction(poset)
-    return (
-        2.0 * width_height_balance_penalty(poset)
-        + 8.0 * dim_penalty
-        + 6.0 * comparability_window_penalty(poset)
-        + 3.0 * cover_density_penalty(poset)
-        + 5.0 * interval_profile_penalty(poset)
-        + 5.0 * interval_shape_penalty(poset)
-        + 2.0 * local_layer_smoothness_penalty(poset)
-    )
+DEFAULT_GEOMETRIC_WEIGHTS: dict[str, float] = {
+    "geo_width_height": 2.0,
+    "geo_dim_proxy_penalty": 8.0,
+    "geo_comparability_window": 6.0,
+    "geo_cover_density": 3.0,
+    "geo_interval_profile": 5.0,
+    "geo_interval_shape": 5.0,
+    "geo_layer_smoothness": 2.0,
+}
+
+
+def weighted_geometric_total(
+    components: Mapping[str, float],
+    weights: Mapping[str, float] | None = None,
+) -> float:
+    active_weights = DEFAULT_GEOMETRIC_WEIGHTS if weights is None else weights
+    return float(sum(active_weights.get(key, 0.0) * components[key] for key in DEFAULT_GEOMETRIC_WEIGHTS))
+
+
+def geometric_penalty(poset: Poset, weights: Mapping[str, float] | None = None) -> float:
+    components = geometric_components(poset)
+    return weighted_geometric_total(components, weights=weights)
+
+
+def geometric_penalty_from_components(components: Mapping[str, float], weights: Mapping[str, float] | None = None) -> float:
+    return weighted_geometric_total(components, weights=weights)
 
 
 def geometric_components(poset: Poset) -> dict[str, float]:
+    dim_penalty, _ = dimension_penalty_from_order_fraction(poset)
     width_height = width_height_balance_penalty(poset)
     dim_penalty, d_eff = dimension_penalty_from_order_fraction(poset)
     dim_consistency, global_d_eff, local_mean_d_eff, local_var_d_eff, local_dim_count = dimension_consistency_penalty(poset)
@@ -331,7 +340,7 @@ def geometric_components(poset: Poset) -> dict[str, float]:
     interval_profile = interval_profile_penalty(poset)
     interval_shape = interval_shape_penalty(poset)
     layer_smoothness = local_layer_smoothness_penalty(poset)
-    return {
+    components = {
         "geo_width_height": width_height,
         "geo_dim_proxy_penalty": dim_penalty,
         "geo_dim_eff": d_eff,
@@ -350,13 +359,6 @@ def geometric_components(poset: Poset) -> dict[str, float]:
         "geo_interval_profile": interval_profile,
         "geo_interval_shape": interval_shape,
         "geo_layer_smoothness": layer_smoothness,
-        "geo_total": (
-            2.0 * width_height
-            + 8.0 * dim_penalty
-            + 6.0 * comparability
-            + 3.0 * cover
-            + 5.0 * interval_profile
-            + 5.0 * interval_shape
-            + 2.0 * layer_smoothness
-        ),
     }
+    components["geo_total"] = weighted_geometric_total(components)
+    return components

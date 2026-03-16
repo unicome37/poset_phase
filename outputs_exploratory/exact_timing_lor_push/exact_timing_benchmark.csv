@@ -1,0 +1,4 @@
+﻿family,n,seed,elapsed_seconds,log10_count,comparable_fraction,antichain_width,antichain_width_ratio,height_ratio,width_ratio,status
+lorentzian_like_3d,48,12048,280.214,42,0.2677,20,0.4167,0.1042,0.2708,ok
+lorentzian_like_3d,52,12052,287.727,46,0.2655,19,0.3654,0.0962,0.3077,ok
+lorentzian_like_3d,56,12056,327.1,52,0.2857,18,0.3214,0.0893,0.2857,ok

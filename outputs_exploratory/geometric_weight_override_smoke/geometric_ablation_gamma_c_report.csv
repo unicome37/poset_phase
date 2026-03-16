@@ -1,0 +1,5 @@
+﻿variant,n,left_family,right_family,gamma_c_est,status,min_delta_score,max_delta_score
+A2_full,20,lorentzian_like_2d,KR_like,0.413392536052997,crossing,-3.7271470120917876,3.9853725011946146
+A2_half_dim_proxy,20,lorentzian_like_2d,KR_like,0.5764187214619652,crossing,-1.5458461810668567,3.9853725011946146
+A2_no_dim_proxy,20,lorentzian_like_2d,KR_like,,no_cross_left_never_wins,0.6354546499580707,3.9853725011946146
+A1_neutral_only,20,lorentzian_like_2d,KR_like,,no_cross_left_never_wins,3.9853725011946146,3.987697501194617

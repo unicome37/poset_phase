@@ -1,0 +1,37 @@
+prediction_b:
+  raw_csv: outputs_confirmatory/medium_exact_scan/raw_samples.csv
+  action_mode: A2
+  families:
+    - lorentzian_like_2d
+    - lorentzian_like_3d
+    - KR_like
+  pairwise:
+    - [lorentzian_like_2d, KR_like]
+    - [lorentzian_like_2d, lorentzian_like_3d]
+
+prediction_a:
+  raw_csvs:
+    - outputs_exploratory/prediction_a_dim_replacement_sp8/prediction_a_ablation_raw.csv
+    - outputs_exploratory/prediction_a_dim_replacement_n44_n48/prediction_a_ablation_raw.csv
+    - outputs_exploratory/prediction_a_n52_mixed/prediction_a_ablation_raw.csv
+    - outputs_exploratory/prediction_a_n56_mixed/prediction_a_ablation_raw.csv
+    - outputs_exploratory/prediction_a_n60_mixed/prediction_a_ablation_raw.csv
+    - outputs_exploratory/prediction_a_n64_mixed/prediction_a_ablation_raw.csv
+    - ../../outputs_exploratory/prediction_a_n68_mixed/prediction_a_ablation_raw.csv
+    - outputs_exploratory/prediction_a_n72_mixed/prediction_a_ablation_raw.csv
+  families:
+    - lorentzian_like_2d
+    - lorentzian_like_3d
+    - lorentzian_like_4d
+    - KR_like
+  variants:
+    - A2_full
+    - A2_replace_dim_with_consistency
+    - A2_replace_dim_with_multi_consistency
+  pairwise:
+    - [lorentzian_like_4d, lorentzian_like_2d]
+    - [lorentzian_like_4d, lorentzian_like_3d]
+    - [lorentzian_like_4d, KR_like]
+
+output:
+  directory: outputs_exploratory/prediction_bac_bridge

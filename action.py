@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from collections.abc import Mapping
+
 from observables import neutral_penalty
 from observables_geo import geometric_penalty
 
@@ -17,29 +19,41 @@ def score_neutral(poset, log_extensions: float, beta: float, gamma: float) -> fl
     )
 
 
-def score_geometric(poset, log_extensions: float, beta: float, gamma: float) -> float:
+def score_geometric(
+    poset,
+    log_extensions: float,
+    beta: float,
+    gamma: float,
+    geometric_weights: Mapping[str, float] | None = None,
+) -> float:
     return action_value(
         log_extensions=log_extensions,
-        penalty=geometric_penalty(poset),
+        penalty=geometric_penalty(poset, weights=geometric_weights),
         beta=beta,
         gamma=gamma,
     )
 
 
-def score_mixed(poset, log_extensions: float, beta: float, gamma: float) -> float:
+def score_mixed(
+    poset,
+    log_extensions: float,
+    beta: float,
+    gamma: float,
+    geometric_weights: Mapping[str, float] | None = None,
+) -> float:
     return action_value(
         log_extensions=log_extensions,
-        penalty=neutral_penalty(poset) + geometric_penalty(poset),
+        penalty=neutral_penalty(poset) + geometric_penalty(poset, weights=geometric_weights),
         beta=beta,
         gamma=gamma,
     )
 
 
-def get_action_penalty(poset, action_mode: str) -> float:
+def get_action_penalty(poset, action_mode: str, geometric_weights: Mapping[str, float] | None = None) -> float:
     if action_mode == "A1":
         return neutral_penalty(poset)
     if action_mode == "A2":
-        return neutral_penalty(poset) + geometric_penalty(poset)
+        return neutral_penalty(poset) + geometric_penalty(poset, weights=geometric_weights)
     if action_mode == "A3":
-        return geometric_penalty(poset)
+        return geometric_penalty(poset, weights=geometric_weights)
     raise ValueError(f"Unsupported action mode: {action_mode}")
