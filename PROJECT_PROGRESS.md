@@ -1,7 +1,7 @@
 # Poset Phase 项目工作记录与进度追踪
 
 > **最后更新**: 2026-03-17  
-> **Git HEAD**: `e4d237d` (main)  
+> **Git HEAD**: `964f1f8` → 待更新 (main)  
 > **GitHub**: `github.com/unicome37/poset_phase`  
 > **版本**: v4.0.0 (Zenodo 已发布)
 
@@ -62,6 +62,7 @@ $$\text{Score} = -\beta \cdot \log H(\text{poset}) + \gamma \cdot \text{Penalty}
 | `prediction_a_bd_dimension.py` | **BD 因果集作用量维度选择** | **λ=6-8: 4D 全票获胜!** |
 | `prediction_a_bd_lorentzian_only.py` | BD 结果 Lorentzian-only 最终分析 | 维度级联: 5D→4D→3D→2D |
 | `prediction_a_bd_extended.py` | **扩展 BD: d=4区间 + 混合 + N=60,68** | **4D plateau 在 N=20-68 全票稳定!** |
+| `prediction_a_bdg_full_comparison.py` | **文献 BDG 系数 vs link-proxy 对比** | **link_d2 选4D; 标准BDG_d4 全选5D — 机制是链接密度!** |
 
 #### ★ 突破性发现: BD 作用量天然选出 3+1 维
 
@@ -89,6 +90,53 @@ Lorentzian 族内部的维度选择级联:
 3. **BD+几何混合**: 添加几何惩罚**不改善** 4D 选择，纯 BD_d2 已是最优
 4. **区间轮廓**: 5D 几乎没有高阶区间 (C1≈0, C2≈0)；2D 有丰富的区间层级
 5. **N=68 margin**: λ=6 时 margin=0.633 (窄但稳定)；λ=8 时 margin=4.912 (宽裕)
+
+#### ★★ 关键验证: link-proxy vs 文献 BDG 系数 (GPT 审查驱动)
+
+**背景**: 外部 GPT 文献分析指出，我们的 $S = N - 2 n_{\text{links}}$ 实际上是 **d=2 BD 作用量** (link action proxy)，而非文献中 Benincasa-Dowker 的 d=4 标准形式。标准 BDG d=4 形式为:
+
+$$S^{(4)}_{BDG} = N - C_0 + 9C_1 - 16C_2 + 8C_3$$
+
+其中 $C_k$ = 含 $k$ 个内部元素的因果区间数。
+
+**实验**: `prediction_a_bdg_full_comparison.py` 利用已收集的 C0/C1/C2/C3 数据 (N=20-68, 4 样本×5 族), 对比 4 种作用量变体:
+
+| 变体 | 公式 | 4D 最佳得分 |
+|------|------|-------------|
+| `link_d2` | $N - 2C_0$ | **λ=6-8: 7/7 全票 4D** ★ |
+| `BDG_d4_standard` | $N - C_0 + 9C_1 - 16C_2 + 8C_3$ | **0/7 全 λ, 5D 永远赢** |
+| `BDG_d4_pure` | $-C_0 + 9C_1 - 16C_2 + 8C_3$ | 0/7 |
+| `BDG_d2_corrected` | $N - 2.09C_0 + 0.41C_1$ | λ=20: 7/7, 但窗口太窄 |
+
+**关键对比 (λ=6)**:
+
+| N | link_d2 | BDG_d4_standard |
+|---|---------|-----------------|
+| 20 | **4D** beats 3D by 1.50 | 5D beats 4D by 4.51 |
+| 28 | **4D** beats 3D by 4.06 | 5D beats 4D by 7.15 |
+| 36 | **4D** beats 3D by 3.73 | 5D beats 3D by 7.13 |
+| 44 | **4D** beats 5D by 4.20 | 5D beats 4D by 6.30 |
+| 52 | **4D** beats 5D by 1.41 | 5D beats 4D by 9.38 |
+| 60 | **4D** beats 5D by 0.79 | 5D beats 4D by 9.16 |
+| 68 | **4D** beats 5D by 0.63 | 5D beats 4D by 16.44 |
+
+**物理诊断 — 为什么 BDG_d4 失败**:
+
+BDG_d4 中的 $+9C_1$ 项巨幅放大低维度的 order-1 区间:
+- 2D (N=44): $+9C_1 = +594$, 压过 $-16C_2 = -788$, net = **+107**
+- 5D (N=44): $+9C_1 = +99$, $-16C_2 = -32$, net = **-28**
+
+5D 的高阶区间极少 → BDG_d4 惩罚极小 → 结合 5D 熵最大 → 5D 永远赢。换言之, BDG_d4 的区间修正项实际上**削弱**了对高维的惩罚。
+
+**核心结论**:
+
+> **维度选择发生在链接密度 (link-counting) 层面，而非完整曲率作用量层面。**
+>
+> - $S = N - 2 n_{\text{links}}$ (d=2 BD / link action) 是选出 3+1 维的**充分且必要**元素
+> - 文献标准 BDG d=4 的高阶区间修正 ($C_1, C_2, C_3$) **破坏**了 4D 选择
+> - 这说明选择机制是**Hasse 图覆盖关系的密度平衡**，不是离散 Ricci 曲率
+>
+> **论文定位**: 明确声明使用的是 "link action" (d=2 BD), 并展示 full BDG 的对比作为证据，证明维度选择的物理机制是**因果连接数密度**。
 
 #### 5D Pilot 详细数据
 
@@ -213,6 +261,7 @@ BD 作用量: 惩罚因果稀疏性 → 自然选出 3+1 维
 | `prediction_a_bd_dimension.py` | 本轮 | `outputs_exploratory/prediction_a_bd_dimension/` |
 | `prediction_a_bd_lorentzian_only.py` | 本轮 | (同上目录) |
 | `prediction_a_bd_extended.py` | 本轮 | `outputs_exploratory/prediction_a_bd_extended/` |
+| `prediction_a_bdg_full_comparison.py` | 本轮 | `outputs_exploratory/prediction_a_bdg_full/` |
 
 ---
 
@@ -252,7 +301,8 @@ eb1f83e (tag: v4.0.0) release: v4.0.0 Prediction C quasi-causal upgrade for Zeno
 1. ~~**BD 作用量 + 原框架整合**~~: ✅ 已验证，纯 BD_d2 最优，几何惩罚不改善
 2. ~~**BD 有限尺寸标度**~~: ✅ N=20-68 全部 7 个尺度 4D 一致获胜
 3. ~~**BD 作用量的 d>2 推广**~~: ✅ BD_d4 已实现，但稳定性不如 BD_d2
-4. **统一论文整合**: 将 A×C 交叉发现和 BD 结果写入统一框架
+4. ~~**文献 BDG 系数验证**~~: ✅ 标准 BDG_d4 (N-C0+9C1-16C2+8C3) 全选 5D，确认 link action 是关键
+5. **统一论文整合**: 将 A×C 交叉发现、BD 结果和 link-proxy 分析写入统一框架
 
 ### 中优先级
 
