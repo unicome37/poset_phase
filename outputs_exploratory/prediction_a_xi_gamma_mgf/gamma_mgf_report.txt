@@ -1,0 +1,33 @@
+============================================================================
+GAMMA-MGF CLOSURE FOR LINK SATURATION
+============================================================================
+
+Jensen gap
+  d=4: mean relative Jensen gap = 45.5%, max = 64.2% at N=112
+  d=5: mean relative Jensen gap = 25.7%, max = 41.2% at N=112
+  Interpretation: 1-exp(-m1) systematically overestimates 1-ell because
+  the map x -> 1-exp(-x) is concave. This gap grows when the interval-volume
+  distribution becomes broader, especially in 4D at large N.
+
+Gamma-MGF accuracy
+  d=4: mean relative error = 0.89%, max = 1.88%
+  d=5: mean relative error = 0.05%, max = 0.13%
+  The Gamma closure is therefore a strong analytic approximation to ell.
+
+Core formula
+  For X=(N-2)V_A with matched mean m1 and variance sigma^2,
+  if X is approximated by a Gamma distribution then
+    ell = E[e^{-X}] ~= (1 + sigma^2/m1)^(-m1^2/sigma^2).
+
+Why cumulants fail
+  Truncating log E[e^{-X}] by low-order cumulants is unstable because X has
+  a broad, heavy right tail. In our data the variance term quickly becomes
+  comparable to or larger than the mean term, so the naive second-order
+  correction destroys monotonicity instead of improving it.
+
+Physical takeaway
+  - 1-ell is the mediated-causality occupancy probability.
+  - P_occ^(1)=1-exp(-m1) is a useful entropy surrogate, even though it
+    overestimates the true non-link fraction by Jensen's inequality.
+  - ell itself is better approximated by a Gamma-MGF closure controlled by
+    the first two moments of the Alexandrov-volume distribution.

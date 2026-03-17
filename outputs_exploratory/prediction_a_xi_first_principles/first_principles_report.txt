@@ -1,0 +1,49 @@
+==============================================================================
+FIRST-PRINCIPLES XI DERIVATION FROM MINKOWSKI LIGHT-CONE GEOMETRY
+==============================================================================
+
+Model assumptions
+  1. Pair differences are sampled exactly from the cube-sprinkle generator.
+  2. Link probability uses the flat Alexandrov volume emptiness factor:
+       P_link(Δ) ~= (1 - kappa_d * tau^d)^(N-2).
+  3. Entropy uses the mean-field closure:
+       logH/N ~= (1 - p_d) * (log N - 1).
+
+Geometric constants
+  d=2: p_d=0.49956, kappa_d=0.500000, <tau^d>_related=0.199977
+  d=3: p_d=0.29071, kappa_d=0.261799, <tau^d>_related=0.120313
+  d=4: p_d=0.17501, kappa_d=0.130900, <tau^d>_related=0.072511
+  d=5: p_d=0.10497, kappa_d=0.061685, <tau^d>_related=0.042710
+
+Theory-side scaling parameters
+  d=2: a_d=0.6343, alpha_d=0.3458, b_d=0.5004, c_d=-0.5004
+  d=3: a_d=0.2900, alpha_d=0.6258, b_d=0.7093, c_d=-0.7093
+  d=4: a_d=0.1281, alpha_d=0.8151, b_d=0.8250, c_d=-0.8250
+  d=5: a_d=0.0588, alpha_d=0.9356, b_d=0.8950, c_d=-0.8950
+
+Entropy renormalization
+  logH/N ~= A + B * (1 - p_d) * (log N - 1), with A=0.250199, B=0.860493
+  logH/N ~= B0 * (1 - p_d) * (log N - 1) + B1 * (1 - ell_d), with B0=0.935495, B1=0.173157
+
+Xi comparison (theory vs observed)
+  N= 20: Xi_min=6.95, Xi_renorm=8.08, Xi_geom=8.45, Xi_obs=7.69
+  N= 36: Xi_min=7.92, Xi_renorm=9.21, Xi_geom=9.84, Xi_obs=10.39
+  N= 52: Xi_min=8.38, Xi_renorm=9.74, Xi_geom=10.51, Xi_obs=13.60
+  N= 68: Xi_min=8.56, Xi_renorm=9.95, Xi_geom=10.79, Xi_obs=10.03
+  N= 80: Xi_min=8.59, Xi_renorm=9.98, Xi_geom=10.84, Xi_obs=11.83
+  N= 96: Xi_min=8.52, Xi_renorm=9.90, Xi_geom=10.77, Xi_obs=12.82
+  N=112: Xi_min=8.38, Xi_renorm=9.74, Xi_geom=10.59, Xi_obs=11.35
+
+  Median Xi_45 (minimal)=8.38, observed=11.35, relative_error=26.2%
+  Median Xi_45 (renormalized)=9.74, observed=11.35, relative_error=14.2%
+  Median Xi_45 (geom_mix)=10.59, observed=11.35, relative_error=6.7%
+
+Interpretation
+  - The numerator is now geometry-driven: no empirical C0/N fit is used.
+  - The denominator is controlled by p_d alone; the 4->5 entropy gap shrinks
+    because p_d already becomes small by d=4.
+  - The raw mean-field closure is too stiff; a single global renormalization
+    already absorbs most of the finite-generator mismatch.
+  - Replacing the additive intercept by link sparsity produces an even tighter
+    geometry-side closure, suggesting that the missing entropy correction tracks
+    the fraction of causal relations that are still non-link mediated.

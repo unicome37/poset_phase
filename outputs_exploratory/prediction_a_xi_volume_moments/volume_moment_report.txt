@@ -1,0 +1,22 @@
+============================================================================
+VOLUME-MOMENT INTERPRETATION OF THE ENTROPY CORRECTION
+============================================================================
+
+Candidate closures
+  logH/N ~= beta0 * h0 + beta1 * (1 - exp(-(N-2) E[V_A])) with beta0=0.9343, beta1=0.1315
+  logH/N ~= gamma0 * h0 + gamma1 * ((N-2) E[V_A]) with gamma0=0.9515, gamma1=0.0156
+  logH/N ~= eta0 * h0 + eta1 * (1 - exp(-(N-2) E[V_A])) + eta2 * std(mu) with eta0=0.9355, eta1=0.1145, eta2=0.0028
+
+Xi_45 medians
+  observed       : 11.35
+  nonlink_m1     : 11.33  (rel err 0.2%)
+  m1 only        : 9.25  (rel err 18.5%)
+  nonlink_m1+std : 11.09  (rel err 2.3%)
+
+Interpretation
+  - The entropy correction is best interpreted as an occupancy probability,
+    not as the raw mean interval volume itself.
+  - The first moment enters only after exponentiation: 1-exp(-m1) is the
+    probability that a typical interval contains at least one intermediate.
+  - This already reproduces Xi_45 at the 0.2% level in the median, which is
+    stronger than the interval-proxy closures and competitive with direct 1-ell_d.

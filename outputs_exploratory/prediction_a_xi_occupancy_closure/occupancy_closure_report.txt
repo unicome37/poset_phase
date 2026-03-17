@@ -1,0 +1,88 @@
+==============================================================================
+OCCUPANCY CLOSURE: WHY P_occ WORKS AND WHAT IT MEANS
+==============================================================================
+
+1. THE JENSEN GAP
+----------------------------------------
+By Jensen's inequality, E[exp(-mu)] >= exp(-E[mu]), so:
+  ell_mc >= ell_m1, hence P_occ = 1-ell_m1 >= 1-ell_mc
+P_occ OVERESTIMATES the non-link fraction.
+
+Jensen gap at the 4->5 boundary:
+  N= 20: d4 gap=0.0233 (17% of 1-ell), d5 gap=0.0034 (8% of 1-ell)
+  N= 36: d4 gap=0.0649 (31% of 1-ell), d5 gap=0.0110 (15% of 1-ell)
+  N= 52: d4 gap=0.1106 (41% of 1-ell), d5 gap=0.0215 (21% of 1-ell)
+  N= 68: d4 gap=0.1546 (50% of 1-ell), d5 gap=0.0340 (27% of 1-ell)
+  N= 80: d4 gap=0.1850 (55% of 1-ell), d5 gap=0.0442 (31% of 1-ell)
+  N= 96: d4 gap=0.2215 (60% of 1-ell), d5 gap=0.0586 (36% of 1-ell)
+  N=112: d4 gap=0.2533 (64% of 1-ell), d5 gap=0.0734 (41% of 1-ell)
+
+2. GAMMA-MGF CLOSED FORM
+----------------------------------------
+If mu ~ Gamma(k, theta), then E[exp(-mu)] = (1+theta)^(-k).
+Matching moments: k = m1^2/var, theta = var/m1.
+Equivalently: ell_Gamma = (1 + CV^2)^(-1/CV^2).
+
+Gamma-MGF accuracy (|ell_Gamma - ell_MC|):
+  d=2, N=20: k=1.060, theta=1.697, ell_MC=0.3768, ell_Gam=0.3492, |err|=0.0276, KS_stat=0.0592
+  d=2, N=68: k=1.060, theta=6.224, ell_MC=0.1661, ell_Gam=0.1229, |err|=0.0432, KS_stat=0.0592
+  d=2, N=112: k=1.060, theta=10.373, ell_MC=0.1156, ell_Gam=0.0759, |err|=0.0397, KS_stat=0.0592
+  d=3, N=20: k=0.639, theta=0.887, ell_MC=0.6732, ell_Gam=0.6664, |err|=0.0068, KS_stat=0.0444
+  d=3, N=68: k=0.639, theta=3.251, ell_MC=0.4238, ell_Gam=0.3964, |err|=0.0274, KS_stat=0.0444
+  d=3, N=112: k=0.639, theta=5.419, ell_MC=0.3384, ell_Gam=0.3046, |err|=0.0338, KS_stat=0.0444
+  d=4, N=20: k=0.414, theta=0.413, ell_MC=0.8675, ell_Gam=0.8667, |err|=0.0007, KS_stat=0.0271
+  d=4, N=68: k=0.414, theta=1.514, ell_MC=0.6901, ell_Gam=0.6829, |err|=0.0072, KS_stat=0.0271
+  d=4, N=112: k=0.414, theta=2.524, ell_MC=0.6060, ell_Gam=0.5939, |err|=0.0121, KS_stat=0.0271
+  d=5, N=20: k=0.273, theta=0.174, ell_MC=0.9572, ell_Gam=0.9572, |err|=0.0000, KS_stat=0.0405
+  d=5, N=68: k=0.273, theta=0.637, ell_MC=0.8747, ell_Gam=0.8741, |err|=0.0006, KS_stat=0.0405
+  d=5, N=112: k=0.273, theta=1.061, ell_MC=0.8222, ell_Gam=0.8208, |err|=0.0014, KS_stat=0.0405
+
+3. ENTROPY CLOSURE COMPARISON
+----------------------------------------
+All closures: logH/N = B0*h0 + B1*correction
+
+         P_occ: B0=0.9343, B1=0.1315, R2=0.992165, Xi_45=11.33 (obs=11.35, err=0.2%)
+    nonlink_mc: B0=0.9355, B1=0.1732, R2=0.993358, Xi_45=10.59 (obs=11.35, err=6.7%)
+         P_gam: B0=0.9360, B1=0.1643, R2=0.993309, Xi_45=10.57 (obs=11.35, err=6.9%)
+    nonlink_m2: B0=0.9626, B1=0.0557, R2=0.981089, Xi_45=8.60 (obs=11.35, err=24.2%)
+
+4. ALPHA SCAN: 1 - exp(-alpha * m1)
+----------------------------------------
+  Optimal alpha = 1.000
+  At alpha=1.0:  rel_err = 1.0%
+  At alpha*:     rel_err = 0.2%
+  Delta = 0.000
+
+5. THE OCCUPANCY PARADOX — INTERPRETATION
+----------------------------------------
+P_occ = 1 - exp(-m1) systematically overestimates the non-link
+fraction 1-ell, yet it reproduces Xi_45 at 0.2% accuracy while
+the exact geometric 1-ell gives 6.7% error.
+
+Resolution: entropy does NOT linearly track the non-link fraction.
+It tracks the MEAN INTERVAL OCCUPANCY through a saturating function.
+
+Physical mechanism:
+  - m1 = (N-2)*E[V_A] is the expected number of intermediate
+    elements in a typical causal interval.
+  - When m1 << 1 (high d): intervals are sparse, P_occ ~ m1,
+    correction is linear in interval volume.
+  - When m1 >> 1 (low d): intervals are saturated, P_occ -> 1,
+    adding more intermediates doesn't further constrain orderings.
+  - The 4->5 boundary sits in the TRANSITION zone (m1 ~ 0.2-1.0),
+    where the sigmoid curvature of P_occ matters most.
+
+Why 1-ell fails relative to P_occ:
+  - 1-ell = E[1-(1-V)^(N-2)] tracks whether intervals are occupied
+    AT ALL (binary classification: link or non-link).
+  - P_occ = 1-exp(-E[(N-2)V]) tracks the EXPECTED occupancy level
+    through the same saturating function.  The Jensen gap provides
+    a differential amplification that is larger for d=4 than d=5,
+    which happens to match the actual entropy correction better.
+  - The Gamma-MGF proves the gap is due to the heavy-tailed V_A
+    distribution (CV > 1 for d=4), not a systematic model error.
+
+Conclusion: the natural entropy correction variable is
+  P_occ^(1) = 1 - exp(-(N-2) E[V_A | causal])
+with alpha=1 being essentially optimal.  This is a first-principles
+quantity computable entirely from Minkowski geometry.

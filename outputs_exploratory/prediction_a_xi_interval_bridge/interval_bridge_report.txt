@@ -1,0 +1,30 @@
+========================================================================
+INTERVAL BRIDGE FOR THE ENTROPY CORRECTION
+========================================================================
+
+Bridge fits
+  nonlink_frac ~= a0 + a1 * (C1/C0) with a0=0.0195, a1=1.1645, R2=0.9694
+  nonlink_frac ~= b1 * (C1/C0) with b1=1.2032, R2=0.9678
+  nonlink_frac ~= c0 + c1 * (C1/C0) + c2 * sqrt(higher_frac) with c0=-0.0318, c1=0.4466, c2=0.6474, R2=0.9955
+
+Entropy closures
+  logH/N ~= beta0 * h0 + beta1 * nonlink_frac_obs with beta0=0.9378, beta1=0.1675
+  logH/N ~= gamma0 * h0 + gamma1 * (C1/C0) with gamma0=0.9387, gamma1=0.2021
+  logH/N ~= eta0 * h0 + eta1 * nonlink_hat with eta0=0.9378, eta1=0.1669
+
+Xi_45 medians
+  observed  : 11.35
+  nonlink   : 10.37  (rel err 8.6%)
+  C1/C0     : 9.97  (rel err 12.1%)
+  bridge_hat : 10.33  (rel err 9.0%)
+
+Interpretation
+  - The interval correction is not dominated by order-1 intervals alone.
+  - C1/C0 is a strong proxy for non-link fraction, but it under-resolves
+    the higher-order mediated relations that still contribute to entropy.
+  - Adding sqrt(higher_frac) dramatically improves the bridge from interval
+    hierarchy to non-link fraction, showing that the missing reservoir is
+    distributed over higher mediated layers rather than concentrated at C1.
+  - The success of 1-ell_d therefore points to a coarse but robust summary:
+    entropy is corrected by the total mediated-causality reservoir, not just
+    its first layer.
