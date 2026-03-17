@@ -3,7 +3,7 @@
 % Author: Gang Zhang
 % Date: 2026-03-16
 % ═══════════════════════════════════════════════════════════════════
-\documentclass[11pt,a4paper]{article}
+\documentclass[12pt,a4paper]{article}
 
 % ── Packages ────────────────────────────────────────────────────────
 \usepackage[utf8]{inputenc}
@@ -18,6 +18,7 @@
 \usepackage{caption}
 \usepackage{float}
 \usepackage{xcolor}
+\usepackage{setspace}
 \usepackage[numbers,sort&compress]{natbib}
 \bibliographystyle{unsrtnat}
 
@@ -32,60 +33,66 @@
 % Graphics paths for figures from both B and A manuscripts
 \graphicspath{{../manuscript_figures/}{../preA/manuscript_figures/}}
 
+% Submission mode switch:
+% \doubleblindtrue  -> anonymized manuscript for double-anonymous review
+% \doubleblindfalse -> identified manuscript for single-anonymous review
+\newif\ifdoubleblind
+\doubleblindfalse
+
 % ── Title ───────────────────────────────────────────────────────────
 \title{Geometric Phase Transitions and Emergent Dimensional Selection\\
 in Finite Causal Poset Ensembles}
 
+\ifdoubleblind
+\author{}
+\date{}
+\else
 \author{Gang Zhang\thanks{Email: unicome@gmail.com}\\
-\small Independent Researcher}
-
-\date{\today}
+\small Independent researcher}
+\date{}
+\fi
 
 % ════════════════════════════════════════════════════════════════════
 \begin{document}
+\setstretch{1.2}
 \maketitle
 
 % ── Abstract ────────────────────────────────────────────────────────
 \begin{abstract}
-The Kleitman--Rothschild (KR) theorem implies that generic finite posets are
-three-layered and maximally entropic, posing a fundamental obstacle to geometric
-phase emergence in discrete causal models. We address two open questions in this
-setting: (a)~whether a bounded geometric phase-transition threshold exists, and
-(b)~whether spacetime dimensionality can be \emph{selected} by consistency
-constraints rather than imposed as a prior.
+The Kleitman--Rothschild theorem implies that generic large finite posets are
+three-layered and maximally entropic, creating an entropy catastrophe for any
+program in which geometric causal order is expected to emerge dynamically. We
+study whether this obstruction can be overcome in finite causal-poset ensembles
+by a structurally motivated action that combines exact combinatorial entropy
+with geometric penalty terms.
 
-We construct an 8-family poset ensemble spanning Lorentzian-like structures in
-2D, 3D, and 4D, Kleitman--Rothschild posets, and several null-model families,
-and compute exact linear extension counts for $N = 10$--$44$ elements. Under a
-decomposable action combining combinatorial entropy and geometric penalty terms,
-we find that the critical coupling $\gamma_c$ at which Lorentzian 2D posets
-overtake KR structures remains $O(1)$ across all tested sizes---the first
-finite-size evidence of a bounded phase-transition threshold in this setting.
-Systematic ablation of seven geometric sub-terms identifies a minimal backbone
-of two constraints: global layer-shape balance ($g_{\mathrm{wh}}$) and
-dimensional scale consistency ($g_{\mathrm{dim}}$).
+For Lorentzian-like 2D versus Kleitman--Rothschild competition, exact linear
+extension counts on $N=10$--$44$ show that the transition threshold
+$\gamma_c$ remains $O(1)$ across the full confirmatory range. Geometric
+ablation reduces the effective backbone of the action to two indispensable
+ingredients: global layer-shape balance ($g_{\mathrm{wh}}$) and a dimension
+term. Replacing the original target-anchored dimension penalty by a
+non-target-anchored consistency penalty $g_{\mathrm{con}}$ preserves the same
+phase-transition structure while weakening the charge of circular
+dimension-fixing.
 
-Crucially, the target-anchored dimension proxy ($d = 2$) can be replaced by a
-non-target-anchored consistency penalty $g_{\mathrm{con}}$ (penalizing
-local--global dimension \emph{inconsistency} rather than deviation from a
-specific target), preserving $\gamma_c$ at the same order of magnitude. This
-replacement raises a natural prediction: if the action rewards dimensional
-\emph{consistency} rather than a specific dimension, higher-dimensional
-Lorentzian structures should dominate. Testing this prediction across
-$N = 20$--$72$ with four families, we find that 4D Lorentzian-like posets win
-92 of 98 grid configurations under the consistency action, with a margin that
-grows linearly with $N$ ($+7$ at $N = 20$ to $+57$ at $N = 72$). The result is
-robust under seed variation ($42/42$ at $N = 68$--$72$), weight perturbation
-($w_{\mathrm{con}} \in [0.3, 1.2]$), and out-of-grid validation on fresh
-parameter points ($36/40$ winner, $40/40$ pairwise vs.\ 2D). These results
-provide the first finite-size evidence that both geometric phase emergence and
-dimensional selection can arise from structural self-consistency constraints in
-discrete causal order ensembles, without dimension-specific priors.
+We then test whether an action that rewards dimensional consistency, rather
+than proximity to a preset target dimension, selects among Lorentzian
+candidates. Across $N=20$--$72$, 4D Lorentzian-like posets dominate 92 of 98
+scanned grid points under the consistency action, with positive pairwise
+margins against both 2D and 3D competitors that increase with system size. This
+pattern remains stable under seed variation and moderate weight perturbations.
+
+These results are consistent with a two-step picture: finite-size geometric
+phase emergence can occur without imposing continuum geometry directly, and
+dimensional preference can arise from non-target-anchored structural
+consistency constraints rather than from explicit dimension-specific priors.
 \end{abstract}
 
-\noindent\textbf{Keywords:} causal sets $\cdot$ posets $\cdot$ phase transition
-$\cdot$ linear extensions $\cdot$ Kleitman--Rothschild $\cdot$ dimensional
-selection $\cdot$ discrete quantum gravity
+\noindent\textbf{Keywords:} causal sets $\cdot$ posets $\cdot$ phase transition\\
+\phantom{\noindent\textbf{Keywords:} }linear extensions $\cdot$
+Kleitman--Rothschild $\cdot$ dimensional selection\\
+\phantom{\noindent\textbf{Keywords:} }discrete quantum gravity
 
 % ════════════════════════════════════════════════════════════════════
 \section{Introduction}
@@ -134,8 +141,8 @@ predict $\to$ confirm'' sequence:
 
 \begin{enumerate}[nosep]
 \item We construct an 8-family ensemble with exact entropy ($N = 10$--$44$) and
-demonstrate that $\gamma_c$ remains $O(1)$---establishing a bounded geometric
-phase transition (Section~\ref{sec:bounded}).
+find that $\gamma_c$ remains $O(1)$ across the confirmatory range
+(Section~\ref{sec:bounded}).
 \item Systematic ablation identifies a minimal backbone of two constraints
 (Section~\ref{sec:ablation}).
 \item Non-circular replacement of the target-anchored dimension term preserves
@@ -191,11 +198,12 @@ with coordinates $(t, x_1, \ldots, x_{d-1})$. The causal relation is
 \end{equation}
 where $\Delta t_{ij} = t_j - t_i$, followed by transitive closure.
 
-For the bounded phase-transition analysis (Sections~\ref{sec:bounded}--\ref{sec:replacement}),
-we use the original 7-family ensemble (\texttt{lor2d}, \texttt{lor3d},
-\texttt{kr}, \texttt{mlr}, \texttt{tp}, \texttt{int}, \texttt{abs}) with
-$N \in \{10, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44\}$ and $K = 5$ samples per
-family per $N$. For the dimensional selection analysis
+For the bounded phase-transition analysis
+(Sections~\ref{sec:bounded}--\ref{sec:replacement}), we use the original
+7-family ensemble: \texttt{lor2d}, \texttt{lor3d}, \texttt{kr},
+\texttt{mlr}, \texttt{tp}, \texttt{int}, and \texttt{abs}. The confirmatory
+exact scan covers $N \in \{10, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44\}$ with
+$K = 5$ samples per family per $N$. For the dimensional selection analysis
 (Section~\ref{sec:dimensional}), we use the 4-family subset (\texttt{lor2d},
 \texttt{lor3d}, \texttt{lor4d}, \texttt{kr}) with
 $N \in \{20, 24, 28, \ldots, 72\}$ ($14$ sizes) and $K = 8$ samples for
@@ -593,7 +601,7 @@ Neither KR nor \texttt{lor2d} ever wins at any tested weight.
 
 To test generalization beyond the original parameter grid, we conduct an
 independent validation on fresh $N$ and $\gamma$ values not used in any
-previous experiment: $N \in \{22, 26, 30, 38, 42\}$ and
+previous experiment. We use $N \in \{22, 26, 30, 38, 42\}$ and
 $\gamma \in \{0.1, 0.3, 0.5, 0.7, 0.9, 1.1, 1.5, 1.9\}$, with generator
 seed offset $100\,000$ (Table~\ref{tab:oog}).
 
@@ -625,29 +633,29 @@ in-grid pattern.
 
 \subsection{Summary of evidence}
 
-Our results establish two main findings:
+The numerical evidence supports two main findings:
 
 \begin{enumerate}[nosep]
 \item \textbf{Bounded phase transition.} Under $A_2$ with exact entropy, the
 critical coupling $\gamma_c$ for \texttt{lor2d} to overtake \texttt{kr} exists
 at all $N = 10$--$44$ and remains $O(1)$ (all values in $[0.15, 9.19]$; in
-$[0.15, 1.00]$ for $N \geq 12$). This is the first finite-size evidence of a
+$[0.15, 1.00]$ for $N \geq 12$). This provides finite-size support for a
 bounded geometric phase-transition threshold in poset ensembles.
 
 \item \textbf{Dimensional selection.} Under the consistency replacement
-($g_{\text{con}}$), \texttt{lor4d} wins systematically ($92/98$ in-grid,
+($g_{\text{con}}$), \texttt{lor4d} is the dominant winner ($92/98$ in-grid,
 $36/40$ out-of-grid, $42/42$ seed sensitivity, stable across
-$w_{\text{con}} \in [0.3, 1.2]$) with a margin that grows linearly with~$N$.
-This demonstrates that dimensional consistency constraints, without
-dimension-specific priors, naturally favor higher-dimensional Lorentzian
+$w_{\text{con}} \in [0.3, 1.2]$) with a margin that grows with~$N$.
+This indicates that dimensional consistency constraints, without
+dimension-specific priors, can favor higher-dimensional Lorentzian
 structures.
 \end{enumerate}
 
 The two results are connected: ablation identifies $g_{\text{dim}}$ as the
-backbone term whose replacement is non-trivial. The non-circular replacement
-preserves the phase transition (Finding~1) while unlocking dimensional
-selection (Finding~2). The mechanism depends on dimensional \emph{consistency},
-not dimensional \emph{identity}.
+backbone term whose replacement requires care. The non-circular replacement
+preserves the phase transition (Finding~1) while also changing the preferred
+winner in the dimensional comparison (Finding~2). The mechanism depends on
+dimensional \emph{consistency}, not dimensional \emph{identity}.
 
 \subsection{Discriminative ceiling and Tier-2 families}
 \label{sec:ceiling}
@@ -673,8 +681,8 @@ is left for future work.
 \subsection{Relation to prior work}
 
 Carlip~\cite{carlip2017} argued qualitatively that midpoint-scaling should
-disfavor KR structures; we provide the first quantitative $\gamma_c(N)$ curve
-with exact entropy and systematic ablation. Our approach complements MCMC
+disfavor KR structures; here we provide a quantitative $\gamma_c(N)$ curve
+based on exact entropy and systematic ablation. Our approach complements MCMC
 methods~\cite{loomis2018,surya2012,cunningham2020} by enabling exact computation
 and complete ablation control. Glaser~\cite{glaser2018} studied finite-size
 scaling in 2D CST, finding evidence for a continuum phase; our bounded-$\gamma_c$
@@ -692,7 +700,7 @@ advantage of decomposability is that systematic ablation can identify which
 structural constraints drive geometric phase emergence---a diagnostic capability
 that the BD action does not directly provide. Whether the BD action itself
 produces a bounded $\gamma_c$ or exhibits dimensional preference under
-consistency constraints is an important open question.
+consistency constraints remains open.
 
 \subsection{Limitations}
 
@@ -710,7 +718,7 @@ be fully excluded.
 \item \textbf{Generator dependence.} The 4D generator's properties determine its
 penalty values; different constructions might yield different results.
 \item \textbf{``Higher dimension wins'' $\neq$ ``Why $3{+}1$?''} The result
-demonstrates that consistency constraints can select a dimension, not that
+shows that consistency constraints can select a dimension, not that
 $3{+}1$ is uniquely selected. Additional constraints would be needed.
 \item \textbf{$R_{2,\text{ref}}$ calibration.} The dimension estimator retains a
 2D calibration constant ($R_{2,\text{ref}} = 0.5009$).
@@ -731,41 +739,43 @@ selection survive under a physically grounded action.
 \section{Conclusion}
 \label{sec:conclusion}
 
-We have presented the first finite-size evidence for two results in finite
-causal poset ensembles:
+We have studied two related questions in finite causal poset ensembles:
 
 \begin{enumerate}[nosep]
 \item A bounded geometric phase-transition threshold $\gamma_c$ under exact
 entropy, with $\gamma_c \in [0.15, 1.00]$ for $N \geq 12$ across
 $N = 10$--$44$.
-\item Systematic 4D Lorentzian dominance under non-target-anchored consistency
+\item Predominantly 4D Lorentzian outcomes under non-target-anchored consistency
 constraints ($92/98$ in-grid, $36/40$ out-of-grid, $42/42$ seed-robust),
-with a margin growing linearly with $N$.
+with margins that increase across the tested range.
 \end{enumerate}
 
 Both results trace to a common mechanism: ablation identifies a minimal
 two-term backbone ($g_{\text{wh}} + g_{\text{dim}}$), and replacing the
 target-anchored $g_{\text{dim}}$ with the consistency-based $g_{\text{con}}$
-simultaneously preserves the phase transition and unlocks dimensional selection.
-These findings demonstrate that geometric phase emergence and dimensional
-preference can arise from structural self-consistency constraints in discrete
-causal order ensembles, without requiring dimension-specific priors.
+preserves the phase transition while changing the dimensional ordering. Within
+the present finite ensembles, these results support the view that geometric
+phase emergence and dimensional preference can arise from structural
+self-consistency constraints in discrete causal-order models without requiring
+dimension-specific priors.
 
 % ════════════════════════════════════════════════════════════════════
-\section*{Acknowledgments}
+\ifdoubleblind
+\section*{Data Availability}
 
-\textbf{AI Assistance Statement}: This work was conducted in collaboration with
-large language model assistants (Claude, Anthropic). The AI contributed to
-experimental design, Python code implementation, data analysis, and manuscript
-drafting. All scientific decisions, theoretical motivations, and final
-interpretations were made by the human author, who takes full responsibility for
-the content.
+Code, configuration files, and output tables used in this study are archived
+and will be provided to the editors and reviewers in anonymized form upon
+request during peer review.
 
-\section*{Code and Data Availability}
+\else
+\section*{Data Availability}
 
 All code, configuration files, and output data are available at:
-\url{https://github.com/unicome37/poset_phase}.
-Archived version: \url{https://doi.org/10.5281/zenodo.18980657}.
+\href{https://github.com/unicome37/poset_phase}{GitHub repository}
+
+Archived version:
+\href{https://doi.org/10.5281/zenodo.18980657}{Zenodo archive (DOI: 10.5281/zenodo.18980657)}
+\fi
 
 % ── References ──────────────────────────────────────────────────────
 \begin{thebibliography}{16}
