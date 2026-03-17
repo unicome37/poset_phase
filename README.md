@@ -26,10 +26,10 @@ This repository accompanies three manuscripts:
    - Preprint: [DOI:10.5281/zenodo.19048324](https://doi.org/10.5281/zenodo.19048324)
    - 4D Lorentzian unconditional dominance under consistency actions (N=20–72); seed-robust 100% win rate
 
-3. **Prediction C**: "Hierarchy Depth Observables Predict Combinatorial Entropy in Finite Causal Posets: A Three-Tier Correlational Study"
-   - Manuscript: `preC/MANUSCRIPT_PredictionC_Full.md`
+3. **Prediction C** (v2 — quasi-causal upgrade): "Hierarchy Depth Predicts Combinatorial Entropy in Finite Causal Posets: From Correlational Evidence to Quasi-Causal Intervention"
+   - Manuscript: `preC/MANUSCRIPT_PredictionC_Full.md` (1,020 lines) / PDF: `preC/MANUSCRIPT_PredictionC_v2.pdf` (43 pages)
    - Preprint: [DOI:10.5281/zenodo.19048405](https://doi.org/10.5281/zenodo.19048405)
-   - Three-tier validation: HII–entropy correlation r = −0.834 (Tier 2, 46 matched pairs); Simpson's Paradox diagnosed and resolved
+   - 9-experiment quasi-causal evidence tower: Fisher z correction, intervention (d=1.05), placebo control (d=1.40–1.83), reverse intervention (d=2.68), dose-response, edge density universality, N-scaling (∝N⁰·⁷⁰), analytical bound, large-N SIS (N≤36)
 
 ## Key Results
 
@@ -49,17 +49,23 @@ This repository accompanies three manuscripts:
 
 6. **Seed robustness**: At N=72 across 3 independent generator seeds, 4D posets win 100% under both consistency variants (21/21), vs 43% under original target-anchored action.
 
-### Prediction C — Hierarchy Depth Predicts Entropy
+### Prediction C — Hierarchy Depth Predicts Entropy (v2: Quasi-Causal)
 
-7. **Negative correlation at fixed N**: The Hierarchy Integration Index (HII) — a 5-component composite z-score of depth observables — correlates negatively with log H at fixed N: partial r = −0.578 (Tier 1, 8 families, 320 samples).
+7. **Negative correlation at fixed N**: The Hierarchy Integration Index (HII) correlates negatively with log H at fixed N: Fisher z within-N |r| = 0.35–0.54 (CI excludes 0). Simpson's Paradox diagnosed and resolved.
 
-8. **Strong matched-pair signal**: Lor2D–MLR matched-pair r(ΔHII, Δlog H) = −0.834 (46 pairs, N=30–56), stable across three filter stringencies (variation < 0.005).
+8. **Strong matched-pair signal**: Lor2D–MLR matched-pair r(ΔHII, Δlog H) = −0.834 (46 pairs, N=30–56), stable across three filter stringencies.
 
-9. **Simpson's Paradox diagnosed**: Naïve cross-N r = +0.336 reverses to −0.578 after controlling for N, establishing N as the dominant sign-determining confound.
+9. **Quasi-causal intervention** (NEW in v4.0.0): Single-edge split intervention yields Cohen's d = 1.05 (p < 10⁻³²); placebo-controlled same-layer vs cross-layer design achieves d = 1.40–1.83 (p < 10⁻¹³³).
 
-10. **Coarse-graining linkage**: layer_count predicts CG switch rate at r = −0.874 (Tier 3, 92 samples), extending the association chain to identity stability (classifier-contingent).
+10. **Reverse intervention**: Edge removal → layer merge → entropy increase, d = 2.68 with 100% directional consistency.
 
-11. **Component decomposition**: `layer_count` and `mean_layer_gap` carry most of the signal; full HII never exceeds its best constituent.
+11. **Dose-response & universality**: k-family dose-response (k=2→8) all slopes negative (p < 10⁻²⁹); edge density sweep p=0.05→1.0 shows no phase transition (all slopes < 0).
+
+12. **N-scaling power law**: Effect strength |slope| ∝ N⁰·⁷⁰ — the hierarchy–entropy relationship strengthens with system size.
+
+13. **Analytical bound**: For complete layered posets, log H = k·log(m!), strictly decreasing in layer count — validated to 10⁻¹⁵ precision.
+
+14. **Large-N SIS validation**: Sequential Importance Sampling paired-seed design extends intervention tests to N=16–36, all Cohen's d = 0.69–1.29 (p < 10⁻⁵).
 
 ## Installation
 
@@ -110,7 +116,7 @@ python noncyclic_dim_replacement_gamma_c.py --config config_noncyclic_dim_replac
 python benchmark_exact_timing.py --config config_exact_timing.yaml
 ```
 
-### Prediction C — Three-tier HII–entropy analysis
+### Prediction C — Three-tier HII–entropy analysis + quasi-causal intervention
 
 ```bash
 # Tier 1: All-family partial correlation (N=10–16)
@@ -124,6 +130,17 @@ python prediction_c_switch_enhancement_scan.py --config config_prediction_c_tier
 
 # Simpson's Paradox analysis
 python _simpson_analysis.py
+
+# --- Quasi-causal experiments (NEW in v4.0.0) ---
+python prediction_c_stratified_regression.py      # Fisher z within-N correction
+python prediction_c_intervention.py                # Single-edge split intervention
+python prediction_c_placebo_intervention.py        # Placebo-controlled design
+python prediction_c_dose_response.py               # k-family dose-response
+python prediction_c_reverse_intervention.py        # Reverse: edge removal → merge
+python prediction_c_analytical_bound.py            # Analytical lower bound theorem
+python prediction_c_edge_density_phase.py          # Edge density universality
+python prediction_c_n_scaling.py                   # N-scaling power law
+python prediction_c_large_n_intervention.py        # Large-N SIS (N=16–36)
 ```
 
 ### Prediction B/A/C bridge analysis
@@ -168,6 +185,15 @@ python prediction_bac_bridge.py --config config_prediction_bac_bridge.yaml
 | `prediction_c_pairwise_validation.py` | Tier 2 matched-pair Δ-analysis |
 | `prediction_c_pooled_regression.py` | Pooled regression analysis |
 | `prediction_c_bronze_matched_validation.py` | Bronze-level matched validation |
+| `prediction_c_stratified_regression.py` | Fisher z within-N stratified regression (NEW v4.0) |
+| `prediction_c_intervention.py` | Single-edge split intervention (NEW v4.0) |
+| `prediction_c_dose_response.py` | k-family dose-response analysis (NEW v4.0) |
+| `prediction_c_placebo_intervention.py` | Placebo-controlled same-layer vs cross-layer (NEW v4.0) |
+| `prediction_c_analytical_bound.py` | Complete layered poset analytical theorem (NEW v4.0) |
+| `prediction_c_reverse_intervention.py` | Edge removal → merge → entropy increase (NEW v4.0) |
+| `prediction_c_edge_density_phase.py` | Edge density p=0.05→1.0 universality sweep (NEW v4.0) |
+| `prediction_c_n_scaling.py` | N-scaling power law analysis (NEW v4.0) |
+| `prediction_c_large_n_intervention.py` | SIS paired-seed large-N intervention N=16–36 (NEW v4.0) |
 | `prediction_c_switch_enhancement_scan.py` | Tier 3 CG switch enhancement scan |
 | `_simpson_analysis.py` | Simpson's Paradox diagnosis and resolution |
 | `augment_prediction_c_features.py` | Feature augmentation for C analysis |
@@ -209,6 +235,15 @@ Results are stratified into two evidence tiers:
   - `prediction_c_comprehensive/` — Prediction C Tier 1 all-family results
   - `prediction_c_pairwise_validation_nearwall_moderate/` — Prediction C Tier 2 (46 matched pairs)
   - `prediction_c_tier3_extended/` — Prediction C Tier 3 CG stability (92 samples)
+  - `prediction_c_stratified_regression/` — Fisher z within-N regression (v4.0)
+  - `prediction_c_intervention/` — Single-edge split intervention (v4.0)
+  - `prediction_c_dose_response/` — k-family dose-response (v4.0)
+  - `prediction_c_placebo_intervention/` — Placebo-controlled intervention (v4.0)
+  - `prediction_c_analytical_bound/` — Analytical lower bound theorem (v4.0)
+  - `prediction_c_reverse_intervention/` — Reverse intervention (v4.0)
+  - `prediction_c_edge_density_phase/` — Edge density phase diagram (v4.0)
+  - `prediction_c_n_scaling/` — N-scaling power law (v4.0)
+  - `prediction_c_large_n_intervention/` — Large-N SIS intervention N=16–36 (v4.0)
   - `frozen_exploratory_submodel_{52,56}_moderate/` — Near-wall duel data
   - `matched_residual_freedom_check_nearwall_moderate/` — Residual metrics
   - `mlr_survivor_matched_lor2d_nearwall_moderate/` — MLR survivors for matching
@@ -266,12 +301,13 @@ If you use this code, please cite the software and the relevant paper(s):
 }
 
 @article{zhang2026predC,
-  title   = {Hierarchy Depth Observables Predict Combinatorial Entropy in Finite
-             Causal Posets: A Three-Tier Correlational Study},
+  title   = {Hierarchy Depth Predicts Combinatorial Entropy in Finite Causal
+             Posets: From Correlational Evidence to Quasi-Causal Intervention},
   author  = {Zhang, Gang},
   journal = {Entropy},
   year    = {2026},
-  note    = {Submitted}
+  note    = {Submitted. 9-experiment evidence tower: intervention, placebo,
+             dose-response, analytical bound, large-N SIS (N{\leq}36)}
 }
 ```
 
