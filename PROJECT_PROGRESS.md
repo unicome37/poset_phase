@@ -1,7 +1,7 @@
 # Poset Phase 项目工作记录与进度追踪
 
-> **最后更新**: 2026-03-17  
-> **Git HEAD**: `964f1f8` → 待更新 (main)  
+> **最后更新**: 2026-03-18  
+> **Git HEAD**: `b34b8be` (main)  
 > **GitHub**: `github.com/unicome37/poset_phase`  
 > **版本**: v4.0.0 (Zenodo 已发布)
 
@@ -63,6 +63,8 @@ $$\text{Score} = -\beta \cdot \log H(\text{poset}) + \gamma \cdot \text{Penalty}
 | `prediction_a_bd_lorentzian_only.py` | BD 结果 Lorentzian-only 最终分析 | 维度级联: 5D→4D→3D→2D |
 | `prediction_a_bd_extended.py` | **扩展 BD: d=4区间 + 混合 + N=60,68** | **4D plateau 在 N=20-68 全票稳定!** |
 | `prediction_a_bdg_full_comparison.py` | **文献 BDG 系数 vs link-proxy 对比** | **link_d2 选4D; 标准BDG_d4 全选5D — 机制是链接密度!** |
+| `prediction_a_bdg_component_figure.py` | **BDG 组件诊断图** (stacked bar + winner heatmap) | 可视化 C0/C1/C2/C3 对各变体的贡献，供论文使用 |
+| `prediction_a_generator_robustness.py` | **生成器鲁棒性测试** (独立种子 + 因果钻石) | **机制跨生成器普适: cube 7/7, indep-seed 6/7, diamond 4/7** |
 
 #### ★ 突破性发现: BD 作用量天然选出 3+1 维
 
@@ -137,6 +139,36 @@ BDG_d4 中的 $+9C_1$ 项巨幅放大低维度的 order-1 区间:
 > - 这说明选择机制是**Hasse 图覆盖关系的密度平衡**，不是离散 Ricci 曲率
 >
 > **论文定位**: 明确声明使用的是 "link action" (d=2 BD), 并展示 full BDG 的对比作为证据，证明维度选择的物理机制是**因果连接数密度**。
+
+#### ★★★ 生成器鲁棒性验证 (b34b8be)
+
+**问题**: 4D 选择窗口是否依赖于特定的撒点几何或种子家族？
+
+**测试方案**: 三种独立生成器:
+1. **原始立方体撒点** (seed 980000) — 基线
+2. **独立种子立方体** (seed 1234567) — 排除种子依赖
+3. **Alexandrov 集 (因果钻石) 撒点** (seed 7770000) — 排除几何依赖
+
+**结果 (λ=7)**:
+
+| 生成器 | N=20 | N=28 | N=36 | N=44 | N=52 | N=60 | N=68 | 4D 计数 |
+|--------|------|------|------|------|------|------|------|--------|
+| 原始立方体 | 4D | 4D | 4D | 4D | 4D | 4D | 4D | **7/7 ★** |
+| 独立种子 | 3D | 4D | 4D | 4D | 4D | 4D | 4D | **6/7** |
+| 因果钻石 | 3D | 3D | 4D | 4D | 4D | 4D | 5D | **4/7** |
+
+**5D 因果稀疏度诊断 (N=52)**:
+
+| 度量 | 立方体 5D | 钻石 5D | 比值 |
+|------|----------|---------|------|
+| C₀ (链接数) | 123.8 | 41.2 | 3.0× 更稀疏 |
+| log H | 129.3 | 144.7 | 12% 更多熵 |
+| S_link/N | −3.76 | −0.59 | 6.4× 更弱惩罚 |
+
+**核心结论**:
+> 维度选择窗口在参数空间不是普适常数，但在**机制空间是普适的**。
+> 不同几何通过改变因果稀疏度来调制窗口位置，但链接密度竞争机制本身——及其对 d=4 的偏好——在所有测试的生成器中持续存在。
+> 因果链: 钻石几何 → 更稀疏 5D → 更少链接 → 更弱惩罚 → 窗口向更大 λ 漂移。
 
 #### 5D Pilot 详细数据
 
@@ -262,12 +294,20 @@ BD 作用量: 惩罚因果稀疏性 → 自然选出 3+1 维
 | `prediction_a_bd_lorentzian_only.py` | 本轮 | (同上目录) |
 | `prediction_a_bd_extended.py` | 本轮 | `outputs_exploratory/prediction_a_bd_extended/` |
 | `prediction_a_bdg_full_comparison.py` | 本轮 | `outputs_exploratory/prediction_a_bdg_full/` |
+| `prediction_a_bdg_component_figure.py` | 本轮 | `outputs_exploratory/prediction_a_bdg_component_figure/` |
+| `prediction_a_generator_robustness.py` | 本轮 | `outputs_exploratory/prediction_a_generator_robustness/` |
+| `PredictionA_LinkAction_Paper_v1.md` | 本轮 | (论文草稿, 根目录) |
 
 ---
 
 ## 六、Git 提交历史 (本轮)
 
 ```
+b34b8be feat: generator robustness test — cube indep-seed + causal diamond sprinkle
+9eac932 docs: Prediction A paper draft v1 — Link Action Selects 3+1 Dimensions
+58501cb feat: BDG component breakdown figures — stacked bar + winner heatmap
+6514e95 feat: full BDG coefficient comparison — link-proxy selects 4D, standard BDG_d4 selects 5D
+964f1f8 feat: BD extended analysis final cleanup
 e4d237d feat: extended BD analysis — d=4 intervals + hybrid + finite-size scaling to N=68
 a8e79c7 feat: Benincasa-Dowker action dimension selection experiment
 878d8db feat: cross-dimensional causal diagnostics (Prediction AC link)
@@ -302,18 +342,21 @@ eb1f83e (tag: v4.0.0) release: v4.0.0 Prediction C quasi-causal upgrade for Zeno
 2. ~~**BD 有限尺寸标度**~~: ✅ N=20-68 全部 7 个尺度 4D 一致获胜
 3. ~~**BD 作用量的 d>2 推广**~~: ✅ BD_d4 已实现，但稳定性不如 BD_d2
 4. ~~**文献 BDG 系数验证**~~: ✅ 标准 BDG_d4 (N-C0+9C1-16C2+8C3) 全选 5D，确认 link action 是关键
-5. **统一论文整合**: 将 A×C 交叉发现、BD 结果和 link-proxy 分析写入统一框架
+5. ~~**生成器鲁棒性**~~: ✅ 三种生成器 (cube/indep-seed/diamond) 均保持 4D 选择，窗口漂移可由因果稀疏度定量解释
+6. ~~**论文草稿 v1**~~: ✅ `PredictionA_LinkAction_Paper_v1.md` — 含 BDG 对比 + 鲁棒性分析 + 机制普适性论述
+7. **无量纲控制参数 Ξ**: 计算 Ξ_d(N,geom) ≈ Δ(link penalty per element) / Δ(entropy per element)，验证 4D 赢的阈值是否跨生成器一致
+8. **论文 v2 完善**: 加入 Ξ 分析、完善 figures、准备提交
 
 ### 中优先级
 
-5. **6D/7D 测试**: 验证 BD 是否也能抑制 6D+
-6. **Myrheim-Meyer 维度估计量**: 作为 BD 的替代或补充
-7. **Prediction B 论文更新**: 加入 N=56 γ_c=2.08 数据
+9. **6D/7D 测试**: 验证 BD 是否也能抑制 6D+
+10. **Myrheim-Meyer 维度估计量**: 作为 BD 的替代或补充
+11. **Prediction B 论文更新**: 加入 N=56 γ_c=2.08 数据
 
 ### 探索性
 
-8. **BD + consistency penalty 混合**: 是否能在更窄的 λ 窗口锁定 4D？
-9. **因果连通度作为 order parameter**: Prediction B 的 γ 相变是否与 BD 的维度选择有关联？
+12. **BD + consistency penalty 混合**: 是否能在更窄的 λ 窗口锁定 4D？
+13. **因果连通度作为 order parameter**: Prediction B 的 γ 相变是否与 BD 的维度选择有关联？
 
 ---
 
