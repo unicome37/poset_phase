@@ -143,6 +143,24 @@ def generate_lorentzian_like_4d(n: int, seed: int | None = None) -> Poset:
     return Poset(transitive_closure(adj))
 
 
+def generate_lorentzian_like_5d(n: int, seed: int | None = None) -> Poset:
+    """5D Lorentzian-like poset: 1 time + 4 spatial dimensions."""
+    rng = np.random.default_rng(seed)
+    t = rng.random(n)
+    x = rng.random(n)
+    y = rng.random(n)
+    z = rng.random(n)
+    w = rng.random(n)
+
+    dt = t[None, :] - t[:, None]
+    dx2 = (x[None, :] - x[:, None]) ** 2
+    dy2 = (y[None, :] - y[:, None]) ** 2
+    dz2 = (z[None, :] - z[:, None]) ** 2
+    dw2 = (w[None, :] - w[:, None]) ** 2
+    adj = (dt > 0.0) & ((dt * dt) >= (dx2 + dy2 + dz2 + dw2))
+    return Poset(transitive_closure(adj))
+
+
 def generate_interval_order(
     n: int,
     mean_length: float = 0.3,
