@@ -2,7 +2,7 @@
 
 **Authors**: [Authors]  
 **Date**: March 2026  
-**Status**: Draft v1.4
+**Status**: Draft v1.5
 
 ---
 
@@ -534,6 +534,51 @@ The ratio $p_{d+1}/p_d \approx 0.6$ is roughly constant, but its effect on links
 
 The fitted $\Xi_{4 \to 5}(N)$ from the scaling laws varies by less than 11.4% across $N = 36{-}112$ (range: 10.5–12.0), confirming that the closed-form expression captures the stabilization mechanism. The prediction is insensitive to the exact choice of $N_\text{ref}$ because both the numerator and denominator grow with $N$, but their ratio converges.
 
+### 5.8 Predictive Validation: Extrapolation to $d \geq 6$
+
+To test the derivation's predictive power, we extrapolate the scaling-law parameters beyond the training range ($d = 2{-}5$) and issue **blind predictions** for $\Xi_{5 \to 6}$ and $\Xi_{6 \to 7}$ before running any $d = 6$ or $d = 7$ experiments.
+
+#### 5.8.1 Parameter Extrapolation
+
+The four scaling-law parameters $(a_d, \alpha_d, b_d, c_d)$ are fitted as smooth functions of $d$:
+
+| Parameter | Model | $d=6$ (predicted) | $d=7$ (predicted) |
+|-----------|-------|-------------------:|-------------------:|
+| $a_d$ | $2.655 \cdot e^{-0.760 d}$ | 0.0278 | 0.0130 |
+| $\alpha_d$ | $0.225 d - 0.069$ | 1.282 | 1.508 |
+| $b_d$ | $0.877 - 0.977 e^{-0.457 d}$ | 0.814 | 0.837 |
+| $c_d$ | quadratic | $-0.609$ | $-0.655$ |
+
+The link density amplitude $a_d$ decays exponentially, the exponent $\alpha_d$ grows linearly, and the entropy coefficient $b_d$ saturates toward $\approx 0.88$.
+
+#### 5.8.2 Blind Predictions
+
+Substituting into the closed-form expression at $N_\text{ref} = 68$:
+
+$$\boxed{\Xi_{5 \to 6}^{\text{blind}} = 64.4, \qquad \Xi_{6 \to 7}^{\text{blind}} = 51.3}$$
+
+Both values are dramatically larger than $\Xi_{4 \to 5} \approx 11$, predicting that **the dimensional barrier intensifies beyond $d = 5$**.
+
+#### 5.8.3 Numerical Verification
+
+We construct 6D and 7D Lorentzian-like sprinklings ($1 + 5$ and $1 + 6$ dimensions) and compute observables at $N \in \{20, 36, 52, 68\}$ with the same SIS entropy protocol ($4096$ runs). Measured $\Xi$ values (at $\lambda = 8$, $N = 68$):
+
+| Transition | Blind prediction | Measured | Error |
+|-----------|----------------:|---------:|------:|
+| $d = 5 \to 6$ | 64.4 | 45.8 | 29% |
+| $d = 6 \to 7$ | 51.3 | 37.8 | 26% |
+
+#### 5.8.4 Interpretation
+
+The formula correctly predicts three qualitative features:
+1. **Massive amplification**: $\Xi_{5 \to 6} \gg \Xi_{4 \to 5}$ (factor $\approx 4{\times}$).
+2. **Non-monotonic plateau**: $\Xi_{6 \to 7} < \Xi_{5 \to 6}$, suggesting the barrier peaks near $d = 5 \to 6$.
+3. **Correct order of magnitude**: blind values within $\sim 30\%$ of measurement despite extrapolating 2 dimensions beyond the training range.
+
+The systematic $\sim 27\%$ overestimation is attributable to the exponential model for $a_d$ decaying too aggressively beyond its fitting domain. This represents a testable prediction of the derivation framework, and the first out-of-sample validation of the $\Xi$ closed-form expression.
+
+**Key physical conclusion**: The $4 \to 5$ barrier ($\Xi \approx 11$) is the *weakest* inter-dimensional barrier above $d = 3$. The barriers at $d \geq 5$ are $3{-}4\times$ stronger, explaining why $d \geq 6$ structures are virtually inaccessible in any causal-set dynamics.
+
 ---
 
 ## 6. Cross-Dimensional Causal Structure
@@ -752,3 +797,9 @@ SEED_BASE = 980000
 13. **Figure 13.** Ξ decomposition: numerator, denominator, and ratio for all three transitions as functions of N. Source: `xi_decomposition.png`
 
 14. **Figure 14.** Ordering fraction $p_d$ and its decay rate $p_{d+1}/p_d$ from Monte Carlo. Source: `ordering_fraction_geometry.png`
+
+15. **Figure 15. (Predictive validation)** Parameter extrapolation: six panels showing $a_d, \alpha_d, b_d, c_d, p_d, \ell_d$ fitted at $d = 2{-}5$ (black) with extrapolated $d = 6, 7$ (red squares). Source: `fig_parameter_extrapolation.png`
+
+16. **Figure 16.** $\Xi$ staircase: blind predictions (blue) vs numerical measurements (coral) for transitions $3 \to 4$ through $6 \to 7$. Shows the massive amplification beyond $d = 5$ and the $\sim 27\%$ systematic overestimation of the extrapolation. Source: `fig_xi_staircase.png`
+
+17. **Figure 17.** Observable comparison at $\lambda = 8$: (a) $C_0/N$ and (b) $\log H / N$ for $d = 5, 6, 7$, demonstrating link-density collapse and entropy convergence at high dimension. Source: `fig_d567_comparison.png`

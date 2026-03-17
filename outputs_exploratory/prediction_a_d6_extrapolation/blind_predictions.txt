@@ -1,0 +1,18 @@
+Blind predictions generated at 2026-03-17 21:19:47
+Based on d=2..5 scaling-law fits
+
+a_model: a_d = 2.6553 * exp(-0.7597 * d)
+alpha_model: alpha_d = 0.2253*d + (-0.0693)
+b_model: b_d = 0.8768 - 0.9766*exp(-0.4571*d)
+c_model: c_d = 0.0021*d^2 + (-0.0735)*d + (-0.2433)
+p_model: p_d ~ geometric (ratio=0.6010)
+l_model: l_d = 1 - 2.9353*exp(-0.6987*d)
+
+Extrapolated parameters:
+  d=6: a=0.027836 alpha=1.2824 b=0.8139 c=-0.6086 p=0.0655 l=0.9556
+  d=7: a=0.013022 alpha=1.5077 b=0.8370 c=-0.6547 p=0.0394 l=0.9779
+
+BLIND PREDICTIONS:
+  Xi_4->5 = 11.7494
+  Xi_5->6 = 64.3882
+  Xi_6->7 = 51.2492

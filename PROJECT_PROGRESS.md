@@ -71,6 +71,7 @@ $$\text{Score} = -\beta \cdot \log H(\text{poset}) + \gamma \cdot \text{Penalty}
 | `prediction_a_large_n_figures.py` | **大 N 闭环图表** (热力图, Ξ 稳定性, 链接密度交叉) | 3 张出版级 PNG/PDF |
 | `prediction_a_unification.py` | **统一测试: link density ↔ geometric consistency** | **链接密度与 d_order 弱相关 (r=-0.27), 但间隙结构揭示共同机制** |
 | `prediction_a_xi_derivation.py` | **Ξ 解析推导** (标度律拟合 + MC序分数 + 闭合公式) | **★★ 预测 Ξ₄→₅=11.8, 实测 11.3 — 根因: 熵饱和 + 链接密度间隙持续** |
+| `prediction_a_d6_extrapolation.py` | **d≥6 盲预测 + 数值验证** (6D/7D 生成器, 标度律外推) | **★★ 盲预测 Ξ₅→₆=64.4 实测 45.8 (29%), Ξ₆→₇=51.3 实测 37.8 (26%) — d≥5 屏障急剧增强** |
 
 #### ★ 突破性发现: BD 作用量天然选出 3+1 维
 

@@ -161,6 +161,48 @@ def generate_lorentzian_like_5d(n: int, seed: int | None = None) -> Poset:
     return Poset(transitive_closure(adj))
 
 
+def generate_lorentzian_like_6d(n: int, seed: int | None = None) -> Poset:
+    """6D Lorentzian-like poset: 1 time + 5 spatial dimensions."""
+    rng = np.random.default_rng(seed)
+    t = rng.random(n)
+    x = rng.random(n)
+    y = rng.random(n)
+    z = rng.random(n)
+    w = rng.random(n)
+    v = rng.random(n)
+
+    dt = t[None, :] - t[:, None]
+    dx2 = (x[None, :] - x[:, None]) ** 2
+    dy2 = (y[None, :] - y[:, None]) ** 2
+    dz2 = (z[None, :] - z[:, None]) ** 2
+    dw2 = (w[None, :] - w[:, None]) ** 2
+    dv2 = (v[None, :] - v[:, None]) ** 2
+    adj = (dt > 0.0) & ((dt * dt) >= (dx2 + dy2 + dz2 + dw2 + dv2))
+    return Poset(transitive_closure(adj))
+
+
+def generate_lorentzian_like_7d(n: int, seed: int | None = None) -> Poset:
+    """7D Lorentzian-like poset: 1 time + 6 spatial dimensions."""
+    rng = np.random.default_rng(seed)
+    t = rng.random(n)
+    x = rng.random(n)
+    y = rng.random(n)
+    z = rng.random(n)
+    w = rng.random(n)
+    v = rng.random(n)
+    u = rng.random(n)
+
+    dt = t[None, :] - t[:, None]
+    dx2 = (x[None, :] - x[:, None]) ** 2
+    dy2 = (y[None, :] - y[:, None]) ** 2
+    dz2 = (z[None, :] - z[:, None]) ** 2
+    dw2 = (w[None, :] - w[:, None]) ** 2
+    dv2 = (v[None, :] - v[:, None]) ** 2
+    du2 = (u[None, :] - u[:, None]) ** 2
+    adj = (dt > 0.0) & ((dt * dt) >= (dx2 + dy2 + dz2 + dw2 + dv2 + du2))
+    return Poset(transitive_closure(adj))
+
+
 def generate_interval_order(
     n: int,
     mean_length: float = 0.3,
