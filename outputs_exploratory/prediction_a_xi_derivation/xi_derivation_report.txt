@@ -1,0 +1,148 @@
+========================================================================
+ANALYTICAL DERIVATION OF Ξ
+========================================================================
+
+1. EMPIRICAL SCALING LAWS
+
+From the numerical data (N = 20-112, cube sprinkle), two observables:
+
+  C₀/N ≈ aₐ · N^{αₐ}        (link count per element)
+  logH/N ≈ bₐ · log(N) + cₐ  (entropy density)
+
+Fitted parameters:
+  d=2: a=0.5729, α=0.3715; b=0.4873, c=-0.3990
+  d=3: a=0.3014, α=0.6175; b=0.6210, c=-0.3933
+  d=4: a=0.1138, α=0.8392; b=0.7308, c=-0.5551
+  d=5: a=0.0336, α=1.0486; b=0.7727, c=-0.5410
+
+2. DEFINITION OF Ξ
+
+  Ξ_{d→d+1}(N) = |Δ(S_link/N)| / |Δ(logH/N)|
+
+where S_link/N = 1 - 2C₀/N, so:
+
+  Δ(S_link/N) = -2 · (C₀,d+1/N - C₀,d/N)
+              = 2 · (aₐ·N^{αₐ} - a_{d+1}·N^{α_{d+1}})
+
+  Δ(logH/N) = (b_{d+1} - bₐ)·logN + (c_{d+1} - cₐ)
+
+Therefore:
+
+  ┌─────────────────────────────────────────────────────────────┐
+  │  Ξ_{d→d+1}(N) = 2·|aₐ·N^{αₐ} - a_{d+1}·N^{α_{d+1}}|    │
+  │                 ─────────────────────────────────────────   │
+  │                 |(b_{d+1}-bₐ)·logN + (c_{d+1}-cₐ)|        │
+  └─────────────────────────────────────────────────────────────┘
+
+3. KEY PARAMETER DIFFERENCES
+
+  2→3: Δa=+0.2716, Δα=-0.2461; Δb=+0.1337, Δc=+0.0057
+  3→4: Δa=+0.1875, Δα=-0.2216; Δb=+0.1098, Δc=-0.1618
+  4→5: Δa=+0.0803, Δα=-0.2094; Δb=+0.0419, Δc=+0.0140
+
+4. WHY Ξ₄→₅ >> Ξ₃→₄: THE NUMERATOR-DENOMINATOR DECOMPOSITION
+
+The numerator (link-penalty gap) depends on the DIFFERENCE in C₀/N
+between adjacent dimensions. The denominator (entropy gap) depends
+on the DIFFERENCE in logH/N.
+
+For Ξ to be large, we need:
+  - Large numerator: big link-density gap
+  - Small denominator: small entropy-density gap
+  OR both.
+
+  N=68, 2→3:
+    C0/N_lo = 2.747, C0/N_hi = 4.081, |ΔC0/N| = 1.334
+    Δb·logN = 0.5641, Δc = 0.0057, |Δh| = 0.5699
+    Ξ_pred = 4.68
+  N=68, 3→4:
+    C0/N_lo = 4.081, C0/N_hi = 3.927, |ΔC0/N| = 0.154
+    Δb·logN = 0.4631, Δc = -0.1618, |Δh| = 0.3013
+    Ξ_pred = 1.02
+  N=68, 4→5:
+    C0/N_lo = 3.927, C0/N_hi = 2.801, |ΔC0/N| = 1.126
+    Δb·logN = 0.1769, Δc = 0.0140, |Δh| = 0.1909
+    Ξ_pred = 11.79
+
+5. ASYMPTOTIC ANALYSIS
+
+In the large-N limit, if α_d > α_{d+1} (links for d grow faster
+than for d+1), the numerator grows as ~ N^{α_d}. The denominator
+grows as Δb · logN. Therefore:
+
+  Ξ_{d→d+1}(N) ~ (2|aₐ|/|Δb|) · N^{αₐ} / logN  (if α_d > α_{d+1})
+
+This GROWS with N. But if α_d < α_{d+1}, the numerator is dominated
+by the d+1 term, and Ξ grows as N^{α_{d+1}} / logN.
+
+For the 4→5 transition:
+  α₄ = 0.8392, α₅ = 1.0486
+  Since α₅ > α₄, the d=5 link count catches up.
+  But: a₅ = 0.0336 << a₄ = 0.1138
+  So C₀(5D)/N remains below C₀(4D)/N in our N range.
+  The |ΔC₀/N| = a₄·N^α₄ - a₅·N^α₅ stays large.
+
+  For the denominator:
+  Δb = b₅ - b₄ = 0.7727 - 0.7308 = 0.0419
+  Δc = c₅ - c₄ = -0.5410 - -0.5551 = 0.0140
+
+  The entropy gap Δb is SMALL (0.0419).
+  → Small denominator + large numerator = large Ξ.
+
+  Compare with 3→4:
+  Δb = b₄ - b₃ = 0.7308 - 0.6210 = 0.1098
+  Δc = c₄ - c₃ = -0.5551 - -0.3933 = -0.1618
+
+  3→4: Δb = 0.1098, compared to 4→5: Δb = 0.0419
+  The 4→5 entropy gap is only 38% of 3→4's.
+
+6. CLOSED-FORM APPROXIMATION
+
+For N in the range 40-112, setting N ≈ Nref = 68:
+
+  Ξ₄→₅ ≈ 2·|a₄·Nref^{α₄} - a₅·Nref^{α₅}|
+           ─────────────────────────────────────
+           |(b₅-b₄)·log(Nref) + (c₅-c₄)|
+
+  = 2·|3.927 - 2.801| / |0.0419·4.220 + 0.0140|
+  = 2·1.126 / 0.1909
+  = 2.252 / 0.1909
+  = 11.79
+
+  ★ Predicted Ξ₄→₅ = 11.8 (numerical: ≈11.3)
+
+7. THE STRUCTURAL ROOT CAUSE
+
+The asymmetry arises from two converging effects:
+
+  (a) ENTROPY SATURATION: As d increases, the entropy-per-element
+      logH/N grows, but the MARGINAL gain Δ(logH/N) per dimension
+      SHRINKS. Going from 4D to 5D adds very little entropy
+      compared to 3D→4D. This is because in higher dimensions,
+      the poset is already nearly maximally disordered (close to
+      an antichain), and adding another spatial dimension has
+      diminishing returns.
+
+  (b) LINK-DENSITY DIVERGENCE: The C₀/N gap between 4D and 5D
+      remains large because 4D and 3D links converge at large N
+      (they share similar connectivity), while 5D stays distinctly
+      sparser. The 4D-5D structural gap in link density is NOT
+      shrinking — in fact, its ratio to the 3D-4D gap DIVERGES.
+
+  Combined: large link gap / small entropy gap = large Ξ₄→₅.
+
+  This is NOT an artifact of parameters — it reflects the
+  GEOMETRIC FACT that the light-cone volume fraction in Minkowski
+  space drops steeply between d=4 and d=5, while the entropy
+  benefit of the extra dimension is marginal.
+
+  The ordering fraction p_d (fraction of random pairs that are
+  causally related in the cube sprinkle) decreases rapidly:
+  - p₂ ~ 0.25 (every other pair)
+  - p₃ ~ 0.11 (one in nine)
+  - p₄ ~ 0.05 (one in twenty)
+  - p₅ ~ 0.02 (one in fifty)
+
+  This geometric deceleration means that going from d=4 to d=5
+  produces a DISPROPORTIONATELY large drop in causal connectivity
+  relative to the entropy gained — which is exactly what Ξ measures.

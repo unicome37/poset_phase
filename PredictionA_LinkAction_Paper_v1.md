@@ -2,7 +2,7 @@
 
 **Authors**: [Authors]  
 **Date**: March 2026  
-**Status**: Draft v1.3
+**Status**: Draft v1.4
 
 ---
 
@@ -450,6 +450,90 @@ The physical origin of the asymmetry:
 
 What stabilizes across generators is not $\lambda^*$ (which shifts), not the absolute values of $\overline{S}_d$ or $\overline{h}_d$ (which depend on geometry), but the **ratio $\Xi_{4 \to 5} \approx 10$** — the intrinsic structural price of entropy at the 4→5 boundary. This transforms $\Xi_{4 \to 5}$ from a diagnostic into a robust candidate for a **generator-insensitive critical ratio** of the link-density selection mechanism (see Figure 6 and Figure 7).
 
+### 5.7 Analytical Derivation of $\Xi_{4 \to 5} \approx 11$
+
+The numerical stability of $\Xi_{4 \to 5}$ motivates a semi-analytical derivation from the empirical scaling laws of the two constitutive observables.
+
+#### 5.7.1 Scaling Laws
+
+From the full numerical dataset ($N = 20{-}112$, cube sprinkle), we identify two robust scaling laws:
+
+**Link count per element** follows a power law:
+
+$$\frac{C_0}{N} \approx a_d \cdot N^{\alpha_d}$$
+
+**Entropy density** follows a log-linear law:
+
+$$\frac{\log H}{N} \approx b_d \cdot \log N + c_d$$
+
+**Table 9.** Fitted scaling parameters.
+
+| $d$ | $a_d$ | $\alpha_d$ | $b_d$ | $c_d$ | R² (C₀/N) | R² (logH/N) |
+|-----|--------|-----------|--------|--------|-----------|-------------|
+| 2 | 0.573 | 0.372 | 0.487 | −0.399 | 0.952 | 0.989 |
+| 3 | 0.301 | 0.618 | 0.621 | −0.393 | 0.986 | 0.994 |
+| 4 | 0.114 | 0.839 | 0.731 | −0.555 | 0.993 | 0.997 |
+| 5 | 0.034 | 1.049 | 0.773 | −0.541 | 0.984 | 0.998 |
+
+Note: The fitted exponents $\alpha_d$ do not precisely match the standard causal-set prediction $\alpha = 1 - 2/d$, which applies to Poisson sprinklings in Alexandrov intervals. Our cube-sprinkle geometry introduces boundary corrections.
+
+#### 5.7.2 Closed-Form Expression
+
+Substituting the scaling laws into the $\Xi$ definition:
+
+$$\boxed{\Xi_{d \to d+1}(N) = \frac{2 \left| a_d \cdot N^{\alpha_d} - a_{d+1} \cdot N^{\alpha_{d+1}} \right|}{\left| (b_{d+1} - b_d) \cdot \log N + (c_{d+1} - c_d) \right|}}$$
+
+Evaluating at $N_\text{ref} = 68$:
+
+| Transition | Numerator | Denominator | $\Xi_\text{pred}$ | $\Xi_\text{num}$ |
+|-----------|-----------|-------------|-------------------|-------------------|
+| $2 \to 3$ | 2.668 | 0.570 | 4.68 | 3.2 |
+| $3 \to 4$ | 0.308 | 0.301 | 1.02 | 2.1 |
+| $4 \to 5$ | 2.252 | 0.191 | **11.8** | **10.0** |
+
+The predicted $\Xi_{4 \to 5} = 11.8$ is within 17% of the numerical median (11.35 across all $N$; 10.0 across generators).
+
+#### 5.7.3 Root Cause Decomposition
+
+The large value of $\Xi_{4 \to 5}$ follows from two simultaneous effects:
+
+**Effect 1 — Entropy saturation.** The entropy slope gap $\Delta b = b_{d+1} - b_d$ shrinks with increasing dimension:
+
+$$\Delta b_{2 \to 3} = 0.134, \quad \Delta b_{3 \to 4} = 0.110, \quad \Delta b_{4 \to 5} = 0.042$$
+
+The 4→5 marginal entropy gain is only **38%** of the 3→4 gain. In higher dimensions, the poset approaches maximal disorder (all chains short, antichains large), and each additional spatial dimension yields diminishing entropic returns.
+
+**Effect 2 — Link-density gap persistence.** At $N = 68$:
+
+$$|C_0(4D)/N - C_0(5D)/N| = 1.126, \quad |C_0(3D)/N - C_0(4D)/N| = 0.154$$
+
+The 4→5 link-density gap is **7.3× larger** than the 3→4 gap. This reflects the structural convergence of 3D and 4D Lorentzian posets at large $N$ (their link densities approach each other), while 5D remains distinctly sparser.
+
+Combined: **large link gap / small entropy gap** = large $\Xi_{4 \to 5}$.
+
+#### 5.7.4 Geometric Root: Ordering Fraction Deceleration
+
+Monte Carlo computation of the ordering fraction $p_d$ (probability that two random points in the $d$-dimensional unit cube are causally related) reveals the geometric root:
+
+| $d$ | $p_d$ | $p_{d+1}/p_d$ | Link fraction $\ell_d$ |
+|-----|--------|---------------|----------------------|
+| 2 | 0.503 | 0.574 | 0.288 |
+| 3 | 0.289 | 0.604 | 0.593 |
+| 4 | 0.175 | 0.622 | 0.840 |
+| 5 | 0.109 | — | 0.947 |
+
+Two key features:
+
+1. The ordering fraction drops by a factor of $\sim 0.6$ with each dimension. From $d=4$ to $d=5$, only **10.9%** of random pairs are causally related (down from 17.5%).
+
+2. At $d = 5$, **94.7% of all causal relations are direct links** ($\ell_5 = 0.947$). This means 5D posets have almost no non-link causal depth — they are structurally one step from being antichains. The link action, which penalizes exactly this sparsity, extracts a maximal penalty at the 4→5 boundary.
+
+The ratio $p_{d+1}/p_d \approx 0.6$ is roughly constant, but its effect on links is non-linear: in 5D, the light cone is so thin that nearly all causal relations are already links (no room for intermediate elements). This "link saturation" at $d \geq 5$ is the geometric root of the asymmetric barrier.
+
+#### 5.7.5 Stability of the Prediction
+
+The fitted $\Xi_{4 \to 5}(N)$ from the scaling laws varies by less than 11.4% across $N = 36{-}112$ (range: 10.5–12.0), confirming that the closed-form expression captures the stabilization mechanism. The prediction is insensitive to the exact choice of $N_\text{ref}$ because both the numerator and denominator grow with $N$, but their ratio converges.
+
 ---
 
 ## 6. Cross-Dimensional Causal Structure
@@ -533,7 +617,7 @@ The convergence of $\Xi_{4 \to 5}$ across three generators and across sizes up t
 
 - Three generator types and seven sizes ($N = 20{-}112$) constitute suggestive but not exhaustive evidence. Curved-spacetime sprinkles, random causal triangulations, or sprinkles with non-trivial topology should be tested.
 - The CV of $13.9\%$ (generator) and $17.7\%$ (size) are low but not negligible; they may decrease with larger $N$ or broader generator ensembles, or may plateau at a finite value reflecting genuine $O(1)$ corrections.
-- The analytic derivation of $\Xi_{4 \to 5} \approx 10$ from first principles (e.g., from the scaling of link density $\rho_0(d, N) \sim N^{1-2/d}$ and the $N$-dependence of entropy density) remains an open and priority problem.
+- The semi-analytical derivation (Section 5.7) reproduces $\Xi_{4 \to 5} \approx 11.8$ from the empirical scaling laws of link count ($C_0/N \sim a_d N^{\alpha_d}$) and entropy ($\log H/N \sim b_d \log N + c_d$). The root cause is identified as the convergence of two effects: entropy saturation ($\Delta b_{4 \to 5}$ is 38% of $\Delta b_{3 \to 4}$) and link-density gap persistence (7.3× larger at the 4→5 boundary). A fully first-principles derivation from the geometry of Minkowski light cones (starting from the scaling of $p_d$ and $\ell_d$) remains an aspiration.
 
 We therefore adopt the term **quasi-universal** for $\Xi_{4 \to 5}$: robust across all tested generators and stable across all tested sizes, but awaiting analytic derivation and broader numerical confirmation.
 
@@ -662,3 +746,9 @@ SEED_BASE = 980000
 10. **Figure 10.** $\Xi_{4 \to 5}$ stability across $N = 20{-}112$: original sizes (circles) and extended sizes (diamonds), with median band. Source: `xi_stability_large_n.png`
 
 11. **Figure 11.** Link-density crossover: (a) Link density profiles for all dimensions vs $N$; (b) Inter-dimension gap asymmetry showing 3D–4D convergence and persistent 4D–5D gap. Source: `link_density_crossover.png`
+
+12. **Figure 12. (Master derivation figure)** Four-panel figure: (a) C₀/N power-law fits, (b) logH/N log-linear fits, (c) gap decomposition bar chart, (d) predicted vs numerical Ξ. Source: `xi_master_derivation.png`
+
+13. **Figure 13.** Ξ decomposition: numerator, denominator, and ratio for all three transitions as functions of N. Source: `xi_decomposition.png`
+
+14. **Figure 14.** Ordering fraction $p_d$ and its decay rate $p_{d+1}/p_d$ from Monte Carlo. Source: `ordering_fraction_geometry.png`
