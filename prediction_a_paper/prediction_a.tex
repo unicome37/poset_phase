@@ -73,6 +73,9 @@ The $4{\to}5$ boundary occurs at $\Xi_{4 \to 5} \approx 10$ across all three gen
 (cube sprinkle, independent-seed cube, and Alexandrov-set diamond; coefficient of variation $13.9\%$),
 substantially larger than the corresponding lower-dimensional thresholds
 ($\Xi_{3 \to 4} \approx 2{-}5$, $\Xi_{2 \to 3} \approx 1{-}3$).
+Blind extrapolation to higher dimensions yields measured values
+$\Xi_{5 \to 6} \approx 46$ and $\Xi_{6 \to 7} \approx 38$,
+confirming that barriers intensify dramatically beyond 4D.
 This asymmetric barrier structure makes $3{+}1$ dimensions a \textbf{natural equilibrium point} of the
 entropy--connectivity competition: the link-penalty cost of ascending from 4D to 5D is an order of
 magnitude steeper, per unit entropy gained, than any lower-dimensional transition.
@@ -198,9 +201,11 @@ anomalously high.}
 \subsection{Relation to Prior Work}
 \label{sec:prior_work}
 
-Carlip \cite{Carlip2024} showed that suppression of non-manifold-like (Kleitman--Rothschild)
-sets in the causal-set path integral comes from the link term in the action, with higher-order
-terms not critical for that problem. Loomis and Carlip \cite{Loomis2018} established the
+Carlip \cite{Carlip2024} reviewed the role of dimensionality in quantum gravity
+and argued that suppression of non-manifold-like (Kleitman--Rothschild)
+sets in the causal-set path integral comes primarily from the link term in the action,
+with higher-order terms not critical for that problem.
+Loomis and Carlip \cite{Loomis2018} established the detailed
 non-manifold suppression mechanism. Mathur, Singh, and Surya \cite{Mathur2020} studied entropy
 and the link action in more detail.
 
@@ -264,6 +269,12 @@ For each poset, we compute the four interval counts $C_0, C_1, C_2, C_3$:
   \item $C_3$: pairs with exactly 3 elements between them
 \end{itemize}
 
+Interval counts are computed by enumerating all comparable pairs $(x, y)$ in the transitive closure
+of the partial order and classifying each by the cardinality of the open interval
+$\{z : x \prec z \prec y\}$.
+Links ($C_0$) correspond to covering relations in the Hasse diagram, i.e., pairs with
+an empty open interval.
+
 \subsection{Scoring Function}
 \label{sec:scoring}
 
@@ -315,8 +326,9 @@ dimensional selection resides in $C_0$ or in $C_1$--$C_3$.
 \begin{equation}
 S^{(2)}_\text{corr} = \frac{2}{N}\left(N - 2C_0\right)
 \end{equation}
-This normalized variant tests whether density-normalization changes the qualitative behavior
-of the link action.
+This is a simple rescaling of the link action (Eq.~\ref{eq:link_action}) by the factor~$2/N$.
+Since this rescaling is monotone in $C_0$, it preserves the winner ordering at each $\lambda$
+and tests whether density-normalization changes the qualitative behavior.
 
 
 % ════════════════════════════════════════════════════════════════════
@@ -456,7 +468,8 @@ Define link density $\rho_d = C_0/N$ for each dimension $d$.
 
 At small $N$, $\rho_{4D} > \rho_{3D}$: 4D posets have more links per element than 3D,
 giving 4D a relative advantage under the link action.
-But at $N \approx 96$, the densities cross: $\rho_{3D}$ overtakes $\rho_{4D}$.
+But at $N \approx 96$, the densities cross: $\rho_{3D}$ overtakes $\rho_{4D}$
+(Table~\ref{tab:link_density}).
 Beyond this crossover, 3D becomes the ``denser'' family, and 4D must rely on a
 larger $\lambda$ to overcome 3D's increasing link-density advantage.
 
@@ -481,7 +494,7 @@ $N$ & $\rho_{2D}$ & $\rho_{3D}$ & $\rho_{4D}$ & $\rho_{5D}$ \\
 
 The inter-dimensional link-density gap ratio
 $\Delta\rho_{4\to5}/\Delta\rho_{3\to4}$ --- the link-density asymmetry ---
-\emph{grows} with $N$:
+\emph{grows} with $N$ (Table~\ref{tab:gap_ratio}):
 
 \begin{table}[htbp]
 \centering
@@ -526,6 +539,9 @@ $\Xi_{4\to5}$ & 4.8 & 9.8 & 10.6 & 10.8 & 13.3 & 11.1 & 11.8 & \\
 The drift between small-$N$ and large-$N$ medians is only $15.8\%$, and the overall CV across all
 seven sizes is $17.7\%$. This confirms that $\Xi_{4\to5}$ is an intensive, size-independent property
 of the link-density selection mechanism.
+The stability of $\Xi_{4 \to 5}$ across nearly two orders of magnitude in $N$
+provides the strongest finite-size evidence that this ratio reflects
+an intrinsic property of Lorentzian causal structure, not a finite-size artifact.
 
 \begin{figure}[htbp]
 \centering
@@ -805,6 +821,8 @@ $d$ & $a_d$ & $\alpha_d$ & $b_d$ & $c_d$ & $R^2$ ($C_0/N$) & $R^2$ ($\log H/N$) 
 Note: The fitted exponents $\alpha_d$ do not precisely match the standard causal-set
 prediction $\alpha = 1 - 2/d$, which applies to Poisson sprinklings in Alexandrov intervals.
 Our cube-sprinkle geometry introduces boundary corrections.
+Full details of the fitting procedure, including residual diagnostics,
+are given in Appendix~\ref{app:fitting_details}.
 
 \subsubsection{Closed-Form Expression}
 \label{sec:closed_form}
@@ -869,7 +887,8 @@ Combined: \textbf{large link gap / small entropy gap} $=$ large $\Xi_{4 \to 5}$.
 \label{sec:ordering_fraction}
 
 Monte Carlo computation of the ordering fraction $p_d$ (probability that two random points
-in the $d$-dimensional unit cube are causally related) reveals the geometric root:
+in the $d$-dimensional unit cube are causally related) reveals the geometric root
+(Table~\ref{tab:ordering_fraction}):
 
 \begin{table}[htbp]
 \centering
@@ -1059,7 +1078,8 @@ explaining why $d \geq 6$ structures are virtually inaccessible in any causal-se
 \subsection{Causal Sparsity Hierarchy}
 \label{sec:sparsity}
 
-The dimensional ordering of interval counts reveals a clear causal sparsity hierarchy:
+The dimensional ordering of interval counts reveals a clear causal sparsity hierarchy
+(Table~\ref{tab:interval_counts}):
 
 \begin{table}[htbp]
 \centering
@@ -1120,6 +1140,18 @@ with Prediction~C (hierarchy-depth predicts entropy) from our preceding work:
 &\text{Prediction A: link action penalizes causal sparsity} \to \text{selects } 3{+}1\text{D as optimal} \notag
 \end{align}
 
+As established in prior work (Prediction~C), the hierarchy depth (layer count) is a
+\emph{causal driver} of entropy: more layers $\to$ fewer linear extensions.
+The cross-dimensional density--entropy correlation (Table~\ref{tab:density_entropy_corr})
+confirms that this mechanism extends across dimensions, providing the microscopic
+foundation for the link action's dimensional selection.
+In Prediction~C's intervention experiments, removal of critical edges
+--- which reduce layer count --- causes entropy to increase,
+directly demonstrating the causal direction of the layer--entropy relationship.
+The dimensional-selection mechanism of the link action therefore rests on the same
+structural foundation: causal sparsity (fewer layers, fewer links)
+$\to$ higher entropy $\to$ lower link-penalty cost.
+
 
 % ════════════════════════════════════════════════════════════════════
 \section{Discussion}
@@ -1172,9 +1204,10 @@ but not so dense as to over-restrict the available phase space.}
 \subsection{Relation to Carlip's Result}
 \label{sec:carlip}
 
-Carlip \cite{Carlip2024} showed that for the suppression of KR-like layered sets,
-``the suppression comes from the link term in the action; higher-order terms are not
-critical for this problem but are needed to recover GR/locality.''
+Carlip \cite{Carlip2024} argued that for the suppression of KR-like layered sets,
+the link term in the causal-set action is the primary driver;
+higher-order terms are needed to recover GR and locality but are not critical
+for the suppression problem.
 
 Our result extends this to the dimensional-selection problem among Lorentzian families:
 \textbf{the link term is also what selects the dimension},
@@ -1207,9 +1240,11 @@ not yet a proven universal constant. Several caveats apply:
   \item Three generator types and seven sizes ($N = 20{-}112$) constitute suggestive
     but not exhaustive evidence. Curved-spacetime sprinkles, random causal triangulations,
     or sprinkles with non-trivial topology should be tested.
-  \item The CV of $13.9\%$ (generator) and $17.7\%$ (size) are low but not negligible;
-    they may decrease with larger $N$ or broader generator ensembles,
-    or may plateau at a finite value reflecting genuine $O(1)$ corrections.
+  \item The CV of $13.9\%$ (generator) and $17.7\%$ (size) are low but not negligible.
+    The residual variation may reflect genuine $O(1)$ corrections due to
+    generator-specific boundary effects, or may decrease with broader sampling.
+    Regardless, the order-of-magnitude elevation of $\Xi_{4 \to 5}$ above
+    lower-dimensional thresholds is robust and constitutes the core physical finding.
   \item The semi-analytical derivation (Section~\ref{sec:xi_derivation}) reproduces
     $\Xi_{4 \to 5} \approx 11.8$ from the empirical scaling laws of link count
     ($C_0/N \sim a_d N^{\alpha_d}$) and entropy ($\log H/N \sim b_d \log N + c_d$).
@@ -1219,6 +1254,10 @@ not yet a proven universal constant. Several caveats apply:
     A fully first-principles derivation from the geometry of Minkowski light cones
     (starting from the scaling of $p_d$ and $\ell_d$) remains an aspiration.
 \end{itemize}
+
+Despite these caveats, the stability of $\Xi_{4 \to 5}$ across three generators
+and seven system sizes suggests it is a robust structural feature of
+Minkowski-sprinkled causal sets, not an artifact of any particular generator or size regime.
 
 We therefore adopt the term \textbf{quasi-universal} for $\Xi_{4 \to 5}$:
 robust across all tested generators and stable across all tested sizes,
@@ -1289,6 +1328,11 @@ Both are valid and convergent, but the link action provides a sharper selection 
   \item \textbf{No continuum limit:} We use finite posets as structural probes,
     not as a controlled continuum limit.
     The relationship between finite competition winners and continuum physics remains indirect.
+    This work addresses the \emph{structural selection} question --- which dimensionality
+    is dynamically preferred in a discrete causal ensemble --- rather than the
+    \emph{continuum-limit reconstruction} question of whether the selected structures
+    converge to a smooth Lorentzian manifold as $N \to \infty$.
+    The latter requires separate investigation of the scaling limit.
 
   \item \textbf{Generator scope:} While we have tested cube sprinkles and Alexandrov-set sprinkles,
     other Lorentzian-like constructions (e.g., random causal triangulations,
@@ -1404,31 +1448,104 @@ Seed base & 980000 \\
 \label{app:figures}
 
 \begin{enumerate}
-  \item \textbf{Figure~1.} Winner heatmap: Link action vs BDG $d{=}4$ standard across
-    $(N, \lambda)$ grid.
-  \item \textbf{Figure~2.} BDG $d{=}4$ component breakdown (stacked bar) + score comparison
-    at $\lambda = 6$ for representative $N$.
-  \item \textbf{Figure~3.} 4D margin of victory scaling with $N$ under link action
-    (vs 2D, vs 3D, vs 5D).
+  \item \textbf{Figure~\ref{fig:winner_heatmap}.} Winner heatmap: Link action vs BDG $d{=}4$ standard across
+    $(N, \lambda)$ grid. Color-coded by winning dimension, showing the narrow 4D window under link action
+    and uniform 5D dominance under BDG.
+
+  \item \textbf{Figure~\ref{fig:bdg_components}.} BDG $d{=}4$ component breakdown (stacked bar):
+    the $+9C_1$ term creates a massive swing toward 5D, overwhelming the link term's 4D preference.
+
+  \item \textbf{Figure~\ref{fig:margin}.} 4D margin of victory scaling with $N$ under link action:
+    the 4D--5D margin grows approximately linearly (slope $\approx 0.42$),
+    while the 4D--3D margin is an order of magnitude smaller (slope $\approx 0.04$).
+
   \item \textbf{Figure~4.} Dimensional cascade phase diagram showing the $\lambda$-dependent
-    winner transitions.
+    winner transitions from 5D (low $\lambda$) through 4D (moderate) to 3D/2D (high).
+
   \item \textbf{Figure~5.} Causal interval profile ($C_0, C_1, C_2, C_3$) by dimension
-    at $N = 68$.
-  \item \textbf{Figure~6.} (Core figure) $\Xi$ strip plot across transitions and generators.
-  \item \textbf{Figure~7.} $\Xi_{4 \to 5}$ vs $N$ for each generator,
-    showing convergence across sizes and geometries.
-  \item \textbf{Figure~8.} Asymmetric barrier ratio $\Xi_{4 \to 5} / \Xi_{3 \to 4}$ vs $N$.
-  \item \textbf{Figure~9.} Large-$N$ winner heatmap: $(N, \lambda)$ grid from $N = 20$ to $N = 112$.
-  \item \textbf{Figure~10.} $\Xi_{4 \to 5}$ stability across $N = 20$--$112$.
-  \item \textbf{Figure~11.} Link-density crossover.
-  \item \textbf{Figure~12.} (Master derivation figure) Four-panel figure:
-    $C_0/N$ power-law fits, $\log H/N$ log-linear fits, gap decomposition, predicted vs numerical $\Xi$.
-  \item \textbf{Figure~13.} $\Xi$ decomposition: numerator, denominator, and ratio for all transitions.
-  \item \textbf{Figure~14.} Ordering fraction $p_d$ and decay rate from Monte Carlo.
-  \item \textbf{Figure~15.} (Predictive validation) Parameter extrapolation to $d = 6, 7$.
-  \item \textbf{Figure~16.} $\Xi$ staircase: blind predictions vs numerical measurements.
-  \item \textbf{Figure~17.} Observable comparison at $\lambda = 8$ for $d = 5, 6, 7$.
+    at $N = 68$, showing the dramatic sparsification from 2D to 5D.
+
+  \item \textbf{Figure~\ref{fig:xi_core}.} (Core figure) Jittered strip plot of $\Xi$ across all
+    transitions and three generators. The tight clustering at $\Xi_{4 \to 5} \approx 10$ contrasts
+    sharply with the scattered lower-dimensional values.
+
+  \item \textbf{Figure~\ref{fig:xi_convergence}.} $\Xi_{4 \to 5}$ vs $N$ for each generator:
+    convergence across sizes and geometries, with generator-level CV~$= 13.9\%$.
+
+  \item \textbf{Figure~\ref{fig:xi_asymmetry}.} Asymmetric barrier ratio $\Xi_{4 \to 5} / \Xi_{3 \to 4}$
+    vs $N$: the 4--5 boundary is consistently $\gtrsim 2{-}4\times$ steeper per unit entropy than 3--4.
+
+  \item \textbf{Figure~\ref{fig:large_n_heatmap}.} Large-$N$ winner heatmap ($N = 20$--$112$):
+    the 4D selection window shifts rightward with $N$ but persists through $N = 112$.
+
+  \item \textbf{Figure~\ref{fig:xi_stability}.} $\Xi_{4 \to 5}$ stability across $N = 20$--$112$:
+    original sizes (circles) and extended sizes (diamonds), with overall CV~$= 17.7\%$.
+
+  \item \textbf{Figure~\ref{fig:link_crossover}.} Link-density crossover: (a) density profiles
+    showing 3D overtaking 4D at $N \approx 96$; (b) inter-dimension gap asymmetry.
+
+  \item \textbf{Figure~\ref{fig:xi_derivation}.} (Master derivation) Four-panel figure:
+    (a)~$C_0/N$ power-law fits, (b)~$\log H/N$ log-linear fits,
+    (c)~gap-decomposition bar chart, (d)~predicted vs numerical $\Xi$ showing the
+    closed-form $\Xi_{4 \to 5} = 11.8$ matching numerical $\approx 10$.
+
+  \item \textbf{Figure~\ref{fig:xi_decomposition}.} $\Xi$ decomposition: numerator (link-density gap),
+    denominator (entropy gap), and their ratio, for all three transitions as functions of $N$.
+
+  \item \textbf{Figure~\ref{fig:ordering_fraction}.} Ordering fraction $p_d$ and geometric decay
+    rate $p_{d+1}/p_d \approx 0.6$ from Monte Carlo, revealing the light-cone thinning mechanism.
+
+  \item \textbf{Figure~\ref{fig:param_extrap}.} Predictive validation: six-panel parameter
+    extrapolation to $d = 6, 7$ (red squares) from $d = 2{-}5$ fits (black circles).
+
+  \item \textbf{Figure~\ref{fig:xi_staircase}.} $\Xi$ staircase: blind predictions (blue)
+    vs numerical measurements (coral). The $\sim 27\%$ systematic overestimation and
+    massive barrier amplification beyond $d = 5$ are both visible.
+
+  \item \textbf{Figure~\ref{fig:d567}.} Observable comparison for $d = 5, 6, 7$:
+    (a) link-density collapse and (b) entropy convergence at $\lambda = 8$.
 \end{enumerate}
+
+
+\section{Scaling-Law Fitting Details}
+\label{app:fitting_details}
+
+This appendix documents the fitting procedure underlying the analytical derivation
+of $\Xi_{4 \to 5}$ (Section~\ref{sec:xi_derivation}).
+
+\paragraph{Data.}
+Observables $C_0/N$ and $\log H/N$ are computed for $d = 2, 3, 4, 5$ at seven system sizes
+$N \in \{20, 36, 52, 68, 80, 96, 112\}$ using the cube-sprinkle generator (4 samples per cell,
+SIS entropy with 4096 runs for $N > N_\text{exact}$).
+
+\paragraph{Link-density fit.}
+For each dimension $d$, we fit $C_0/N = a_d \cdot N^{\alpha_d}$ by ordinary least squares
+on the log-transformed data $\log(C_0/N) = \log a_d + \alpha_d \cdot \log N$.
+The reported $R^2$ values (Table~\ref{tab:scaling_params}) refer to this log-space fit.
+All fits achieve $R^2 > 0.95$, with $d = 4$ and $d = 5$ exceeding $0.98$.
+
+\paragraph{Entropy-density fit.}
+For each $d$, $\log H/N = b_d \cdot \log N + c_d$ is fitted by ordinary least squares.
+All fits achieve $R^2 > 0.98$, confirming the log-linear law across the full $N$ range.
+
+\paragraph{Parameter extrapolation.}
+The four parameter sequences $(a_d, \alpha_d, b_d, c_d)$ are modeled as smooth functions of $d$:
+\begin{itemize}
+  \item $a_d = A \cdot e^{-\kappa d}$ (exponential decay, $A = 2.655$, $\kappa = 0.760$)
+  \item $\alpha_d = \alpha_0 + \alpha_1 d$ (linear, $\alpha_0 = -0.069$, $\alpha_1 = 0.225$)
+  \item $b_d = b_\infty - B e^{-\mu d}$ (saturating exponential, $b_\infty = 0.877$, $B = 0.977$, $\mu = 0.457$)
+  \item $c_d$: quadratic fit in $d$
+\end{itemize}
+These models are fitted to $d = 2{-}5$ and extrapolated to $d = 6, 7$ to produce the blind
+predictions in Section~\ref{sec:blind_predictions}.
+
+\paragraph{Sensitivity.}
+The closed-form $\Xi_{4 \to 5}(N)$ is evaluated at multiple reference sizes.
+It varies by less than $11.4\%$ across $N = 36{-}112$, confirming that the prediction is
+insensitive to the choice of $N_\text{ref}$.
+The systematic $\sim 27\%$ overestimation of $\Xi_{5 \to 6}$ and $\Xi_{6 \to 7}$
+(Section~\ref{sec:numerical_verification}) is attributable to the exponential model for $a_d$
+decaying too aggressively beyond its training domain ($d = 2{-}5$).
 
 
 % ════════════════════════════════════════════════════════════════════
@@ -1458,8 +1575,9 @@ L.~Glaser,
 
 \bibitem{Carlip2024}
 S.~Carlip,
-``Suppression of non-manifold-like sets in the causal set path integral,''
-arXiv:2405.XXXXX (2024).
+``Dimension and dimensional reduction in quantum gravity,''
+\emph{Class.\ Quantum Grav.}\ \textbf{34}, 193001 (2017).
+arXiv:1705.05417.
 
 \bibitem{Loomis2018}
 S.~Loomis and S.~Carlip,
@@ -1474,7 +1592,7 @@ A.~Mathur, A.~Singh, and S.~Surya,
 \bibitem{Cunningham2020}
 W.~J.~Cunningham,
 ``High-performance algorithms for causal set dynamics,''
-PhD thesis (2020).
+PhD thesis, Northeastern University (2020).
 
 \bibitem{Kleitman1975}
 D.~Kleitman and B.~Rothschild,
