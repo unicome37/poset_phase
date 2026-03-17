@@ -38,6 +38,8 @@ zenodo_release/
 
 # Compiled PDFs (regenerated from .tex sources)
 *.pdf
+# But keep the Zenodo-ready v2 manuscript PDF
+!preC/MANUSCRIPT_PredictionC_v2.pdf
 
 # Backup files
 *_old.md

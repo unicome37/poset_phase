@@ -1,6 +1,6 @@
 {
-    "title": "poset_phase v3.0.0: Action-Weighted Poset Ensemble Analysis — Prediction C: Hierarchy Depth Predicts Entropy",
-    "description": "Exact numerical framework for studying geometric phase transitions in finite partially ordered sets (posets). v3.0.0 adds Prediction C: a three-tier correlational study showing hierarchy depth observables (HII composite) predict combinatorial entropy in finite causal posets. Tier 1: all-family partial correlation r = -0.578 (320 samples). Tier 2: matched-pair r = -0.834 (46 Lor2D-MLR pairs, N=30-56), stable across three filter stringencies. Tier 3: CG stability linkage r = -0.874 (92 samples). Includes Simpson's Paradox diagnosis, component decomposition, and full manuscript (788 lines, 14 tables). Previous versions include Prediction B (bounded phase transition threshold, γ_c = O(1)) and Prediction A (4D Lorentzian dominance, N=20-72).",
+    "title": "poset_phase v4.0.0: Action-Weighted Poset Ensemble Analysis — Prediction C v2: From Correlational Evidence to Quasi-Causal Intervention",
+    "description": "Exact numerical framework for studying geometric phase transitions in finite partially ordered sets (posets). v4.0.0 upgrades Prediction C from correlational-only to quasi-causal evidence. Nine experiments form a layered evidence tower: (1) Stratified Fisher z regression (|r|~0.35-0.54); (2) Single-edge causal intervention (Cohen's d=1.05); (3) Placebo-controlled intervention across Lor2D/3D/4D (d=1.40-1.83, p<1e-133); (4) Reverse intervention with 100% directional consistency (d=2.68); (5) k-family dose-response (all slopes negative, p<1e-29); (6) Edge density universality (no phase transition at any p); (7) N-scaling law (|slope|∝N^0.70); (8) Analytical lower bound for complete layered posets (validated to 1e-15); (9) Large-N SIS extension to N=36 (d=0.69-1.29, p<1e-5 at all N). Manuscript: 1020 lines, 11915 words, 43 pages, 8 sections, 22 tables. Previous versions: v3.0.0 (Prediction C correlational), v2.1.0 (Prediction B bounded γ_c), v2.0.0 (Prediction A 4D Lorentzian dominance).",
     "upload_type": "software",
     "license": {
         "id": "MIT"
@@ -23,11 +23,15 @@
         "Lorentzian geometry",
         "hierarchy integration",
         "combinatorial entropy",
+        "causal intervention",
+        "placebo control",
+        "dose-response",
         "Simpson paradox",
         "coarse-graining",
         "matched-pair analysis",
         "dimension selection",
-        "4D Lorentzian"
+        "4D Lorentzian",
+        "sequential importance sampling"
     ],
     "access_right": "open",
     "related_identifiers": [
@@ -35,8 +39,13 @@
             "identifier": "10.5281/zenodo.18980658",
             "relation": "isNewVersionOf",
             "scheme": "doi"
+        },
+        {
+            "identifier": "10.5281/zenodo.19058350",
+            "relation": "isNewVersionOf",
+            "scheme": "doi"
         }
     ],
-    "notes": "This software accompanies three manuscripts: (1) Prediction B — 'Bounded Geometric Phase Transition in Finite Causal Posets with Exact Entropy', (2) Prediction A — 'Dimension-Agnostic Geometric Dominance in Finite Causal Posets', (3) Prediction C — 'Hierarchy Depth Observables Predict Combinatorial Entropy in Finite Causal Posets: A Three-Tier Correlational Study'. AI tools (Claude, Anthropic) assisted with code development and analysis.",
-    "version": "3.0.0"
+    "notes": "This software accompanies three manuscripts: (1) Prediction B — 'Bounded Geometric Phase Transition in Finite Causal Posets with Exact Entropy', (2) Prediction A — 'Dimension-Agnostic Geometric Dominance in Finite Causal Posets', (3) Prediction C v2 — 'Hierarchy Depth Predicts Combinatorial Entropy in Finite Causal Posets: From Correlational Evidence to Quasi-Causal Intervention' (1020 lines, 9 experiments, 43pp PDF). AI tools (Claude, Anthropic) assisted with code development and analysis.",
+    "version": "4.0.0"
 }
