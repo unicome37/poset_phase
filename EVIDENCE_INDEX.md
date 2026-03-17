@@ -88,5 +88,5 @@ constraints, `lorentzian_like_4d` systematically wins across N = 20–72.
 | Experiment runner | `experiment.py` |
 | Code DOI | 10.5281/zenodo.18980657 |
 | Paper B DOI (preprint) | 10.5281/zenodo.19048146 |
-| Paper A DOI (preprint) | 10.5281/zenodo.19048324 |
+| Paper A DOI (preprint) | 10.5281/zenodo.19068927 |
 | Paper C DOI (preprint) | 10.5281/zenodo.19048405 |

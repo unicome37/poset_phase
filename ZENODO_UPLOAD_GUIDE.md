@@ -81,7 +81,7 @@ We define a Hierarchy Integration Index (HII) — a composite z-score of five st
 
 1. **三个 DOI 已获取** ✅:
    - Pred B DOI: **10.5281/zenodo.19048146**
-   - Pred A DOI: **10.5281/zenodo.19048324**
+   - Pred A DOI: **10.5281/zenodo.19068927** (v1.5; v1 was 19048324)
    - Pred C DOI: **10.5281/zenodo.19048405**
 
 2. **更新相互引用**: Prediction A 引用 B 的 DOI，C 引用 A 和 B 的 DOI

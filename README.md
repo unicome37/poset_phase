@@ -9,7 +9,7 @@ Exact numerical framework for studying geometric phase transitions in finite par
 | Paper | DOI | Status |
 |---|---|---|
 | Prediction B | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19048146.svg)](https://doi.org/10.5281/zenodo.19048146) | Preprint |
-| Prediction A | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19048324.svg)](https://doi.org/10.5281/zenodo.19048324) | Preprint |
+| Prediction A | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19068927.svg)](https://doi.org/10.5281/zenodo.19068927) | Preprint v1.5 |
 | Prediction C | [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.19048405.svg)](https://doi.org/10.5281/zenodo.19048405) | Preprint |
 
 ## Papers
@@ -23,7 +23,7 @@ This repository accompanies three manuscripts:
 
 2. **Prediction A**: "Dimension-Agnostic Geometric Dominance in Finite Causal Posets: Higher-Dimensional Lorentzian Structures Emerge Under Consistency-Based Actions"
    - Manuscripts: `preA/manuscript.tex` / `preA/manuscript_entropy.tex`
-   - Preprint: [DOI:10.5281/zenodo.19048324](https://doi.org/10.5281/zenodo.19048324)
+   - Preprint: [DOI:10.5281/zenodo.19068927](https://doi.org/10.5281/zenodo.19068927)
    - 4D Lorentzian unconditional dominance under consistency actions (N=20–72); seed-robust 100% win rate
 
 3. **Prediction C** (v2 — quasi-causal upgrade): "Hierarchy Depth Predicts Combinatorial Entropy in Finite Causal Posets: From Correlational Evidence to Quasi-Causal Intervention"
