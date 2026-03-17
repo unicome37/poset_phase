@@ -1,7 +1,7 @@
 # Poset Phase 项目工作记录与进度追踪
 
 > **最后更新**: 2026-03-17  
-> **Git HEAD**: `a8e79c7` (main)  
+> **Git HEAD**: `e4d237d` (main)  
 > **GitHub**: `github.com/unicome37/poset_phase`  
 > **版本**: v4.0.0 (Zenodo 已发布)
 
@@ -61,6 +61,7 @@ $$\text{Score} = -\beta \cdot \log H(\text{poset}) + \gamma \cdot \text{Penalty}
 | `prediction_ac_causal_link.py` | **因果结构×熵 跨维度诊断** | density-entropy 相关: r=-0.988 to -0.997 (p<0.0001) |
 | `prediction_a_bd_dimension.py` | **BD 因果集作用量维度选择** | **λ=6-8: 4D 全票获胜!** |
 | `prediction_a_bd_lorentzian_only.py` | BD 结果 Lorentzian-only 最终分析 | 维度级联: 5D→4D→3D→2D |
+| `prediction_a_bd_extended.py` | **扩展 BD: d=4区间 + 混合 + N=60,68** | **4D plateau 在 N=20-68 全票稳定!** |
 
 #### ★ 突破性发现: BD 作用量天然选出 3+1 维
 
@@ -74,12 +75,20 @@ Lorentzian 族内部的维度选择级联:
 |--------|----------|----------|
 | 0 - 2 | 5D (全票) | 纯熵主导 → 高维永远赢 |
 | 2.5 - 3.5 | 5D→4D 过渡 | BD 开始生效 |
-| **6 - 8** | **4D 全票 (N=20-52)** | **熵 vs 因果性的平衡 = 3+1 维** |
+| **6 - 8** | **4D 全票 (N=20-68, 含 N=60/68 扩展)** | **熵 vs 因果性的平衡 = 3+1 维** |
 | 10 - 12 | 4D/3D 混合 | BD 开始过度 |
 | 15 - 25 | 3D 主导 | 因果性过强 |
 | 35+ | 2D 开始出现 | 极端因果约束 |
 
 **物理解读**: BD 因果集作用量（离散 Einstein-Hilbert）创造了"熵 vs 因果连通性"的权衡，其最优解自然落在 3+1 维。
+
+#### 扩展 BD 分析关键结论 (e4d237d)
+
+1. **有限尺寸标度**: BD_d2 λ=6-8 时 4D 在 N=20-68 全部 7 个尺度一致获胜，plateau 稳定
+2. **BD_d4 (区间计数)**: 对 5D 更激进，但在 N=68 处出现 5D "逃逸"，不如 BD_d2 稳定
+3. **BD+几何混合**: 添加几何惩罚**不改善** 4D 选择，纯 BD_d2 已是最优
+4. **区间轮廓**: 5D 几乎没有高阶区间 (C1≈0, C2≈0)；2D 有丰富的区间层级
+5. **N=68 margin**: λ=6 时 margin=0.633 (窄但稳定)；λ=8 时 margin=4.912 (宽裕)
 
 #### 5D Pilot 详细数据
 
@@ -203,12 +212,14 @@ BD 作用量: 惩罚因果稀疏性 → 自然选出 3+1 维
 | `prediction_ac_causal_link.py` | 本轮 | `outputs_exploratory/prediction_ac_causal_link/` |
 | `prediction_a_bd_dimension.py` | 本轮 | `outputs_exploratory/prediction_a_bd_dimension/` |
 | `prediction_a_bd_lorentzian_only.py` | 本轮 | (同上目录) |
+| `prediction_a_bd_extended.py` | 本轮 | `outputs_exploratory/prediction_a_bd_extended/` |
 
 ---
 
 ## 六、Git 提交历史 (本轮)
 
 ```
+e4d237d feat: extended BD analysis — d=4 intervals + hybrid + finite-size scaling to N=68
 a8e79c7 feat: Benincasa-Dowker action dimension selection experiment
 878d8db feat: cross-dimensional causal diagnostics (Prediction AC link)
 82d2729 feat: Prediction A margin OLS + 5D ceiling test; Prediction B gamma_c scaling + extended gamma scan
@@ -238,9 +249,9 @@ eb1f83e (tag: v4.0.0) release: v4.0.0 Prediction C quasi-causal upgrade for Zeno
 
 ### 高优先级
 
-1. **BD 作用量 + 原框架整合**: 将 BD 惩罚项与现有几何惩罚组合，检验是否在更自然的 λ 值获得 4D 选择
-2. **BD 有限尺寸标度**: 扩大 N 范围 (N=60,68,76...)，验证 λ=6-8 4D plateau 稳定性
-3. **BD 作用量的 d>2 推广**: Benincasa-Dowker 对更高维有修正项 (区间计数)，实现并测试
+1. ~~**BD 作用量 + 原框架整合**~~: ✅ 已验证，纯 BD_d2 最优，几何惩罚不改善
+2. ~~**BD 有限尺寸标度**~~: ✅ N=20-68 全部 7 个尺度 4D 一致获胜
+3. ~~**BD 作用量的 d>2 推广**~~: ✅ BD_d4 已实现，但稳定性不如 BD_d2
 4. **统一论文整合**: 将 A×C 交叉发现和 BD 结果写入统一框架
 
 ### 中优先级
