@@ -897,7 +897,8 @@ P_{\mathrm{occ}} = 1 - \exp\!\bigl(-(N-2)\mathbb{E}[V_A]\bigr).
 \end{equation}
 An explicit scan of the family $1-\exp(-\alpha (N-2)\mathbb{E}[V_A])$ over
 $\alpha \in [0.3,2.5]$ shows that the optimum occurs at $\alpha \approx 1$;
-the Boltzmann/Poisson occupancy form therefore requires no additional scale parameter.
+the Boltzmann/Poisson occupancy form therefore motivates setting $\alpha = 1$
+without introducing an additional scale parameter.
 
 Fitting the entropy as
 \begin{equation}
@@ -951,12 +952,12 @@ to be compared with the numerical median
 \begin{equation}
 \Xi_{4\to5}^{\mathrm{num}} = 11.35.
 \end{equation}
-The relative error is only $0.4\%$, with no free fitted parameter once
-$\varepsilon = \pi/48$ is imposed.
+The relative error is only $0.4\%$, within the geometric closure
+$\varepsilon = \pi/48$.
 We do not claim uniqueness of this closure; rather, among simple analytic
 candidates, the choice $\varepsilon = \pi/48$ provides a particularly accurate
 geometric reconstruction of the observed $4{\to}5$ barrier.
-Table~\ref{tab:xi_prediction} compares this zero-parameter closure against
+Table~\ref{tab:xi_prediction} compares this geometric closure against
 alternative entropy closures.
 
 \begin{table}[htbp]
@@ -1180,7 +1181,7 @@ plateau, and correct order of magnitude --- provides qualitative out-of-sample
 support for the scaling-law framework.
 Table~\ref{tab:blind_vs_measured} summarizes the blind predictions against measurements
 (Figures~\ref{fig:param_extrap}, \ref{fig:xi_staircase}, and~\ref{fig:d567}),
-providing the first out-of-sample validation of Eq.~\eqref{eq:xi_scaling_closed_form}.
+providing a first out-of-sample check of Eq.~\eqref{eq:xi_scaling_closed_form}.
 
 \begin{figure}[htbp]
 \centering
