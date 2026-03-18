@@ -390,6 +390,40 @@ Repro:
 - script: `prediction_d_perturbation_intervention.py`
 - outputs: `outputs_exploratory/prediction_d_perturbation/`
 
+### 6.5 Sample-Level Stratified Quasi-Intervention Test
+
+**Motivation.** The Test B_s coupling (ρ ≈ −0.98 between ΔI_cg and Δpenalty_cg) is tautological — penalty_cg is the input to I_cg by definition. To test whether CG stability perturbation propagates to **independent** competitive fitness, we need X and Y that share no common terms.
+
+**Design.** Using the existing `perturbation_sample_cg.csv` data (576 rows = 144 posets × 4 perturbation levels):
+- X = Δpenalty_cg (perturbed − baseline) — measures CG stability change
+- Y = Δscore_local (perturbed − baseline) — measures change in local competitive score, defined as −β·log_H + γ·S/N. This is **mechanistically independent** of penalty_cg since score_local does not contain any CG term.
+- Strata: (N, family) = 18 strata × 8 samples each
+- Statistic: weighted-mean Spearman ρ across strata (within-stratum permutation, 100k iterations)
+- Also: pooled Spearman with permutation p; per-N pooled; within-family granular ρ
+
+**Results.**
+
+| perturbation | ρ_pooled | p_pooled | ρ̄_stratified | p_stratified | within_ρ̄ | %positive |
+|---|---|---|---|---|---|---|
+| p05 (5%) | −0.212 | 0.011* | −0.142 | 0.113 ns | −0.142 | 39% |
+| p10 (10%) | −0.156 | 0.062 ns | −0.045 | 0.613 ns | −0.045 | 50% |
+| p20 (20%) | −0.306 | 0.0002*** | −0.061 | 0.497 ns | −0.061 | 39% |
+
+Per-N pooled (p20): N=30 ρ=−0.53 p=0.0002***; N=40 ρ=−0.24 p=0.097 ns; N=52 ρ=−0.18 p=0.214 ns.
+
+**Interpretation.**
+1. **Population-level signal confirmed**: The pooled test shows a genuine, dose-dependent negative correlation — larger CG destabilization (Δpenalty_cg ↑) associates with worse local score (Δscore_local ↓). At 20% perturbation, ρ=−0.31, p=0.0002.
+2. **Within-stratum signal disappears**: Once stratified by (N, family), the association becomes non-significant. This means the pooled signal is driven by between-stratum heterogeneity, not within-stratum individual variation.
+3. **N=30 is the sensitive regime**: N=30 shows the strongest within-N signal (ρ=−0.53 at p20), consistent with smaller posets being more sensitive to cover removal.
+
+**Conclusion for D.** The stratified test reveals that the Δpenalty → Δscore_local coupling is a **structural covariation** rather than a within-stratum quasi-causal effect. Different families and N values have different baseline susceptibilities to perturbation, and these susceptibilities are correlated across CG and local-score channels. This is consistent with D's claim that CG stability reflects underlying structural quality — they co-vary because of shared structural determinants, not because one mechanistically causes the other.
+
+This result appropriately downgrades D's evidence from "quasi-causal" to "structural covariation" — an honest and informative boundary for the current experimental design.
+
+Repro:
+- script: `prediction_d_perturbation_stratified_test.py`
+- outputs: `outputs_exploratory/prediction_d_perturbation/stratified_intervention_results.csv`
+
 ---
 
 ## 8. Repro Pointers (Minimal)

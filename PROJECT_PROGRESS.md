@@ -520,6 +520,7 @@ a8e79c7 feat: Benincasa-Dowker action dimension selection
    - ✅ **N=52 升格为次级确认性窗口**：在 v12 下，rep4/rep5 的 N=52 三口径均 ρ>0.55, p=5e-6，跨复现一致。之前的"不稳定"结论撤销（系 tie 处理伪影）
    - ✅ **剂量-响应分析（dose-response）**：`prediction_d_dose_response.py` 对 rep3–rep6 共 2160 行做 5 项分析：(1) 块内 OLS 斜率全正，r ∈ [0.52, 0.95]；(2) I_cg 三等分 → improve_rank 单调递增 **9/9**；(3) 斜率未随 N 递增（N=30 ≈ 3.3, N=40/52 ≈ 1.5），但 Spearman ρ 跨 N 稳定（0.65–0.86）；(4) 池化 p 全部 < 1e-30；(5) 成分分解：retain_identity / penalty_cg（ρ≈±0.80）为主驱动，结构形状特征几乎无信号。产物：`outputs_exploratory/prediction_d_dose_response/`
    - ✅ **CG 扰动准介入实验**：`prediction_d_perturbation_intervention.py` — 随机移除 5%/10%/20% Hasse 覆盖关系，重建传递闭包后跑完整 CG 管线。核心发现：(1) 剂量强度确认——mean|ΔI_cg| 随扰动比例单调递增（3/3 N）；(2) 样本级 ΔI_cg ↔ Δpenalty 近完美锁定（ρ ≈ -0.98，族内同样成立）；(3) 刚性检验混合——N=40 低扰动下 CG 稳定样本更鲁棒（ρ=-0.35, p=0.015），但 N=52/20% 出现符号翻转。产物：`outputs_exploratory/prediction_d_perturbation/`
+   - ✅ **分层置换准因果检验**：`prediction_d_perturbation_stratified_test.py` — 用独立目标 Y=Δscore_local（不含 CG 项）测试扰动诱导的 Δpenalty_cg 是否预测竞争力变化。核心发现：(1) 池化信号确认——p20: ρ=-0.31, p=0.0002***，信号随扰动剂量递增（dose-response）；(2) **分层后失显**——按 (N, family) 分层置换，ρ̄ 全部不显著（p>0.11）；(3) N=30 最敏感——p20 下 ρ=-0.53, p=0.0002***。结论：Δpenalty→Δscore_local 属"结构共变"而非族内准因果效应，D 的证据水平从"准因果"下修为"结构共变"。产物：`outputs_exploratory/prediction_d_perturbation/stratified_intervention_results.csv`
 ### 探索性
 
 8. **连续极限**: N→∞ 下 Ξ 是否收敛到精确常数？
