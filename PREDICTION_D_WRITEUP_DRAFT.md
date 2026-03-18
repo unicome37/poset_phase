@@ -155,8 +155,14 @@ High priority (writing):
   - Methods: CG operator, `I_cg` variants, zeta-scan, block-permutation null.
   - Results: Layer 1/2/3 with explicit boundary notes.
   - Robustness: independence via `seed_offset`, sis_runs sensitivity.
+  - Dose-response: §6.3 dose-response table (9/9 monotonic, all p < 1e-30).
 
-Medium priority (expansion):
+Medium priority (mechanistic upgrade):
+
+- **CG perturbation quasi-intervention**: Perturb poset structure, check if ΔI_cg predicts Δimprove_rank (analogous to C's Layer-Split experiment). This would upgrade D from "dose-response confirmed" to "quasi-causal".
+- **Mechanism narrative**: Articulate *why* CG stability enters the existence cost — connecting retain_identity / penalty_cg to the entropy-action competition.
+
+Lower priority (expansion):
 
 - Extend to `N=40/52` confirmatory windows with additional replications, but only after deciding what “freezing” means there (since `no_switch` can weaken).
 
@@ -227,6 +233,86 @@ Repro:
 
 - script: `prediction_d_strata_refine.py` (which imports the now-fixed `prediction_d_dynamic_validation.py`)
 - outputs: `outputs_confirmatory/prediction_d_dynamic_v12_tieaware_rep{3,4,5}_g02/`
+
+---
+
+## 6.3 Dose-Response Analysis (I_cg → improve_rank)
+
+To upgrade D from purely confirmatory (block-permutation p-values) toward a **dose-response** characterization analogous to Prediction C §4.9, we performed five complementary analyses across the four confirmatory replications (rep3–rep6), pooling 2160 rows (6 families × 10 blocks × 3 N × 4 reps × 3 variants, filtering to zeta > 0).
+
+### 6.3.1 Within-Block OLS Slope
+
+For each block of fixed `(source, N, keep, gamma, zeta, icg_variant)`, fit `improve_rank ~ β₀ + β₁ · mean_I_cg` across 6 families. Results:
+
+| variant | N=30 slope (r) | N=40 slope (r) | N=52 slope (r) |
+|---------|----------------|----------------|----------------|
+| full | +3.31 ± 1.21 (0.88) | +1.48 ± 0.32 (0.68) | +1.51 ± 0.54 (0.78) |
+| no_switch | +2.76 ± 1.03 (0.87) | +1.59 ± 0.43 (0.71) | +1.35 ± 0.40 (0.80) |
+| switch | +2.47 ± 0.89 (0.88) | +1.30 ± 0.30 (0.67) | +1.22 ± 0.53 (0.74) |
+
+All 36 per-rep slopes (12 per variant × 3) are positive. All within-block Pearson r ≥ 0.52 (median ≈ 0.78).
+
+### 6.3.2 Tertile Binning and Monotonicity
+
+Pool all reps for each (variant, N); bin families into I_cg tertiles (low / mid / high); report mean improve_rank per bin.
+
+| variant | N | low → mid → high | Monotonic? |
+|---------|---|-------------------|------------|
+| full | 30 | −1.98 → +0.74 → +1.24 | ✓ |
+| full | 40 | −0.78 → −0.18 → +0.95 | ✓ |
+| full | 52 | −1.13 → +0.34 → +0.79 | ✓ |
+| no_switch | 30 | −1.09 → +0.08 → +1.01 | ✓ |
+| no_switch | 40 | −0.73 → −0.14 → +0.86 | ✓ |
+| no_switch | 52 | −0.59 → +0.01 → +0.58 | ✓ |
+| switch | 30 | −1.41 → +0.28 → +1.14 | ✓ |
+| switch | 40 | −0.46 → −0.46 → +0.93 | ✓ |
+| switch | 52 | −0.99 → +0.29 → +0.70 | ✓ |
+
+**9/9 monotonic**. This is the direct analogue of C's dose-response table.
+
+### 6.3.3 N-Scaling
+
+Unlike Prediction C (where the k-family slope steepens monotonically with N: −0.30 → −0.53 → −0.70), the D slope does **not** steepen:
+
+| variant | d(|slope|)/dN | trend r | p |
+|---------|---------------|---------|---|
+| full | −0.079 | −0.83 | 0.38 |
+| no_switch | −0.062 | −0.91 | 0.27 |
+| switch | −0.055 | −0.87 | 0.33 |
+
+The within-block slope declines with N (N=30 slopes are roughly 2× those at N=40/52). However, the **Spearman ρ** (rank correlation, invariant to scale) is stable across N: ρ ∈ [0.65, 0.86]. The slope decline likely reflects improve_rank scale compression at larger N rather than a weakening mechanism.
+
+### 6.3.4 Component Decomposition
+
+Decomposing I_cg into its internal components and correlating each with improve_rank (pooled across reps, per N):
+
+| component | N=30 ρ | N=40 ρ | N=52 ρ | role |
+|-----------|--------|--------|--------|------|
+| retain_identity | +0.78*** | +0.70*** | +0.78*** | **primary driver** |
+| penalty_cg | −0.80*** | −0.73*** | −0.80*** | **primary driver** (inverse) |
+| sig_width_ratio | +0.26*** | +0.30*** | ns | marginal |
+| sig_height_ratio | ns | ns | +0.14* | marginal |
+| sig_comp | ns | ns | ns | — |
+| sig_d_eff | ns | ns | ns | — |
+| sig_degree_var | ns | ns | −0.19** | marginal |
+
+The dose-response is driven by the two core CG-stability modes (identity retention and penalty magnitude), not by structural shape features. This is mechanistically consistent: I_cg measures how well a family's ranking survives coarse-graining, and the two components that directly track CG fidelity are the ones predicting rank improvement.
+
+### 6.3.5 Summary
+
+| criterion | C (reference) | D (this analysis) |
+|-----------|---------------|-------------------|
+| Dose-response direction | ✓ (higher k → lower entropy) | ✓ (higher I_cg → higher improve_rank) |
+| Monotonicity | 9/9 | **9/9** |
+| All slopes significant | all p < 0.001 | **all p < 1e-30** |
+| N-steepening | ✓ (slopes steepen with N) | ✗ (slopes decline; ρ stable) |
+| Component driver | layer_count (r≈−0.82) | retain_identity / penalty_cg (ρ≈±0.80) |
+
+**Assessment**: Dose-response is confirmed with direction, monotonicity, and extreme statistical significance. The absence of N-steepening prevents a full parallel with C's strongest dose-response feature, but the stable high ρ across N (0.65–0.86) demonstrates that the relationship is not weakening — only the slope scale changes.
+
+Repro:
+- script: `prediction_d_dose_response.py`
+- outputs: `outputs_exploratory/prediction_d_dose_response/`
 
 ---
 
