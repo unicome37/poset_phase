@@ -1,10 +1,10 @@
-# Poset Phase 项目工作记录与进度追踪
+﻿# Poset Phase 项目工作记录与进度追踪
 
-> **最后更新**: 2026-03-17  
-> **Git HEAD**: `f70ff5b` (main)  
+> **最后更新**: 2026-03-18  
+> **Git HEAD**: `62bd420` (main)  
 > **GitHub**: `github.com/unicome37/poset_phase`  
 > **版本**: v4.0.0 (Zenodo 代码仓库)  
-> **论文版本**: Prediction A v1.5 (LaTeX 投稿版), Prediction C v2 (准因果版)
+> **论文版本**: Prediction A v1.5 (LaTeX 投稿版, Section 5.7 已改写为零自由参数第一性原理推导), Prediction C v2 (准因果版)
 
 ---
 
@@ -95,6 +95,14 @@ $$\text{Score} = -\beta \cdot \log H(\text{poset}) + \lambda \cdot \text{Action}
 | `prediction_a_unification.py` | 统一测试: link ↔ geometric | 机制层面统一 | 36a8f45 |
 | `prediction_a_xi_derivation.py` | **Ξ 解析推导** | **闭合公式 Ξ₄→₅=11.8** | 8c36896 |
 | `prediction_a_d6_extrapolation.py` | **d≥6 盲预测+验证** | **Ξ₅→₆=64/46, Ξ₆→₇=51/38** | afd6bfa |
+| `prediction_a_xi_first_principles.py` | **第一性原理 p_d, κ_d 推导** | **从几何恢复 a_d, α_d** | 9c5481e |
+| `prediction_a_xi_interval_bridge.py` | Interval hierarchy 桥接 | 1-ℓ_d ≈ interval 汇总, R²=0.9955 | 9c5481e |
+| `prediction_a_xi_volume_moments.py` | **体积矩占据闭合** | **P_occ: Ξ₄→₅=11.33, 误差 0.2%** | 9c5481e |
+| `prediction_a_xi_gamma_mgf.py` | Gamma-MGF ℓ_d 闭合 | ℓ_d 误差 <1.2%, 但 Ξ 仍 6.9% | 9c5481e |
+| `prediction_a_xi_occupancy_closure.py` | Jensen gap + α 扫描验证 | **α*=1.000, 无需自由参数** | 9c5481e |
+| `prediction_a_xi_closure_comparison.py` | 统一闭合总表 | 四种闭合 Ξ 误差对比 | 4ca1397 |
+| `prediction_a_xi_B0_B1_derivation.py` | **B₀/B₁ 解析推导** | **B₁+2B₀=2, ε=π/48, 零参数** | 4ca1397 |
+| `prediction_a_xi_analytic_entropy.py` | 解析熵预测 | Interval hierarchy 预测验证 | 4ca1397 |
 
 #### 发现时间线
 
@@ -152,6 +160,21 @@ $$\text{Score} = -\beta \cdot \log H(\text{poset}) + \lambda \cdot \text{Action}
 - Zenodo v1.5 发布: DOI `10.5281/zenodo.19068927`
 - 所有文件中的 DOI 引用已同步更新 (10 个文件)
 
+**Phase 9: 第一性原理推导完成 (9c5481e → 62bd420)**
+- **闵可夫斯基几何输入**: 从 cube-sprinkle 差分分布推出 $p_d$、$\kappa_d$、$\mathbb{E}[V_A]$，不依赖任何经验拟合
+- **四层逐步逼近**:
+  1. 最简 mean-field: $h \approx (1-p_d)(\ln N-1)$，Ξ₄→₅ 误差 26%
+  2. 全局重整化: $h \approx A + B(1-p_d)(\ln N-1)$，误差 14.2%
+  3. 几何混合: $h \approx B_0 h_0 + B_1(1-\ell_d)$，误差 6.7%
+  4. **占据闭合**: $h \approx 0.934 h_0 + 0.132 P_{\mathrm{occ}}$，**误差 0.2%**
+- **B₁+2B₀=2 结构约束**: 将两参数归约为单参数 $\varepsilon=1-B_0$，R² 损失 $<10^{-8}$
+- **ε=κ₄/2=π/48 解析识别**: 与 OLS 拟合仅差 0.42%，bootstrap CI 包含
+- **零自由参数闭合**:
+  $$\frac{\log H}{N} = \left(1-\frac{\pi}{48}\right)(1-p_d)(\ln N-1) + \frac{\pi}{24}\left(1-e^{-(N-2)\mathbb{E}[V_A]}\right)$$
+  给出 Ξ₄→₅=11.31，观测 11.35，误差 **0.4%**
+- **论文整合**: Section 5.7 已改写为第一性原理推导，Discussion、Summary 同步更新
+- **辅助验证**: α 扫描确认 α*=1.000，Gamma-MGF 闭合 ℓ_d 误差 <1.2%，interval bridge R²=0.9955
+
 #### 核心数据表
 
 **Ξ 跨生成器 (Table 8 of paper)**:
@@ -191,12 +214,13 @@ Overall CV = 17.7%, Small-N median = 10.21, Large-N median = 11.83
 #### 论文状态
 
 - **Markdown**: `PredictionA_LinkAction_Paper_v1.md` (806 行, v1.5)
-- **LaTeX**: `prediction_a_paper/prediction_a.tex` (31 页)
-- **PDF**: `prediction_a_paper/prediction_a.pdf` (2.18 MB)
+- **LaTeX**: `prediction_a_paper/prediction_a.tex` (~1673 行, Section 5.7 已改写为零自由参数第一性原理推导)
+- **PDF**: `prediction_a_paper/prediction_a.pdf`
 - **Zenodo 上传副本**: `prediction_a_paper/PredictionA_LinkAction_v1.5.pdf`
 - **Zenodo DOI**: `10.5281/zenodo.19068927`
 - **结构**: 8 节 + 3 附录, 22 表, 16 图, 9 参考文献
 - **标题**: "An Asymmetric Dimensional Barrier in Causal-Set Link Dynamics Selects 3+1 Dimensions"
+- **编译**: pdflatex 零错误、零未定义引用 (commit 62bd420 验证)
 
 #### 出版级图表清单 (16 张, 在 `prediction_a_paper/figures/`)
 
@@ -330,6 +354,11 @@ prediction_a_paper/
 ## 七、Git 提交历史 (Prediction A 相关)
 
 ```
+62bd420 paper: remove duplicate first-principles section, fix undefined ref
+4ca1397 feat: analytical derivation of B0=1-pi/48, B1=pi/24 (zero free parameters)
+9c5481e feat: first-principles Xi derivation  occupancy closure (0.2% error)
+46a69c5 refactor: revise Prediction A paper per DeepSeek review
+f162978 docs: comprehensive PROJECT_PROGRESS.md update
 f70ff5b docs: update Prediction A DOI to v1.5 (10.5281/zenodo.19068927)
 4c8e06d feat: LaTeX submission version of Prediction A paper (31pp, 16 figures, v1.5)
 afd6bfa feat: d>=6 blind extrapolation -- Xi_5->6=64(blind)/46(meas), Xi_6->7=51/38
@@ -378,111 +407,21 @@ a8e79c7 feat: Benincasa-Dowker action dimension selection
 8. ~~论文 v1.5 LaTeX 投稿版~~ ✅ (4c8e06d)
 9. ~~Zenodo v1.5 发布~~ ✅ (f70ff5b)
 10. ~~所有 DOI 引用更新~~ ✅ (f70ff5b)
+11. ~~Ξ 第一性原理推导 — 占据闭合 (P_occ 0.2% 误差)~~ ✅ (9c5481e)
+12. ~~B₀/B₁ 解析推导 — B₁+2B₀=2, ε=π/48 零自由参数~~ ✅ (4ca1397)
+13. ~~论文 Section 5.7 改写 — 第一性原理推导整合~~ ✅ (62bd420)
 
 ### 待做 (高优先级)
 
-1. **Ξ 第一性原理推导（实质完成）**: 已新增 `prediction_a_xi_first_principles.py`，直接从 cube-sprinkle 的差分分布与闵可夫斯基 Alexandrov 体积
-   $$V_d(\tau)=\kappa_d \tau^d,\qquad \kappa_d=\frac{\mathrm{Vol}(B_{d-1})}{2^{d-1}d}$$
-   推出：
-   - $p_d$ 几何常数：$(0.500,\,0.291,\,0.175,\,0.105)$ for $d=2,3,4,5$
-   - 链接密度理论标度参数：$a_d^{\rm theory}=(0.634,\,0.290,\,0.128,\,0.0588)$，$\alpha_d^{\rm theory}=(0.346,\,0.626,\,0.815,\,0.936)$
-   - 最简熵闭合给出 $\Xi_{4\to5}$ 中位数 $\approx 8.38$，对比数值中位数 $11.35$，相对误差约 $26\%$
-   - 加入**两参数全局重整化熵闭合**
-     $$\frac{\log H}{N}\approx A + B(1-p_d)(\log N-1),\qquad A=0.250,\ B=0.860$$
-     后，$\Xi_{4\to5}$ 中位数提升到 $\approx 9.74$，相对误差降至 **14.2%**
-   - 进一步改写成**纯几何混合熵闭合**
-     $$\frac{\log H}{N}\approx B_0(1-p_d)(\log N-1)+B_1(1-\ell_d),\qquad B_0=0.935,\ B_1=0.173$$
-     后，$\Xi_{4\to5}$ 中位数提升到 $\approx 10.59$，相对误差进一步降至 **6.7%**
-   - 新增 `prediction_a_xi_interval_bridge.py` 重算 28 个 large-$N$ 样本的 interval profile，得到桥接关系
-     $$1-\ell_d \approx 0.020 + 1.164\, (C_1/C_0), \qquad R^2=0.969,$$
-     若强制过原点则
-     $$1-\ell_d \approx 1.203\, (C_1/C_0), \qquad R^2=0.968.$$
-     说明 entropy 修正项确实对应**被中介元素分解的因果关系储量**；但只用 order-1 interval 仍不够，`C_1/C_0` 闭合的 $\Xi_{4\to5}$ 误差约 **12.1%**，而总 non-link fraction 可做到 **8.6%**（观测版）/ **6.7%**（理论 $\ell_d$ 版）。
-   - 若再加入 higher-order mediated reservoir
-     $$\sqrt{\frac{R-C_0-C_1}{R}},$$
-     则可得到更强桥接
-     $$1-\ell_d \approx -0.032 + 0.447\,(C_1/C_0) + 0.647\sqrt{\frac{R-C_0-C_1}{R}},\qquad R^2=0.9955.$$
-     这表明 `1-\ell_d` 不是单一 `C_1` 的替身，而是**全 interval hierarchy 的 coarse-grained 汇总量**。不过把该桥接量重新代回 entropy closure 时，$\Xi_{4\to5}$ 误差约 **9.0%**，仍略逊于直接使用 `1-\ell_d`。
-   - 新增 `prediction_a_xi_volume_moments.py`，从 Alexandrov 体积分布矩直接构造
-     $$m_1=(N-2)\,\mathbb{E}[V_A],\qquad P_{\rm occ}^{(1)}=1-e^{-m_1}.$$
-     若用
-     $$\frac{\log H}{N}\approx 0.934\,h_0 + 0.132\,P_{\rm occ}^{(1)}$$
-     作为 entropy closure，则
-     $$\Xi_{4\to5}^{\rm median}\approx 11.33,$$
-     相对数值中位数 $11.35$ 的误差仅 **0.2%**。相反，若直接用线性矩 `m_1` 而不做占据概率变换，误差会恶化到 **18.5%**。
-   - 已补充 `OCCUPANCY_DERIVATION_NOTE.md`，把这条结果整理成可直接并入论文正文/附录的推导说明：从
-     $$P(\mathrm{link}\mid V_A)\approx e^{-(N-2)V_A}$$
-     到
-     $$1-\ell_d \approx 1-\mathbb{E}[e^{-(N-2)V_A}] \approx 1-\exp(-(N-2)\mathbb{E}[V_A]).$$
-   - 新增 `prediction_a_xi_gamma_mgf.py`，验证三条关键结论：
-     1. **Jensen gap 巨大但有益**：`P_{\rm occ}^{(1)}` 系统性高估 `1-\ell_d`，在 `d=4, N=112` 相对高估约 **64.2%**；但作为 entropy correction 反而优于直接拟合 `1-\ell_d`。
-     2. **Cumulant 展开失效**：低阶 cumulant correction 在宽尾体积分布下不稳定，不能作为稳健闭合。
-     3. **Gamma-MGF 闭合有效**：若令 `X=(N-2)V_A` 服从同均值方差的 Gamma 近似，则
-        $$\ell_d \approx \left(1+\frac{\sigma^2}{m_1}\right)^{-m_1^2/\sigma^2},\qquad m_1=\mathbb{E}[X],\ \sigma^2=\mathrm{Var}(X).$$
-        对当前数据，`d=4` 的平均相对误差约 **0.89%**（最大 **1.88%**），`d=5` 的平均相对误差约 **0.05%**（最大 **0.13%**）。
-   - 新增 `prediction_a_xi_closure_comparison.py` 给出统一闭合总表，并扫描
-     $$P_{\rm occ}(\alpha)=1-e^{-\alpha m_1},\qquad \alpha\in[0.3,2.5].$$
-     最优区间稳定落在 `\alpha\approx1.0`；当前离散扫描最优点为 `α=1.01`，而 `α=1.00` 与其仅差千分级，支持“Boltzmann/Poisson occupancy 形式天然正确、无需新增自由参数”的判断。统一比较如下：
-     - `P_occ = 1-e^{-m_1}`: `Xi_45` median = **11.33**, error = **0.2%**
-     - `1-\ell_MC`: `Xi_45` median = **10.59**, error = **6.7%**
-     - `P_gamma = 1-\ell_\Gamma`: `Xi_45` median = **10.57**, error = **6.9%**
-     - `1-\ell_(2)` (clipped 2nd-cumulant): `Xi_45` median = **8.60**, error = **24.2%**
-   - 新增 `prediction_a_xi_B0_B1_derivation.py`，完成 `B₀,B₁` 的解析来源推导：
-     - 结构约束
-       $$B_1 + 2B_0 = 2.0001,$$
-       Bootstrap 10,000 次的 95% CI 为 `[1.973, 2.023]`，支持
-       $$B_1 = 2(1-B_0).$$
-     - 两参数模型归约为单参数模型
-       $$h = h_0 - \varepsilon (h_0 - 2P_{\rm occ}),\qquad \varepsilon = 1-B_0,$$
-       且约束带来的 `R²` 损失 `<10^{-8}`。
-     - 最优解析常数为
-       $$\varepsilon \approx \kappa_4/2 = \pi/48 = 0.06545,$$
-       与拟合值 `0.06573` 仅差 **0.42%**。
-     - 因而得到零自由参数闭合
-       $$\frac{\log H}{N} = \left(1-\frac{\pi}{48}\right)(1-p_d)(\ln N-1) + \frac{\pi}{24}\left(1-e^{-(N-2)\mathbb{E}[V_A]}\right),$$
-       给出
-       $$\Xi_{4\to5}=11.31,$$
-       对比观测 `11.35` 的误差约 **0.4%**。
-   - 新增 `prediction_a_xi_closure_comparison.py` 给出统一闭合总表，并扫描
-     $$P_{\rm occ}(\alpha)=1-e^{-\alpha m_1},\qquad \alpha\in[0.3,2.5].$$
-     最优带宽稳定落在 **$\alpha\approx1.0$** 附近；当前离散扫描最优点为 `α=1.01`，但 `α=1.00` 与其仅差千分级，支持“Boltzmann/Poisson occupancy 形式天然正确，无需新增自由参数”的判断。统一比较如下：
-     - `P_occ = 1-e^{-m_1}`: `Xi_45` median = **11.33**, error = **0.2%**
-     - `1-\ell_MC`: `Xi_45` median = **10.59**, error = **6.7%**
-     - `P_gamma = 1-\ell_\Gamma`: `Xi_45` median = **10.57**, error = **6.9%**
-     - `1-\ell_(2)` (clipped 2nd-cumulant): `Xi_45` median = **8.60**, error = **24.2%**
-   
-   结论：**link / 几何部分已经从第一性原理落地，entropy 与 link 两侧都已出现清晰的解析结构**。当前最强结果表明：
-   - entropy correction 的自然变量不是 `1-\ell_d` 本身，而是体积矩占据概率近似
-   $$1-\ell_d \approx 1-\exp\!\bigl(-(N-2)\mathbb{E}[V_A]\bigr).$$
-   - 而 `\ell_d` 本身最稳健的解析闭合是 Gamma-MGF 公式
-   $$\ell_d \approx \left(1+\frac{\sigma^2}{m_1}\right)^{-m_1^2/\sigma^2}.$$
-   这说明 $\Xi_{4\to5}$ 的大屏障可理解为：4D→5D 时，平均 Alexandrov 体积虽继续变小，但“至少出现一个中介点”的占据概率衰减得更快，导致 entropy correction 与 link saturation 同时收缩。现有四层闭合为
-   $$\frac{\log H}{N}\approx (1-p_d)(\log N-1),\qquad b_d=1-p_d,\ c_d=-(1-p_d),$$
-   以及
-   $$\frac{\log H}{N}\approx A + B(1-p_d)(\log N-1),$$
-   $$\frac{\log H}{N}\approx B_0(1-p_d)(\log N-1)+B_1(1-\ell_d),$$
-   $$\frac{\log H}{N}\approx \beta_0(1-p_d)(\log N-1)+\beta_1\!\left(1-e^{-(N-2)\mathbb{E}[V_A]}\right).$$
-   - 新增 `prediction_a_xi_occupancy_closure.py`，系统验证三项结论：
-     1. **Alpha scan 确认 α=1 恰好最优**：测试 $1-\exp(-\alpha m_1)$ 在 $\alpha\in[0.3,2.5]$ 上的最优解为 $\alpha^*=1.000$，相对误差 0.2%。无需引入任何额外自由参数。
-     2. **Gamma-MGF 精确恢复链接分数但不改善 Ξ**：$P_\Gamma = 1-\ell_\Gamma$ 的 Ξ₄→₅ 误差为 6.9%，与 exact MC 的 6.7% 几乎一致。问题在于**变量选择**而非 ℓ 精度。
-     3. **Jensen gap 的差分放大**：P_occ 对 d=4 的放大（N=112 达 64%）远大于 d=5（41%），这恰好补偿了 mean-field 对 d=4 entropy 的系统性低估。
-   
-   最终的第一性原理闭合为：
-   $$\boxed{\frac{\log H}{N} \approx 0.934\,(1-p_d)(\log N-1) + 0.132\,(1-e^{-(N-2)\mathbb{E}[V_A]})}$$
-   其中 $p_d$ 和 $\mathbb{E}[V_A]$ 均从 $d$ 维闵可夫斯基几何纯解析计算，Ξ₄→₅ 中位误差 **0.2%**。
-   
-   - 新增 `prediction_a_xi_B0_B1_derivation.py`，系统推导 $B_0$ 和 $B_1$ 的解析来源：
-     1. **$B_1 = 2(1-B_0)$ 结构约束**：$B_1 + 2B_0 = 2.0001$，精确到 4 位有效数字。Bootstrap 95% CI $[1.973, 2.023]$ 包含 2.000。这把两参数闭合归约为**单参数模型**：
-        $$h = h_0 - \varepsilon \cdot (h_0 - 2P_{\mathrm{occ}}), \qquad \varepsilon = 1-B_0$$
-        约束自由度从 2 降至 1，R² 损失 $< 10^{-8}$。
-     2. **$\varepsilon \approx \kappa_4/2 = \pi/48$**：最佳解析候选。$\pi/48 = 0.06545$ 与拟合值 $0.06573$ 仅差 **0.42%**。对应 $B_0 = 1-\pi/48 \approx 0.9346$，$B_1 = \pi/24 \approx 0.1309$。
-     3. **零自由参数的解析闭合**：
-        $$\frac{\log H}{N} = \left(1-\frac{\pi}{48}\right)(1-p_d)(\ln N-1) + \frac{\pi}{24}\left(1-e^{-(N-2)\mathbb{E}[V_A]}\right)$$
-        给出 Ξ₄→₅ = 11.31，观测 11.35，误差 **0.4%**。
-     4. **物理解释**：$\varepsilon$ 是 entropy 从"反链通道"到"占据通道"的传递率。系数 2 来自每个占据区间有**两个端点**。$\varepsilon = \kappa_4/2$ 把传递锚定到 4D Alexandrov 体积常数。
-     5. **论文正文已同步更新**：`prediction_a_paper/prediction_a.tex` 的 Section 5.7 已从“经验标度律推导”改写为“`p_d + \mathbb{E}[V_A] + P_{\mathrm{occ}} + \varepsilon=\pi/48`”的第一性原理推导；摘要式结果 `R5`、`Xi` 状态段和图注说明也已同步到零自由参数版本。
-   
-   $B_0$ 和 $B_1$ 的解析来源已完成。当前第一性原理推导链完成度：从 $d$ 维 Minkowski 几何 → $p_d, \kappa_d, \mathbb{E}[V_A]$ → 链接密度 $C_0/N$ → 占据概率 $P_{\mathrm{occ}}$ → 熵闭合（$\varepsilon = \pi/48$）→ Ξ₄→₅ 0.4% 误差。全链无自由参数。
+1. **Ξ 第一性原理推导（已完成 ✅）**: 详见 `FIRST_PRINCIPLES_XI_STATUS.md`。
+   - 推导链完整: Minkowski 几何 → $p_d, \kappa_d, \mathbb{E}[V_A]$ → $C_0/N$ → $P_{\mathrm{occ}}$ → 熵闭合 ($\varepsilon=\pi/48$) → Ξ₄→₅ 0.4% 误差
+   - 零自由参数闭合:
+     $$\frac{\log H}{N} = \left(1-\frac{\pi}{48}\right)(1-p_d)(\ln N-1) + \frac{\pi}{24}\left(1-e^{-(N-2)\mathbb{E}[V_A]}\right)$$
+   - 论文已同步: Section 5.7 改写, R5 + Discussion 更新, pdflatex 编译零错误 (62bd420)
+   - **剩余开放问题**:
+     - [ ] finite-cube boundary correction 对 d=5 的 $a_d$ 偏高
+     - [ ] $\varepsilon = \kappa_4/2$ 的严格物理推导 (当前为 numerical identification)
+     - [ ] d=6 上验证零参数闭合的 Ξ₅→₆ 精度
 2. **论文投稿**: 选择期刊 (CQG / Found. Phys. / PRD)，调整格式提交
 3. **代码仓库 v5.0.0**: 包含 d≥6 生成器 + LaTeX 论文 → Zenodo 更新
 

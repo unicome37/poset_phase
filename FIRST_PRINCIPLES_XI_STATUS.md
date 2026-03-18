@@ -1,6 +1,6 @@
 # Ξ 第一性原理推导状态
 
-更新时间：2026-03-17
+更新时间：2026-03-18
 
 ## 已完成部分
 
@@ -307,36 +307,6 @@ $$
 - relative error = `0.4%`
 
 物理解释是：每个被占据的 interval 涉及两个端点，每个端点获得 `\varepsilon` 单位的 entropy restitution，因此 occupancy channel 的总恢复量自然是 `2\varepsilon P_occ`。
-
-## Alpha scan and closure table
-
-新增脚本：`prediction_a_xi_closure_comparison.py`
-
-它统一比较四种闭合，并扫描
-
-$$P_{\mathrm{occ}}(\alpha)=1-e^{-\alpha m_1},\qquad \alpha\in[0.3,2.5].$$
-
-结果表明：
-
-- 最优区域稳定落在 `alpha ≈ 1.0`
-- 当前离散扫描最优点为 `alpha = 1.01`
-- `alpha = 1.00` 与最优点只差千分级
-
-因此可将结论表述为：**Boltzmann/Poisson occupancy 的函数形式本身就是天然正确的，不需要引入新的自由尺度参数。**
-
-统一闭合总表：
-
-| 变量 | Xi_45 median | 误差 |
-|---|---:|---:|
-| `P_occ = 1-e^{-m_1}` | 11.33 | 0.2% |
-| `1-\ell_MC` | 10.59 | 6.7% |
-| `P_gamma = 1-\ell_\Gamma` | 10.57 | 6.9% |
-| `1-\ell_(2)` (clipped cumulant) | 8.60 | 24.2% |
-
-这张表说明两件事：
-
-1. **精确恢复 `\ell` 并不自动改善 `\Xi`**。Gamma-MGF 对 `\ell_d` 极准，但其作为 entropy closure 仍不如 `P_occ`。
-2. **问题在变量选择，不在近似精度**。对 entropy 而言，“平均区间占据的饱和函数”比“non-link fraction 本身”更自然。
 
 ## 关于 cumulant 失效
 
