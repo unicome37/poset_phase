@@ -84,7 +84,7 @@ with no additional fitted parameter once the closure coefficient
 $\varepsilon = \pi/48$ is fixed.
 Blind extrapolation to higher dimensions yields measured values
 $\Xi_{5 \to 6} \approx 46$ and $\Xi_{6 \to 7} \approx 38$,
-confirming that barriers intensify dramatically beyond 4D.
+supporting the picture that barriers intensify beyond 4D.
 This asymmetric barrier structure makes $3{+}1$ dimensions a \textbf{robust finite-ensemble optimum} of the
 entropy--connectivity competition: the link-penalty cost of ascending from 4D to 5D is an order of
 magnitude steeper, per unit entropy gained, than any lower-dimensional transition.
@@ -166,7 +166,7 @@ We report five principal results, organized in order of logical dependence:
   the entropy advantage of 5D, destroying the link action's dimensional barrier
   (Section~\ref{sec:bdg_failure}).
 
-\item \textbf{The $\Xi$ parameter identifies the structural origin.}
+\item \textbf{The $\Xi$ parameter captures the dominant boundary asymmetry.}
   We define a dimensionless control variable
   $\Xi_{d \to d+1} = |\Delta \bar S| / |\Delta \bar h|$
   measuring the link-action separation per unit entropy separation.
@@ -185,10 +185,10 @@ We report five principal results, organized in order of logical dependence:
   light-cone thinning plus interval-occupancy saturation
   (Section~\ref{sec:xi_derivation}).
 
-\item \textbf{Predictive validation: $d \geq 6$ extrapolation.}
+\item \textbf{Qualitative out-of-sample support: $d \geq 6$ extrapolation.}
   Blind predictions $\Xi_{5\to6} = 64.4$ and $\Xi_{6\to7} = 51.3$
-  are confirmed by numerical measurement at $45.8$ and $37.8$ respectively
-  (errors $\sim 27\%$). Three qualitative predictions are confirmed:
+  are broadly consistent with numerical measurements at $45.8$ and $37.8$ respectively
+  (overestimation $\sim 27\%$). Three qualitative features are reproduced:
   massive amplification, non-monotonic plateau, and correct order of magnitude
   (Section~\ref{sec:d6_validation}).
 \end{enumerate}
@@ -326,7 +326,7 @@ S^{(4)} = N - C_0 + 9C_1 - 16C_2 + 8C_3
 The literature coefficients are designed for recovering the Einstein--Hilbert action in $d = 4$
 Lorentzian manifolds. The alternating signs create partial cancellations between interval orders.
 We do not interpret the failure of the standard $d{=}4$ BDG action at dimensional
-selection (Section~\\ref{sec:bdg_failure}) as a flaw of the continuum-matching construction;
+selection (Section~\ref{sec:bdg_failure}) as a flaw of the continuum-matching construction;
 rather, it indicates that finite dimensional selection and continuum curvature reconstruction
 probe different sectors of the discrete dynamics.
 
@@ -949,6 +949,9 @@ to be compared with the numerical median
 \end{equation}
 The relative error is only $0.4\%$, with no free fitted parameter once
 $\varepsilon = \pi/48$ is imposed.
+We do not claim uniqueness of this closure; rather, among simple analytic
+candidates, the choice $\varepsilon = \pi/48$ provides a particularly accurate
+geometric reconstruction of the observed $4{\to}5$ barrier.
 Table~\ref{tab:xi_prediction} compares this zero-parameter closure against
 alternative entropy closures.
 
@@ -1169,7 +1172,8 @@ The systematic $\sim 27\%$ overestimation is attributable to the exponential mod
 for $a_d$ decaying too aggressively beyond its fitting domain.
 This level of accuracy is acceptable given the extrapolation two full dimensions beyond
 the training range, and the qualitative success --- barrier amplification, non-monotonic
-plateau, and correct order of magnitude --- strongly supports the scaling-law framework.
+plateau, and correct order of magnitude --- provides qualitative out-of-sample
+support for the scaling-law framework.
 Table~\ref{tab:blind_vs_measured} summarizes the blind predictions against measurements
 (Figures~\ref{fig:param_extrap}, \ref{fig:xi_staircase}, and~\ref{fig:d567}),
 providing the first out-of-sample validation of Eq.~\eqref{eq:xi_scaling_closed_form}.
@@ -1202,7 +1206,8 @@ for $d = 5, 6, 7$, demonstrating link-density collapse and entropy convergence.}
 \textbf{Key physical conclusion}: The $4 \to 5$ barrier ($\Xi \approx 11$)
 is the \emph{weakest} inter-dimensional barrier above $d = 3$.
 The barriers at $d \geq 5$ are $3{-}4\times$ stronger,
-explaining why $d \geq 6$ structures are virtually inaccessible in any causal-set dynamics.
+suggesting that $d \geq 6$ structures are virtually inaccessible
+within the finite ensembles studied here.
 
 
 % ════════════════════════════════════════════════════════════════════
@@ -1273,7 +1278,8 @@ penalty, and the optimal balance falls at $d = 4$.
 \subsection{A Dual-Layer Picture}
 \label{sec:dual_layer}
 
-Our results suggest a dual-layer picture of causal dynamics:
+The numerical results are naturally interpreted as separating two
+functional roles of the BDG action:
 
 \paragraph{Layer~1 --- Dimensional selection (links).}
 The density of Hasse covering relations controls which dimensionality is favored.
@@ -1428,9 +1434,12 @@ studied here.
     persists at all scales --- only the bookkeeping cost of maintaining 4D
     against 3D may change.
 
-  \item \textbf{Sample size:} 4 samples per family per size provides reliable mean estimates
-    but limited statistical power for distributional statements.
-    Bootstrap confidence intervals would strengthen the result.
+  \item \textbf{Sample size:} Each observable is computed from 4 samples per
+    generator family per system size.  This yields stable mean estimates
+    (coefficient of variation $\lesssim 18\%$ across sizes for $\Xi_{4\to5}$)
+    but provides limited statistical power for distributional statements.
+    Bootstrap confidence intervals on $\Xi$, slope, and median values would
+    strengthen the quantitative conclusions and are planned for future work.
 
   \item \textbf{Coupling dependence:} The 4D window in $\lambda$-space shifts across
     generators (Section~\ref{sec:generator_robustness}).
