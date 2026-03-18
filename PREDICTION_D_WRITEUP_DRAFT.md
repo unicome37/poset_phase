@@ -543,6 +543,19 @@ Repro:
 - script: `prediction_d_continuous_residualized.py`
 - outputs: `outputs_exploratory/prediction_d_continuous_residualized/`
 
+**Lightweight replication anchor (NEW).** To ensure the within-stratum recovery is not an artifact of the full rich-feature pipeline, we added an independent minimal replication on the `n=32/stratum` perturbation table (`perturbation_sample_cg_n32.csv`) with a mechanism-independent continuous target, using only within-stratum demeaning and baseline residualization on `(pen0, score0, icg0)`.
+
+At `n_perm=10000`, stratified mean-Spearman remains significant after residualization:
+- p05: `rho_strat ≈ -0.086`, `p ≈ 0.0379`
+- p10: `rho_strat ≈ -0.100`, `p ≈ 0.0173`
+- p20: `rho_strat ≈ -0.192`, `p ≈ 1e-4`
+
+This provides a low-assumption reproducibility anchor: the within-stratum signal recovery is visible even without reconstructing the full 11-confounder rich model.
+
+Repro:
+- script: `prediction_d_residualized_within_stratum_test.py`
+- outputs: `outputs_exploratory/prediction_d_perturbation_residualized_np10000/`
+
 ---
 
 ## 8. Repro Pointers (Minimal)
