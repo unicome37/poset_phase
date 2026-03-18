@@ -1,10 +1,11 @@
 ﻿# Poset Phase 项目工作记录与进度追踪
 
 > **最后更新**: 2026-03-18  
-> **Git HEAD**: `62bd420` (main)  
+> **Git HEAD**: `1ee2654` (main)  
 > **GitHub**: `github.com/unicome37/poset_phase`  
 > **版本**: v4.0.0 (Zenodo 代码仓库)  
-> **论文版本**: Prediction A v1.5 (LaTeX 投稿版, Section 5.7 已改写为零自由参数第一性原理推导), Prediction C v2 (准因果版)
+> **论文版本**: Prediction A v2.6 (**已投稿 CQG, Manuscript ID: CQG-115402**), Prediction C v2 (准因果版)  
+> **Zenodo DOI**: `10.5281/zenodo.19079466`
 
 ---
 
@@ -175,6 +176,40 @@ $$\text{Score} = -\beta \cdot \log H(\text{poset}) + \lambda \cdot \text{Action}
 - **论文整合**: Section 5.7 已改写为第一性原理推导，Discussion、Summary 同步更新
 - **辅助验证**: α 扫描确认 α*=1.000，Gamma-MGF 闭合 ℓ_d 误差 <1.2%，interval bridge R²=0.9955
 
+**Phase 10: AI 多轮审阅 + CQG 投稿 (b6379b2 → 1ee2654)**
+
+四轮 AI 审阅（DeepSeek / Gemini / 通义千问 / GPT×4），论文从 v1.5 升级到 v2.6：
+
+| 轮次 | 审阅者 | 修改数 | 版本 | Commit |
+|------|--------|--------|------|--------|
+| 1 | DeepSeek | 4 项 | — | b6379b2 |
+| 2 | Gemini | 3 项 | — | e0db163 |
+| 3 | 通义千问 | 3 项 | — | 83a1530 |
+| 4 | GPT (v2.0) | 15 项结构修订 | v2.0 | 62a0d3d |
+| 5 | GPT (v2.1) | 8 项精修 | v2.1 | 27c490a |
+| 6 | GPT (v2.2) | 5 项措辞校准 | v2.2 | fde13f9 |
+| 7 | CQG 合规 | Abstract 388→197 词, keywords, refs 9→16, Ack/Funding/Conflict/Data | v2.3 | 802957c |
+| 8 | De-AI pass | 去除公式化 AI 痕迹, 34→33 页 | v2.4 | 012d7a1 |
+| 9 | Zenodo DOI | Data Availability 写入 DOI | v2.5 | 819c6fe |
+| 10 | GPT 最终校准 | 3 处过强措辞软化 | v2.6 | 3915f4b |
+
+- **Cover Letter**: `prediction_a_paper/cover_letter.tex/.pdf` (1 页, commit 4895fe6)
+- **投稿包**: `prediction_a_paper/CQG_submission/`
+  - `Zhang_CQG_2026_manuscript.pdf` — 完整论文 (33 页, v2.6)
+  - `Zhang_CQG_2026_cover_letter.pdf` — 投稿信
+  - `source_files.zip` — LaTeX 源文件 + 15 张图
+  - `ScholarOne_metadata.txt` — ScholarOne 表单逐步复制粘贴指南
+  - `submission_confirmation.txt` — 投稿确认记录
+- **Zenodo**: DOI `10.5281/zenodo.19079466` (v2.4 archive, 5.13 MB)
+
+**🎉 已投稿 CQG**
+- **Manuscript ID**: CQG-115402
+- **Journal**: Classical and Quantum Gravity
+- **Date Submitted**: 17-Mar-2026
+- **Title**: Dimensional Selection in Finite Causal-Set Link Dynamics: Evidence for an Asymmetric 4→5 Barrier
+- **Authors**: Zhang, Gang
+- **查稿网址**: https://mc04.manuscriptcentral.com/cqg-iop
+
 #### 核心数据表
 
 **Ξ 跨生成器 (Table 8 of paper)**:
@@ -343,10 +378,18 @@ Link action: 惩罚因果稀疏性 → 自然选出 3+1 维
 
 ```
 prediction_a_paper/
-├── prediction_a.tex              # LaTeX 主文件
-├── prediction_a.pdf              # 编译 PDF (31pp)
+├── prediction_a.tex              # LaTeX 主文件 (v2.6, 33pp)
+├── prediction_a.pdf              # 编译 PDF (33pp)
+├── cover_letter.tex              # CQG 投稿信
+├── cover_letter.pdf              # 投稿信 PDF
 ├── PredictionA_LinkAction_v1.5.pdf  # Zenodo 上传副本
-└── figures/                      # 16 张出版级 PNG
+├── CQG_submission/               # 投稿包 (已提交)
+│   ├── Zhang_CQG_2026_manuscript.pdf
+│   ├── Zhang_CQG_2026_cover_letter.pdf
+│   ├── source_files.zip
+│   ├── ScholarOne_metadata.txt
+│   └── submission_confirmation.txt
+└── figures/                      # 15 张出版级 PNG
 ```
 
 ---
@@ -354,6 +397,19 @@ prediction_a_paper/
 ## 七、Git 提交历史 (Prediction A 相关)
 
 ```
+1ee2654 record CQG submission confirmation: CQG-115402, 17-Mar-2026
+4895fe6 add CQG cover letter
+3915f4b paper v2.6: final phrase calibration
+819c6fe paper v2.5: add Zenodo DOI to Data and Code Availability
+012d7a1 paper v2.4: de-AI editorial pass  reduce formulaic patterns
+802957c paper v2.3: CQG submission compliance
+fde13f9 paper v2.2: final tone calibration for CQG submission
+27c490a paper v2.1: GPT final polish  8 refinements
+62a0d3d paper v2.0: CQG submission revision  GPT review
+83a1530 paper: address Qianwen review
+e0db163 paper: address Gemini review
+b6379b2 paper: address DeepSeek review
+4eb622a docs: comprehensive work records update
 62bd420 paper: remove duplicate first-principles section, fix undefined ref
 4ca1397 feat: analytical derivation of B0=1-pi/48, B1=pi/24 (zero free parameters)
 9c5481e feat: first-principles Xi derivation  occupancy closure (0.2% error)
@@ -410,6 +466,12 @@ a8e79c7 feat: Benincasa-Dowker action dimension selection
 11. ~~Ξ 第一性原理推导 — 占据闭合 (P_occ 0.2% 误差)~~ ✅ (9c5481e)
 12. ~~B₀/B₁ 解析推导 — B₁+2B₀=2, ε=π/48 零自由参数~~ ✅ (4ca1397)
 13. ~~论文 Section 5.7 改写 — 第一性原理推导整合~~ ✅ (62bd420)
+14. ~~四轮 AI 审阅 (DeepSeek/Gemini/通义千问/GPT×4)~~ ✅ (b6379b2 → 3915f4b)
+15. ~~CQG 合规 (Abstract/Keywords/Refs/Ack/Funding/Conflict/Data)~~ ✅ (802957c)
+16. ~~De-AI 编辑 + 措辞终校~~ ✅ (012d7a1 → 3915f4b)
+17. ~~Cover Letter~~ ✅ (4895fe6)
+18. ~~Zenodo DOI 写入 Data Availability~~ ✅ (819c6fe)
+19. ~~**CQG 投稿 — Manuscript ID: CQG-115402**~~ ✅ (1ee2654, 17-Mar-2026)
 
 ### 待做 (高优先级)
 
@@ -422,7 +484,15 @@ a8e79c7 feat: Benincasa-Dowker action dimension selection
      - [ ] finite-cube boundary correction 对 d=5 的 $a_d$ 偏高
      - [ ] $\varepsilon = \kappa_4/2$ 的严格物理推导 (当前为 numerical identification)
      - [ ] d=6 上验证零参数闭合的 Ξ₅→₆ 精度
-2. **论文投稿**: 选择期刊 (CQG / Found. Phys. / PRD)，调整格式提交
+2. ~~**论文投稿**: 选择期刊 (CQG)，调整格式提交~~ ✅ **已投稿 CQG-115402 (17-Mar-2026)**
+   - ✅ 四轮 AI 审阅 (DeepSeek / Gemini / 通义千问 / GPT×4)，论文 v1.5 → v2.6
+   - ✅ CQG 合规: Abstract 197 词, 8 keywords, 16 refs, Ack/Funding/Conflict/Data 声明
+   - ✅ De-AI 编辑 + 最终措辞校准 (33 页)
+   - ✅ Cover Letter 编写 (1 页)
+   - ✅ Zenodo DOI: `10.5281/zenodo.19079466`
+   - ✅ ScholarOne 投稿包: `prediction_a_paper/CQG_submission/`
+   - ✅ **已提交**: Manuscript ID **CQG-115402**, 17-Mar-2026
+   - 下一动作: 等待编辑初审 (1-2 周) → 同行评审 (6-12 周)
 3. **代码仓库 v5.0.0**: 包含 d≥6 生成器 + LaTeX 论文 → Zenodo 更新
 
 ### 待做 (中优先级)
@@ -431,6 +501,10 @@ a8e79c7 feat: Benincasa-Dowker action dimension selection
 5. **随机因果三角化**: 非撒点类型生成器
 6. **Bootstrap 置信区间**: 加强统计推断力度
 7. **Prediction B 论文更新**: 加入 N=56 γ_c=2.08
+8. **推论D（动态过程）确认性窗口冻结**: 从 v8 给出的候选冻结窗口里选 2-3 个，对应 strata 做更高 `n_perm` 与跨 source 复现
+   - ✅ 已完成确认性冻结（已更新）：冻结窗口收敛为 `N=30, keep_ratio=0.6, gamma=0.2`
+   - 说明：`gamma=0.8` 在后续确认性复现（`sis_runs=128`）下出现不稳定（`no_switch` 乃至 `switch` 可能坍缩），因此不宜冻结为确认性主窗口
+   - 主证据：在 `sis_runs=128` 的三次独立复现（`seed_offset=172000/174000/175000`）上，对 `full/switch/no_switch` 三口径以 `n_perm=200000` 做第三层定点加密，均保持 `rho>0` 且强显著（见 `outputs_confirmatory/prediction_d_dynamic_v10_freeze_strata_rep3_g02/` 等）
 
 ### 探索性
 
