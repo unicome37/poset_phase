@@ -1,0 +1,128 @@
+╔══════════════════════════════════════════════════════════════╗
+║       CQG / ScholarOne 投稿元数据  —  逐步复制粘贴用        ║
+╚══════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【Step 1】Article Type
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+选择: Paper
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【Step 2-3】Title & Abstract
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+--- Title (复制下面一行) ---
+Dimensional Selection in Finite Causal-Set Link Dynamics: Evidence for an Asymmetric 4→5 Barrier
+
+--- Abstract (纯文本, 197 words, 复制以下段落) ---
+We study dimensional selection in finite ensembles of Lorentzian-like causal sets sprinkled into flat spacetimes of dimension two through five. A link-based causal action exhibits a coupling window in which four-dimensional families consistently outscore all others, whereas the standard four-dimensional Benincasa-Dowker-Glaser action systematically selects five dimensions at every coupling tested. Component analysis traces this failure to the higher-order interval corrections, which preferentially favor causally sparse, high-dimensional configurations. The present work concerns finite causal-set ensembles rather than a controlled continuum limit.
+
+We introduce a dimensionless diagnostic that measures the link-penalty separation per unit entropy separation between adjacent-dimensional families. This ratio is approximately ten at the four-to-five boundary, stable across three generator geometries and seven system sizes up to 112 elements, and substantially larger than the corresponding lower-dimensional thresholds. A geometrically motivated semi-analytic derivation from Minkowski light-cone geometry reproduces the numerical median to within one per cent. Blind extrapolation to six and seven dimensions yields qualitative agreement with independent numerical measurements, supporting the picture that inter-dimensional barriers intensify beyond four dimensions. The resulting asymmetric barrier structure makes four-dimensionality a favored regime of the entropy-connectivity competition: it is not four dimensions itself that is special, but the barrier above it.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【Step 4】Keywords (逐个输入)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+1. causal set theory
+2. dimensional selection
+3. Benincasa-Dowker action
+4. discrete spacetime
+5. Lorentzian posets
+6. quantum gravity
+7. combinatorial entropy
+8. linear extensions
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【Step 5】Author Information
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+First Name:     Gang
+Last Name:      Zhang
+Email:          unicome@gmail.com
+Affiliation:    Independent Researcher
+Country:        China
+Role:           Corresponding Author
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【Step 6-7】PACS / MSC Classification
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+--- PACS codes (如系统要求) ---
+04.60.-m   Quantum gravity
+04.60.Nc   Lattice and discrete methods in quantum gravity
+04.20.Gz   Spacetime topology, causal structure
+
+--- MSC codes (如系统要求) ---
+83C27      Lattice gravity, Regge calculus and discrete methods
+83C45      Quantization of the gravitational field
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【Step 8】Funding Statement
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+This research received no external funding.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【Step 9】Conflict of Interest
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+The author declares no conflict of interest.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【Step 10】Data Availability Statement
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+All code, data and intermediate outputs used in this study are archived at Zenodo under DOI 10.5281/zenodo.19079466 and are available at https://github.com/unicome37/poset_phase.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【Step 11】Upload Files — 文件用途说明
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+文件名                                  │ 文件类型         │ 说明
+─────────────────────────────────────────┼─────────────────┼──────────────────
+Zhang_CQG_2026_manuscript.pdf           │ Main Document   │ 完整论文 PDF (33页)
+Zhang_CQG_2026_cover_letter.pdf         │ Cover Letter    │ 投稿信 (1页)
+source_files.zip                        │ LaTeX Source    │ .tex + figures/
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【Step 12】Suggested Reviewers (建议, 非必须)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+建议审稿人 1:
+  Name:         Sumati Surya
+  Affiliation:  Raman Research Institute, Bangalore, India
+  Email:        sumati@rri.res.in
+  Expertise:    Causal set theory, quantum gravity, BDG action
+
+建议审稿人 2:
+  Name:         Fay Dowker
+  Affiliation:  Imperial College London, UK
+  Email:        f.dowker@imperial.ac.uk
+  Expertise:    Causal set dynamics, discrete spacetime actions
+
+建议审稿人 3:
+  Name:         Steven Carlip
+  Affiliation:  University of California, Davis, USA
+  Email:        carlip@physics.ucdavis.edu
+  Expertise:    Quantum gravity, dimensional reduction, (2+1)-dimensional gravity
+
+建议审稿人 4:
+  Name:         Lisa Glaser
+  Affiliation:  University of Vienna, Austria
+  Email:        lisa.glaser@univie.ac.at
+  Expertise:    Causal set simulations, Benincasa-Dowker-Glaser action
+
+注意: Fay Dowker 和 Lisa Glaser 是 BDG action 的作者之一,
+      编辑可能视为利益相关方。可根据实际情况决定是否建议。
+      Surya 和 Carlip 是更安全的选择。
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+【Step 13】Review & Submit
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+提交前最终检查清单:
+  [  ] Title 无 LaTeX 命令 (箭头用 → 而非 \to)
+  [  ] Abstract 无公式、无引用
+  [  ] Keywords 8个, 全部输入
+  [  ] Author 信息完整 (email, affiliation)
+  [  ] 3个文件已上传 (manuscript, cover letter, source zip)
+  [  ] Funding / Conflict / Data 声明已填
+  [  ] Preview PDF 已检查
+  [  ] 点击 Submit
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+投稿网址:  https://mc04.manuscriptcentral.com/cqg-iop
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━

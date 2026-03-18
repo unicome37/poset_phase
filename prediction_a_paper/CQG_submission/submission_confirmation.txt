@@ -1,0 +1,30 @@
+═══════════════════════════════════════════════════════════
+         SUBMISSION CONFIRMATION — Classical and Quantum Gravity
+═══════════════════════════════════════════════════════════
+
+Manuscript ID:    CQG-115402
+Journal:          Classical and Quantum Gravity (CQG)
+Date Submitted:   17-Mar-2026
+
+Title:            Dimensional Selection in Finite Causal-Set Link
+                  Dynamics: Evidence for an Asymmetric 4→5 Barrier
+
+Authors:          Zhang, Gang
+
+Status:           Submitted
+
+═══════════════════════════════════════════════════════════
+投稿后续跟踪
+═══════════════════════════════════════════════════════════
+查稿网址:  https://mc04.manuscriptcentral.com/cqg-iop
+Zenodo DOI: 10.5281/zenodo.19079466
+GitHub:     https://github.com/unicome37/poset_phase
+
+预计流程:
+  - 编辑初审 (1-2 周)
+  - 同行评审 (6-12 周)
+  - 审稿意见返回 → 修改/接收/拒稿
+
+备注:
+  Paper 版本 v2.6, 33 页, 15 图, 16 表, 16 参考文献
+═══════════════════════════════════════════════════════════
