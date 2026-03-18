@@ -1,9 +1,9 @@
 % ═══════════════════════════════════════════════════════════════════
-% An Asymmetric Dimensional Barrier in Causal-Set Link Dynamics
-% Selects 3+1 Dimensions
+% Dimensional Selection in Finite Causal-Set Link Dynamics:
+% Evidence for an Asymmetric 4->5 Barrier
 % Author: Gang Zhang
 % Date: March 2026
-% Version: 1.5
+% Version: 2.0 (CQG submission revision)
 % ═══════════════════════════════════════════════════════════════════
 \documentclass[12pt,a4paper]{article}
 
@@ -36,8 +36,8 @@
 \graphicspath{{figures/}}
 
 % ── Title ───────────────────────────────────────────────────────────
-\title{An Asymmetric Dimensional Barrier in Causal-Set Link Dynamics\\
-Selects 3+1 Dimensions}
+\title{Dimensional Selection in Finite Causal-Set Link Dynamics:\\
+Evidence for an Asymmetric $4{\to}5$ Barrier}
 
 \author{Gang Zhang\thanks{Email: unicome@gmail.com}\\
 \small Independent Researcher}
@@ -61,6 +61,7 @@ generator-independent critical control ratio.
 A \textbf{link-based causal action} --- the $d=2$ Benincasa--Dowker action $S = N - 2C_0$ ---
 exhibits a $3{+}1$-dimensional selection window whose location in coupling space varies across generators,
 but whose underlying control structure does not.
+The present work concerns finite causal-set ensembles rather than a controlled continuum limit.
 
 In contrast, the \textbf{standard $d=4$ BDG action}
 $S^{(4)} = N - C_0 + 9C_1 - 16C_2 + 8C_3$ systematically selects 5D at every coupling and every size
@@ -77,13 +78,14 @@ $\Xi_{4 \to 5} \approx 10$ across all three generators tested
 (coefficient of variation $13.9\%$),
 substantially larger than the corresponding lower-dimensional thresholds
 ($\Xi_{3 \to 4} \approx 2{-}5$, $\Xi_{2 \to 3} \approx 1{-}3$).
-A first-principles derivation from Minkowski geometry alone yields
+A geometrically motivated semi-analytic derivation from Minkowski geometry yields
 $\Xi_{4 \to 5} = 11.31$, within $0.4\%$ of the numerical median,
-with zero fitted parameters.
+with no additional fitted parameter once the closure coefficient
+$\varepsilon = \pi/48$ is fixed.
 Blind extrapolation to higher dimensions yields measured values
 $\Xi_{5 \to 6} \approx 46$ and $\Xi_{6 \to 7} \approx 38$,
 confirming that barriers intensify dramatically beyond 4D.
-This asymmetric barrier structure makes $3{+}1$ dimensions a \textbf{natural equilibrium point} of the
+This asymmetric barrier structure makes $3{+}1$ dimensions a \textbf{robust finite-ensemble optimum} of the
 entropy--connectivity competition: the link-penalty cost of ascending from 4D to 5D is an order of
 magnitude steeper, per unit entropy gained, than any lower-dimensional transition.
 It is not 4D itself that is special, but the barrier above it.
@@ -141,32 +143,23 @@ higher-order coefficients are essential for recovering the Einstein--Hilbert act
 and ensuring locality.  Far less attention has been given to the \emph{pre-geometric}
 regime of small, finite causal sets, where the question is not ``how does curvature
 emerge?''  but rather ``which dimensionality is structurally preferred?''
-The present work fills this gap by showing that dimensional selection is governed
-not by the full BDG action but by its link sector alone, and that the relevant
-control variable --- the dimensionless ratio $\Xi$ --- is an intrinsic geometric
-property of the Minkowski light-cone structure, derivable from first principles
-without any fitted parameters.
+The present work investigates this gap by comparing the link sector and the full
+BDG action in finite-dimensional competition.
 
 \subsection{Summary of Results}
 \label{sec:summary_results}
 
-We report seven principal results, organized in order of logical dependence:
+We report five principal results, organized in order of logical dependence:
 
 \begin{enumerate}[label=\textbf{R\arabic*}.]
-\item \textbf{The link action selects 4D.}
+\item \textbf{The link action favors 4D.}
   In a score function $\mathrm{Score}(G;\lambda) = -\beta \cdot H(G) + \lambda \cdot S(G)/N$,
   the link action produces a $\lambda$-window ($\lambda \approx 6{-}8$) where 4D families
   consistently outscore 2D, 3D, and 5D. The 4D selection is stable across $N = 20{-}68$
-  (Section~\ref{sec:link_action_results}).
+  and extends to $N = 112$, with the window shifting to higher $\lambda$ at $N \geq 96$
+  (Sections~\ref{sec:link_action_results}--\ref{sec:large_n}).
 
-\item \textbf{The 4D selection extends to $N = 112$.}
-  Large-$N$ experiments confirm that 4D wins at $\lambda = 10$ up through $N = 112$,
-  with the selection window shifting to higher $\lambda$ at $N \geq 96$.
-  A link-density crossover at $N \approx 96$ (3D surpasses 4D in link density)
-  provides a mechanistic explanation for the finite-size window shift
-  (Section~\ref{sec:large_n}).
-
-\item \textbf{The standard BDG $d{=}4$ action selects 5D.}
+\item \textbf{The standard BDG $d{=}4$ action favors 5D instead.}
   With literature coefficients, the BDG action systematically picks 5D at
   every coupling, for all sizes $N = 20{-}68$, and across all tested generators.
   Component analysis shows that the $C_1$--$C_3$ correction terms amplify
@@ -181,15 +174,16 @@ We report seven principal results, organized in order of logical dependence:
   and across sizes from $N = 20$ to $N = 112$ (CV~$= 17.7\%$)
   (Section~\ref{sec:xi_parameter}).
 
-\item \textbf{First-principles derivation: $\Xi_{4 \to 5} = 11.31$.}
+\item \textbf{Semi-analytic derivation: $\Xi_{4 \to 5} = 11.31$.}
   Starting from the Minkowski ordering fraction $p_d$ and the mean
-  Alexandrov volume $\mathbb{E}[V_A]$, we derive a zero-free-parameter
+  Alexandrov volume $\mathbb{E}[V_A]$, we derive a geometrically motivated
   entropy closure
-  $\log H/N = (1-\pi/48)(1-p_d)(\ln N-1) + (\pi/24)\left(1-e^{-(N-2)\mathbb{E}[V_A]}\right)$.
+  $H/N = (1-\pi/48)(1-p_d)(\ln N-1) + (\pi/24)\left(1-e^{-(N-2)\mathbb{E}[V_A]}\right)$.
   This yields $\Xi_{4\to5} = 11.31$, within $0.4\%$ of the numerical
-  median $11.35$. The barrier is therefore traced to Minkowski
-  light-cone thinning plus interval-occupancy saturation, rather than
-  to an empirical fit (Section~\ref{sec:xi_derivation}).
+  median $11.35$, with no additional fitted parameter once $\varepsilon = \pi/48$
+  is imposed. The barrier is traced to Minkowski
+  light-cone thinning plus interval-occupancy saturation
+  (Section~\ref{sec:xi_derivation}).
 
 \item \textbf{Predictive validation: $d \geq 6$ extrapolation.}
   Blind predictions $\Xi_{5\to6} = 64.4$ and $\Xi_{6\to7} = 51.3$
@@ -197,12 +191,6 @@ We report seven principal results, organized in order of logical dependence:
   (errors $\sim 27\%$). Three qualitative predictions are confirmed:
   massive amplification, non-monotonic plateau, and correct order of magnitude
   (Section~\ref{sec:d6_validation}).
-
-\item \textbf{The density--entropy bridge to Prediction~C.}
-  Higher-dimensional sprinkles have sparser causal structure and
-  correspondingly higher entropy, directly connecting dimensional
-  selection (Prediction~A) to hierarchy-depth--entropy correlations
-  (Prediction~C from prior work) (Section~\ref{sec:cross_dimensional}).
 \end{enumerate}
 
 \subsection{The Key Physics}
@@ -214,9 +202,9 @@ meaning that suppressing 5D requires far less coupling than suppressing 4D from 
 This creates a robust, one-sided barrier: for any coupling strong enough to hold back 5D,
 4D still beats 3D by entropic margin.
 
-\emph{3+1 dimensions emerge not because 4D is intrinsically optimal, but because the structural
-price of crossing from 4D to 5D --- measured in link-penalty units per entropy unit --- is
-anomalously high.}
+\emph{Within this framework, 3+1 dimensions are favored not because 4D is intrinsically optimal,
+but because the structural price of crossing from 4D to 5D --- measured in link-penalty units
+per entropy unit --- is anomalously high.}
 
 \subsection{Relation to Prior Work}
 \label{sec:prior_work}
@@ -274,9 +262,14 @@ separation ($|\vec x_y - \vec x_x| < t_y - t_x$).
 \subsection{Entropy}
 \label{sec:entropy}
 
-The entropy of a poset $G$ is $H(G) = \log_2 |L(G)|$, where $L(G)$ is the set of
-linear extensions (total orders consistent with the partial order). For small posets
-($N \leq N_\text{exact}$), we compute $|L(G)|$ by dynamic programming.
+Let $|L(G)|$ denote the number of linear extensions (total orders consistent with the
+partial order) of a poset $G$. The entropy is
+\begin{equation}
+H(G) = \ln |L(G)|,
+\label{eq:entropy_def}
+\end{equation}
+measured in nats (natural logarithm throughout this paper).
+For small posets ($N \leq N_\text{exact}$), we compute $|L(G)|$ by dynamic programming.
 For larger posets, we use the Sequential Importance Sampling (SIS)
 algorithm~\cite{Cunningham2020} with 4096 runs.
 
@@ -332,6 +325,10 @@ S^{(4)} = N - C_0 + 9C_1 - 16C_2 + 8C_3
 \end{equation}
 The literature coefficients are designed for recovering the Einstein--Hilbert action in $d = 4$
 Lorentzian manifolds. The alternating signs create partial cancellations between interval orders.
+We do not interpret the failure of the standard $d{=}4$ BDG action at dimensional
+selection (Section~\\ref{sec:bdg_failure}) as a flaw of the continuum-matching construction;
+rather, it indicates that finite dimensional selection and continuum curvature reconstruction
+probe different sectors of the discrete dynamics.
 
 \subsection{Pure BDG (No Link Term)}
 \label{sec:pure_bdg_def}
@@ -421,7 +418,8 @@ linearly with $N$:
   \item 4D vs 5D margin: $m_{4-5} \approx (0.42 \pm 0.03) \cdot N$
   \item 4D vs 3D margin: $m_{4-3} \approx (0.04 \pm 0.01) \cdot N$
 \end{itemize}
-The 4D--5D margin is an order of magnitude larger than the 4D--3D margin,
+The 4D--5D margin is an order of magnitude larger than the 4D--3D margin
+(Figure~\ref{fig:margin}),
 consistent with the asymmetric barrier picture developed in
 Section~\ref{sec:xi_parameter}.
 
@@ -471,7 +469,8 @@ $N$ & $\lambda{=}5$ & 6 & 7 & 8 & 10 \\
 \end{tabular}
 \end{table}
 
-Table~\ref{tab:large_n_winners} shows that at $N \geq 80$, the 4D selection window shifts rightward: 4D wins at $\lambda = 8{-}10$
+Table~\ref{tab:large_n_winners} shows that at $N \geq 80$, the 4D selection window shifts rightward
+(Figure~\ref{fig:large_n_heatmap}): 4D wins at $\lambda = 8{-}10$
 rather than $\lambda = 5{-}8$. The critical coupling $\lambda^*$ for 4D emergence increases
 with $N$, but the 4D selection itself persists through $N = 112$.
 
@@ -564,7 +563,8 @@ seven sizes is $17.7\%$ (Table~\ref{tab:xi_large_n}). This confirms that $\Xi_{4
 of the link-density selection mechanism.
 The stability of $\Xi_{4 \to 5}$ across nearly two orders of magnitude in $N$
 provides the strongest finite-size evidence that this ratio reflects
-an intrinsic property of Lorentzian causal structure, not a finite-size artifact.
+an intrinsic property of Lorentzian causal structure, not a finite-size artifact
+(Figures~\ref{fig:xi_stability} and~\ref{fig:link_crossover}).
 
 \begin{figure}[htbp]
 \centering
@@ -635,7 +635,8 @@ The $-C_0$ component (link term) favors 4D (more negative = lower action = bette
 But the $+9C_1$ component creates a massive $-438.3$ swing toward 5D,
 because 4D has far more order-1 intervals ($C_1 = 67.2$ vs $18.5$).
 The net result: the BDG action favors 5D because 5D's causal sparsity
-becomes an \emph{advantage} when higher-order intervals are included.
+becomes an \emph{advantage} when higher-order intervals are included
+(Figure~\ref{fig:bdg_components}).
 
 \begin{figure}[htbp]
 \centering
@@ -681,6 +682,9 @@ All three generators yield the same qualitative pattern:
 The parameter-space \emph{location} of the 4D window shifts, but the \emph{existence}
 of a 4D window under the link action, and its \emph{absence} under BDG $d{=}4$,
 are generator-invariant.
+The generator dependence mainly affects the location of the selection window in
+coupling space, whereas the qualitative contrast between link action and standard
+$d{=}4$ BDG weights remains unchanged.
 
 \subsection{The $\Xi$ Parameter: A Dimensionless Control Variable}
 \label{sec:xi_parameter}
@@ -695,7 +699,7 @@ search for a \emph{generator-insensitive} quantity. We define:
 \label{eq:xi_def}
 \end{equation}
 where $\overline{S}_d = S_\text{link}/N$ is the link-action density and
-$\overline{h}_d = \log H / N$ is the entropy density,
+$\overline{h}_d = H_d / N$ is the entropy density,
 both averaged over samples of family $d$ at size $N$ with generator $G$.
 
 $\Xi_{d \to d+1}$ measures the \emph{link-penalty cost per unit of entropy gained}
@@ -707,7 +711,7 @@ of $d{+}1$; if $\Xi$ is small, substantial coupling is needed.
 
 \begin{equation}
 \Xi = \frac{\text{link-penalty gap per element}}{\text{entropy gap per element}}
-    = \frac{|\Delta(S_\text{link}/N)|}{|\Delta(\log H / N)|}
+    = \frac{|\Delta(S_\text{link}/N)|}{|\Delta(H / N)|}
 \end{equation}
 
 \begin{table}[htbp]
@@ -725,7 +729,7 @@ $\Xi_{4 \to 5}$ & \textbf{10.8} & \textbf{10.2} & \textbf{9.4} & \textbf{10.0} \
 \end{tabular}
 \end{table}
 
-The key result (Table~\ref{tab:xi_generators}): \textbf{$\Xi_{4 \to 5} \approx 10$ across all three generators},
+The key result (Table~\ref{tab:xi_generators}, Figure~\ref{fig:xi_core}): \textbf{$\Xi_{4 \to 5} \approx 10$ across all three generators},
 with a coefficient of variation of only $13.9\%$. The lower boundaries
 $\Xi_{2 \to 3}$ and $\Xi_{3 \to 4}$ are both $\lesssim 5$ and show substantial
 generator dependence.
@@ -747,6 +751,20 @@ $\lambda^*_{4 \to 5} \approx 0.1$.
 But $\Xi_{3 \to 4} \approx 3$ means $\lambda^*_{3 \to 4} \approx 0.3$,
 so overcoming the entropy advantage of 4D over 3D requires substantially more coupling.
 
+\paragraph{Note on scales.}
+The threshold $\lambda^*_{d \to d+1} = 1/\Xi$ is the coupling at which
+adjacent \emph{dimension-averaged} scores cross; it characterizes the
+\emph{relative} boundary structure, not the absolute location of the 4D
+selection window in the raw score convention of Eq.~\eqref{eq:score}.
+The observed window ($\lambda \approx 5{-}10$ in Figure~\ref{fig:winner_heatmap})
+arises from the \emph{joint} competition among all five families simultaneously,
+and its position is further modulated by the log-base of $H$, the entropy
+normalization, and sample-by-sample fluctuations.
+What $\Xi$ captures is the dimensionless barrier \emph{asymmetry}
+($\Xi_{4{\to}5} / \Xi_{3{\to}4} \gtrsim 3$), which is invariant
+under these rescalings and determines the \emph{existence and width} of a
+4D window, regardless of where that window falls in absolute $\lambda$.
+
 This creates an asymmetric barrier:
 \begin{equation}
 \lambda^*_{4 \to 5} \ll \lambda^*_{3 \to 4}
@@ -760,7 +778,7 @@ This is the 4D selection window --- and its width is controlled by the
 
 The physical origin of the asymmetry:
 \begin{itemize}
-  \item Crossing from 4D to 5D, the entropy gain per element $\Delta(\log H/N)$ is modest
+  \item Crossing from 4D to 5D, the entropy gain per element $\Delta(H/N)$ is modest
     ($\sim 0.15{-}0.29$), but the link-penalty relief is large ($\sim 1.0{-}2.9$).
     The system pays a steep ``price'' in structural sparsity for a small entropy reward.
   \item Crossing from 3D to 4D, the entropy gain is comparable ($\sim 0.22{-}0.43$),
@@ -771,7 +789,8 @@ The physical origin of the asymmetry:
 What stabilizes across generators is not $\lambda^*$ (which shifts),
 not the absolute values of $\overline{S}_d$ or $\overline{h}_d$ (which depend on geometry),
 but the \textbf{ratio $\Xi_{4 \to 5} \approx 10$} --- the intrinsic structural price of
-entropy at the $4{\to}5$ boundary. This transforms $\Xi_{4 \to 5}$ from a diagnostic
+entropy at the $4{\to}5$ boundary
+(Figures~\ref{fig:xi_convergence} and~\ref{fig:xi_asymmetry}). This transforms $\Xi_{4 \to 5}$ from a diagnostic
 into a robust candidate for a \textbf{generator-insensitive critical ratio} of the
 link-density selection mechanism.
 
@@ -805,9 +824,9 @@ harder per unit entropy than the $3{\to}4$ boundary.}
 \subsection{Analytical Derivation of $\Xi_{4 \to 5} \approx 11$}
 \label{sec:xi_derivation}
 
-The numerical stability of $\Xi_{4 \to 5}$ motivates a first-principles derivation
-from the two geometric inputs of the cube-sprinkle ensemble: the ordering fraction
-$p_d$ and the Alexandrov interval volume distribution.
+The numerical stability of $\Xi_{4 \to 5}$ motivates a geometrically motivated
+semi-analytic derivation from the two geometric inputs of the cube-sprinkle ensemble:
+the ordering fraction $p_d$ and the Alexandrov interval volume distribution.
 
 \subsubsection{Geometric Inputs}
 \label{sec:scaling_laws}
@@ -878,7 +897,7 @@ the Boltzmann/Poisson occupancy form therefore requires no additional scale para
 
 Fitting the entropy as
 \begin{equation}
-\frac{\log H}{N} = B_0\,h_0 + B_1\,P_{\mathrm{occ}}
+\frac{H}{N} = B_0\,h_0 + B_1\,P_{\mathrm{occ}}
 \end{equation}
 reveals a non-trivial structural constraint:
 \begin{equation}
@@ -886,7 +905,7 @@ B_1 + 2B_0 = 2.0001 \pm 0.025 \qquad (95\%~\mathrm{bootstrap~CI}),
 \end{equation}
 so that the two-parameter model collapses to the one-parameter form
 \begin{equation}
-\frac{\log H}{N}
+\frac{H}{N}
 =
 h_0 - \varepsilon\,(h_0 - 2P_{\mathrm{occ}}),
 \qquad
@@ -902,10 +921,10 @@ Among simple analytic candidates, the best match is
 \varepsilon \approx \frac{\kappa_4}{2} = \frac{\pi}{48} = 0.06545,
 \end{equation}
 which differs from the fitted value by only $0.42\%$.
-This yields the zero-free-parameter closure
+This yields the parameter-free closure (once $\varepsilon = \pi/48$ is imposed)
 \begin{equation}
 \boxed{
-\frac{\log H}{N}
+\frac{H}{N}
 =
 \left(1-\frac{\pi}{48}\right)(1-p_d)(\ln N - 1)
 \;+\;
@@ -945,7 +964,7 @@ $P_{\mathrm{occ}} = 1-e^{-(N-2)\mathbb{E}[V_A]}$ & 11.33 & 0.2\% & Best empirica
 $1-\ell_{\mathrm{MC}}$ & 10.59 & 6.7\% & Exact link complement \\
 $1-\ell_{\Gamma}$ & 10.57 & 6.9\% & Gamma-MGF link closure \\
 $1-\ell_{(2)}$ & 8.60 & 24.2\% & Truncated cumulant closure \\
-$\varepsilon = \pi/48$ zero-parameter closure & \textbf{11.31} & \textbf{0.4\%} & First-principles result \\
+$\varepsilon = \pi/48$ zero-parameter closure & \textbf{11.31} & \textbf{0.4\%} & Geometric closure \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1020,14 +1039,16 @@ Two key features emerge:
 The ratio $p_{d+1}/p_d \approx 0.6$ is roughly constant, but its effect on links
 is non-linear: in 5D, the light cone is so thin that nearly all causal relations
 are already links (no room for intermediate elements). This ``link saturation'' at
-$d \geq 5$ is the geometric root of the asymmetric barrier.
+$d \geq 5$ is the geometric root of the asymmetric barrier
+(Figure~\ref{fig:xi_derivation}).
 
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=\textwidth]{fig12_xi_master_derivation}
 \caption{Master derivation figure: empirical diagnostics of the same mechanism.
 The final theory replaces the fitted scaling laws with the geometric inputs
-$p_d$, $\mathbb{E}[V_A]$, and the zero-parameter occupancy closure.}
+$p_d$, $\mathbb{E}[V_A]$, and the zero-parameter occupancy closure
+(see also Figures~\ref{fig:xi_decomposition} and~\ref{fig:ordering_fraction}).}
 \label{fig:xi_derivation}
 \end{figure}
 
@@ -1089,7 +1110,7 @@ Under the scaling-law ansatz
 \begin{equation}
 \frac{C_0}{N} \approx a_d N^{\alpha_d},
 \qquad
-\frac{\log H}{N} \approx b_d \ln N + c_d,
+\frac{H}{N} \approx b_d \ln N + c_d,
 \end{equation}
 the $\Xi$ ratio admits the closed form
 \begin{equation}
@@ -1149,7 +1170,8 @@ for $a_d$ decaying too aggressively beyond its fitting domain.
 This level of accuracy is acceptable given the extrapolation two full dimensions beyond
 the training range, and the qualitative success --- barrier amplification, non-monotonic
 plateau, and correct order of magnitude --- strongly supports the scaling-law framework.
-Table~\ref{tab:blind_vs_measured} summarizes the blind predictions against measurements,
+Table~\ref{tab:blind_vs_measured} summarizes the blind predictions against measurements
+(Figures~\ref{fig:param_extrap}, \ref{fig:xi_staircase}, and~\ref{fig:d567}),
 providing the first out-of-sample validation of Eq.~\eqref{eq:xi_scaling_closed_form}.
 
 \begin{figure}[htbp]
@@ -1172,7 +1194,7 @@ and $\sim 27\%$ systematic overestimation are visible.}
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.9\textwidth]{fig17_d567_comparison}
-\caption{Observable comparison at $\lambda = 8$: (a) $C_0/N$ and (b) $\log H / N$
+\caption{Observable comparison at $\lambda = 8$: (a) $C_0/N$ and (b) $H / N$
 for $d = 5, 6, 7$, demonstrating link-density collapse and entropy convergence.}
 \label{fig:d567}
 \end{figure}
@@ -1217,7 +1239,8 @@ volume grows as $r^d$, so at fixed density the fraction of causally related pair
 \subsection{Density--Entropy Correlation}
 \label{sec:density_entropy}
 
-Within-$N$ analysis across dimensions reveals a striking anti-correlation between causal
+Within-$N$ analysis across dimensions reveals a striking anti-correlation
+(Table~\ref{tab:density_entropy_corr}) between causal
 density and entropy:
 
 \begin{table}[htbp]
@@ -1226,7 +1249,7 @@ density and entropy:
 \label{tab:density_entropy_corr}
 \begin{tabular}{@{}lcc@{}}
 \toprule
-$N$ & Pearson $r$ (density vs $\log H$) & $p$-value \\
+$N$ & Pearson $r$ (density vs $H$) & $p$-value \\
 \midrule
 20 & $-0.988$ & $< 0.02$ \\
 36 & $-0.993$ & $< 0.01$ \\
@@ -1240,29 +1263,7 @@ weaker causal constraints $\to$ more linear extensions $\to$ higher entropy. The
 penalizes precisely this: structures with too few links (too sparse causal structure) pay a
 penalty, and the optimal balance falls at $d = 4$.
 
-\subsection{The A$\times$C Bridge}
-\label{sec:ac_bridge}
 
-This density--entropy relationship directly connects Prediction~A (dimensional selection)
-with Prediction~C (hierarchy-depth predicts entropy) from our preceding work:
-
-\begin{align}
-&\text{Prediction C: more layers} \to \text{less entropy (within dimension)} \notag\\
-&\text{Extension: higher dimension} \to \text{sparser causality} \to \text{fewer layers} \to \text{more entropy} \notag\\
-&\text{Prediction A: link action penalizes causal sparsity} \to \text{selects } 3{+}1\text{D as optimal} \notag
-\end{align}
-
-As established in prior work (Prediction~C), the hierarchy depth (layer count) is a
-\emph{causal driver} of entropy: more layers $\to$ fewer linear extensions.
-The cross-dimensional density--entropy correlation (Table~\ref{tab:density_entropy_corr})
-confirms that this mechanism extends across dimensions, providing the microscopic
-foundation for the link action's dimensional selection.
-In Prediction~C's intervention experiments, removal of critical edges
---- which reduce layer count --- causes entropy to increase,
-directly demonstrating the causal direction of the layer--entropy relationship.
-The dimensional-selection mechanism of the link action therefore rests on the same
-structural foundation: causal sparsity (fewer layers, fewer links)
-$\to$ higher entropy $\to$ lower link-penalty cost.
 
 
 % ════════════════════════════════════════════════════════════════════
@@ -1326,9 +1327,9 @@ The link action implements a simple physical principle:
     lower dimensions
 \end{itemize}
 
-In more physical terms: \textbf{$3{+}1$ dimensions emerge as the configuration where the
-causal light-cone structure is rich enough to impose meaningful dynamical constraints,
-but not so dense as to over-restrict the available phase space.}
+In more physical terms: \textbf{within the present finite-ensemble setting, $3{+}1$ dimensions
+are favored as the configuration where the causal light-cone structure is rich enough to impose
+meaningful dynamical constraints, but not so dense as to over-restrict the available phase space.}
 
 \subsection{Relation to Carlip's Result}
 \label{sec:carlip}
@@ -1339,22 +1340,18 @@ higher-order terms are needed to recover GR and locality but are not critical
 for the suppression problem.
 
 Our result extends this to the dimensional-selection problem among Lorentzian families:
-\textbf{the link term is also what selects the dimension},
+within the present finite-ensemble setting,
+\textbf{the link term also governs dimensional selection},
 and higher-order terms are again not needed (and are in fact counterproductive)
 for this specific question.
 
-The parallel suggests that link-density dynamics may be a more fundamental organizing
-principle in causal set theory than the full BDG action for questions of structural selection.
-
-\subsection{5D Does Not Saturate}
-\label{sec:5d_no_saturate}
-
-A separate pilot experiment testing 5D competition under a geometric consistency penalty
-(rather than the BD action) showed that 5D wins $76.2\%$ of tested $(N, \gamma)$ cells,
+The parallel suggests that link-density dynamics may play a more central role
+in causal set theory than currently appreciated, at least for questions of structural selection.
+Note that 5D is not a trivially weak competitor: separate pilot experiments
+confirm that 5D wins $76\%$ of tested parameter cells under alternative scoring,
 with no sign of performance saturation up to $N = 52$.
-This confirms that 5D is a genuine competitor that must be actively suppressed by
-the causal action --- the 4D selection at $\lambda = 6{-}8$ is not trivially due to
-5D being a weak family.
+The 4D selection at $\lambda = 6{-}8$ therefore reflects genuine active suppression
+of a strong 5D family.
 
 \subsection{Status of $\Xi$ as a Physical Quantity}
 \label{sec:xi_status}
@@ -1374,64 +1371,24 @@ not yet a proven universal constant. Several caveats apply:
     generator-specific boundary effects, or may decrease with broader sampling.
     Regardless, the order-of-magnitude elevation of $\Xi_{4 \to 5}$ above
     lower-dimensional thresholds is robust and constitutes the core physical finding.
-  \item The analytical derivation (Section~\ref{sec:xi_derivation}) now reproduces
-    $\Xi_{4 \to 5} = 11.31$ from Minkowski geometry alone, using the ordering fraction
-    $p_d$, the mean Alexandrov volume $\mathbb{E}[V_A]$, and the zero-parameter closure
+  \item The semi-analytic derivation (Section~\ref{sec:xi_derivation}) reproduces
+    $\Xi_{4 \to 5} = 11.31$ from Minkowski geometry, using the ordering fraction
+    $p_d$, the mean Alexandrov volume $\mathbb{E}[V_A]$, and the closure
     of Eq.~\eqref{eq:entropy_zero_param}. The residual error relative to the numerical
-    median $11.35$ is only $0.4\%$. What remains open is not the existence of a
-    first-principles derivation, but the deeper microscopic explanation of why the
-    entropy-transfer coefficient is so accurately pinned by $\varepsilon = \pi/48$.
+    median $11.35$ is only $0.4\%$. What remains open is the deeper microscopic
+    explanation of why the entropy-transfer coefficient is so accurately captured
+    by $\varepsilon = \pi/48$.
 \end{itemize}
 
 Despite these caveats, the stability of $\Xi_{4 \to 5}$ across three generators
 and seven system sizes suggests it is a robust structural feature of
 Minkowski-sprinkled causal sets, not an artifact of any particular generator or size regime.
 
-We therefore adopt the term \textbf{quasi-universal} for $\Xi_{4 \to 5}$:
-robust across all tested generators and stable across all tested sizes,
-with a first-principles geometric derivation now in hand, but still awaiting
-broader numerical confirmation beyond the generator classes studied here.
-
-\subsection{Unification: Link Action and Geometric Consistency}
-\label{sec:unification}
-
-A complementary approach to dimensional selection uses the BDG geometric consistency penalty
-as a scoring term (Appendix~\ref{app:geometric}). The link action and the consistency penalty
-both produce 4D-favorable signals, but through different structural channels.
-
-To quantify this relationship, we computed the full geometric-components vector
-(midpoint-to-boundary ratio, dimension estimators $d_\text{order}$, $d_\text{chain}$,
-proxy penalty, multi-consistency, etc.) alongside link density for $N = 20{-}68$.
-The key findings:
-
-\begin{enumerate}
-  \item \textbf{Pooled correlation between link density and $d_\text{order}$ is weak}
-    ($r = -0.27$, $p = 0.31$) because the relationship is non-monotonic:
-    link density peaks at 3D, not at low dimension.
-  \item \textbf{The gap structure diverges between frameworks.}
-    The link-density gap ratio $|\Delta(4{\to}5)| / |\Delta(3{\to}4)|$ grows from 1.4 to 15.4
-    as $N$ increases, meaning the link action's $4{\to}5$ barrier strengthens dramatically.
-    By contrast, the BDG proxy-penalty gap ratio stays below~1
-    (the $3{\to}4$ penalty is actually larger than $4{\to}5$).
-  \item \textbf{What they share is the root cause.}
-    Both detect that 5D Lorentzian-like posets are structurally sparser than 4D ones.
-    But the link action captures an additional phenomenon:
-    the \textbf{3D--4D connectivity convergence} at large $N$ (Section~\ref{sec:link_crossover}),
-    which is invisible to dimension estimators.
-\end{enumerate}
-
-The unification is therefore \textbf{mechanistic rather than metric-level}:
-the link action and the geometric consistency penalty are two projections of the same
-underlying causal-sparsity hierarchy, but they weight its features differently.
-The link action is more sensitive to the $4{\to}5$ barrier because it directly measures
-covering relations, whose density profile is asymmetric across the dimensional boundary.
-The geometric consistency penalty distributes its signal across multiple dimension estimators,
-diluting the $4{\to}5$ specificity.
-
-This complementarity supports the dual-layer picture (Section~\ref{sec:dual_layer}):
-the link action captures dimensional selection at the connectivity level,
-while the geometric consistency captures dimensional structure at the metric level.
-Both are valid and convergent, but the link action provides a sharper selection signal.
+We therefore characterize $\Xi_{4 \to 5}$ as \textbf{robust across all tested generators
+and sizes}: stable across three generator geometries and seven system sizes,
+with a geometrically motivated semi-analytic derivation now in hand,
+but still awaiting broader numerical confirmation beyond the generator classes
+studied here.
 
 \subsection{Limitations}
 \label{sec:limitations}
@@ -1446,7 +1403,7 @@ Both are valid and convergent, but the link action provides a sharper selection 
 
     Two observations support the relevance of the current size range.
     First, $\Xi_{4 \to 5}$ exhibits only $17.7\%$ variation across nearly two
-    orders of magnitude in $N$ ($20$--$112$), and the first-principles
+    orders of magnitude in $N$ ($20$--$112$), and the semi-analytic
     derivation of Section~\ref{sec:xi_derivation} reproduces its value
     from Minkowski geometry alone, without reference to any particular system
     size.  This confirms that $\Xi$ captures an \emph{intensive} geometric
@@ -1500,8 +1457,9 @@ Both are valid and convergent, but the link action provides a sharper selection 
 \section{Conclusion}
 \label{sec:conclusion}
 
-The central finding of this work is not merely that the link action selects $3{+}1$ dimensions,
-but \textbf{why} it selects $3{+}1$ dimensions rather than any other.
+The central finding of this work is that, within finite Lorentzian-like causal-set
+ensembles, the link action not only favors $3{+}1$ dimensions but does so for a
+structurally identifiable reason.
 
 The answer lies in the asymmetric structure of dimensional-boundary thresholds.
 The dimensionless ratio $\Xi_{d \to d+1}$ --- measuring the link-penalty cost per unit of
@@ -1513,17 +1471,17 @@ entropy gained in crossing a dimensional boundary --- exhibits a dramatic hierar
 The $4{\to}5$ boundary carries an order-of-magnitude steeper penalty/entropy price than the
 lower boundaries. This creates a \textbf{one-sided barrier above 4D}: at any coupling strong
 enough to suppress 5D, 4D still out-competes 3D because the $3{\to}4$ barrier is low.
-Four-dimensionality is therefore not a fine-tuned special case, but a natural equilibrium point
-of the entropy--connectivity competition.
+Four-dimensionality is therefore not a fine-tuned special case but a robust
+finite-ensemble optimum of the entropy--connectivity competition.
 
-This asymmetric barrier is quasi-universal: $\Xi_{4 \to 5}$ converges to $\approx 10$ across
+This asymmetric barrier is robust across tested conditions: $\Xi_{4 \to 5}$ converges to $\approx 10$ across
 three independent generators (cube sprinkle, independent-seed cube, and Alexandrov-set diamond;
 CV~$= 13.9\%$), even though the parameter-space location of the 4D selection window shifts
 substantially between them. What the generators modulate is where the competition happens;
 what they leave invariant is its intrinsic structural price.
 
 Conversely, the standard BDG $d{=}4$ action, with literature coefficients designed for
-continuum curvature recovery, systematically selects 5D: its higher-order interval corrections
+continuum curvature recovery, systematically favors 5D: its higher-order interval corrections
 reduce the effective $4{\to}5$ barrier below the entropy gradient, destroying dimensional selection.
 This establishes a dual-layer picture: dimensional selection operates at the
 \textbf{pre-geometric connectivity level} (links), while curvature reconstruction operates at the
@@ -1532,14 +1490,16 @@ This establishes a dual-layer picture: dimensional selection operates at the
 In summary:
 
 \begin{quote}
-\textbf{$3{+}1$ dimensions emerge from an asymmetric dimensional barrier in the link sector of
-causal dynamics. The effective link-penalty/entropy ratio required to suppress 5D relative to 4D
+\textbf{Within the present finite-ensemble setting, the data support a picture in which
+$3{+}1$ dimensions are favored by an asymmetric dimensional barrier in the link sector of
+causal dynamics. The effective link-penalty/entropy ratio at the $4{\to}5$ boundary
 ($\Xi_{4 \to 5} \approx 11$) is substantially and consistently larger than any lower-dimensional
 threshold. This barrier is stable from $N = 20$ to $N = 112$ (CV~$= 17.7\%$) and across three
 independent generator geometries (CV~$= 13.9\%$). While the parameter-space location of the 4D
 selection window shifts with $N$ and generator, the dimensionless control parameter $\Xi$ does not
-drift --- confirming that the structural price of the $4{\to}5$ transition is an intensive,
-size-independent property of causal poset link dynamics.}
+drift --- suggesting that the structural price of the $4{\to}5$ transition is an intensive,
+size-independent property of causal poset link dynamics. The continuum-limit implications
+of this finite-ensemble result remain an open question for future work.}
 \end{quote}
 
 
@@ -1547,18 +1507,6 @@ size-independent property of causal poset link dynamics.}
 % Appendices
 % ════════════════════════════════════════════════════════════════════
 \appendix
-
-\section{Geometric Consistency Approach (Prior Result)}
-\label{app:geometric}
-
-Prior to the BD action analysis, an alternative approach to dimensional selection was
-explored using geometric consistency penalties. This approach replaced the target-anchored
-dimension penalty in the original action with a non-target-anchored self-consistency
-constraint. Under this variant, 4D dominates through $N = 72$ with seed-level robustness.
-While this approach also selects 4D, the BD link action provides a more fundamental and
-literature-grounded mechanism. The consistency approach results are documented in the
-project repository and may be reported separately.
-
 
 \section{Experimental Configuration Details}
 \label{app:config}
@@ -1600,70 +1548,6 @@ Seed base & 980000 \\
 \end{center}
 
 
-\section{Suggested Figures}
-\label{app:figures}
-
-\begin{enumerate}
-  \item \textbf{Figure~\ref{fig:winner_heatmap}.} Winner heatmap: Link action vs BDG $d{=}4$ standard across
-    $(N, \lambda)$ grid. Color-coded by winning dimension, showing the narrow 4D window under link action
-    and uniform 5D dominance under BDG.
-
-  \item \textbf{Figure~\ref{fig:bdg_components}.} BDG $d{=}4$ component breakdown (stacked bar):
-    the $+9C_1$ term creates a massive swing toward 5D, overwhelming the link term's 4D preference.
-
-  \item \textbf{Figure~\ref{fig:margin}.} 4D margin of victory scaling with $N$ under link action:
-    the 4D--5D margin grows approximately linearly (slope $\approx 0.42$),
-    while the 4D--3D margin is an order of magnitude smaller (slope $\approx 0.04$).
-
-  \item \textbf{Figure~4.} Dimensional cascade phase diagram showing the $\lambda$-dependent
-    winner transitions from 5D (low $\lambda$) through 4D (moderate) to 3D/2D (high).
-
-  \item \textbf{Figure~5.} Causal interval profile ($C_0, C_1, C_2, C_3$) by dimension
-    at $N = 68$, showing the dramatic sparsification from 2D to 5D.
-
-  \item \textbf{Figure~\ref{fig:xi_core}.} (Core figure) Jittered strip plot of $\Xi$ across all
-    transitions and three generators. The tight clustering at $\Xi_{4 \to 5} \approx 10$ contrasts
-    sharply with the scattered lower-dimensional values.
-
-  \item \textbf{Figure~\ref{fig:xi_convergence}.} $\Xi_{4 \to 5}$ vs $N$ for each generator:
-    convergence across sizes and geometries, with generator-level CV~$= 13.9\%$.
-
-  \item \textbf{Figure~\ref{fig:xi_asymmetry}.} Asymmetric barrier ratio $\Xi_{4 \to 5} / \Xi_{3 \to 4}$
-    vs $N$: the 4--5 boundary is consistently $\gtrsim 2{-}4\times$ steeper per unit entropy than 3--4.
-
-  \item \textbf{Figure~\ref{fig:large_n_heatmap}.} Large-$N$ winner heatmap ($N = 20$--$112$):
-    the 4D selection window shifts rightward with $N$ but persists through $N = 112$.
-
-  \item \textbf{Figure~\ref{fig:xi_stability}.} $\Xi_{4 \to 5}$ stability across $N = 20$--$112$:
-    original sizes (circles) and extended sizes (diamonds), with overall CV~$= 17.7\%$.
-
-  \item \textbf{Figure~\ref{fig:link_crossover}.} Link-density crossover: (a) density profiles
-    showing 3D overtaking 4D at $N \approx 96$; (b) inter-dimension gap asymmetry.
-
-  \item \textbf{Figure~\ref{fig:xi_derivation}.} (Master derivation) Four-panel figure:
-    legacy empirical diagnostics for the $4{\to}5$ barrier. In the revised
-    interpretation, these plots are explanatory diagnostics for a mechanism now
-    captured analytically by the zero-parameter closure
-    $\Xi_{4 \to 5} = 11.31 \approx 11.35$.
-
-  \item \textbf{Figure~\ref{fig:xi_decomposition}.} $\Xi$ decomposition: numerator (link-density gap),
-    denominator (entropy gap), and their ratio, for all three transitions as functions of $N$.
-
-  \item \textbf{Figure~\ref{fig:ordering_fraction}.} Ordering fraction $p_d$ and geometric decay
-    rate $p_{d+1}/p_d \approx 0.6$ from Monte Carlo, revealing the light-cone thinning mechanism.
-
-  \item \textbf{Figure~\ref{fig:param_extrap}.} Predictive validation: six-panel parameter
-    extrapolation to $d = 6, 7$ (red squares) from $d = 2{-}5$ fits (black circles).
-
-  \item \textbf{Figure~\ref{fig:xi_staircase}.} $\Xi$ staircase: blind predictions (blue)
-    vs numerical measurements (coral). The $\sim 27\%$ systematic overestimation and
-    massive barrier amplification beyond $d = 5$ are both visible.
-
-  \item \textbf{Figure~\ref{fig:d567}.} Observable comparison for $d = 5, 6, 7$:
-    (a) link-density collapse and (b) entropy convergence at $\lambda = 8$.
-\end{enumerate}
-
-
 \section{Scaling-Law Fitting Details}
 \label{app:fitting_details}
 
@@ -1671,7 +1555,7 @@ This appendix documents the fitting procedure underlying the analytical derivati
 of $\Xi_{4 \to 5}$ (Section~\ref{sec:xi_derivation}).
 
 \paragraph{Data.}
-Observables $C_0/N$ and $\log H/N$ are computed for $d = 2, 3, 4, 5$ at seven system sizes
+Observables $C_0/N$ and $H/N$ are computed for $d = 2, 3, 4, 5$ at seven system sizes
 $N \in \{20, 36, 52, 68, 80, 96, 112\}$ using the cube-sprinkle generator (4 samples per cell,
 SIS entropy with 4096 runs for $N > N_\text{exact}$).
 
@@ -1681,7 +1565,7 @@ on the log-transformed data $\log(C_0/N) = \log a_d + \alpha_d \cdot \log N$.
 All fits achieve $R^2 > 0.95$, with $d = 4$ and $d = 5$ exceeding $0.98$.
 
 \paragraph{Entropy-density fit.}
-For each $d$, $\log H/N = b_d \cdot \log N + c_d$ is fitted by ordinary least squares.
+For each $d$, $H/N = b_d \cdot \ln N + c_d$ is fitted by ordinary least squares.
 All fits achieve $R^2 > 0.98$, confirming the log-linear law across the full $N$ range.
 
 \paragraph{Parameter extrapolation.}
