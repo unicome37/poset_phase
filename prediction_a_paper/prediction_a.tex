@@ -1271,6 +1271,23 @@ Einstein--Hilbert action in the continuum limit and for ensuring locality.
 But these terms do not participate in --- and in fact destroy --- dimensional selection.
 
 This dual-layer picture resolves what might otherwise seem like a tension:
+the BDG action is designed to recover the Einstein--Hilbert action in the continuum
+limit, yet it fails at dimensional selection.  The resolution is that the BDG
+coefficients ($+9, -16, +8$ for $d{=}4$) are tuned to cancel non-local contributions
+in the \emph{continuum} regime, where the interval spectrum is dense and dominated
+by the universal short-distance behavior of the causal diamond volume.
+In the \emph{finite, pre-geometric} regime probed here, the interval spectrum is far
+from its continuum shape: higher-dimensional posets have extremely sparse
+higher-order intervals ($C_1, C_2, C_3 \to 0$ as $d$ increases),
+so the BDG correction terms --- calibrated for a dense 4D manifold --- over-correct
+for the high-$d$ families and under-correct for low-$d$ families.
+The $+9C_1$ term in particular imposes a massive penalty on 4D (which has abundant
+order-1 intervals) while barely touching 5D (whose intervals are almost entirely links).
+Thus the same coefficients that ensure correct curvature recovery at large $N$ in 4D
+\emph{amplify} the entropy advantage of causally sparse high-dimensional configurations
+at finite $N$.  This is not a flaw in the BDG construction but a confirmation that
+continuum-calibrated coefficients should not be expected to control pre-geometric
+structural selection --- a task that belongs to the link sector alone.
 if the BDG action is the ``correct'' discrete gravity action, why does it fail at
 dimensional selection? The answer is that dimensional selection is a \textbf{pre-geometric}
 dynamical question about connectivity structure, while curvature reconstruction is a
@@ -1411,6 +1428,33 @@ Both are valid and convergent, but the link action provides a sharper selection 
     Asymptotic $N \to \infty$ behavior cannot be guaranteed,
     though the link-density crossover analysis (Section~\ref{sec:link_crossover})
     provides a mechanistic explanation for the finite-size effects observed.
+
+    Two observations support the relevance of the current size range.
+    First, $\Xi_{4 \to 5}$ exhibits only $17.7\%$ variation across nearly two
+    orders of magnitude in $N$ ($20$--$112$), and the first-principles
+    derivation of Section~\ref{sec:xi_derivation} reproduces its value
+    from Minkowski geometry alone, without reference to any particular system
+    size.  This confirms that $\Xi$ captures an \emph{intensive} geometric
+    property rather than a finite-size artifact.
+    Second, the $\lambda$-window shift is itself well understood: it tracks
+    the link-density crossover at $N \approx 96$ where 3D surpasses 4D
+    in covering-relation count.  Crucially, the \emph{ratio} $\Xi_{4 \to 5}$
+    does not drift with this crossover, indicating that the asymmetric
+    barrier is encoded in the per-element geometry of the light cone,
+    not in the total system size.
+
+    \textbf{Asymptotic outlook.}
+    The rightward window drift implies that, in the strict $N \to \infty$
+    limit, the coupling $\lambda^*$ required for 4D selection grows.
+    Whether $\lambda^*(N)$ diverges or saturates remains an open question.
+    If the density crossover continues logarithmically, a finite $\lambda^*$
+    may suffice; if it grows algebraically, asymptotic 4D selection would
+    require coupling that scales with $N$.  Resolving this requires simulations
+    at $N \gtrsim 500$, which are computationally demanding but feasible
+    with modern SIS methods.  Regardless, the intensive nature of $\Xi$
+    guarantees that the \emph{structural price} of the $4{\to}5$ transition
+    persists at all scales --- only the bookkeeping cost of maintaining 4D
+    against 3D may change.
 
   \item \textbf{Sample size:} 4 samples per family per size provides reliable mean estimates
     but limited statistical power for distributional statements.
