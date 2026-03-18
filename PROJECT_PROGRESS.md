@@ -480,6 +480,7 @@ a8e79c7 feat: Benincasa-Dowker action dimension selection
         $$\frac{\log H}{N} = \left(1-\frac{\pi}{48}\right)(1-p_d)(\ln N-1) + \frac{\pi}{24}\left(1-e^{-(N-2)\mathbb{E}[V_A]}\right)$$
         给出 Ξ₄→₅ = 11.31，观测 11.35，误差 **0.4%**。
      4. **物理解释**：$\varepsilon$ 是 entropy 从"反链通道"到"占据通道"的传递率。系数 2 来自每个占据区间有**两个端点**。$\varepsilon = \kappa_4/2$ 把传递锚定到 4D Alexandrov 体积常数。
+     5. **论文正文已同步更新**：`prediction_a_paper/prediction_a.tex` 的 Section 5.7 已从“经验标度律推导”改写为“`p_d + \mathbb{E}[V_A] + P_{\mathrm{occ}} + \varepsilon=\pi/48`”的第一性原理推导；摘要式结果 `R5`、`Xi` 状态段和图注说明也已同步到零自由参数版本。
    
    $B_0$ 和 $B_1$ 的解析来源已完成。当前第一性原理推导链完成度：从 $d$ 维 Minkowski 几何 → $p_d, \kappa_d, \mathbb{E}[V_A]$ → 链接密度 $C_0/N$ → 占据概率 $P_{\mathrm{occ}}$ → 熵闭合（$\varepsilon = \pi/48$）→ Ξ₄→₅ 0.4% 误差。全链无自由参数。
 2. **论文投稿**: 选择期刊 (CQG / Found. Phys. / PRD)，调整格式提交

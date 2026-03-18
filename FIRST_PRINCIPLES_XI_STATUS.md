@@ -568,6 +568,6 @@ $$\boxed{\frac{\log H}{N} = \left(1 - \frac{\pi}{48}\right)(1-p_d)(\ln N - 1) + 
 1. ~~给出 $B_0 \approx 0.934$ 的解析来源~~ ✅ $B_0 = 1 - \pi/48$
 2. ~~给出 $B_1 \approx 0.132$ 的解析来源~~ ✅ $B_1 = \pi/24 = 2(1-B_0)$
 3. 检查 finite-cube boundary correction 对 d=5 的 $a_d$ 偏高是否有系统贡献。
-4. 整合 volume-moment occupancy 闭合为论文级推导（Section 5.7 替代文本）。
+4. ~~整合 volume-moment occupancy 闭合为论文级推导（Section 5.7 替代文本）。~~ ✅ 已写入 `prediction_a_paper/prediction_a.tex`
 5. 尝试从传递闭包统计严格推导 $\varepsilon = \kappa_4/2$ 的物理起源。
 6. 在 d=6 数据上验证：如果 $\varepsilon = \kappa_4/2$ 是刚性的，那么 $\Xi_{5\to6}$ 也应在 <1% 内命中。

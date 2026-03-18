@@ -34,39 +34,38 @@
 \contentsline {paragraph}{Operational summary:}{15}{section*.17}%
 \contentsline {subsection}{\numberline {5.6}Why This Matters}{15}{subsection.5.6}%
 \contentsline {subsection}{\numberline {5.7}Analytical Derivation of $\Xi _{4 \to 5} \approx 11$}{16}{subsection.5.7}%
-\contentsline {subsubsection}{\numberline {5.7.1}Scaling Laws}{16}{subsubsection.5.7.1}%
-\contentsline {subsubsection}{\numberline {5.7.2}Closed-Form Expression}{18}{subsubsection.5.7.2}%
-\contentsline {subsubsection}{\numberline {5.7.3}Root Cause Decomposition}{18}{subsubsection.5.7.3}%
-\contentsline {paragraph}{Effect 1 --- Entropy saturation.}{18}{section*.24}%
-\contentsline {paragraph}{Effect 2 --- Link-density gap persistence.}{18}{section*.25}%
-\contentsline {subsubsection}{\numberline {5.7.4}Geometric Root: Ordering Fraction Deceleration}{19}{subsubsection.5.7.4}%
-\contentsline {subsubsection}{\numberline {5.7.5}Stability of the Prediction}{19}{subsubsection.5.7.5}%
-\contentsline {subsection}{\numberline {5.8}Predictive Validation: Extrapolation to $d \geq 6$}{19}{subsection.5.8}%
-\contentsline {subsubsection}{\numberline {5.8.1}Parameter Extrapolation}{19}{subsubsection.5.8.1}%
-\contentsline {subsubsection}{\numberline {5.8.2}Blind Predictions}{21}{subsubsection.5.8.2}%
-\contentsline {subsubsection}{\numberline {5.8.3}Numerical Verification}{21}{subsubsection.5.8.3}%
-\contentsline {subsubsection}{\numberline {5.8.4}Interpretation}{22}{subsubsection.5.8.4}%
-\contentsline {section}{\numberline {6}Cross-Dimensional Causal Structure}{22}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Causal Sparsity Hierarchy}{22}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Density--Entropy Correlation}{24}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}The A$\times $C Bridge}{24}{subsection.6.3}%
-\contentsline {section}{\numberline {7}Discussion}{25}{section.7}%
-\contentsline {subsection}{\numberline {7.1}A Dual-Layer Picture}{25}{subsection.7.1}%
-\contentsline {paragraph}{Layer~1 --- Dimensional selection (links).}{25}{section*.37}%
-\contentsline {paragraph}{Layer~2 --- Curvature and locality recovery (full BDG).}{25}{section*.38}%
-\contentsline {subsection}{\numberline {7.2}Physical Interpretation: Why 3+1?}{25}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Relation to Carlip's Result}{25}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}5D Does Not Saturate}{26}{subsection.7.4}%
-\contentsline {subsection}{\numberline {7.5}Status of $\Xi $ as a Physical Quantity}{26}{subsection.7.5}%
-\contentsline {subsection}{\numberline {7.6}Unification: Link Action and Geometric Consistency}{27}{subsection.7.6}%
-\contentsline {subsection}{\numberline {7.7}Limitations}{27}{subsection.7.7}%
-\contentsline {section}{\numberline {8}Conclusion}{28}{section.8}%
-\contentsline {section}{\numberline {A}Geometric Consistency Approach (Prior Result)}{29}{appendix.A}%
-\contentsline {section}{\numberline {B}Experimental Configuration Details}{29}{appendix.B}%
-\contentsline {section}{\numberline {C}Suggested Figures}{30}{appendix.C}%
-\contentsline {section}{\numberline {D}Scaling-Law Fitting Details}{31}{appendix.D}%
-\contentsline {paragraph}{Data.}{31}{section*.39}%
-\contentsline {paragraph}{Link-density fit.}{31}{section*.40}%
-\contentsline {paragraph}{Entropy-density fit.}{31}{section*.41}%
-\contentsline {paragraph}{Parameter extrapolation.}{31}{section*.42}%
-\contentsline {paragraph}{Sensitivity.}{32}{section*.43}%
+\contentsline {subsubsection}{\numberline {5.7.1}Geometric Inputs}{16}{subsubsection.5.7.1}%
+\contentsline {subsubsection}{\numberline {5.7.2}Link Sector from Empty-Interval Geometry}{18}{subsubsection.5.7.2}%
+\contentsline {subsubsection}{\numberline {5.7.3}Entropy Sector: Mean Field Plus Occupancy Restoration}{18}{subsubsection.5.7.3}%
+\contentsline {subsubsection}{\numberline {5.7.4}Prediction for $\Xi _{4\to 5}$}{19}{subsubsection.5.7.4}%
+\contentsline {subsubsection}{\numberline {5.7.5}Why Occupancy Outperforms Exact Non-Link Fraction}{19}{subsubsection.5.7.5}%
+\contentsline {subsubsection}{\numberline {5.7.6}Geometric Root of the Barrier}{20}{subsubsection.5.7.6}%
+\contentsline {subsection}{\numberline {5.8}Predictive Validation: Extrapolation to $d \geq 6$}{22}{subsection.5.8}%
+\contentsline {subsubsection}{\numberline {5.8.1}Parameter Extrapolation}{22}{subsubsection.5.8.1}%
+\contentsline {subsubsection}{\numberline {5.8.2}Blind Predictions}{22}{subsubsection.5.8.2}%
+\contentsline {subsubsection}{\numberline {5.8.3}Numerical Verification}{23}{subsubsection.5.8.3}%
+\contentsline {subsubsection}{\numberline {5.8.4}Interpretation}{23}{subsubsection.5.8.4}%
+\contentsline {section}{\numberline {6}Cross-Dimensional Causal Structure}{23}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Causal Sparsity Hierarchy}{23}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Density--Entropy Correlation}{25}{subsection.6.2}%
+\contentsline {subsection}{\numberline {6.3}The A$\times $C Bridge}{25}{subsection.6.3}%
+\contentsline {section}{\numberline {7}Discussion}{26}{section.7}%
+\contentsline {subsection}{\numberline {7.1}A Dual-Layer Picture}{26}{subsection.7.1}%
+\contentsline {paragraph}{Layer~1 --- Dimensional selection (links).}{26}{section*.34}%
+\contentsline {paragraph}{Layer~2 --- Curvature and locality recovery (full BDG).}{26}{section*.35}%
+\contentsline {subsection}{\numberline {7.2}Physical Interpretation: Why 3+1?}{26}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Relation to Carlip's Result}{27}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}5D Does Not Saturate}{27}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Status of $\Xi $ as a Physical Quantity}{27}{subsection.7.5}%
+\contentsline {subsection}{\numberline {7.6}Unification: Link Action and Geometric Consistency}{28}{subsection.7.6}%
+\contentsline {subsection}{\numberline {7.7}Limitations}{29}{subsection.7.7}%
+\contentsline {section}{\numberline {8}Conclusion}{29}{section.8}%
+\contentsline {section}{\numberline {A}Geometric Consistency Approach (Prior Result)}{30}{appendix.A}%
+\contentsline {section}{\numberline {B}Experimental Configuration Details}{31}{appendix.B}%
+\contentsline {section}{\numberline {C}Suggested Figures}{31}{appendix.C}%
+\contentsline {section}{\numberline {D}Scaling-Law Fitting Details}{32}{appendix.D}%
+\contentsline {paragraph}{Data.}{33}{section*.36}%
+\contentsline {paragraph}{Link-density fit.}{33}{section*.37}%
+\contentsline {paragraph}{Entropy-density fit.}{33}{section*.38}%
+\contentsline {paragraph}{Parameter extrapolation.}{33}{section*.39}%
+\contentsline {paragraph}{Sensitivity.}{33}{section*.40}%
