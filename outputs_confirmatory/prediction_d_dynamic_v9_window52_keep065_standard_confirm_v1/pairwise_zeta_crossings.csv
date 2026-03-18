@@ -1,0 +1,12 @@
+﻿dataset,n,family_a,family_b,zeta_cross,delta_at_min_zeta,delta_at_max_zeta
+outputs_exploratory/pairwise_compressibility_duel_expanded,30,lorentzian_like_2d,multi_layer_random,3.330410411622607,-4.477360503328228,3.5889615710376432
+outputs_exploratory/pairwise_compressibility_duel_expanded,40,lorentzian_like_2d,multi_layer_random,5.074462937624223,-7.089384571537202,1.2930409091655974
+outputs_exploratory/frozen_exploratory_submodel_44_expanded/duel,44,lorentzian_like_2d,multi_layer_random,,-9.055422861954995,-0.04818924563966931
+outputs_exploratory/frozen_exploratory_submodel_48_expanded/duel,48,lorentzian_like_2d,multi_layer_random,,-12.51712320353029,-3.898295878296665
+outputs_exploratory/frozen_exploratory_submodel_52_expanded/duel,52,lorentzian_like_2d,multi_layer_random,,-11.216147716080172,-3.283305457528286
+outputs_exploratory/frozen_exploratory_submodel_52_moderate/duel,52,lorentzian_like_2d,multi_layer_random,,-10.249734933029984,-1.6393464937902422
+outputs_exploratory/frozen_exploratory_submodel_52_p5p95/duel,52,lorentzian_like_2d,multi_layer_random,,-11.68356384172155,-3.4731936437965487
+outputs_exploratory/frozen_exploratory_submodel_52_rescue/duel,52,lorentzian_like_2d,multi_layer_random,,-13.249206123648946,-5.348246622241021
+outputs_exploratory/frozen_exploratory_submodel_56_moderate/duel,56,lorentzian_like_2d,multi_layer_random,,-14.091654502830082,-5.391377606340825
+outputs_exploratory/frozen_exploratory_submodel_56_p5p95/duel,56,lorentzian_like_2d,multi_layer_random,,-12.330155801204398,-5.646456512693561
+outputs_exploratory/frozen_exploratory_submodel_56_rescue/duel,56,lorentzian_like_2d,multi_layer_random,,-12.068945853811158,-6.053073942005312

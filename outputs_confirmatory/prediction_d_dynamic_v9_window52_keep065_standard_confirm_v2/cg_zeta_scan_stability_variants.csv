@@ -1,0 +1,2 @@
+﻿source,n,n_cg,keep_ratio,gamma,action_mode,n_families,n_zetas,winner_switches,winner_persistence_frac,spearman_rank_continuity_mean,spearman_rank_continuity_min,zeta_lor2d_first_win
+outputs_confirmatory/prediction_d_window52_keep065_standard_confirm_v2,52,34,0.65,0.2,A2,6.0,11.0,0.0,1.0,0.9828571428571429,0.9428571428571428,

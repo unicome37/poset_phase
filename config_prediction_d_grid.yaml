@@ -1,0 +1,30 @@
+experiment:
+  # Keep this moderate: enough to stress-test stability beyond N=16,
+  # but not so large that it becomes a multi-hour run.
+  n_values: [30, 40, 52]
+  families:
+    - lorentzian_like_2d
+    - multi_layer_random
+    - KR_like
+    - interval_order
+    - random_layered_k6_uniform
+    - transitive_percolation
+  gammas: [0.2, 0.8]
+  beta: 1.0
+  samples_per_family: 6
+  sis_runs: 64
+  action_modes: [A2]
+  exact_threshold: 0
+
+coarse_grain:
+  keep_ratios: [0.9, 0.8, 0.7, 0.6]
+  repeats: 5
+  zeta: 1.0
+  eta: 0.0
+  reference_family: lorentzian_like_2d
+  gc_reference_max_pairs: 32
+  gc_reference_sigma_scale: 2.5
+
+output:
+  directory: outputs_exploratory/prediction_d_grid
+

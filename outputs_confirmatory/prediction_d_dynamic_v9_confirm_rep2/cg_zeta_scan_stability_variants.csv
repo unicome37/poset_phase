@@ -1,0 +1,7 @@
+﻿source,n,n_cg,keep_ratio,gamma,action_mode,n_families,n_zetas,winner_switches,winner_persistence_frac,spearman_rank_continuity_mean,spearman_rank_continuity_min,zeta_lor2d_first_win
+outputs_confirmatory/prediction_d_freeze_confirm_v2,30,18,0.6,0.2,A2,6.0,11.0,0.0,1.0,0.7885714285714285,0.5428571428571428,
+outputs_confirmatory/prediction_d_freeze_confirm_v2,30,18,0.6,0.8,A2,6.0,11.0,5.0,0.45454545454545453,0.4685714285714285,0.2571428571428571,0.5
+outputs_confirmatory/prediction_d_freeze_confirm_v2,40,24,0.6,0.2,A2,6.0,11.0,5.0,0.5454545454545454,0.7542857142857143,0.6571428571428571,
+outputs_confirmatory/prediction_d_freeze_confirm_v2,40,24,0.6,0.8,A2,6.0,11.0,3.0,0.6363636363636364,0.7657142857142857,0.6,
+outputs_confirmatory/prediction_d_freeze_confirm_v2,52,31,0.6,0.2,A2,6.0,11.0,0.0,1.0,0.96,0.9428571428571428,
+outputs_confirmatory/prediction_d_freeze_confirm_v2,52,31,0.6,0.8,A2,6.0,11.0,1.0,0.8181818181818182,0.8914285714285715,0.6,

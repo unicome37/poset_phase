@@ -504,7 +504,19 @@ a8e79c7 feat: Benincasa-Dowker action dimension selection
 8. **推论D（动态过程）确认性窗口冻结**: 从 v8 给出的候选冻结窗口里选 2-3 个，对应 strata 做更高 `n_perm` 与跨 source 复现
    - ✅ 已完成确认性冻结（已更新）：冻结窗口收敛为 `N=30, keep_ratio=0.6, gamma=0.2`
    - 说明：`gamma=0.8` 在后续确认性复现（`sis_runs=128`）下出现不稳定（`no_switch` 乃至 `switch` 可能坍缩），因此不宜冻结为确认性主窗口
-   - 主证据：在 `sis_runs=128` 的三次独立复现（`seed_offset=172000/174000/175000`）上，对 `full/switch/no_switch` 三口径以 `n_perm=200000` 做第三层定点加密，均保持 `rho>0` 且强显著（见 `outputs_confirmatory/prediction_d_dynamic_v10_freeze_strata_rep3_g02/` 等）
+   - 主证据：在 `sis_runs=128` 的四次独立复现（`seed_offset=172000/174000/175000/176000`）上，对 `full/switch/no_switch` 三口径以 `n_perm=200000` 做第三层定点加密，均保持 `rho>0` 且强显著（见 `outputs_confirmatory/prediction_d_dynamic_v10_freeze_strata_rep3_g02/` 等）
+
+9. **推论D 论文/章节撰写**: 三层证据 + 冻结窗口 + 负结果边界 → 论文级叙事整理
+   - 草稿：`PREDICTION_D_WRITEUP_DRAFT.md`
+10. **更多 N 的窗口扩展**: 在确认性复现族上寻找并定点加密 N=40/52 的可重复窗口
+   - ✅ N=40 次冻结候选：`N=40, keep_ratio=0.6, gamma=0.8` 在 rep3–rep6 上定点加密后 `full/switch/no_switch` 均显著（见 `outputs_confirmatory/prediction_d_dynamic_v10_window40_g08_summary.csv`）
+   - ⚠️ N=52 暂不稳定：`N=52, keep_ratio=0.6, gamma=0.2` 在 rep3/4/6 很强，但在 rep5 出现 `no_switch` 失效与 `switch` 边界显著（见 `outputs_confirmatory/prediction_d_dynamic_v10_window52_g02_summary.csv`），当前不冻结
+   - ✅ N=52 去噪补充：专用去噪 run（更大 `samples_per_family`/`repeats`）可让 `N=52, keep=0.6, gamma=0.2` 的 `full/switch/no_switch` 三口径恢复强显著（见 `outputs_confirmatory/prediction_d_dynamic_v10_window52_denoise_confirm_v1_g02/`）
+   - ✅ N=52 去噪复现2：`outputs_confirmatory/prediction_d_dynamic_v10_window52_denoise_confirm_v2_g02/`（并汇总于 `outputs_confirmatory/prediction_d_dynamic_v10_window52_denoise_g02_summary.csv`）
+   - ⚠️ keep_ratio=0.7 次窗口（标准规程）不更稳：`N=52, keep_ratio=0.7, gamma=0.2` 两次独立复现结果不一致（见 `outputs_confirmatory/prediction_d_dynamic_v9_window52_keep07_standard_confirm_v1/` 与 `..._v2/`）
+   - ❌ keep_ratio=0.65 次窗口（标准规程）失败：`N=52, keep_ratio=0.65, gamma=0.2` 两次独立复现 v9 显示 `full` 接近 0 且不显著，`no_switch` 甚至出现符号翻转（见 `outputs_confirmatory/prediction_d_dynamic_v9_window52_keep065_standard_confirm_v1/` 与 `..._v2/`）
+   - ❌ keep_ratio=0.75 次窗口（标准规程）失败：`N=52, keep_ratio=0.75, gamma=0.2` 两次独立复现 v9 未出现 `full/switch/no_switch` 三口径稳定显著（见 `outputs_confirmatory/prediction_d_dynamic_v9_window52_keep075_standard_confirm_v1/` 与 `..._v2/`）
+   - ✅ 跨推论最小交叉检验（C → D 控制变量）：在冻结窗口上把 `layer_count/mean_layer_gap` 加入第三层作为控制，`I_cg → improve_rank` 仍强显著，说明第三层不只是“层深代理”。产物：`outputs_confirmatory/prediction_d_dynamic_v11_layercontrol_rep3_n30_k060_g02_np20000/`（方法见 `结构存在论_推论D验证方案.md`）
 
 ### 探索性
 

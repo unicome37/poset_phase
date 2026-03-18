@@ -1,0 +1,3 @@
+﻿partial_pearson,partial_spearman,permutation_p_abs_pearson,n,target_col,x_col,n_controls,n_rows
+0.3865182796850748,0.47608093667011947,0.0004997501249375312,1848.0,is_winner_eval,mean_I_cg,12.0,1848.0
+-0.4983605596208731,-0.5067393738473351,0.0004997501249375312,1848.0,rank_eval,mean_I_cg,12.0,1848.0

@@ -1,0 +1,13 @@
+﻿source,n,family,layer_count,mean_layer_gap,n_samples
+outputs_confirmatory/prediction_d_freeze_confirm_v3,30,KR_like,3.0,1.335418479911151,8
+outputs_confirmatory/prediction_d_freeze_confirm_v3,30,interval_order,8.125,3.4363433210096943,8
+outputs_confirmatory/prediction_d_freeze_confirm_v3,30,lorentzian_like_2d,7.625,3.228170563038458,8
+outputs_confirmatory/prediction_d_freeze_confirm_v3,30,multi_layer_random,4.625,2.175668215601458,8
+outputs_confirmatory/prediction_d_freeze_confirm_v3,30,random_layered_k6_uniform,6.0,2.7160523474841205,8
+outputs_confirmatory/prediction_d_freeze_confirm_v3,30,transitive_percolation,5.375,2.260069056661781,8
+outputs_confirmatory/prediction_d_freeze_confirm_v3,52,KR_like,3.0,1.3329011897606322,8
+outputs_confirmatory/prediction_d_freeze_confirm_v3,52,interval_order,9.875,4.077704876278063,8
+outputs_confirmatory/prediction_d_freeze_confirm_v3,52,lorentzian_like_2d,10.5,4.22130187289769,8
+outputs_confirmatory/prediction_d_freeze_confirm_v3,52,multi_layer_random,5.0,2.2989683540084855,8
+outputs_confirmatory/prediction_d_freeze_confirm_v3,52,random_layered_k6_uniform,6.0,2.8187609628766404,8
+outputs_confirmatory/prediction_d_freeze_confirm_v3,52,transitive_percolation,8.25,3.6301383530454507,8

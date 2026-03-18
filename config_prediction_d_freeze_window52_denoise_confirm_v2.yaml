@@ -1,0 +1,30 @@
+experiment:
+  # N=52 denoise confirmatory run (replicate 2): independent seed_offset.
+  seed_offset: 178000
+  n_values: [52]
+  families:
+    - lorentzian_like_2d
+    - multi_layer_random
+    - KR_like
+    - interval_order
+    - random_layered_k6_uniform
+    - transitive_percolation
+  gammas: [0.2]
+  beta: 1.0
+  samples_per_family: 24
+  sis_runs: 128
+  action_modes: [A2]
+  exact_threshold: 0
+
+coarse_grain:
+  keep_ratios: [0.6]
+  repeats: 30
+  zeta: 1.0
+  eta: 0.0
+  reference_family: lorentzian_like_2d
+  gc_reference_max_pairs: 32
+  gc_reference_sigma_scale: 2.5
+
+output:
+  directory: outputs_confirmatory/prediction_d_freeze_window52_denoise_confirm_v2
+

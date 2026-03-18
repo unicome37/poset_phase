@@ -1,0 +1,7 @@
+﻿rep,icg_variant,rho,p,n_perm
+prediction_d_dynamic_v10_window52_denoise_confirm_v1_g02,full,0.677922077922078,4.999975000125e-06,200000
+prediction_d_dynamic_v10_window52_denoise_confirm_v1_g02,no_switch,0.5532467532467533,1.4999925000375e-05,200000
+prediction_d_dynamic_v10_window52_denoise_confirm_v1_g02,switch,0.5792207792207792,9.99995000025e-06,200000
+prediction_d_dynamic_v10_window52_denoise_confirm_v2_g02,full,0.6623376623376624,4.999975000125e-06,200000
+prediction_d_dynamic_v10_window52_denoise_confirm_v2_g02,no_switch,0.6987012987012988,4.999975000125e-06,200000
+prediction_d_dynamic_v10_window52_denoise_confirm_v2_g02,switch,0.6415584415584416,4.999975000125e-06,200000

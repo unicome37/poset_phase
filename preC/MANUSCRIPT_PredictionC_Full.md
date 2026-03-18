@@ -4,11 +4,13 @@
 
 ### Abstract
 
-Companion papers (Predictions A and B) established that Lorentzian-like posets become competitive phases in action-weighted causal poset ensembles. What structural feature drives this advantage remains unexplained. We define a Hierarchy Integration Index (HII) — a pre-registered composite z-score of five structural observables — and test whether hierarchy depth predicts combinatorial entropy $\log H$ across three independent tiers: (i) all-family exact computation (8 families, $N = 10$–$16$, 320 samples), (ii) matched-pair $\Delta$-analysis (Lor2D vs MLR, 46 pairs, $N = 30$–$56$), and (iii) coarse-graining identity-stability linkage (92 samples). At fixed $N$, deeper hierarchy correlates with lower $\log H$: partial $r = -0.578$ controlling for $N$; matched-pair $r = -0.834$, stable across three filter stringencies (variation $< 0.005$). Component decomposition reveals that `layer_count` and `mean_layer_gap` carry most of the signal; the five-component HII composite never exceeds its best constituent. The mechanism chain extends to coarse-graining identity stability under the current classifier, with `layer_count` predicting switch rate at $r = -0.874$.
+Companion papers (Predictions A and B) established that Lorentzian-like posets become competitive phases in action-weighted causal poset ensembles. What structural feature drives this advantage remains unexplained. The qualitative expectation that more constrained partial orders admit fewer linear extensions is combinatorially natural; the open questions are *which* structural variable carries this effect among quasi-geometric competitors, *how large* the effect is, and whether it can be established beyond correlation.
 
-Beyond these correlational results, a quasi-causal evidence tower comprising nine experiments strengthens the mechanistic claim. Single-edge interventions that create layer boundaries produce $\sim 70\%$ larger entropy reductions than non-splitting interventions (Cohen's $d = 1.05$); placebo-controlled tests (same-layer vs. cross-layer) yield $d = 1.40$–$1.83$ ($p < 10^{-133}$); reverse interventions (layer merge → entropy increase) achieve 100% directional consistency ($d = 2.68$). A $k$-family dose–response analysis confirms monotone entropy decrease at all tested $N$ and edge densities. An analytical lower bound for complete layered posets proves $\log H$ strictly decreasing in layer count $k$, validated to machine precision. The $N$-scaling law ($|\text{slope}| \propto N^{0.70}$) shows the effect strengthens with system size. A large-$N$ extension using SIS-approximate entropy with paired seeds confirms the placebo effect persists at $N = 16$–$36$ ($d = 0.69$–$1.29$, $p < 10^{-5}$ at all $N$).
+We test whether hierarchy depth — principally the number of temporal layers (`layer_count`) — predicts combinatorial entropy $\log H$ at fixed poset size. A pre-registered five-component Hierarchy Integration Index (HII) is evaluated across two primary tiers: (i) all-family exact computation (8 families, $N = 10$–$16$, 320 samples) and (ii) matched-pair $\Delta$-analysis (Lor2D vs MLR, 46 pairs, $N = 30$–$56$), with a classifier-contingent coarse-graining stability analysis (92 samples) providing supplementary support. At fixed $N$, deeper hierarchy correlates strongly with lower $\log H$: partial $r = -0.578$ controlling for $N$; matched-pair $r = -0.834$, stable across three filter stringencies (variation $< 0.005$). Component decomposition reveals that `layer_count` and `mean_layer_gap` carry the dominant signal; the five-component HII composite never exceeds its best constituent — confirming that layer depth is the core mechanism, not a diffuse bundle of observables.
 
-A Simpson's Paradox in the raw data ($r = +0.336$ before $N$ control) is diagnosed: $N$ is the dominant sign-determining confound. Hard limitations include family-specific HII reversals (KR-like, absolute-layered), classifier-dependent Tier 3, and weak near-wall power at $N \geq 52$. These results provide correlational *and* quasi-causal support for a mechanistic link between hierarchy depth and entropy suppression in finite causal posets.
+Beyond correlational attribution, a quasi-causal evidence tower comprising nine experiments quantifies the mechanism and establishes directionality. Single-edge interventions that create layer boundaries produce $\sim 70\%$ larger entropy reductions than non-splitting interventions (Cohen's $d = 1.05$); placebo-controlled tests (same-layer vs. cross-layer) yield $d = 1.40$–$1.83$ ($p < 10^{-133}$); reverse interventions (layer merge → entropy increase) achieve 100% directional consistency ($d = 2.68$). A $k$-family dose–response analysis confirms monotone entropy decrease at all tested $N$ and edge densities, with a nonlinear $N$-scaling law ($|\text{slope}| \propto N^{0.70}$) showing the effect strengthens with system size. An analytical lower bound for complete layered posets proves $\log H$ strictly decreasing in layer count $k$, validated to machine precision. A large-$N$ extension using SIS-approximate entropy with paired seeds confirms the placebo effect persists at $N = 16$–$36$ ($d = 0.69$–$1.29$, $p < 10^{-5}$ at all $N$).
+
+A Simpson's Paradox in the raw data ($r = +0.336$ before $N$ control) is diagnosed: $N$ is the dominant sign-determining confound. Hard limitations include family-specific reversals within structurally frozen families (KR-like, absolute-layered), classifier-dependent supplementary tier, and weak near-wall power at $N \geq 52$. These results provide quantitative attribution *and* quasi-causal support for a mechanistic link between layer depth and entropy suppression in finite causal posets: the contribution is not the qualitative direction (which is combinatorially expected) but the quantified dose–response scaling, the specific attribution to Lorentzian-like competitiveness, and the quasi-causal intervention evidence.
 
 **Keywords:** causal posets, hierarchy integration, combinatorial entropy, linear extensions, intervention design, coarse-graining stability, Simpson's Paradox, causal set theory
 
@@ -28,11 +30,17 @@ These results establish *that* Lorentzian-like structures can dominate, and *whi
 
 This gap matters because without a structural mechanism, the competition results remain purely phenomenological: we know the winning family, but not the property that makes it win.
 
-### 1.2 Qualitative Intuition
+### 1.2 Qualitative Intuition and What Remains Non-Obvious
 
 A simple argument suggests where to look. Combinatorial entropy $H = \log |\mathcal{L}(P)|$ counts the logarithm of the number of linear extensions — the total orders compatible with the partial order $P$. A poset with deeper causal hierarchy (more temporal layers, larger inter-layer gaps, more long-range ordering constraints) leaves fewer compatible total orders.
 
 The analogy is crystallographic: a solid has lower entropy than a gas at the same energy because its internal structure constrains the accessible microstates. We hypothesise that deeper causal hierarchy plays a structurally analogous role in constraining the linear extensions of a finite poset.
+
+The *qualitative direction* of this expectation is combinatorially natural and, in hindsight, nearly self-evident: more ordering constraints imply fewer compatible total orders. **What is not obvious**, and what constitutes the actual contribution of this paper, is the following:
+
+1. **Quantification.** The relationship is highly nonlinear. The dose–response scaling, the $N^{0.70}$ strengthening law, and the specific effect sizes ($d = 1.05$–$2.68$) are not predictable from the qualitative intuition alone.
+2. **Attribution.** Among the many structural differences between Lorentzian-like and quasi-geometric competitors (width, comparability, interval shape, edge density, etc.), it is specifically *layer depth* that carries the entropy advantage. This is an empirical finding, not a foregone conclusion.
+3. **Quasi-causal evidence.** Targeted intervention experiments — with placebo controls, bidirectional confirmation, and analytical backing — elevate the evidence from mere observation of a combinatorially expected tendency to a quantified, directionally verified mechanism.
 
 ### 1.3 From Intuition to Quantitative Test
 
@@ -46,19 +54,21 @@ Making this intuition precise requires three ingredients:
 
 ### 1.4 Key Contributions
 
-The present paper provides a systematic, multi-tier correlational test of the hypothesis that hierarchy depth observables predict entropy variation across poset families at fixed $N$, followed by a quasi-causal intervention programme that upgrades the evidence from correlational to mechanistic. The main findings are:
+The present paper provides a systematic, multi-tier test of the hypothesis that hierarchy depth observables predict entropy variation across poset families at fixed $N$, followed by a quasi-causal intervention programme that upgrades the evidence from correlational to mechanistic. The qualitative direction — more ordering constraints imply fewer linear extensions — is combinatorially expected. The contributions are therefore not the qualitative prediction itself, but the following:
 
-1. **Negative correlation at fixed $N$** (Tier 1): $r_\text{partial}(\text{HII}, \log H \mid N) = -0.578$ across 8 families, 320 samples.
+1. **Mechanism identification: layer depth is the core driver.** Component decomposition of a pre-registered five-component HII composite reveals that `layer_count` is the single strongest predictor in 2 of 3 analyses; the composite never exceeds its best constituent. The decisive structural variable is identified and separated from a broader bundle of observables.
 
-2. **Strong matched-pair signal** (Tier 2): $r(\Delta\text{HII}, \Delta\log H) = -0.834$ across 46 Lor2D–MLR pairs ($N = 30$–$56$), stable at $-0.836$ (P10–P90) and $-0.839$ (P0–P100).
+2. **Quantified dose–response and scaling.** The hierarchy–entropy relationship is highly nonlinear: the $k$-family dose–response is significant at all tested $N$ ($p < 10^{-29}$), and the $N$-scaling law ($|\text{slope}| \propto N^{0.70}$) shows the effect *strengthens* with system size. These quantitative features are not predictable from the qualitative intuition.
 
-3. **Supporting confirmatory evidence via CG identity stability** (Tier 3, classifier-contingent): layer count predicts coarse-graining switch rate with $r = -0.874$ (92 samples, $N = 30$–$56$), under the current nearest-centroid classifier.
+3. **Quasi-causal intervention tower** (Section 6): Single-edge interventions ($d = 1.05$), placebo-controlled experiments ($d = 1.40$–$1.83$), reverse interventions ($d = 2.68$, 100% directional), edge density universality (no phase transition), an analytical lower bound (validated to $10^{-15}$), and large-$N$ SIS extension (placebo $d = 0.69$–$1.29$ at $N = 16$–$36$).
 
-4. **Simpson's Paradox resolved**: the naïve positive correlation ($r = +0.336$) is a confound artifact driven solely by $N$.
+4. **Strong matched-pair signal** (Tier 2): $r(\Delta\text{HII}, \Delta\log H) = -0.834$ across 46 Lor2D–MLR pairs ($N = 30$–$56$), stable at $-0.836$ (P10–P90) and $-0.839$ (P0–P100).
 
-5. **Component decomposition**: `layer_count` is the single strongest predictor; the five-component HII composite never exceeds its best constituent.
+5. **Negative correlation at fixed $N$** (Tier 1): $r_\text{partial}(\text{HII}, \log H \mid N) = -0.578$ across 8 families, 320 samples.
 
-6. **Quasi-causal intervention tower** (Section 6): Single-edge interventions ($d = 1.05$), placebo-controlled experiments ($d = 1.40$–$1.83$), reverse interventions ($d = 2.68$, 100% directional), dose–response ($p < 10^{-29}$), edge density universality (no phase transition), $N$-scaling ($|\text{slope}| \propto N^{0.70}$), an analytical lower bound (validated to $10^{-15}$), and large-$N$ SIS extension (placebo $d = 0.69$–$1.29$ at $N = 16$–$36$).
+6. **Simpson's Paradox resolved**: the naïve positive correlation ($r = +0.336$) is a confound artifact driven solely by $N$.
+
+7. **Supplementary CG stability evidence** (Tier 3, classifier-contingent): layer count predicts coarse-graining switch rate with $r = -0.874$ (92 samples, $N = 30$–$56$), under the current nearest-centroid classifier. This provides directional support but depends on a specific classification algorithm and should not be read as a co-equal mechanistic pillar (see §1.6a, point 3).
 
 ### 1.5 The Three-Prediction Tower
 
@@ -88,11 +98,11 @@ This paper should be read as a structural hypothesis with strong correlational b
 
 ### 1.6a Hard Limitations (Preview)
 
-To set expectations, we flag four material limitations up front; each is discussed in full in Sections 5 and 6.
+To set expectations, we flag four material limitations up front; each is discussed in full in later sections.
 
-1. **Family-specific reversals.** Within KR-like ($\text{layer\_count} \equiv 3$) and absolute-layered ($\text{layer\_count} \equiv \lfloor N/4 \rfloor$) families, HII variance is dominated by secondary components and the correlation can reverse sign (Section 5.5).
-2. **Feature redundancy.** `adjacent_edge_fraction` and `long_edge_fraction` are algebraically complementary; `cover_density` aliases `reduction_edge_density`. The effective dimensionality of the five-component HII is at most three.
-3. **Classifier-dependent Tier 3.** The coarse-graining identity switch rate ($\sigma_\text{CG}$) depends on a nearest-centroid classifier, not on a physics-derived observable. Tier 3 results should be interpreted as evidence under the current classification protocol, not as a physical robustness law.
+1. **Family-specific reversals.** Within KR-like ($\text{layer\_count} \equiv 3$) and absolute-layered ($\text{layer\_count} \equiv \lfloor N/4 \rfloor$) families, HII variance is dominated by secondary components and the correlation can reverse sign (Section 5.5). This means layer depth functions as an *inter-phase* discriminant, not a universal intra-phase law. Within-family entropy variation likely requires finer-grained observables such as those explored in Predictions A and B (see §7.6).
+2. **Feature redundancy.** `adjacent_edge_fraction` and `long_edge_fraction` are algebraically complementary; `cover_density` aliases `reduction_edge_density`. The effective dimensionality of the five-component HII is at most three. Component decomposition (Section 5) shows `layer_count` alone carries the dominant signal.
+3. **Supplementary Tier 3.** The coarse-graining identity switch rate ($\sigma_\text{CG}$) depends on a nearest-centroid classifier, not on a physics-derived observable. Tier 3 results provide valuable directional support but should be read as supplementary evidence under the current classification protocol, not as a co-equal mechanistic pillar (see §7.7).
 4. **Near-wall power loss.** At $N \geq 52$, MLR survivor rates under P10–P90 drop below 0.01%, requiring relaxed filters (P5–P95) with corresponding loss of matching quality.
 
 ### 1.7 Paper Structure
@@ -406,19 +416,25 @@ Posets with more layers impose more global ordering constraints. When elements a
 
 All three tiers show consistently large negative effect sizes ($|r| > 0.5$), with Tiers 2 and 3 exceeding $|r| = 0.8$. The direction is uniformly negative once the Simpson's Paradox is resolved.
 
-#### Why three tiers matter
+#### The evidential hierarchy
+
+The three tiers are not co-equal pillars. Tiers 1 and 2 directly test the core hypothesis (hierarchy depth → entropy); Tier 3 tests a *downstream* consequence (entropy → CG stability) that depends on a specific classifier. The evidential hierarchy is:
+
+- **Primary**: Tier 1 (broad family coverage, exact entropy) + Tier 2 (matched quasi-geometric competitors, $N$-free by construction).
+- **Supplementary**: Tier 3 (association chain extension, classifier-contingent).
+- **Strongest**: Section 6, quasi-causal intervention experiments (not shown in this summary table).
 
 No single tier suffices:
 
 - **Tier 1 alone** has the Simpson's Paradox pitfall: the naïve analysis yields a positive $r$, which could be mistaken for a falsification.
 - **Tier 2 alone** covers only Lor2D vs. MLR at $N \ge 30$, missing the small-$N$ exact-entropy domain and six other families.
-- **Tier 3 alone** does not directly test the HII–$\log H$ link; it only tests the downstream consequence ($\sigma_\text{CG}$).
+- **Tier 3 alone** does not directly test the HII–$\log H$ link; it only tests the downstream consequence ($\sigma_\text{CG}$), and its interpretation depends on the fidelity of the classification protocol.
 
 Together, the tiers provide mutually reinforcing correlational support for an association chain:
 
 $$\text{deeper hierarchy} \;\longrightarrow\; \text{lower entropy} \;\longrightarrow\; \text{greater CG identity stability.}$$
 
-Each arrow is supported by $|r| > 0.8$ in at least one tier, under the current analysis protocol. The quasi-causal intervention experiments of Section 6 provide strong directional evidence for the first link; strict formal causality remains an open challenge (Section 7.3).
+The first arrow is supported by Tiers 1–2 ($|r| > 0.8$ in Tier 2) and strongly reinforced by the quasi-causal intervention experiments of Section 6. The second arrow is supported by Tier 3 ($|r| > 0.8$) under the current classifier, with the caveat that classifier dependence limits its generality (see §7.7).
 
 ---
 
@@ -648,7 +664,9 @@ would achieve comparable or better predictive power. However, we do *not* adopt 
 
 3. **Generalisability.** A dedicated study with held-out families or larger $N$ ranges should evaluate whether the dominance of layer_count persists, or whether reduction_edge_density and the edge-fraction pair gain importance in structurally richer regimes.
 
-This observation is flagged as a direction for future work (Section 7.7).
+This observation is flagged as a direction for future work (Section 7.9).
+
+We emphasise that the component decomposition itself — the finding that layer depth is the core driver, and that the five-component composite adds no incremental prediction — **is a primary result of this paper, not a limitation.** The question "which structural variable explains the entropy gap?" had no prior answer. The pre-registered HII served as a broad net designed to capture the mechanism without presupposing which component would dominate. That the decomposition converges cleanly on `layer_count` is the mechanism identification result that Prediction C was built to deliver.
 
 ---
 
@@ -889,11 +907,11 @@ Three claims are supported by the present data.
 
 **Second**, a *methodological principle*: cross-size poset studies must control for $N$ or use matched-pair designs. Failure to do so can reverse structural relationships (Table 9). This Simpson's Paradox is not a peculiarity of our particular composite; it arises from the systematic $N$-scaling of both HII components and $\log H$.
 
-**Third**, *correlational support for an association chain*:
+**Third**, *supplementary support for an extended association chain*:
 
 $$\text{deeper hierarchy} \;\to\; \text{lower entropy} \;\to\; \text{greater CG identity stability}.$$
 
-The first link is supported by Tiers 1 and 2; the second by Tier 3, where higher-HII posets exhibit lower coarse-graining switch rates under the current classifier. The chain is consistent across analyses with $|r| > 0.8$ in all controlled tests, but remains correlational and classifier-dependent (Tier 3).
+The first link is the core of this paper, supported by Tiers 1 and 2 and the quasi-causal intervention tower. The second link is supported by Tier 3, where higher-HII posets exhibit lower coarse-graining switch rates under the current classifier. Tier 3 provides valuable directional extension but is classifier-contingent and should not be weighted equally with the primary tiers (see §7.7).
 
 **Fourth**, *quasi-causal evidence for the first link* via intervention experiments (Section 6). Single-edge interventions that deepen hierarchy produce $\sim 70\%$ larger entropy reductions than non-splitting interventions ($d = 1.05$); placebo-controlled tests show treatment groups produce $\sim 3\times$ the entropy change of cross-layer controls ($d = 1.40$–$1.83$); and reverse interventions (layer merge $\to$ entropy increase) achieve 100% directional consistency ($d = 2.68$). An analytical lower bound for complete layered posets proves that $\log H$ is strictly decreasing in $k$, validated to machine precision ($10^{-15}$).
 
@@ -961,7 +979,36 @@ This boundary imposes a practical ceiling on the matched-pair approach. Extendin
 
 ---
 
-### 7.6 Limitations
+### 7.6 Within-Family Reversals and the Scope of a Topological Mechanism
+
+The family-specific reversals documented in Section 5.5 — particularly the significant positive $r(\text{HII}, \log H) = +0.782$ within KR-like at fixed $N$ — deserve deeper interpretation than the purely methodological caveat given there.
+
+**What the reversal means.** Layer depth functions as an effective *inter-phase* discriminant: it explains why Lor2D-like structures have systematically lower entropy than structurally matched quasi-geometric competitors (Tier 2, $r = -0.834$). It does *not* function as a universal *intra-phase* law: within a family whose layer count is structurally frozen (KR-like: always 3; absolute-layered: always $\lfloor N/4 \rfloor$), the composite HII reverts to noise from secondary components, and the correlation can reverse. Posets of the same macroscopic type can still differ in entropy through mechanisms that `layer_count` does not capture.
+
+**What drives within-family entropy variation.** If layer depth accounts for the cross-family entropy gap but not within-family fluctuations, then within-family entropy variation must depend on finer-grained structural properties — local connectivity patterns, edge arrangement within fixed layers, or higher-order geometric observables. This is precisely the domain where the BDG-type action terms explored in Prediction A (interval-shape observables, comparability windows, effective dimension proxies) would be expected to contribute additional discriminative power.
+
+**Implication for the three-prediction tower.** This limitation, rather than weakening Prediction C, actually sharpens its role within the three-prediction programme. The picture that emerges is one of *layered resolution*:
+
+- **Prediction C** (layer depth) resolves the *inter-phase* entropy gap — why Lorentzian-like structures systematically beat quasi-geometric competitors.
+- **Prediction A / B** (action-level observables) resolve *intra-phase* fine structure — why some Lor2D instances score better than others, and why specific dimensional embeddings are favoured.
+
+The two levels are complementary, not competing. Future work should test whether the residual within-family entropy variance, after controlling for `layer_count`, is further reduced by the BDG geometric terms used in the action functional.
+
+---
+
+### 7.7 The Status of Tier 3 (Coarse-Graining Stability)
+
+Tier 3 provides the directional prediction $r(\text{layer\_count}, \sigma_\text{CG}) = -0.874$, extending the association chain from hierarchy → entropy → CG stability. While the correlation is strong, two features distinguish it from the primary tiers:
+
+1. **Classifier dependence.** The CG switch rate $\sigma_\text{CG}$ is defined by a nearest-centroid classifier, not by a physics-derived observable. A different classification algorithm could yield a different $\sigma_\text{CG}$, potentially altering the magnitude or even the sign of the correlation.
+
+2. **Not directly testing the core hypothesis.** Tiers 1 and 2 directly test "hierarchy depth → entropy." Tier 3 tests a downstream consequence ("entropy → CG stability") that depends on additional assumptions about how structural identity maps onto classification.
+
+For these reasons, Tier 3 is best interpreted as **supplementary directional support** rather than a co-equal evidential pillar. It is valuable because it extends the mechanism chain to an observable of independent physical interest (structural robustness under coarse-graining), but its evidential weight should not be equated with the direct hypothesis tests of Tiers 1–2 or the quasi-causal intervention experiments of Section 6.
+
+---
+
+### 7.8 Limitations
 
 1. **Exact entropy is computationally bounded.** The DP algorithm for $\log H$ is exponential in antichain width. Tier 1 operates at $N \leq 16$; Tiers 2 and 3 use approximate methods. This limits both the $N$ range and the precision of entropy estimates.
 
@@ -979,7 +1026,7 @@ This boundary imposes a practical ceiling on the matched-pair approach. Extendin
 
 ---
 
-### 7.7 Future Directions
+### 7.9 Future Directions
 
 1. **HII refinement on held-out data.** Generate new families or use alternative poset growth rules to test whether a two-component $\text{HII}_\text{narrow}$ (layer_count + mean_layer_gap) matches or exceeds the full five-component index.
 
@@ -999,11 +1046,17 @@ This boundary imposes a practical ceiling on the matched-pair approach. Extendin
 
 ## 8. Conclusion
 
-We have shown that at fixed poset size $N$, hierarchy depth observables — principally `layer_count` and `mean_layer_gap` — correlate negatively with combinatorial entropy across three independent statistical designs spanning $N = 10$ to $56$. The pre-registered five-component HII composite achieves $|r| > 0.8$ in Tiers 2 and 3, but never exceeds its best constituent; the signal is carried by the layer-depth pair. The correlation is stable across three levels of MLR-filter stringency ($r$ variation $< 0.005$). A Simpson's Paradox in the naïve analysis reveals that cross-size comparisons are unreliable without $N$ controls — a methodological finding of independent value.
+The qualitative expectation that more ordering constraints reduce the number of compatible linear extensions is combinatorially natural. The contribution of this paper is not this direction, but three results that go beyond the qualitative intuition.
 
-Beyond correlational evidence, a tower of eight quasi-causal and analytical experiments (Section 6) substantially strengthens the mechanistic claim. Single-edge interventions that create new layer boundaries produce $\sim 70\%$ larger entropy reductions than non-splitting interventions (Cohen's $d = 1.05$). Placebo-controlled experiments with same-layer (treatment) vs. cross-layer (control) interventions show $\sim 3\times$ larger entropy changes in the treatment group ($d = 1.40$–$1.83$, $p < 10^{-133}$). Reverse interventions — critical edge removal causing layer merges — produce entropy *increases* with 100% directional consistency ($d = 2.68$). A $k$-family dose–response analysis confirms monotone entropy decrease with layer count at all tested $N$ and edge densities, with no phase transition. The $N$-scaling law ($|\text{slope}| \propto N^{0.70}$) demonstrates that the effect *strengthens* with system size. An analytical lower bound for complete layered posets proves that $\log H$ is strictly decreasing in $k$, validated to machine precision ($10^{-15}$).
+**First, mechanism identification.** Among the many structural differences between Lorentzian-like posets and their quasi-geometric competitors (width, comparability, interval shape, edge density, layer structure, etc.), we have shown that it is specifically *layer depth* — principally `layer_count` and `mean_layer_gap` — that carries the entropy advantage. A pre-registered five-component HII composite achieves $|r| > 0.8$ in both primary tiers but never exceeds its best constituent; the component decomposition converges cleanly on the layer-depth pair. This identification was not a foregone conclusion: it required systematic testing across two primary tiers (all-family partial correlations at $N = 10$–$16$, $r_\text{partial} = -0.578$; matched-pair $\Delta$-analysis at $N = 30$–$56$, $r = -0.834$), with supplementary CG stability evidence ($r = -0.874$, classifier-contingent) and resolution of a Simpson's Paradox that initially reversed the apparent sign.
 
-Hard limitations remain: family-specific reversals (KR-like, absolute-layered), classifier-dependent Tier 3, weak near-wall power at $N \geq 52$, and the structural impossibility of formal causal identification for combinatorial objects. Within these boundaries, the combined correlational and quasi-causal evidence provides strong support for a *mechanistic* link between hierarchy depth and entropy suppression in finite causal posets, offering a structural account of *why* certain families achieve lower entropy as observed in Prediction B.
+**Second, quantification.** The hierarchy–entropy relationship is highly nonlinear: a $k$-family dose–response is significant at all tested $N$ ($p < 10^{-29}$); the $N$-scaling law ($|\text{slope}| \propto N^{0.70}$) shows the effect *strengthens* with system size; and an analytical lower bound for complete layered posets proves $\log H$ strictly decreasing in $k$, validated to machine precision ($10^{-15}$). These features are not predictable from the qualitative intuition.
+
+**Third, quasi-causal evidence.** A tower of nine experiments upgrades the evidence from purely correlational to quasi-causal. Single-edge interventions that create layer boundaries produce $\sim 70\%$ larger entropy reductions than non-splitting interventions ($d = 1.05$). Placebo-controlled experiments (same-layer treatment vs. cross-layer control) yield $d = 1.40$–$1.83$ ($p < 10^{-133}$). Reverse interventions (layer merge → entropy increase) achieve 100% directional consistency ($d = 2.68$). The effects persist at $N = 16$–$36$ under SIS approximation ($d = 0.69$–$1.29$, $p < 10^{-5}$ at all $N$).
+
+Hard limitations constrain the scope. Family-specific reversals (KR-like, absolute-layered) show that layer depth functions as an *inter-phase* discriminant, not as a universal intra-phase law; within-family entropy variation likely requires the finer-grained geometric observables explored in Predictions A and B. The CG stability tier (Tier 3) depends on a specific classifier and should be read as supplementary support. Near-wall power weakens at $N \geq 52$, and formal causal identification remains structurally out of reach for combinatorial objects.
+
+Within these boundaries, the combined evidence provides strong quantitative and quasi-causal support for the specific attribution: the Lorentzian-like entropy advantage identified in Prediction B is carried, at the mechanism level, by deeper temporal hierarchy. Prediction C thereby supplies the structural *why* behind Prediction B's *what*, and the quasi-causal intervention experiments supply the *how* behind Prediction C's *why*.
 
 ---
 

@@ -1,71 +1,68 @@
 \contentsline {section}{\numberline {1}Introduction}{4}{section.1}%
 \contentsline {subsection}{\numberline {1.1}The Dimensionality Problem}{4}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}Causal Set Theory and the BDG Action}{4}{subsection.1.2}%
-\contentsline {subsection}{\numberline {1.3}Summary of Results}{4}{subsection.1.3}%
+\contentsline {subsection}{\numberline {1.3}Summary of Results}{5}{subsection.1.3}%
 \contentsline {subsection}{\numberline {1.4}The Key Physics}{5}{subsection.1.4}%
 \contentsline {subsection}{\numberline {1.5}Relation to Prior Work}{6}{subsection.1.5}%
 \contentsline {section}{\numberline {2}Setup}{6}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Finite Causal Posets}{6}{subsection.2.1}%
 \contentsline {subsection}{\numberline {2.2}Families Tested}{6}{subsection.2.2}%
-\contentsline {subsection}{\numberline {2.3}Entropy}{6}{subsection.2.3}%
+\contentsline {subsection}{\numberline {2.3}Entropy}{7}{subsection.2.3}%
 \contentsline {subsection}{\numberline {2.4}Interval Counts}{7}{subsection.2.4}%
 \contentsline {subsection}{\numberline {2.5}Scoring Function}{7}{subsection.2.5}%
 \contentsline {section}{\numberline {3}Action Variants}{7}{section.3}%
 \contentsline {subsection}{\numberline {3.1}Link Action ($d{=}2$ BDG)}{7}{subsection.3.1}%
-\contentsline {subsection}{\numberline {3.2}Standard BDG $d{=}4$}{7}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.2}Standard BDG $d{=}4$}{8}{subsection.3.2}%
 \contentsline {subsection}{\numberline {3.3}Pure BDG (No Link Term)}{8}{subsection.3.3}%
 \contentsline {subsection}{\numberline {3.4}Corrected $d{=}2$ Action}{8}{subsection.3.4}%
 \contentsline {section}{\numberline {4}Link Action Selects 3+1 Dimensions}{8}{section.4}%
 \contentsline {subsection}{\numberline {4.1}The Dimensional Cascade}{8}{subsection.4.1}%
-\contentsline {subsection}{\numberline {4.2}Finite-Size Stability}{8}{subsection.4.2}%
+\contentsline {subsection}{\numberline {4.2}Finite-Size Stability}{9}{subsection.4.2}%
 \contentsline {subsection}{\numberline {4.3}Margin of Victory}{9}{subsection.4.3}%
 \contentsline {subsection}{\numberline {4.4}4D Selection Window}{9}{subsection.4.4}%
 \contentsline {subsection}{\numberline {4.5}Large-$N$ Extension ($N = 80$--$112$)}{10}{subsection.4.5}%
 \contentsline {subsubsection}{\numberline {4.5.1}$\lambda $-Window Shift}{10}{subsubsection.4.5.1}%
 \contentsline {subsubsection}{\numberline {4.5.2}Link-Density Crossover at $N \approx 96$}{10}{subsubsection.4.5.2}%
 \contentsline {subsubsection}{\numberline {4.5.3}Gap Ratio Divergence}{11}{subsubsection.4.5.3}%
-\contentsline {subsubsection}{\numberline {4.5.4}$\Xi _{4 \to 5}$ Stability Across $N = 20$--$112$}{11}{subsubsection.4.5.4}%
+\contentsline {subsubsection}{\numberline {4.5.4}$\Xi _{4 \to 5}$ Stability Across $N = 20$--$112$}{12}{subsubsection.4.5.4}%
 \contentsline {section}{\numberline {5}Standard BDG Does Not Select 4D}{12}{section.5}%
 \contentsline {subsection}{\numberline {5.1}BDG $d{=}4$ Systematically Selects 5D}{12}{subsection.5.1}%
 \contentsline {subsection}{\numberline {5.2}Component Diagnostics}{13}{subsection.5.2}%
-\contentsline {subsection}{\numberline {5.3}Corrected $d{=}2$ and Pure BDG}{14}{subsection.5.3}%
+\contentsline {subsection}{\numberline {5.3}Corrected $d{=}2$ and Pure BDG}{13}{subsection.5.3}%
 \contentsline {subsection}{\numberline {5.4}Robustness Across Generators}{14}{subsection.5.4}%
-\contentsline {subsection}{\numberline {5.5}The $\Xi $ Parameter: A Dimensionless Control Variable}{14}{subsection.5.5}%
-\contentsline {paragraph}{Operational summary:}{15}{section*.17}%
+\contentsline {subsection}{\numberline {5.5}The $\Xi $ Parameter: A Dimensionless Control Variable}{15}{subsection.5.5}%
 \contentsline {subsection}{\numberline {5.6}Why This Matters}{15}{subsection.5.6}%
+\contentsline {paragraph}{Note on scales.}{15}{section*.18}%
 \contentsline {subsection}{\numberline {5.7}Analytical Derivation of $\Xi _{4 \to 5} \approx 11$}{16}{subsection.5.7}%
 \contentsline {subsubsection}{\numberline {5.7.1}Geometric Inputs}{16}{subsubsection.5.7.1}%
 \contentsline {subsubsection}{\numberline {5.7.2}Link Sector from Empty-Interval Geometry}{18}{subsubsection.5.7.2}%
-\contentsline {subsubsection}{\numberline {5.7.3}Entropy Sector: Mean Field Plus Occupancy Restoration}{18}{subsubsection.5.7.3}%
+\contentsline {subsubsection}{\numberline {5.7.3}Entropy Sector: Mean Field Plus Occupancy Restoration}{19}{subsubsection.5.7.3}%
 \contentsline {subsubsection}{\numberline {5.7.4}Prediction for $\Xi _{4\to 5}$}{19}{subsubsection.5.7.4}%
-\contentsline {subsubsection}{\numberline {5.7.5}Why Occupancy Outperforms Exact Non-Link Fraction}{19}{subsubsection.5.7.5}%
-\contentsline {subsubsection}{\numberline {5.7.6}Geometric Root of the Barrier}{20}{subsubsection.5.7.6}%
-\contentsline {subsection}{\numberline {5.8}Predictive Validation: Extrapolation to $d \geq 6$}{22}{subsection.5.8}%
-\contentsline {subsubsection}{\numberline {5.8.1}Parameter Extrapolation}{22}{subsubsection.5.8.1}%
-\contentsline {subsubsection}{\numberline {5.8.2}Blind Predictions}{22}{subsubsection.5.8.2}%
+\contentsline {subsubsection}{\numberline {5.7.5}Why Occupancy Outperforms Exact Non-Link Fraction}{20}{subsubsection.5.7.5}%
+\contentsline {subsubsection}{\numberline {5.7.6}Geometric Root of the Barrier}{21}{subsubsection.5.7.6}%
+\contentsline {subsection}{\numberline {5.8}Predictive Validation: Extrapolation to $d \geq 6$}{21}{subsection.5.8}%
+\contentsline {subsubsection}{\numberline {5.8.1}Parameter Extrapolation}{21}{subsubsection.5.8.1}%
+\contentsline {subsubsection}{\numberline {5.8.2}Blind Predictions}{23}{subsubsection.5.8.2}%
 \contentsline {subsubsection}{\numberline {5.8.3}Numerical Verification}{23}{subsubsection.5.8.3}%
-\contentsline {subsubsection}{\numberline {5.8.4}Interpretation}{23}{subsubsection.5.8.4}%
-\contentsline {section}{\numberline {6}Cross-Dimensional Causal Structure}{23}{section.6}%
-\contentsline {subsection}{\numberline {6.1}Causal Sparsity Hierarchy}{23}{subsection.6.1}%
-\contentsline {subsection}{\numberline {6.2}Density--Entropy Correlation}{25}{subsection.6.2}%
-\contentsline {subsection}{\numberline {6.3}The A$\times $C Bridge}{25}{subsection.6.3}%
+\contentsline {subsubsection}{\numberline {5.8.4}Interpretation}{24}{subsubsection.5.8.4}%
+\contentsline {section}{\numberline {6}Cross-Dimensional Causal Structure}{26}{section.6}%
+\contentsline {subsection}{\numberline {6.1}Causal Sparsity Hierarchy}{26}{subsection.6.1}%
+\contentsline {subsection}{\numberline {6.2}Density--Entropy Correlation}{26}{subsection.6.2}%
 \contentsline {section}{\numberline {7}Discussion}{26}{section.7}%
 \contentsline {subsection}{\numberline {7.1}A Dual-Layer Picture}{26}{subsection.7.1}%
-\contentsline {paragraph}{Layer~1 --- Dimensional selection (links).}{26}{section*.34}%
-\contentsline {paragraph}{Layer~2 --- Curvature and locality recovery (full BDG).}{26}{section*.35}%
-\contentsline {subsection}{\numberline {7.2}Physical Interpretation: Why 3+1?}{26}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Relation to Carlip's Result}{27}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}5D Does Not Saturate}{27}{subsection.7.4}%
-\contentsline {subsection}{\numberline {7.5}Status of $\Xi $ as a Physical Quantity}{27}{subsection.7.5}%
-\contentsline {subsection}{\numberline {7.6}Unification: Link Action and Geometric Consistency}{28}{subsection.7.6}%
-\contentsline {subsection}{\numberline {7.7}Limitations}{29}{subsection.7.7}%
-\contentsline {section}{\numberline {8}Conclusion}{29}{section.8}%
-\contentsline {section}{\numberline {A}Geometric Consistency Approach (Prior Result)}{30}{appendix.A}%
-\contentsline {section}{\numberline {B}Experimental Configuration Details}{31}{appendix.B}%
-\contentsline {section}{\numberline {C}Suggested Figures}{31}{appendix.C}%
-\contentsline {section}{\numberline {D}Scaling-Law Fitting Details}{32}{appendix.D}%
-\contentsline {paragraph}{Data.}{33}{section*.36}%
-\contentsline {paragraph}{Link-density fit.}{33}{section*.37}%
-\contentsline {paragraph}{Entropy-density fit.}{33}{section*.38}%
-\contentsline {paragraph}{Parameter extrapolation.}{33}{section*.39}%
-\contentsline {paragraph}{Sensitivity.}{33}{section*.40}%
+\contentsline {paragraph}{Layer~1 --- Dimensional selection (links).}{27}{section*.34}%
+\contentsline {paragraph}{Layer~2 --- Curvature and locality recovery (full BDG).}{27}{section*.35}%
+\contentsline {subsection}{\numberline {7.2}Physical Interpretation: Why 3+1?}{27}{subsection.7.2}%
+\contentsline {subsection}{\numberline {7.3}Relation to Carlip's Result}{28}{subsection.7.3}%
+\contentsline {subsection}{\numberline {7.4}Status of $\Xi $ as a Physical Quantity}{28}{subsection.7.4}%
+\contentsline {subsection}{\numberline {7.5}Limitations}{29}{subsection.7.5}%
+\contentsline {section}{\numberline {8}Conclusion}{30}{section.8}%
+\contentsline {section}{\numberline {A}Experimental Configuration Details}{31}{appendix.A}%
+\contentsline {section}{\numberline {B}Scaling-Law Fitting Details}{31}{appendix.B}%
+\contentsline {paragraph}{Data.}{31}{section*.36}%
+\contentsline {paragraph}{Link-density fit.}{31}{section*.37}%
+\contentsline {paragraph}{Entropy-density fit.}{31}{section*.38}%
+\contentsline {paragraph}{Parameter extrapolation.}{31}{section*.39}%
+\contentsline {paragraph}{Sensitivity.}{32}{section*.40}%
+\contentsline {paragraph}{Funding.}{33}{section*.44}%
+\contentsline {paragraph}{Conflicts of interest.}{33}{section*.45}%

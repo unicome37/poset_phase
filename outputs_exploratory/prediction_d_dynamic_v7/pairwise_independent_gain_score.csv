@@ -1,0 +1,11 @@
+﻿partial_pearson,partial_spearman,permutation_p_abs_pearson,n,dataset,target_col,cg_col,n_controls
+-0.8697942729341435,-0.8004776378636561,0.0004997501249375312,30,outputs_exploratory/pairwise_compressibility_duel_expanded,score_A2_gamma,switch_zscore,6.0
+-0.8234884761525798,-0.8296786799826313,0.0004997501249375312,40,outputs_exploratory/pairwise_compressibility_duel_expanded,score_A2_gamma,switch_zscore,6.0
+-0.9436542740514495,-0.9440559440559441,0.0004997501249375312,44,outputs_exploratory/frozen_exploratory_submodel_44_expanded/duel,score_A2_gamma,switch_zscore,6.0
+-0.6914735602552954,-0.6190476190476191,0.05847076461769116,48,outputs_exploratory/frozen_exploratory_submodel_48_expanded/duel,score_A2_gamma,switch_zscore,6.0
+-0.9548310028512192,-0.8461538461538461,0.0004997501249375312,52,outputs_exploratory/frozen_exploratory_submodel_52_moderate/duel,score_A2_gamma,switch_zscore,6.0
+-0.6789572137414907,-0.7382352941176471,0.004997501249375313,52,outputs_exploratory/frozen_exploratory_submodel_52_p5p95/duel,score_A2_gamma,switch_zscore,6.0
+-0.6048311840022195,-0.5441176470588235,0.010994502748625687,52,outputs_exploratory/frozen_exploratory_submodel_52_rescue/duel,score_A2_gamma,switch_zscore,6.0
+-0.9795323524789507,-0.9790209790209791,0.0004997501249375312,56,outputs_exploratory/frozen_exploratory_submodel_56_moderate/duel,score_A2_gamma,switch_zscore,6.0
+-0.39118167835203066,-0.3,0.13543228385807096,56,outputs_exploratory/frozen_exploratory_submodel_56_p5p95/duel,score_A2_gamma,switch_zscore,6.0
+-0.15219303044348803,-0.12352941176470589,0.5677161419290355,56,outputs_exploratory/frozen_exploratory_submodel_56_rescue/duel,score_A2_gamma,switch_zscore,6.0

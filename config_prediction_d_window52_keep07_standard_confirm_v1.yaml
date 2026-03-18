@@ -1,0 +1,30 @@
+experiment:
+  # N=52 keep_ratio=0.7 test under the STANDARD confirmatory protocol (no denoise).
+  seed_offset: 179000
+  n_values: [52]
+  families:
+    - lorentzian_like_2d
+    - multi_layer_random
+    - KR_like
+    - interval_order
+    - random_layered_k6_uniform
+    - transitive_percolation
+  gammas: [0.2]
+  beta: 1.0
+  samples_per_family: 8
+  sis_runs: 128
+  action_modes: [A2]
+  exact_threshold: 0
+
+coarse_grain:
+  keep_ratios: [0.7]
+  repeats: 10
+  zeta: 1.0
+  eta: 0.0
+  reference_family: lorentzian_like_2d
+  gc_reference_max_pairs: 32
+  gc_reference_sigma_scale: 2.5
+
+output:
+  directory: outputs_confirmatory/prediction_d_window52_keep07_standard_confirm_v1
+

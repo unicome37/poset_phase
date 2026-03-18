@@ -31,15 +31,17 @@ def build_original_samples(
     gammas: tuple[float, ...],
     beta: float,
     action_modes: tuple[str, ...],
+    seed_offset: int = 0,
 ) -> tuple[pd.DataFrame, dict[tuple[int, str, int], object]]:
     rows: list[dict] = []
     posets: dict[tuple[int, str, int], object] = {}
+    seed_base = int(seed_offset) * 10_000_000
 
     for n in n_values:
         for family in families:
             generator = FAMILIES[family]
             for sample_id in range(samples_per_family):
-                seed = 1000 * n + sample_id
+                seed = seed_base + 1000 * n + sample_id
                 poset = generator(n=n, seed=seed)
                 posets[(n, family, sample_id)] = poset
                 log_h, entropy_method = estimate_entropy(
@@ -64,6 +66,7 @@ def build_original_samples(
                             "n_cg": n,
                             "family": family,
                             "sample_id": sample_id,
+                            "seed_offset": int(seed_offset),
                             "keep_ratio": 1.0,
                             "cg_repeat": 0,
                             "gamma": gamma,
@@ -112,6 +115,7 @@ def build_coarse_grained_samples(
     zeta: float,
     eta: float,
     gc_reference_windows: dict[int, dict[str, tuple[float, float]]] | None,
+    seed_offset: int = 0,
 ) -> pd.DataFrame:
     base_sig_df = (
         original_df[
@@ -127,6 +131,7 @@ def build_coarse_grained_samples(
     centroids = family_centroids(base_sig_df[["n", "family"] + [c for c in base_sig_df.columns if c.startswith("sig_")]])
 
     rows: list[dict] = []
+    seed_base = int(seed_offset) * 10_000_000
 
     unique_original = original_df[["n", "family", "sample_id", "gamma", "beta", "action_mode", "base_family_rank"]].drop_duplicates()
     for row in unique_original.itertuples(index=False):
@@ -135,7 +140,7 @@ def build_coarse_grained_samples(
         before_sig = sig_lookup[key]
         for keep_ratio in keep_ratios:
             for cg_repeat in range(cg_repeats):
-                seed = 500_000 + row.n * 1000 + row.sample_id * 100 + int(round(keep_ratio * 100)) * 10 + cg_repeat
+                seed = seed_base + 500_000 + row.n * 1000 + row.sample_id * 100 + int(round(keep_ratio * 100)) * 10 + cg_repeat
                 cg_poset = coarse_grain_delete_nodes(poset, keep_ratio=keep_ratio, seed=seed)
                 log_h, entropy_method = estimate_entropy(
                     cg_poset,
@@ -180,6 +185,7 @@ def build_coarse_grained_samples(
                     "n_cg": int(cg_poset.n),
                     "family": str(row.family),
                     "sample_id": int(row.sample_id),
+                    "seed_offset": int(seed_offset),
                     "keep_ratio": float(keep_ratio),
                     "cg_repeat": int(cg_repeat),
                     "gamma": float(row.gamma),
@@ -216,15 +222,17 @@ def build_reference_windows_from_reference_family(
     cg_repeats: int,
     max_pairs: int,
     sigma_scale: float,
+    seed_offset: int = 0,
 ) -> dict[int, dict[str, tuple[float, float]]]:
     reference_posets_by_ncg: dict[int, list[object]] = {}
+    seed_base = int(seed_offset) * 10_000_000
     for (n_value, family, sample_id), poset in posets.items():
         if family != reference_family:
             continue
         reference_posets_by_ncg.setdefault(int(poset.n), []).append(poset)
         for keep_ratio in keep_ratios:
             for cg_repeat in range(cg_repeats):
-                seed = 900_000 + n_value * 1000 + sample_id * 100 + int(round(keep_ratio * 100)) * 10 + cg_repeat
+                seed = seed_base + 900_000 + n_value * 1000 + sample_id * 100 + int(round(keep_ratio * 100)) * 10 + cg_repeat
                 cg_poset = coarse_grain_delete_nodes(poset, keep_ratio=keep_ratio, seed=seed)
                 reference_posets_by_ncg.setdefault(int(cg_poset.n), []).append(cg_poset)
     return consistency_reference_windows(
@@ -298,6 +306,7 @@ def main() -> None:
     config = load_config(args.config)
     exp_cfg = config["experiment"]
     cg_cfg = config["coarse_grain"]
+    seed_offset = int(exp_cfg.get("seed_offset", 0))
 
     families = tuple(exp_cfg.get("families", list(FAMILIES.keys())))
     original_df, posets = build_original_samples(
@@ -309,6 +318,7 @@ def main() -> None:
         gammas=tuple(exp_cfg["gammas"]),
         beta=float(exp_cfg["beta"]),
         action_modes=tuple(exp_cfg.get("action_modes", ["A2"])),
+        seed_offset=seed_offset,
     )
     original_df = add_family_ranks(original_df, score_col="score_local", rank_col="base_family_rank")
     reference_family = str(cg_cfg.get("reference_family", "lorentzian_like_2d"))
@@ -319,6 +329,7 @@ def main() -> None:
         cg_repeats=int(cg_cfg["repeats"]),
         max_pairs=int(cg_cfg.get("gc_reference_max_pairs", 32)),
         sigma_scale=float(cg_cfg.get("gc_reference_sigma_scale", 1.0)),
+        seed_offset=seed_offset,
     )
 
     cg_df = build_coarse_grained_samples(
@@ -331,6 +342,7 @@ def main() -> None:
         zeta=float(cg_cfg.get("zeta", 1.0)),
         eta=float(cg_cfg.get("eta", 1.0)),
         gc_reference_windows=gc_reference_windows,
+        seed_offset=seed_offset,
     )
     summary_df = summarize_cg(cg_df)
     rank_df = summarize_rank_shift(summary_df)

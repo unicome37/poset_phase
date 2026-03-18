@@ -1,0 +1,28 @@
+experiment:
+  n_values: [16]
+  families:
+    - lorentzian_like_2d
+    - KR_like
+    - multi_layer_random
+    - random_layered_k6_uniform
+    - interval_order
+    - transitive_percolation
+  gammas: [0.2, 0.8]
+  beta: 1.0
+  samples_per_family: 6
+  sis_runs: 32
+  action_modes: [A2]
+  exact_threshold: 16
+
+coarse_grain:
+  keep_ratios: [0.8, 0.6]
+  repeats: 5
+  zeta: 1.0
+  eta: 0.0
+  reference_family: lorentzian_like_2d
+  gc_reference_max_pairs: 32
+  gc_reference_sigma_scale: 2.5
+
+output:
+  directory: outputs_exploratory/prediction_d_redteam_smoke
+

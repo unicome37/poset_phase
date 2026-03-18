@@ -225,7 +225,7 @@ computed exactly via dynamic programming over
 antichains~\cite{brightwell1991}. The cost depends strongly on antichain
 structure: sub-second for \texttt{lor2d} at $N = 48$, about $3.8$\,s at
 $N = 72$, about $33.8$\,s at $N = 88$, and about $127.4$\,s at $N = 104$, but
-already $54$\,s for \texttt{kr} at $N = 44$. For \texttt{lor3d}, exact
+already $56$\,s for \texttt{kr} at $N = 44$. For \texttt{lor3d}, exact
 evaluation reaches $N = 56$ ($327$\,s). This asymmetry motivates the
 one-sided exact extension strategy adopted for large-$N$ probes
 (Figure~\ref{fig:timing}).
@@ -277,13 +277,13 @@ Under $A_2$, $\gamma_c$ exists for all tested $N$ and remains $O(1)$:
 \begin{table}[h]
 \centering
 \caption{Critical coupling $\gamma_c$ under $A_2$ (exact entropy). All values
-for $N \geq 12$ lie in $[0.15, 1.00]$.}
+for $N \geq 12$ lie in $[0.146, 0.995]$.}
 \label{tab:gamma_c}
 \begin{tabular}{@{}lcccccc@{}}
 \toprule
 $N$ & 10 & 12 & 14 & 16 & 20 & 24 \\
 \midrule
-$\gamma_c$ & 9.19 & 0.74 & 0.78 & 0.69 & 0.15 & 0.26 \\
+$\gamma_c$ & 9.19 & 0.744 & 0.781 & 0.693 & 0.146 & 0.262 \\
 \bottomrule
 \end{tabular}
 \medskip
@@ -292,12 +292,12 @@ $\gamma_c$ & 9.19 & 0.74 & 0.78 & 0.69 & 0.15 & 0.26 \\
 \toprule
 $N$ & 28 & 32 & 36 & 40 & 44 & \\
 \midrule
-$\gamma_c$ & 1.00 & 0.69 & 0.57 & 0.25 & 0.15 & \\
+$\gamma_c$ & 0.995 & 0.694 & 0.570 & 0.248 & 0.149 & \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-For $N \geq 12$, all $\gamma_c$ values lie in $[0.15, 1.00]$
+For $N \geq 12$, all $\gamma_c$ values lie in $[0.146, 0.995]$
 (Figure~\ref{fig:gamma_c}). Under $A_1$ (neutral terms only), no crossing
 exists at any tested~$N$, confirming that geometric penalties are necessary.
 
@@ -435,6 +435,13 @@ ensemble (Figure~\ref{fig:replacement}). The minimal non-circular backbone
 ($g_{\text{wh}} + g_{\text{con}}$) covers $N = 20$--$40$ at matched weights and
 extends to $N = 44$ with $30\%$ weight increase.
 
+Extending the scan beyond the confirmatory exact window, the consistency backbone
+continues to recover a crossing at $N = 48$ and $N = 52$ in exploratory
+mixed-exact runs, yielding recovery factors $c_{44} \approx 1.41$,
+$c_{48} \approx 1.69$, and $c_{52} \approx 1.80$ (seed-sensitive). The
+sequence rises slowly and remains $O(1)$, showing no sign of accelerating
+divergence.
+
 \begin{figure}[h]
     \centering
     \includegraphics[width=\columnwidth]{fig3_noncircular_replacement.png}
@@ -538,12 +545,12 @@ remains positive for all larger tested sizes.
 \subsection{\texorpdfstring{Seed sensitivity at large $N$}{Seed sensitivity at large N}}
 \label{sec:seed}
 
-Experiments at $N = 68$ and $N = 72$ with three independent generator seed
-offsets (0, 50000, 100000) confirm robustness (Table~\ref{tab:seed}).
+Experiments at $N = 64$, $68$, and $72$ with three independent generator seed
+offsets (0, 50\,000, 100\,000) confirm robustness (Table~\ref{tab:seed}).
 
 \begin{table}[h]
 \centering
-\caption{Seed sensitivity at $N = 68$ and $N = 72$: winner counts out of 7
+\caption{Seed sensitivity at $N = 64$, $68$, and $72$: winner counts out of 7
 $\gamma$ values.}
 \label{tab:seed}
 \begin{tabular}{lcccc}
@@ -551,8 +558,10 @@ $\gamma$ values.}
 \textbf{Variant} & $N$ & \textbf{Seed 0} & \textbf{Seed 50k} &
 \textbf{Seed 100k} \\
 \midrule
+$A_2$ full & 64 & KR 4, L4d 3 & KR 3, L3d 1, L4d 3 & KR 2, L3d 2, L4d 3 \\
 $A_2$ full & 68 & KR 4, L4d 3 & KR 4, L4d 3 & KR 4, L4d 3 \\
 $A_2$ full & 72 & KR 4, L4d 3 & KR 4, L4d 3 & KR 4, L4d 3 \\
+$A_2$ consistency & 64 & L4d 7/7 & L4d 7/7 & L4d 7/7 \\
 $A_2$ consistency & 68 & L4d 7/7 & L4d 7/7 & L4d 7/7 \\
 $A_2$ consistency & 72 & L4d 7/7 & L4d 7/7 & L4d 7/7 \\
 \bottomrule
@@ -560,9 +569,12 @@ $A_2$ consistency & 72 & L4d 7/7 & L4d 7/7 & L4d 7/7 \\
 \end{table}
 
 Under both consistency variants, \texttt{lor4d} achieves $100\%$ win rate
-($42/42$ across both $N$ values and all seeds). The KR--\texttt{lor4d} split
-under $A_2$ full is identical (4:3) at every seed---a structural property of
-the action, not a sampling artifact.
+($63/63$ across all three $N$ values and all seeds). At $N = 68$ and $72$ the
+KR--\texttt{lor4d} split under $A_2$ full is identical (4:3) at every
+seed---a structural property of the action, not a sampling artifact. At
+$N = 64$, the full action's winner is less stable, with \texttt{lor3d}
+occasionally entering, consistent with the slight margin dip observed at that
+scale.
 
 \subsection{Consistency weight sensitivity}
 \label{sec:wcon}
@@ -595,6 +607,37 @@ $w_{\text{con}}$ & \textbf{Lor4D} & \textbf{Lor3D} & \textbf{KR} &
 The 4D win rate is $\geq 91\%$ across the entire tested range
 $w_{\text{con}} \in [0.3, 1.2]$, and \emph{increases} at larger weights.
 Neither KR nor \texttt{lor2d} ever wins at any tested weight.
+
+\subsection{Backbone weight sensitivity for \texorpdfstring{$\gamma_c$}{gamma\_c}}
+\label{sec:wdim}
+
+The calibrated dim-proxy weight $w_{\text{dim}} = 8$ was chosen via the
+7-family grid. To verify that $\gamma_c$ responds smoothly, we repeat the
+confirmatory exact scan at $N \in \{20, 28, 36, 44\}$ across three weight
+values spanning a factor of 2.5 (Table~\ref{tab:wdim}).
+
+\begin{table}[h]
+\centering
+\caption{Sensitivity of $\gamma_c$ to the dim-proxy weight $w_{\text{dim}}$
+at four representative $N$.}
+\label{tab:wdim}
+\begin{tabular}{ccccc}
+\toprule
+$w_{\text{dim}}$ & $N = 20$ & $N = 28$ & $N = 36$ & $N = 44$ \\
+\midrule
+4  & 0.576 & 0.986 & 1.673 & 1.739 \\
+\textbf{8 (baseline)} & \textbf{0.413} & \textbf{0.804} & \textbf{1.422} & \textbf{1.434} \\
+10 & 0.362 & 0.736 & 1.322 & 1.319 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Reducing $w_{\text{dim}}$ shifts $\gamma_c$ upward (the geometric penalty is
+weaker, so a higher coupling is needed for Lor2D to overtake KR); increasing it
+shifts $\gamma_c$ downward. The response is monotonic and continuous at every
+tested~$N$, with no brittle jump or bifurcation, supporting the claim that the
+bounded phase transition is a structural feature of the action rather than a
+fine-tuned artifact.
 
 \subsection{Out-of-grid validation}
 \label{sec:oog}
@@ -638,13 +681,13 @@ The numerical evidence supports two main findings:
 \begin{enumerate}[nosep]
 \item \textbf{Bounded phase transition.} Under $A_2$ with exact entropy, the
 critical coupling $\gamma_c$ for \texttt{lor2d} to overtake \texttt{kr} exists
-at all $N = 10$--$44$ and remains $O(1)$ (all values in $[0.15, 9.19]$; in
-$[0.15, 1.00]$ for $N \geq 12$). This provides finite-size support for a
+at all $N = 10$--$44$ and remains $O(1)$ (all values in $[0.146, 9.19]$; in
+$[0.146, 0.995]$ for $N \geq 12$). This provides finite-size support for a
 bounded geometric phase-transition threshold in poset ensembles.
 
 \item \textbf{Dimensional selection.} Under the consistency replacement
 ($g_{\text{con}}$), \texttt{lor4d} is the dominant winner ($92/98$ in-grid,
-$36/40$ out-of-grid, $42/42$ seed sensitivity, stable across
+$36/40$ out-of-grid, $63/63$ seed sensitivity, stable across
 $w_{\text{con}} \in [0.3, 1.2]$) with a margin that grows with~$N$.
 This indicates that dimensional consistency constraints, without
 dimension-specific priors, can favor higher-dimensional Lorentzian

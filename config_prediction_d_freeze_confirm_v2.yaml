@@ -1,0 +1,30 @@
+experiment:
+  # Independent confirmatory replicate for Prediction D freeze window check.
+  seed_offset: 171000
+  n_values: [30, 40, 52]
+  families:
+    - lorentzian_like_2d
+    - multi_layer_random
+    - KR_like
+    - interval_order
+    - random_layered_k6_uniform
+    - transitive_percolation
+  gammas: [0.2, 0.8]
+  beta: 1.0
+  samples_per_family: 8
+  sis_runs: 64
+  action_modes: [A2]
+  exact_threshold: 0
+
+coarse_grain:
+  keep_ratios: [0.6]
+  repeats: 10
+  zeta: 1.0
+  eta: 0.0
+  reference_family: lorentzian_like_2d
+  gc_reference_max_pairs: 32
+  gc_reference_sigma_scale: 2.5
+
+output:
+  directory: outputs_confirmatory/prediction_d_freeze_confirm_v2
+
