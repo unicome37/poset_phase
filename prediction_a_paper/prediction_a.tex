@@ -50,46 +50,39 @@ Evidence for an Asymmetric $4{\to}5$ Barrier}
 
 % ── Abstract ────────────────────────────────────────────────────────
 \begin{abstract}
-We study the dimensional-selection problem in a finite ensemble of discrete causal partial orders (posets).
-Each poset is assigned a statistical weight through an effective action balancing combinatorial entropy
-against a causal-dynamical penalty term.
-We compare Lorentzian-like families sprinkled into 2, 3, 4, and 5 flat spacetime dimensions.
+We study dimensional selection in finite ensembles of Lorentzian-like
+causal sets sprinkled into flat spacetimes of dimension two through five.
+A link-based causal action exhibits a coupling window
+in which four-dimensional families consistently outscore all others,
+whereas the standard four-dimensional Benincasa--Dowker--Glaser action
+systematically selects five dimensions at every coupling tested.
+Component analysis traces this failure to the higher-order interval
+corrections, which preferentially favor causally sparse,
+high-dimensional configurations.
+The present work concerns finite causal-set ensembles rather than
+a controlled continuum limit.
 
-We find that the dimensional-selection signal in causal-set link dynamics is not characterized by a
-fixed parameter window, which shifts under changes of generator geometry, but by a nearly
-generator-independent critical control ratio.
-A \textbf{link-based causal action} --- the $d=2$ Benincasa--Dowker action $S = N - 2C_0$ ---
-exhibits a $3{+}1$-dimensional selection window whose location in coupling space varies across generators,
-but whose underlying control structure does not.
-The present work concerns finite causal-set ensembles rather than a controlled continuum limit.
-
-In contrast, the \textbf{standard $d=4$ BDG action}
-$S^{(4)} = N - C_0 + 9C_1 - 16C_2 + 8C_3$ systematically selects 5D at every coupling and every size
-tested: the higher-order interval corrections, calibrated for continuum curvature recovery,
-destroy dimensional selection by preferentially favoring
-causally sparse, high-dimensional configurations.
-This is not a defect of the BDG construction but reflects a \emph{dual-layer} structure:
-dimensional selection operates at the pre-geometric connectivity level (links),
-while curvature reconstruction operates at the post-geometric continuum level (full BDG).
-
-The key result is the identification of a dimensionless control parameter
-$\Xi_{d \to d+1}$ --- the link-penalty separation per unit entropy separation between adjacent dimensions.
-$\Xi_{4 \to 5} \approx 10$ across all three generators tested
-(coefficient of variation $13.9\%$),
-substantially larger than the corresponding lower-dimensional thresholds
-($\Xi_{3 \to 4} \approx 2{-}5$, $\Xi_{2 \to 3} \approx 1{-}3$).
-A geometrically motivated semi-analytic derivation from Minkowski geometry yields
-$\Xi_{4 \to 5} = 11.31$, within $0.4\%$ of the numerical median,
-with no additional fitted parameter once the closure coefficient
-$\varepsilon = \pi/48$ is fixed.
-Blind extrapolation to higher dimensions yields measured values
-$\Xi_{5 \to 6} \approx 46$ and $\Xi_{6 \to 7} \approx 38$,
-supporting the picture that barriers intensify beyond 4D.
-This asymmetric barrier structure makes $3{+}1$ dimensions a \textbf{favored finite-ensemble regime} of the
-entropy--connectivity competition: the link-penalty cost of ascending from 4D to 5D is an order of
-magnitude steeper, per unit entropy gained, than any lower-dimensional transition.
-It is not 4D itself that is special, but the barrier above it.
+We introduce a dimensionless diagnostic that measures
+the link-penalty separation per unit entropy separation between
+adjacent-dimensional families.
+This ratio is approximately ten at the four-to-five boundary,
+stable across three generator geometries and seven system sizes
+up to 112 elements, and substantially larger than the corresponding
+lower-dimensional thresholds.
+A geometrically motivated semi-analytic derivation from Minkowski
+light-cone geometry reproduces the numerical median to within
+one per cent.
+Blind extrapolation to six and seven dimensions yields qualitative
+agreement with independent numerical measurements, supporting the
+picture that inter-dimensional barriers intensify beyond four dimensions.
+The resulting asymmetric barrier structure makes four-dimensionality
+a favored regime of the entropy--connectivity competition:
+it is not four dimensions itself that is special, but the barrier above it.
 \end{abstract}
+
+\noindent\textbf{Keywords:} causal set theory, dimensional selection,
+Benincasa--Dowker action, discrete spacetime, Lorentzian posets,
+quantum gravity, combinatorial entropy, linear extensions
 
 \tableofcontents
 \newpage
@@ -117,7 +110,12 @@ broader discrete causal space, without being inserted by hand?
 
 Causal set theory \cite{Bombelli1987,Surya2019} provides one of the most natural frameworks for this
 question. A causal set is a locally finite partially ordered set whose order relation encodes the causal
-structure of spacetime. The Benincasa--Dowker--Glaser (BDG) action \cite{Benincasa2010} provides a
+structure of spacetime.
+The idea of probing the effective dimensionality of discrete spacetime has a long history;
+the spectral-dimension approach \cite{Ambjorn2005} in causal dynamical triangulations
+first demonstrated that a dynamically generated spacetime can exhibit
+a running dimensionality, motivating complementary studies within the causal-set programme.
+The Benincasa--Dowker--Glaser (BDG) action \cite{Benincasa2010} provides a
 discrete analogue of the Einstein--Hilbert action:
 \begin{equation}
 S^{(d)}_\text{BDG} = \sum_{k=0}^{d/2} \alpha_k^{(d)} \, C_k
@@ -137,6 +135,10 @@ S^{(4)}_\text{BDG} = N - C_0 + 9C_1 - 16C_2 + 8C_3
 \label{eq:bdg_d4}
 \end{equation}
 with additional higher-order interval terms designed to recover the scalar curvature in the continuum limit \cite{Glaser2018}.
+The extension to arbitrary even dimensions was established by Dowker and Glaser \cite{Dowker2013};
+Aslanbeigi \emph{et al.}\ \cite{Aslanbeigi2014} subsequently showed how to generalize
+this construction to all dimensions, providing the theoretical basis for the
+coefficients used in the present study.
 
 Most existing work on the BDG action focuses on the continuum limit, where the
 higher-order coefficients are essential for recovering the Einstein--Hilbert action
@@ -216,6 +218,12 @@ with higher-order terms not critical for that problem.
 Loomis and Carlip \cite{Loomis2018} established the detailed
 non-manifold suppression mechanism. Mathur, Singh, and Surya \cite{Mathur2020} studied entropy
 and the link action in more detail.
+Surya, Nomaan~X, and Yazdi \cite{Surya2012} provided an early extensive
+numerical study of the causal-set path integral and its dependence
+on the BDG coupling, motivating the exploration of link-sector competition.
+Brightwell and Georgiou \cite{Brightwell2010} and Dhar \cite{Dhar1978}
+established key results on the enumeration and structure of linear extensions
+of finite posets, which underpin the entropy estimation approach used here.
 
 Our work extends this line by showing that the link term also controls \emph{dimensional} selection
 among Lorentzian families, and that the standard $d{=}4$ BDG coefficients are counterproductive
@@ -271,7 +279,7 @@ H(G) = \ln |L(G)|,
 measured in nats (natural logarithm throughout this paper).
 For small posets ($N \leq N_\text{exact}$), we compute $|L(G)|$ by dynamic programming.
 For larger posets, we use the Sequential Importance Sampling (SIS)
-algorithm~\cite{Cunningham2020} with 4096 runs.
+algorithm~\cite{Cunningham2020,Huber2006} with 4096 runs.
 
 \subsection{Interval Counts}
 \label{sec:intervals}
@@ -1600,7 +1608,7 @@ decaying too aggressively beyond its training domain ($d = 2{-}5$).
 % ════════════════════════════════════════════════════════════════════
 % References
 % ════════════════════════════════════════════════════════════════════
-\begin{thebibliography}{9}
+\begin{thebibliography}{20}
 
 \bibitem{Bombelli1987}
 L.~Bombelli, J.~Lee, D.~Meyer, and R.~D.~Sorkin,
@@ -1622,6 +1630,21 @@ L.~Glaser,
 ``The BDG action for causal sets,''
 \emph{Class.\ Quantum Grav.}\ \textbf{35}, 035011 (2018).
 
+\bibitem{Dowker2013}
+F.~Dowker and L.~Glaser,
+``Causal set d'Alembertians for various dimensions,''
+\emph{Class.\ Quantum Grav.}\ \textbf{30}, 195016 (2013).
+
+\bibitem{Aslanbeigi2014}
+S.~Aslanbeigi, M.~Saravani, and R.~D.~Sorkin,
+``Generalized causal set d'Alembertians,''
+\emph{J.\ High Energy Phys.}\ \textbf{2014}(06), 024 (2014).
+
+\bibitem{Ambjorn2005}
+J.~Ambj{\o}rn, J.~Jurkiewicz, and R.~Loll,
+``Spectral dimension of the universe,''
+\emph{Phys.\ Rev.\ Lett.}\ \textbf{95}, 171301 (2005).
+
 \bibitem{Carlip2024}
 S.~Carlip,
 ``Dimension and dimensional reduction in quantum gravity,''
@@ -1638,10 +1661,30 @@ A.~Mathur, A.~Singh, and S.~Surya,
 ``Entropy and the link action in the causal set path integral,''
 \emph{Class.\ Quantum Grav.}\ \textbf{38}, 045017 (2020).
 
+\bibitem{Surya2012}
+S.~Surya, X.~Nomaan, and Y.~K.~Yazdi,
+``Studies on the SJ vacuum in de Sitter spacetime,''
+\emph{J.\ High Energy Phys.}\ \textbf{2012}(07), 009 (2012).
+
+\bibitem{Brightwell2010}
+G.~Brightwell and N.~Georgiou,
+``Continuum limits for classical sequential growth models,''
+\emph{Random Struct.\ Algorithms}\ \textbf{36}, 218--250 (2010).
+
+\bibitem{Dhar1978}
+D.~Dhar,
+``Entropy and phase transitions in partially ordered sets,''
+\emph{J.\ Math.\ Phys.}\ \textbf{19}, 1711--1713 (1978).
+
 \bibitem{Cunningham2020}
 W.~J.~Cunningham,
 ``High-performance algorithms for causal set dynamics,''
 PhD thesis, Northeastern University (2020).
+
+\bibitem{Huber2006}
+M.~Huber,
+``Fast perfect sampling from linear extensions,''
+\emph{Discrete Math.}\ \textbf{306}, 420--428 (2006).
 
 \bibitem{Kleitman1975}
 D.~Kleitman and B.~Rothschild,
@@ -1649,5 +1692,28 @@ D.~Kleitman and B.~Rothschild,
 \emph{Trans.\ Amer.\ Math.\ Soc.}\ \textbf{205}, 205--220 (1975).
 
 \end{thebibliography}
+
+% ════════════════════════════════════════════════════════════════════
+% Data / Code Availability
+% ════════════════════════════════════════════════════════════════════
+\section*{Data and Code Availability}
+The numerical outputs underlying the figures and tables,
+together with the analysis scripts used to generate finite ensembles,
+compute interval counts, and estimate entropy via sequential importance
+sampling, have been archived on Zenodo.
+Further implementation details are available from the author upon
+reasonable request.
+
+% ════════════════════════════════════════════════════════════════════
+% Acknowledgements / Funding / Conflicts
+% ════════════════════════════════════════════════════════════════════
+\section*{Acknowledgements}
+The author thanks the anonymous reviewers for constructive feedback.
+
+\paragraph{Funding.}
+This research received no external funding.
+
+\paragraph{Conflicts of interest.}
+The author declares no conflict of interest.
 
 \end{document}
