@@ -370,6 +370,17 @@ N=40 at low perturbation (5–10%) shows the expected negative rigidity: CG-stab
 
 **Family-level Test B (NOT significant)**: With only 6 families, the rank-based Δimprove_rank test was severely underpowered (most Δimprove_rank = 0 because rankings rarely flip under small perturbation). The sample-level continuous analysis above is the appropriate test.
 
+**Independent-target boundary check (NEW, important).** To avoid a quasi-causal over-interpretation of the perturbation experiment, we tested a mechanism-independent target:
+
+- target: `Y = Δscore_local` (excludes the CG term; depends only on `log_H` and the action penalty)
+- predictor: `X = Δpenalty_cg`
+
+Result: a pooled Spearman signal exists and is dose-dependent (e.g. p20: ρ≈−0.306, p≈6e-4), but it **disappears under (N, family) stratified permutation** (18 strata × 8 samples; all p non-significant). This indicates the pooled effect is primarily driven by cross-stratum heterogeneity (different families/N co-vary in sensitivity), not within-stratum quasi-causality. Therefore, the perturbation experiment supports “structural co-variation” more than a clean “I_cg causally drives competitiveness” claim under the current design.
+
+Repro:
+- script: `prediction_d_perturbation_independent_target_analysis.py`
+- report: `outputs_exploratory/prediction_d_perturbation/perturbation_independent_target_report.md`
+
 ### 6.4.3 Interpretation and Comparison with C
 
 | criterion | C (Layer Split) | D (Cover Removal) |
@@ -423,6 +434,43 @@ This result appropriately downgrades D's evidence from "quasi-causal" to "struct
 Repro:
 - script: `prediction_d_perturbation_stratified_test.py`
 - outputs: `outputs_exploratory/prediction_d_perturbation/stratified_intervention_results.csv`
+
+### 6.6 High-Power Stratified Re-Test (n=32 per stratum)
+
+**Motivation.** The §6.5 stratified null could be a Type-II error: with only n=8 per stratum, power to detect ρ=0.3 at α=0.05 is ≈15%. We increase per-stratum samples 4× to n=32 (total n=576) to determine whether the null is genuine or an artefact of underpowering.
+
+**Design.** Same framework as §6.5 but with `SAMPLES_PER_FAMILY = 32`:
+- 18 strata (3 N-values × 6 families) × 32 samples = 576 paired (Δpenalty_cg, Δscore_local) observations per perturbation level
+- Independent seed block (`SEED_OFFSET = 172000`) for fresh poset realizations
+- 100k permutations (pooled, stratified), 20k per-N permutations
+- Expected power: ~60% per stratum, ~95%+ for aggregated weighted-mean test
+
+**Results.**
+
+| perturbation | ρ_pooled | p_pooled | ρ̄_stratified | p_stratified | within_ρ̄ | %negative |
+|---|---|---|---|---|---|---|
+| p05 (5%) | −0.110 | 0.0083** | −0.058 | 0.170 ns | −0.058 | 56% |
+| p10 (10%) | −0.121 | 0.0036** | +0.011 | 0.793 ns | +0.011 | 44% |
+| p20 (20%) | −0.250 | 0.00001*** | −0.021 | 0.618 ns | −0.021 | 56% |
+
+**Comparison with n=8 baseline (p_strat):**
+- p05: 0.113 → 0.170 (further from significance)
+- p10: 0.613 → 0.793 (further from significance)
+- p20: 0.497 → 0.618 (further from significance)
+
+Per-N pooled (p20): N=30 ρ=−0.380 p<0.001***; N=40 ρ=−0.281 p<0.001***; N=52 ρ=−0.141 p=0.054 ns.
+
+**Key findings.**
+1. **Pooled effect strengthened**: All three perturbation levels now reach p<0.01 (vs p05 and p10 being marginal at n=8), confirming the population-level negative correlation is robust and reproducible.
+2. **Within-stratum association definitively null**: At 4× sample size, stratified p-values moved *further* from significance, not closer. The within-stratum ρ̄ attenuated toward zero (p05: −0.14→−0.06; p10: −0.05→+0.01; p20: −0.06→−0.02).
+3. **%negative ≈ 50%**: The fraction of strata showing negative ρ is 56/44/56% — exactly consistent with the null hypothesis of no within-stratum association.
+4. **Not a power artefact**: If the true within-stratum ρ were −0.14 (as estimated in n=8 p05), the aggregated n=32 test with 18 strata should detect it at p<0.05 with ~95% probability. The p=0.170 result at n=32 definitively rejects this magnitude.
+
+**Conclusion.** The §6.5 null was genuine, not underpowered. Prediction D's Δpenalty↔Δscore_local coupling is a **structural covariation** driven entirely by between-stratum (N, family) composition effects. The evidence level remains "structural co-variation" — a honest and informative boundary.
+
+Repro:
+- script: `prediction_d_stratified_highpower.py`
+- outputs: `outputs_exploratory/prediction_d_perturbation_n32/perturbation_sample_cg_n32.csv`
 
 ---
 
