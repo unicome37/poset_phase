@@ -24,6 +24,32 @@ import numpy as np
 import pandas as pd
 
 
+def _tieaware_rank(x: np.ndarray) -> np.ndarray:
+    """Average-rank transformation that correctly handles ties.
+
+    Equivalent to scipy.stats.rankdata(x, method='average') but avoids
+    the scipy dependency.  Previous code used np.argsort(np.argsort(x))
+    which assigns distinct ranks to tied values — a known issue when the
+    target variable (e.g. improve_rank) contains many ties at high N.
+    """
+    x = np.asarray(x, dtype=float)
+    n = len(x)
+    order = np.argsort(x, kind="mergesort")
+    ranks = np.empty(n, dtype=float)
+    ranks[order] = np.arange(1, n + 1, dtype=float)
+    xs = x[order]
+    i = 0
+    while i < n:
+        j = i + 1
+        while j < n and xs[j] == xs[i]:
+            j += 1
+        if j - i > 1:
+            avg = 0.5 * ((i + 1) + j)  # 1-based average rank for the tied group
+            ranks[order[i:j]] = avg
+        i = j
+    return ranks
+
+
 def zscore(arr: np.ndarray) -> np.ndarray:
     mean = float(arr.mean())
     std = float(arr.std(ddof=0))
@@ -44,8 +70,8 @@ def pearson(x: np.ndarray, y: np.ndarray) -> float:
 
 
 def spearman(x: np.ndarray, y: np.ndarray) -> float:
-    rx = np.argsort(np.argsort(x)).astype(float)
-    ry = np.argsort(np.argsort(y)).astype(float)
+    rx = _tieaware_rank(x)
+    ry = _tieaware_rank(y)
     return pearson(rx, ry)
 
 
@@ -484,8 +510,8 @@ def stratified_blockperm_delta_rank_test(
         x = sub["mean_I_cg"].to_numpy(float)
         y = sub["improve_rank"].to_numpy(float)
 
-        rx = np.argsort(np.argsort(x)).astype(float)
-        ry = np.argsort(np.argsort(y)).astype(float)
+        rx = _tieaware_rank(x)
+        ry = _tieaware_rank(y)
         rx_c = rx - float(rx.mean())
         ry_c = ry - float(ry.mean())
         denom = math.sqrt(float((rx_c * rx_c).sum() * (ry_c * ry_c).sum()))

@@ -516,8 +516,8 @@ a8e79c7 feat: Benincasa-Dowker action dimension selection
    - ⚠️ keep_ratio=0.7 次窗口（标准规程）不更稳：`N=52, keep_ratio=0.7, gamma=0.2` 两次独立复现结果不一致（见 `outputs_confirmatory/prediction_d_dynamic_v9_window52_keep07_standard_confirm_v1/` 与 `..._v2/`）
    - ❌ keep_ratio=0.65 次窗口（标准规程）失败：`N=52, keep_ratio=0.65, gamma=0.2` 两次独立复现 v9 显示 `full` 接近 0 且不显著，`no_switch` 甚至出现符号翻转（见 `outputs_confirmatory/prediction_d_dynamic_v9_window52_keep065_standard_confirm_v1/` 与 `..._v2/`）
    - ❌ keep_ratio=0.75 次窗口（标准规程）失败：`N=52, keep_ratio=0.75, gamma=0.2` 两次独立复现 v9 未出现 `full/switch/no_switch` 三口径稳定显著（见 `outputs_confirmatory/prediction_d_dynamic_v9_window52_keep075_standard_confirm_v1/` 与 `..._v2/`）
-   - ✅ 跨推论最小交叉检验（C → D 控制变量）：在冻结窗口上把 `layer_count/mean_layer_gap` 加入第三层作为控制，`I_cg → improve_rank` 仍强显著，说明第三层不只是“层深代理”。产物：`outputs_confirmatory/prediction_d_dynamic_v11_layercontrol_rep3_n30_k060_g02_np20000/`（方法见 `结构存在论_推论D验证方案.md`）
-
+   - ✅ 跨推论最小交叉检验（C → D 控制变量）：在冻结窗口上把 `layer_count/mean_layer_gap` 加入第三层作为控制，`I_cg → improve_rank` 仍强显著，说明第三层不只是“层深代理”。产物：`outputs_confirmatory/prediction_d_dynamic_v11_layercontrol_rep3_n30_k060_g02_np20000/`（方法见 `结构存在论_推论D验证方案.md`）   - ✅ **v12 tie-aware Spearman 修复**：v10 使用 `np.argsort(np.argsort())` 作为 rank 近似，对 `improve_rank`（整数型、高 N 大量 ties）引入噪声并压低 ρ。v12 替换为平均秩实现（`_tieaware_rank()`），**彻底解决 N=52 rep5 的"不稳"**：`no_switch` 从 ρ=0.096/p=0.48（不显著）恢复为 ρ=0.553/p=5e-6（强显著）。N=30 冻结窗口 ρ 全面上升（full 0.70→0.78, no_switch 0.50→0.72, switch 0.74→0.81）。产物：`outputs_confirmatory/prediction_d_dynamic_v12_tieaware_rep{3,4,5}_g02/`
+   - ✅ **N=52 升格为次级确认性窗口**：在 v12 下，rep4/rep5 的 N=52 三口径均 ρ>0.55, p=5e-6，跨复现一致。之前的"不稳定"结论撤销（系 tie 处理伪影）
 ### 探索性
 
 8. **连续极限**: N→∞ 下 Ξ 是否收敛到精确常数？
