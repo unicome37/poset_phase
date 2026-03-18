@@ -390,7 +390,7 @@ Repro:
 | Dose-strength | ✓ (split predictably changes layer depth) | ✓ (monotonic |ΔI_cg| scaling) |
 | Mechanistic coupling | layer_count ↔ entropy (r ≈ −0.82) | ΔI_cg ↔ Δpenalty (ρ ≈ −0.98) |
 | Rigidity | Not tested | Mixed (N=40 yes; N=52 complex) |
-| Quasi-causal status | Moderate | **Moderate** |
+| Quasi-causal status | Moderate | **No (structural covariation; within-stratum null confirmed at n=32/stratum)** |
 
 The perturbation experiment confirms:
 1. CG stability (I_cg) is mechanistically coupled to penalty_cg at the individual sample level, not just a between-family statistical correlation.

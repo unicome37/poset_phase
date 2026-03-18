@@ -523,6 +523,8 @@ a8e79c7 feat: Benincasa-Dowker action dimension selection
    - ✅ **准介入证据边界（机制独立 target）**：用 `Y=Δscore_local`（不含 CG 项）检验 `Δpenalty_cg` 的预测力：pooled 下存在剂量依赖信号（p20 ρ≈−0.306, p≈6e-4），但在 (N,family) 分层置换后失显（18 strata×8 样本均不显著）→ 更像“结构共变”而非层内准因果。产物：`outputs_exploratory/prediction_d_perturbation/perturbation_independent_target_report.md`
    - ✅ **分层置换准因果检验**：`prediction_d_perturbation_stratified_test.py` — 用独立目标 Y=Δscore_local（不含 CG 项）测试扰动诱导的 Δpenalty_cg 是否预测竞争力变化。核心发现：(1) 池化信号确认——p20: ρ=-0.31, p=0.0002***，信号随扰动剂量递增（dose-response）；(2) **分层后失显**——按 (N, family) 分层置换，ρ̄ 全部不显著（p>0.11）；(3) N=30 最敏感——p20 下 ρ=-0.53, p=0.0002***。结论：Δpenalty→Δscore_local 属"结构共变"而非族内准因果效应，D 的证据水平从"准因果"下修为"结构共变"。产物：`outputs_exploratory/prediction_d_perturbation/stratified_intervention_results.csv`
    - ✅ **高功效分层重测 (n=32/层)**：`prediction_d_stratified_highpower.py` — 将每层样本量从 8 提升至 32（576 对观测），以排除 §6.5 零结果是功效不足假象的可能。决定性结论：(1) 池化效应加强——三级扰动均达 p<0.01（p20: ρ=-0.25, p=0.00001***）；(2) **分层 p 值进一步远离显著**——p05: 0.113→0.170, p10: 0.613→0.793, p20: 0.497→0.618；(3) 层内 ρ̄ 衰减至 ≈0（p10 甚至变为 +0.011 正值）；(4) %negative ≈ 50%，完全符合零假设。**最终裁定：结构共变确认，非功效不足假象。** 产物：`outputs_exploratory/prediction_d_perturbation_n32/perturbation_sample_cg_n32.csv`
+
+   - ⏭️ **TODO（若要继续“准因果”路线，需改设计）**：当前 cover-移除准介入在机制独立 target 上已被 n=32/层决定性否定为“层内准因果”。若后续仍希望获得族内个体级准因果证据，需要改为更能产生层内可变性/更少 ties 的设计，例如：扩大 family 数（提高层内异质性维度）、改用连续型 fitness target（避免 rank ties）、或引入不与 CG 共享结构项的替代扰动算子；否则该线应视为已冻结边界，不再投入算力。
 ### 探索性
 
 8. **连续极限**: N→∞ 下 Ξ 是否收敛到精确常数？
