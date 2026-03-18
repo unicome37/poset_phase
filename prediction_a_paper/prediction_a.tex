@@ -85,7 +85,7 @@ $\varepsilon = \pi/48$ is fixed.
 Blind extrapolation to higher dimensions yields measured values
 $\Xi_{5 \to 6} \approx 46$ and $\Xi_{6 \to 7} \approx 38$,
 supporting the picture that barriers intensify beyond 4D.
-This asymmetric barrier structure makes $3{+}1$ dimensions a \textbf{robust finite-ensemble optimum} of the
+This asymmetric barrier structure makes $3{+}1$ dimensions a \textbf{favored finite-ensemble regime} of the
 entropy--connectivity competition: the link-penalty cost of ascending from 4D to 5D is an order of
 magnitude steeper, per unit entropy gained, than any lower-dimensional transition.
 It is not 4D itself that is special, but the barrier above it.
@@ -559,11 +559,11 @@ $\Xi_{4\to5}$ & 7.69 & 10.39 & 13.60 & 10.03 & 11.83 & 12.82 & 11.35 & \\
 \end{table}
 
 The drift between small-$N$ and large-$N$ medians is only $15.8\%$, and the overall CV across all
-seven sizes is $17.7\%$ (Table~\ref{tab:xi_large_n}). This confirms that $\Xi_{4\to5}$ is an intensive, size-independent property
+seven sizes is $17.7\%$ (Table~\ref{tab:xi_large_n}). This supports treating $\Xi_{4\to5}$ as a size-stable diagnostic
 of the link-density selection mechanism.
 The stability of $\Xi_{4 \to 5}$ across nearly two orders of magnitude in $N$
 provides the strongest finite-size evidence that this ratio reflects
-an intrinsic property of Lorentzian causal structure, not a finite-size artifact
+a persistent feature of the tested Lorentzian-like families, not a finite-size artifact
 (Figures~\ref{fig:xi_stability} and~\ref{fig:link_crossover}).
 
 \begin{figure}[htbp]
@@ -938,7 +938,7 @@ in which every quantity is fixed by Minkowski geometry.
 \label{sec:ordering_fraction}
 
 Substituting Eq.~\eqref{eq:link_geom_density} and Eq.~\eqref{eq:entropy_zero_param}
-into the definition of $\Xi_{d\to d+1}$ gives a fully geometric prediction.
+into the definition of $\Xi_{d\to d+1}$ gives a geometrically reconstructed prediction.
 For the seven tested sizes $N = 20{-}112$, the median prediction is
 \begin{equation}
 \Xi_{4\to5}^{\mathrm{geom}} = 11.31,
@@ -967,7 +967,7 @@ $P_{\mathrm{occ}} = 1-e^{-(N-2)\mathbb{E}[V_A]}$ & 11.33 & 0.2\% & Best empirica
 $1-\ell_{\mathrm{MC}}$ & 10.59 & 6.7\% & Exact link complement \\
 $1-\ell_{\Gamma}$ & 10.57 & 6.9\% & Gamma-MGF link closure \\
 $1-\ell_{(2)}$ & 8.60 & 24.2\% & Truncated cumulant closure \\
-$\varepsilon = \pi/48$ zero-parameter closure & \textbf{11.31} & \textbf{0.4\%} & Geometric closure \\
+$\varepsilon = \pi/48$ geometric closure & \textbf{11.31} & \textbf{0.4\%} & Geometric closure \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1050,7 +1050,7 @@ $d \geq 5$ is the geometric root of the asymmetric barrier
 \includegraphics[width=\textwidth]{fig12_xi_master_derivation}
 \caption{Master derivation figure: empirical diagnostics of the same mechanism.
 The final theory replaces the fitted scaling laws with the geometric inputs
-$p_d$, $\mathbb{E}[V_A]$, and the zero-parameter occupancy closure
+$p_d$, $\mathbb{E}[V_A]$, and the geometric occupancy closure
 (see also Figures~\ref{fig:xi_decomposition} and~\ref{fig:ordering_fraction}).}
 \label{fig:xi_derivation}
 \end{figure}
@@ -1412,8 +1412,8 @@ studied here.
     orders of magnitude in $N$ ($20$--$112$), and the semi-analytic
     derivation of Section~\ref{sec:xi_derivation} reproduces its value
     from Minkowski geometry alone, without reference to any particular system
-    size.  This confirms that $\Xi$ captures an \emph{intensive} geometric
-    property rather than a finite-size artifact.
+    size.  This supports the interpretation that $\Xi$ captures a persistent geometric
+    feature rather than a finite-size artifact.
     Second, the $\lambda$-window shift is itself well understood: it tracks
     the link-density crossover at $N \approx 96$ where 3D surpasses 4D
     in covering-relation count.  Crucially, the \emph{ratio} $\Xi_{4 \to 5}$
@@ -1429,9 +1429,9 @@ studied here.
     may suffice; if it grows algebraically, asymptotic 4D selection would
     require coupling that scales with $N$.  Resolving this requires simulations
     at $N \gtrsim 500$, which are computationally demanding but feasible
-    with modern SIS methods.  Regardless, the intensive nature of $\Xi$
-    guarantees that the \emph{structural price} of the $4{\to}5$ transition
-    persists at all scales --- only the bookkeeping cost of maintaining 4D
+    with modern SIS methods.  Regardless, the stability of $\Xi$ across
+    the tested range suggests that the \emph{structural price} of the $4{\to}5$ transition
+    may persist beyond the sizes studied here --- only the bookkeeping cost of maintaining 4D
     against 3D may change.
 
   \item \textbf{Sample size:} Each observable is computed from 4 samples per
@@ -1480,8 +1480,8 @@ entropy gained in crossing a dimensional boundary --- exhibits a dramatic hierar
 The $4{\to}5$ boundary carries an order-of-magnitude steeper penalty/entropy price than the
 lower boundaries. This creates a \textbf{one-sided barrier above 4D}: at any coupling strong
 enough to suppress 5D, 4D still out-competes 3D because the $3{\to}4$ barrier is low.
-Four-dimensionality is therefore not a fine-tuned special case but a robust
-finite-ensemble optimum of the entropy--connectivity competition.
+Four-dimensionality is therefore not a fine-tuned special case but a favored
+finite-ensemble regime of the entropy--connectivity competition.
 
 This asymmetric barrier is robust across tested conditions: $\Xi_{4 \to 5}$ converges to $\approx 10$ across
 three independent generators (cube sprinkle, independent-seed cube, and Alexandrov-set diamond;
