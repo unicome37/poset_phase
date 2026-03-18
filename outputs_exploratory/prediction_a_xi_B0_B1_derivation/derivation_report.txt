@@ -1,0 +1,135 @@
+==============================================================================
+ANALYTICAL DERIVATION OF B₀ AND B₁
+==============================================================================
+
+A. GLOBAL OLS FIT
+----------------------------------------
+  B₀ = 0.9342669359
+  B₁ = 0.1315248409
+  R² = 0.992165
+  RMSE = 0.047267
+  B₁ + 2B₀ = 2.0000587127
+  B₁ / 2(1−B₀) = 1.0004465998
+
+  ★ KEY FINDING: B₁ + 2B₀ = 2.000 to 4 significant figures.
+  This means B₁ = 2(1−B₀) = 2ε, reducing to ONE free parameter.
+
+B. CONSTRAINED ONE-PARAMETER FIT
+----------------------------------------
+  Model: h = (1−ε)·h₀ + 2ε·P_occ = h₀ − ε·(h₀ − 2·P_occ)
+  ε = 0.0657254668
+  B₀ = 0.9342745332
+  B₁ = 0.1314509337
+  R² = 0.992165
+  RMSE = 0.047267
+  (vs unconstrained R² = 0.992165)
+  R² loss from constraint: 0.00000001
+
+C. ANALYTICAL CANDIDATES FOR ε = 1 − B₀
+----------------------------------------
+               OLS fit: ε=0.065725, rel_err=0.0000%, R²=0.992165
+           κ₄/2 = π/48: ε=0.065450, rel_err=0.4194%, R²=0.992165
+                  1/15: ε=0.066667, rel_err=1.4320%, R²=0.992158
+            Hmean(κ)/2: ε=0.067407, rel_err=2.5583%, R²=0.992142
+               1/(2e²): ε=0.067668, rel_err=2.9550%, R²=0.992134
+                  1/16: ε=0.062500, rel_err=4.9075%, R²=0.992080
+                  ⟨p⟩²: ε=0.071590, rel_err=8.9223%, R²=0.991883
+              ln(2)/4π: ε=0.055159, rel_err=16.0768%, R²=0.991250
+                ⟨p²⟩/2: ε=0.046965, rel_err=28.5437%, R²=0.989280
+            1/(2⟨d⟩·π): ε=0.045473, rel_err=30.8140%, R²=0.988803
+            Gmean(κ)/2: ε=0.090154, rel_err=37.1673%, R²=0.987273
+              ⟨p(1-p)⟩: ε=0.173632, rel_err=164.1784%, R²=0.896710
+
+  ★ Best candidate: κ₄/2 = π/48 (d=4 Alexandrov volume constant / 2)
+    π/48 = 0.0654498469
+    ε_fit = 0.0657254668
+    Relative error: 0.4194%
+
+D. Ξ₄→₅ FOR EACH CANDIDATE
+----------------------------------------
+   OLS (unconstrained): Xi_45=11.33 (obs=11.35, err=0.2%)
+               OLS fit: Xi_45=11.32 (obs=11.35, err=0.2%)
+                  1/15: Xi_45=11.38 (obs=11.35, err=0.2%)
+           κ₄/2 = π/48: Xi_45=11.31 (obs=11.35, err=0.4%)
+            Hmean(κ)/2: Xi_45=11.42 (obs=11.35, err=0.6%)
+               1/(2e²): Xi_45=11.43 (obs=11.35, err=0.7%)
+                  1/16: Xi_45=11.15 (obs=11.35, err=1.8%)
+                  ⟨p⟩²: Xi_45=11.66 (obs=11.35, err=2.7%)
+              ln(2)/4π: Xi_45=10.77 (obs=11.35, err=5.1%)
+                ⟨p²⟩/2: Xi_45=10.34 (obs=11.35, err=8.9%)
+            1/(2⟨d⟩·π): Xi_45=10.27 (obs=11.35, err=9.5%)
+            Gmean(κ)/2: Xi_45=12.87 (obs=11.35, err=13.4%)
+              ⟨p(1-p)⟩: Xi_45=24.09 (obs=11.35, err=112.3%)
+
+E. LEAVE-ONE-DIMENSION-OUT CROSS-VALIDATION
+----------------------------------------
+  d_out=2: ε_con=0.064736, RMSE_con=0.033265, RMSE_unc=0.064952, B1+2B0_unc=1.9638
+  d_out=3: ε_con=0.065123, RMSE_con=0.052590, RMSE_unc=0.055289, B1+2B0_unc=2.0101
+  d_out=4: ε_con=0.063992, RMSE_con=0.050429, RMSE_unc=0.051401, B1+2B0_unc=2.0052
+  d_out=5: ε_con=0.073576, RMSE_con=0.058083, RMSE_unc=0.059254, B1+2B0_unc=2.0043
+
+F. BOOTSTRAP CONFIDENCE INTERVAL (10,000 resamples)
+----------------------------------------
+  ε: mean=0.065605 ± 0.006068
+  95% CI: [0.053462, 0.077341]
+  π/48 = 0.065450: INSIDE 95% CI
+  1/15 = 0.066667: INSIDE 95% CI
+  B₁+2B₀: mean=1.999669 ± 0.012645
+  95% CI: [1.972756, 2.022644]
+  2.000 INSIDE 95% CI
+
+G. PER-DIMENSION DIAGNOSTIC
+----------------------------------------
+  d=2: corr(h0,P)=0.8682, cond=16.7, B0_unc=0.9290, B1_unc=0.1624
+  d=3: corr(h0,P)=0.9906, cond=63.7, B0_unc=1.1691, B1_unc=-0.5182
+  d=4: corr(h0,P)=0.9922, cond=32.0, B0_unc=1.0290, B1_unc=-0.4271
+  d=5: corr(h0,P)=0.9776, cond=69.6, B0_unc=1.0092, B1_unc=-1.0963
+  Within-dimension fits show B₁<0 and B₀>1 for d≥3 due to high
+  correlation between h₀ and P_occ within each dimension (>0.98).
+  B₀ and B₁ are CROSS-DIMENSIONAL coefficients that explain
+  inter-dimensional entropy variation, not within-dimension scaling.
+
+H. PHYSICAL INTERPRETATION
+----------------------------------------
+
+  The entropy has a one-parameter decomposition:
+    h = h₀ − ε·(h₀ − 2·P_occ)
+    = (1−ε)·h₀ + 2ε·P_occ
+
+  where (h₀ − 2·P_occ) is the 'correctable entropy surplus'.
+
+  Physical meaning of ε:
+  ε ≈ 0.066 represents the fraction of mean-field entropy
+  that is 'transferred' from the incomparable-pair channel
+  to the interval-occupancy channel by transitive correlations.
+
+  When the correctable surplus is positive (high d: h₀ >> 2P_occ),
+  the correction REDUCES entropy (mean-field overcounts).
+  When it is negative (low d: h₀ < 2P_occ, i.e., d=2),
+  the correction INCREASES entropy (mean-field undercounts).
+
+  The factor 2 in '2·P_occ' arises because each occupied interval
+  affects TWO elements (the endpoints), each gaining ε units of
+  'entropy restitution' from the chain internal structure.
+
+  If ε = κ₄/2 = π/48, this connects the entropy transfer to
+  the 4-dimensional Alexandrov volume constant, suggesting that
+  the correction is anchored to the d=4 causal geometry — the
+  dimension where the Ξ barrier naturally emerges.
+
+==============================================================================
+SUMMARY: ANALYTICAL ENTROPY CLOSURE
+==============================================================================
+
+  ┌─────────────────────────────────────────────────────────────┐
+  │  logH/N = (1 − ε)·(1−p_d)(ln N − 1) + 2ε·P_occ           │
+  │                                                             │
+  │  where ε ≈ κ₄/2 = π/48 ≈ 0.0654                           │
+  │        P_occ = 1 − exp(−(N−2)·E[V_A])                      │
+  │                                                             │
+  │  Equivalently:                                              │
+  │    B₀ = 1 − π/48 ≈ 0.9346                                  │
+  │    B₁ = π/24  ≈ 0.1309                                     │
+  │                                                             │
+  │  Ξ₄→₅ median: OLS ≈ 11.33, π/48 ≈ ??.??, obs ≈ 11.35      │
+  └─────────────────────────────────────────────────────────────┘
