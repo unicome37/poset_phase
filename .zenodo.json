@@ -1,6 +1,6 @@
 {
-    "title": "poset_phase v4.0.0: Action-Weighted Poset Ensemble Analysis — Prediction C v2: From Correlational Evidence to Quasi-Causal Intervention",
-    "description": "Exact numerical framework for studying geometric phase transitions in finite partially ordered sets (posets). v4.0.0 upgrades Prediction C from correlational-only to quasi-causal evidence. Nine experiments form a layered evidence tower: (1) Stratified Fisher z regression (|r|~0.35-0.54); (2) Single-edge causal intervention (Cohen's d=1.05); (3) Placebo-controlled intervention across Lor2D/3D/4D (d=1.40-1.83, p<1e-133); (4) Reverse intervention with 100% directional consistency (d=2.68); (5) k-family dose-response (all slopes negative, p<1e-29); (6) Edge density universality (no phase transition at any p); (7) N-scaling law (|slope|∝N^0.70); (8) Analytical lower bound for complete layered posets (validated to 1e-15); (9) Large-N SIS extension to N=36 (d=0.69-1.29, p<1e-5 at all N). Manuscript: 1020 lines, 11915 words, 43 pages, 8 sections, 22 tables. Previous versions: v3.0.0 (Prediction C correlational), v2.1.0 (Prediction B bounded γ_c), v2.0.0 (Prediction A 4D Lorentzian dominance).",
+    "title": "poset_phase v5.0.0: Structural Cost Functional on Finite Causal Orders — Physica A Submission",
+    "description": "Numerical framework for constrained structural selection on finite partially ordered sets (posets). v5.0.0 accompanies the Physica A submission 'Constrained structural selection on finite causal orders: historical loading, dimensional admissibility, and Lorentzian windows'. Key additions: (1) unified structural cost functional F7 with interval-richness admissibility wall; (2) anti-overfitting test battery (7 diagnostics: permutation, random-functional Monte Carlo, ablation, cross-validation, N-breakdown, new-seed generalization, fake-family discrimination); (3) spectral recovery experiments (W1 Wasserstein distance, spectral-entropy drift); (4) Pareto parameter search (915 viable points); (5) constrained Metropolis dynamics with microcanonical swap and simulated annealing (N=16-64). Previous versions: v4.0.0 (Prediction C quasi-causal), v2.0.0 (Prediction A 4D dominance), v2.1.0 (Prediction B bounded gamma_c).",
     "upload_type": "software",
     "license": {
         "id": "MIT"
@@ -8,44 +8,32 @@
     "creators": [
         {
             "name": "Zhang, Gang",
-            "affiliation": "Independent Researcher",
-            "orcid": ""
+            "affiliation": "Independent Researcher"
         }
     ],
     "keywords": [
-        "posets",
-        "causal sets",
-        "phase transition",
-        "linear extensions",
-        "discrete quantum gravity",
-        "combinatorics",
-        "Kleitman-Rothschild",
+        "causal orders",
+        "causal set theory",
+        "structural selection",
+        "stochastic dynamics",
         "Lorentzian geometry",
-        "hierarchy integration",
-        "combinatorial entropy",
-        "causal intervention",
-        "placebo control",
-        "dose-response",
-        "Simpson paradox",
         "coarse-graining",
-        "matched-pair analysis",
+        "finite posets",
+        "combinatorial entropy",
+        "constrained dynamics",
+        "Kleitman-Rothschild",
         "dimension selection",
-        "4D Lorentzian",
-        "sequential importance sampling"
+        "historical sedimentation",
+        "anti-overfitting diagnostics"
     ],
     "access_right": "open",
     "related_identifiers": [
         {
-            "identifier": "10.5281/zenodo.18980658",
-            "relation": "isNewVersionOf",
-            "scheme": "doi"
-        },
-        {
-            "identifier": "10.5281/zenodo.19058350",
+            "identifier": "10.5281/zenodo.18980657",
             "relation": "isNewVersionOf",
             "scheme": "doi"
         }
     ],
-    "notes": "This software accompanies three manuscripts: (1) Prediction B — 'Bounded Geometric Phase Transition in Finite Causal Posets with Exact Entropy', (2) Prediction A — 'Dimension-Agnostic Geometric Dominance in Finite Causal Posets', (3) Prediction C v2 — 'Hierarchy Depth Predicts Combinatorial Entropy in Finite Causal Posets: From Correlational Evidence to Quasi-Causal Intervention' (1020 lines, 9 experiments, 43pp PDF). AI tools (Claude, Anthropic) assisted with code development and analysis.",
-    "version": "4.0.0"
+    "notes": "This software accompanies the manuscript: 'Constrained structural selection on finite causal orders: historical loading, dimensional admissibility, and Lorentzian windows' (submitted to Physica A: Statistical Mechanics and its Applications, 2026). AI tools (Claude, Anthropic) assisted with code development and analysis.",
+    "version": "5.0.0"
 }
