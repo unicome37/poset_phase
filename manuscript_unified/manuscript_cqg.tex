@@ -110,20 +110,23 @@ these non-geometric, KR-type structures. How, then, can geometric order emerge?
 
 Several strategies have been proposed. The Benincasa--Dowker (BD)
 action~\cite{benincasa2010,benincasa2011} provides a discrete analogue of the
-Einstein--Hilbert action on causal sets with a well-defined continuum limit;
-dynamics based on this action has been studied in
-2D~\cite{surya2012,loomis2018} and in dimensionally restricted
-settings~\cite{cunningham2020}. The classical sequential growth dynamics of
-Rideout and Sorkin~\cite{rideout2000} provides a stochastic framework for
-causal set evolution. Carlip~\cite{carlip2017} argued that midpoint-scaling
-properties of causal intervals can suppress KR dominance.
-Surya~\cite{surya2019} developed a formal CST partition function framework (see
-also the reviews by Henson~\cite{henson2006} and Dowker~\cite{dowker2005}).
-Loomis and Carlip~\cite{loomis2018} performed 2D simulations using MCMC, and
-Glaser~\cite{glaser2018} investigated finite-size scaling in 2D causal set
-quantum gravity. However, no prior work has demonstrated an explicit, finite-size
-phase-transition threshold $\gamma_c$ computed with exact entropy across a wide
-range of sizes.
+Einstein--Hilbert action on causal sets with a well-defined continuum limit.
+In 2D, numerical work has found evidence for phase-transition-like behavior and
+finite-size scaling in BD-based causal set quantum gravity
+models~\cite{surya2012,glaser2018}, with related developments in dimensionally
+restricted settings~\cite{cunningham2020}. Separately, Loomis and
+Carlip~\cite{loomis2018} gave an analytic argument for suppression of a large
+class of non-manifold-like causal sets (notably two-level orders) in a
+Lorentzian path integral with Einstein--Hilbert weighting. Carlip~\cite{carlip2017}
+and Surya~\cite{surya2019} provide broad reviews of dimensional reduction and
+causal set quantum gravity, including discussions of causal set path sums and
+their entropy challenges (see also Henson~\cite{henson2006} and
+Dowker~\cite{dowker2005}). At a more combinatorial level, phase transitions in
+random partial orders have been studied since Dhar~\cite{dhar1978} and
+Pr{\"o}mel--Steger--Taraz~\cite{promel2001}. Despite this substantial body of
+work, explicit finite-$N$ KR-versus-geometric competition curves computed with
+exact linear-extension entropy remain scarce; here we provide a direct
+$\gamma_c(N)$ scan with exact entropy in the confirmatory window $N=10$--$44$.
 
 This paper addresses two open questions:
 
@@ -188,6 +191,13 @@ $p = 0.5$ inter-layer edges.
 \item \textbf{Absolute layered} (\texttt{abs}).
 \end{itemize}
 
+These Tier-2 families are chosen as ``nearby'' high-entropy competitors in the
+space of finite posets: beyond KR-type three-layer orders, enumerative results
+show that other layered structures (two-layer, four-layer, etc.) are likewise
+abundant and can dominate naive counting measures~\cite{promel2001}. We include
+representatives of these classes to probe the discriminative limits of any
+candidate action.
+
 All Lorentzian-like families are constructed via causal set
 sprinkling~\cite{bombelli1987}: $N$ points are sprinkled uniformly in $[0,1]^d$
 with coordinates $(t, x_1, \ldots, x_{d-1})$. The causal relation is
@@ -229,6 +239,25 @@ already $56$\,s for \texttt{kr} at $N = 44$. For \texttt{lor3d}, exact
 evaluation reaches $N = 56$ ($327$\,s). This asymmetry motivates the
 one-sided exact extension strategy adopted for large-$N$ probes
 (Figure~\ref{fig:timing}).
+
+The use of $\log|L(P)|$ is not meant as a thermodynamic entropy of matter
+fields, but as a \emph{combinatorial measure term}: for an unlabeled poset $P$,
+the number of natural labelings consistent with the order is precisely the
+number of linear extensions, so a labeled path sum (or any proxy that samples
+labelings rather than isomorphism classes) implicitly weights $P$ by
+$|L(P)|$. Such entropy factors and their competition with action terms in
+causal set path sums have been discussed in the CST literature; see for example
+Mathur, Singh, and Surya~\cite{mathur2021}.
+
+This is a choice of ensemble and measure, not a claim that $\log|L(P)|$ is the
+unique or physically correct definition of gravitational entropy. One may
+instead formulate a path sum over \emph{unlabeled} posets, with a measure that
+divides by automorphism factors (e.g.\ weights proportional to $1/|\mathrm{Aut}(P)|$)
+or uses other gauge-fixing conventions. Such alternatives change the effective
+entropy term and can modify which families dominate. Our goal here is more
+modest: to analyze finite-$N$ competition in the labeled (or label-sampling)
+setting in which linear extensions arise as the natural combinatorial measure
+factor.
 
 For the 4-family dimensional selection experiments at $N > 32$, linear extension
 counts for \texttt{kr}, \texttt{lor3d}, and \texttt{lor4d} are estimated via
@@ -723,16 +752,21 @@ is left for future work.
 
 \subsection{Relation to prior work}
 
-Carlip~\cite{carlip2017} argued qualitatively that midpoint-scaling should
-disfavor KR structures; here we provide a quantitative $\gamma_c(N)$ curve
-based on exact entropy and systematic ablation. Our approach complements MCMC
-methods~\cite{loomis2018,surya2012,cunningham2020} by enabling exact computation
-and complete ablation control. Glaser~\cite{glaser2018} studied finite-size
-scaling in 2D CST, finding evidence for a continuum phase; our bounded-$\gamma_c$
-evidence is consistent with and complementary to that work. Cunningham and
-Surya~\cite{cunningham2020} investigated dimensionally restricted causal set
-models; our dimensional selection result offers a complementary perspective
-where the dimension is \emph{selected} rather than restricted.
+Work on causal set dynamics and on entropy barriers in causal set path sums is
+substantial. Carlip~\cite{carlip2017} and Surya~\cite{surya2019} provide broad
+reviews of dimensional reduction and causal set quantum gravity, including
+discussions of entropy challenges and of finite-size effects. In a separate but
+closely related direction, Loomis and Carlip~\cite{loomis2018} gave an analytic
+argument that Einstein--Hilbert weighting in a Lorentzian causal set path
+integral can suppress a large class of non-manifold-like structures (notably
+two-level orders). Numerical studies of BD-based causal set quantum gravity in
+low dimensions have explored phase-transition-like behavior and finite-size
+scaling~\cite{surya2012,glaser2018}, with further developments in
+dimensionally restricted settings~\cite{cunningham2020}. Our contribution is
+different in focus: we compute an explicit finite-$N$ competition curve
+$\gamma_c(N)$ using exact linear-extension measure factors in the confirmatory
+window, and use decomposability to carry out controlled ablation and
+replacement tests.
 
 \textbf{Relation to the Benincasa--Dowker action.}
 The BD action~\cite{benincasa2010,benincasa2011} is the standard discrete action
@@ -821,7 +855,7 @@ Archived version:
 \fi
 
 % ── References ──────────────────────────────────────────────────────
-\begin{thebibliography}{16}
+\begin{thebibliography}{20}
 
 \bibitem{bombelli1987}
 L.~Bombelli, J.~Lee, D.~Meyer, and R.~D.~Sorkin,
@@ -856,10 +890,25 @@ S.~P.~Loomis and S.~Carlip,
 ``Suppression of non-manifold-like sets in the causal set path integral,''
 \textit{Class.\ Quantum Grav.} \textbf{35}, 024002 (2018).
 
+\bibitem{dhar1978}
+D.~Dhar,
+``Entropy and phase transitions in partially ordered sets,''
+\textit{J.\ Math.\ Phys.} \textbf{19}, 171 (1978).
+
+\bibitem{promel2001}
+H.~J.~Pr{\"o}mel, A.~Steger, and A.~Taraz,
+``Phase transitions in the evolution of partial orders,''
+\textit{J.\ Comb.\ Theory Ser.\ A} \textbf{94}, 230 (2001).
+
 \bibitem{brightwell1991}
 G.~Brightwell and P.~Winkler,
 ``Counting linear extensions,''
 \textit{Order} \textbf{8}, 225--242 (1991).
+
+\bibitem{mathur2021}
+S.~Mathur, J.~S.~Singh, and S.~Surya,
+``Entropy and the link action in causal set path sums,''
+arXiv:2009.07232.
 
 \bibitem{cunningham2020}
 W.~J.~Cunningham and S.~Surya,

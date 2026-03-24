@@ -106,7 +106,8 @@ challenge is the \emph{entropy catastrophe}: the Kleitman--Rothschild (KR)
 theorem~\cite{kleitman1975} establishes that, asymptotically, almost all labeled
 finite posets consist of three layers with bipartite random connectivity and
 maximal linear extension count. If posets are weighted by the pure combinatorial
-entropy $H = \log|L(P)|$, the partition function is overwhelmingly dominated by
+entropy $H = \log|L(P)|$ (the number of natural labelings / linear extensions),
+the partition function is overwhelmingly dominated by
 these non-geometric, KR-type structures. How, then, can geometric order emerge?
 
 Several strategies have been proposed. The Benincasa--Dowker (BD)
@@ -116,13 +117,21 @@ dynamics based on this action has been studied in
 2D~\cite{surya2012,loomis2018} and in dimensionally restricted
 settings~\cite{cunningham2020}. The classical sequential growth dynamics of
 Rideout and Sorkin~\cite{rideout2000} provides a stochastic framework for
-causal set evolution. Carlip~\cite{carlip2017} argued that midpoint-scaling
-properties of causal intervals can suppress KR dominance.
-Surya~\cite{surya2019} developed a formal CST partition function framework (see
-also the reviews by Henson~\cite{henson2006} and Dowker~\cite{dowker2005}).
-Loomis and Carlip~\cite{loomis2018} performed 2D simulations using MCMC, and
-Glaser~\cite{glaser2018} investigated finite-size scaling in 2D causal set
-quantum gravity. However, no prior work has demonstrated an explicit, finite-size
+causal set evolution. Reviews by Carlip~\cite{carlip2017}, Surya~\cite{surya2019},
+Henson~\cite{henson2006}, and Dowker~\cite{dowker2005} summarize related
+developments, including the KR-dominance issue in labeled ensembles.
+In the path-sum setting, Loomis and Carlip~\cite{loomis2018} gave analytic
+evidence that suitable weighting can suppress non-manifoldlike orders.
+More broadly, phase-transition phenomena in random poset ensembles have a
+long combinatorial history (e.g.\ Dhar~\cite{dhar1978} and Pr\"omel
+et~al.~\cite{promel2001}), and the ranked/layered structures that dominate
+counting measures are well studied.
+In this paper, we use $\log|L(P)|$ as a \emph{labeled measure term} for finite
+poset ensembles; we do \emph{not} interpret it as thermodynamic ``matter
+entropy,'' and we explicitly separate measure effects from the action terms we
+introduce.
+
+However, no prior work has demonstrated an explicit, finite-size
 phase-transition threshold $\gamma_c$ computed with exact entropy across a wide
 range of sizes.
 
@@ -681,16 +690,25 @@ is left for future work.
 
 \subsection{Relation to prior work}
 
-Carlip~\cite{carlip2017} argued qualitatively that midpoint-scaling should
-disfavor KR structures; here we provide a quantitative $\gamma_c(N)$ curve
-based on exact entropy and systematic ablation. Our approach complements MCMC
-methods~\cite{loomis2018,surya2012,cunningham2020} by enabling exact computation
-and complete ablation control. Glaser~\cite{glaser2018} studied finite-size
-scaling in 2D CST, finding evidence for a continuum phase; our bounded-$\gamma_c$
-evidence is consistent with and complementary to that work. Cunningham and
-Surya~\cite{cunningham2020} investigated dimensionally restricted causal set
-models; our dimensional selection result offers a complementary perspective
-where the dimension is \emph{selected} rather than restricted.
+Work on causal set dynamics and phase structure spans both CST and earlier
+combinatorial studies of random partial orders. In CST, the BD
+action~\cite{benincasa2010,benincasa2011} provides a continuum-motivated
+discrete action, and numerical evidence for continuum behavior and finite-size
+scaling in 2D has been reported (e.g.\ Surya~\cite{surya2012} and
+Glaser~\cite{glaser2018}). Loomis and Carlip~\cite{loomis2018} analyzed the
+suppression of non-manifoldlike sets in the causal set path integral from an
+analytic perspective. Separately, phase transitions in random poset ensembles
+have been studied since at least Dhar~\cite{dhar1978}, with later results on the
+typical structure of finite posets and related transition behavior (e.g.\
+Pr\"omel et~al.~\cite{promel2001}).
+
+Our contribution is to provide (i) a finite-$N$ $\gamma_c(N)$ curve computed
+with exact linear extension counts over a wide confirmatory range, and (ii) a
+systematic ablation/replace pipeline that isolates which order-theoretic
+constraints are actually responsible for the observed bounded-threshold
+behavior. Cunningham and Surya~\cite{cunningham2020} investigated dimensionally
+restricted causal set models; our ``dimensional consistency'' setup instead
+asks which dimensionality is \emph{selected} within a mixed-dimensional ensemble.
 
 \textbf{Relation to the Benincasa--Dowker action.}
 The BD action~\cite{benincasa2010,benincasa2011} is the standard discrete action
@@ -873,6 +891,16 @@ L.~Glaser and S.~Surya,
 ``Towards a definition of locality in a manifoldlike causal set,''
 \textit{Phys.\ Rev.\ D} \textbf{88}, 124026 (2013).
 arXiv:1309.3403.
+
+\bibitem{dhar1978}
+D.~Dhar,
+``A combinatorial approach to phase transitions in partially ordered sets,''
+\textit{J.\ Math.\ Phys.} \textbf{19}, 171 (1978).
+
+\bibitem{promel2001}
+H.~J.~Pr\"omel \textit{et al.},
+``Phase transition and typical structure in random partial orders,''
+\textit{J.\ Comb.\ Theory Ser.\ A} \textbf{94}, 230 (2001).
 
 \end{thebibliography}
 

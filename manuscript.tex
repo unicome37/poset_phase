@@ -7,6 +7,7 @@
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{graphicx}
 \usepackage{booktabs}
+\usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage[margin=2.5cm]{geometry}
 \usepackage{enumitem}
@@ -39,7 +40,7 @@ The Kleitman--Rothschild (KR) theorem implies that generic finite posets are 3-l
 
 The hypothesis that spacetime is fundamentally discrete --- a locally finite partial order (poset) whose elements are causally related events --- lies at the heart of causal set theory (CST)~\cite{bombelli1987,sorkin2005}. A central challenge for this program is the \emph{entropy catastrophe}: the Kleitman--Rothschild (KR) theorem~\cite{kleitman1975} establishes that, asymptotically, almost all labeled finite posets consist of three layers with bipartite random connectivity and maximal linear extension count. If one weights posets by the pure combinatorial entropy $H = \log(\text{number of linear extensions})$, the partition function is overwhelmingly dominated by these non-geometric, KR-type structures. Geometric order --- the kind of layered, causally propagating structure that would correspond to a Lorentzian manifold under coarse-graining --- occupies an exponentially small fraction of the configuration space.
 
-Several strategies have been proposed to address this. The Benincasa--Dowker (BD) action~\cite{benincasa2010,benincasa2011} provides a discrete analogue of the Einstein--Hilbert action on causal sets, with a well-defined continuum limit; dynamics based on this action has been studied in 2D~\cite{surya2012,loomis2018} and in dimensionally restricted settings~\cite{cunningham2020}. Separately, the classical sequential growth dynamics of Rideout and Sorkin~\cite{rideout2000} provides a stochastic framework for causal set evolution. Carlip~\cite{carlip2017} argued that midpoint-scaling properties of causal intervals can suppress KR dominance. Surya~\cite{surya2019} developed a formal CST partition function framework (see also the reviews by Henson~\cite{henson2006} and Dowker~\cite{dowker2005}). Loomis and Carlip~\cite{loomis2018} performed 2D causal set simulations using Markov chain Monte Carlo, and Glaser~\cite{glaser2018} investigated finite-size scaling in 2D causal set quantum gravity. However, no prior work has demonstrated an explicit, finite-size phase transition threshold $\gamma_c$ that separates a KR-dominated phase from a geometrically competitive phase, computed with exact (non-approximate) entropy across a wide range of poset sizes.
+Several strategies have been proposed to address this. The Benincasa--Dowker (BD) action~\cite{benincasa2010,benincasa2011} provides a discrete analogue of the Einstein--Hilbert action on causal sets, with a well-defined continuum limit; in 2D, numerical work has found evidence for phase-transition-like behavior and finite-size scaling in BD-based causal set quantum gravity models~\cite{surya2012,glaser2018}, with related developments in dimensionally restricted settings~\cite{cunningham2020}. Separately, Loomis and Carlip~\cite{loomis2018} gave an analytic argument for suppression of a large class of non-manifold-like causal sets (notably two-level orders) in a Lorentzian path integral with Einstein--Hilbert weighting. Carlip~\cite{carlip2017} and Surya~\cite{surya2019} provide broad reviews of dimensional reduction and causal set quantum gravity, including discussions of entropy challenges in causal set path sums (see also Henson~\cite{henson2006} and Dowker~\cite{dowker2005}). At a more combinatorial level, phase transitions in random partial orders have been studied since Dhar~\cite{dhar1978} and Pr{\"o}mel--Steger--Taraz~\cite{promel2001}. However, explicit finite-$N$ KR-versus-geometric competition curves computed with exact linear-extension entropy remain scarce; here we provide a direct $\gamma_c(N)$ scan with exact entropy in the confirmatory window $N=10$--$44$.
 
 In this work, we take a direct numerical approach. We construct an ensemble of seven structurally distinct poset families, compute exact linear extension counts using dynamic programming for $N$ up to 44, and define a decomposable action with separately controllable neutral and geometric penalty terms. Our main finding is that the critical coupling $\gamma_c$ for Lorentzian-like 2D posets to overtake KR posets remains bounded and $O(1)$ across all tested sizes.
 
@@ -67,6 +68,16 @@ For each family and each $N \in \{10, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44\}$,
 \subsection{Exact Linear Extension Count}
 
 The entropy of a poset $P$ is defined as $H(P) = \log |L(P)|$, where $L(P)$ is the set of linear extensions (topological sorts). We compute $|L(P)|$ exactly using dynamic programming over antichains~\cite{brightwell1991}. The state space is the set of all antichains of the poset (equivalently characterized as maximal antichains of the remaining down-set); transitions correspond to removing a minimal element.
+
+We emphasize that $\log|L(P)|$ is used here as a \emph{combinatorial measure term}: for an unlabeled poset $P$, the number of natural labelings consistent with the order is exactly the number of linear extensions, so a labeled path sum (or any proxy that samples labelings rather than isomorphism classes) implicitly weights $P$ by $|L(P)|$. For discussions of entropy factors in causal set path sums and their competition with action terms, see e.g.~\cite{mathur2021}.
+
+This is a choice of ensemble and measure, not a claim that $\log|L(P)|$ is a
+unique or physically correct definition of gravitational entropy. Alternative
+formulations can sum over \emph{unlabeled} posets and divide by automorphism
+factors (e.g.\ $1/|\mathrm{Aut}(P)|$), which changes the effective entropy term
+and may change which families dominate. Here we focus on the labeled (or
+label-sampling) setting in which linear extensions appear as the natural
+combinatorial measure factor.
 
 A key structural observation is that the computational cost of this algorithm depends strongly on the poset's antichain structure. For \texttt{lor2d}, whose antichain width grows slowly with $N$, exact computation remains sub-second to $N = 48$. For \texttt{kr}, whose middle layer is $O(N)$, the cost grows dramatically and becomes impractical beyond $N \approx 50$. This asymmetry is a structural fact about the posets, not an algorithmic artifact.
 
@@ -261,7 +272,12 @@ The dimension consistency constraint captures the idea that genuine manifold-lik
 
 \subsection{Relation to Prior Work}
 
-Carlip~\cite{carlip2017} argued qualitatively that midpoint-scaling properties of causal diamonds should disfavor KR structures. For the first time, our work translates this intuition into an explicit numerical computation of $\gamma_c$ as a function of $N$, with exact entropy and systematic ablation. The bounded $\gamma_c$ we observe is consistent with Carlip's expectation but goes beyond it in two ways: (i)~it provides quantitative finite-size values, and (ii)~it identifies the specific structural properties that drive the transition.
+Carlip~\cite{carlip2017} reviews the broader landscape of dimensional
+reduction in quantum gravity, including causal set approaches and the challenge
+posed by high-entropy non-manifold-like orders. Our work contributes a concrete
+finite-$N$ computation of $\gamma_c(N)$ with exact linear-extension measure
+factors and systematic ablation, aimed at diagnosing which structural
+constraints can overcome KR dominance in a labeled (or label-sampling) setting.
 
 Recent work on 2D causal set dynamics~\cite{loomis2018,surya2012,cunningham2020} has used Markov chain approaches to sample from CST partition functions. Our approach is complementary: rather than sampling from the full space of $N$-element posets, we compare representative structures from distinct families, which allows exact computation and complete ablation control. Glaser~\cite{glaser2018} studied finite-size scaling in 2D CST, finding evidence for a continuum phase; our finite-size evidence for bounded $\gamma_c$ is consistent with and complementary to that work.
 
@@ -286,7 +302,7 @@ The most important next step is pushing the exact computation to larger $N$. The
 The non-circular replacement result also opens a conceptual direction: if the minimal requirements for geometric phase emergence are causal chain non-degeneracy and dimensional scale consistency, then these two properties may serve as order parameters for detecting geometric phases in more general discrete quantum gravity models.
 
 % ── References ──────────────────────────────────────────────────────
-\begin{thebibliography}{16}
+\begin{thebibliography}{20}
 
 \bibitem{bombelli1987}
 L.~Bombelli, J.~Lee, D.~Meyer, and R.~D.~Sorkin,
@@ -322,10 +338,25 @@ S.~P.~Loomis and S.~Carlip,
 \textit{Class.\ Quantum Grav.} \textbf{35}, 024002 (2018).
 DOI:~10.1088/1361-6382/aa980b.
 
+\bibitem{dhar1978}
+D.~Dhar,
+``Entropy and phase transitions in partially ordered sets,''
+\textit{J.\ Math.\ Phys.} \textbf{19}, 171 (1978).
+
+\bibitem{promel2001}
+H.~J.~Pr{\"o}mel, A.~Steger, and A.~Taraz,
+``Phase transitions in the evolution of partial orders,''
+\textit{J.\ Comb.\ Theory Ser.\ A} \textbf{94}, 230 (2001).
+
 \bibitem{brightwell1991}
 G.~Brightwell and P.~Winkler,
 ``Counting linear extensions,''
 \textit{Order} \textbf{8}, 225--242 (1991).
+
+\bibitem{mathur2021}
+S.~Mathur, J.~S.~Singh, and S.~Surya,
+``Entropy and the link action in causal set path sums,''
+arXiv:2009.07232.
 
 \bibitem{cunningham2020}
 W.~J.~Cunningham and S.~Surya,
