@@ -12,7 +12,7 @@ The Kleitman–Rothschild (KR) theorem implies that generic finite posets are 3-
 
 The hypothesis that spacetime is fundamentally discrete — a locally finite partial order (poset) whose elements are causally related events — lies at the heart of causal set theory (CST) [1, 2]. A central challenge for this program is the *entropy catastrophe*: the Kleitman–Rothschild (KR) theorem [3] establishes that, asymptotically, almost all labeled finite posets consist of three layers with bipartite random connectivity and maximal linear extension count. If one weights posets by the pure combinatorial entropy H = log(number of linear extensions), the partition function is overwhelmingly dominated by these non-geometric, KR-type structures. Geometric order — the kind of layered, causally propagating structure that would correspond to a Lorentzian manifold under coarse-graining — occupies an exponentially small fraction of the configuration space.
 
-Several strategies have been proposed to address this. Carlip [4] argued that midpoint-scaling properties of causal intervals can suppress KR dominance, shifting the effective measure toward geometric posets. Surya [5] developed a formal CST partition function framework. Loomis and Carlip [6] performed 2D causal set simulations using Markov chain Monte Carlo. However, no prior work has demonstrated an explicit, finite-size phase transition threshold γ_c that separates a KR-dominated phase from a geometrically competitive phase, computed with exact (non-approximate) entropy across a wide range of poset sizes.
+Several strategies have been proposed to address this. Carlip [4] reviewed the evidence for effective dimensional reduction across several approaches to quantum gravity, including causal set theory. Surya [5] provided a comprehensive review of the causal set programme. Loomis and Carlip [6] analytically demonstrated the suppression of non-manifold-like sets in the causal set path integral. However, no prior work has demonstrated an explicit, finite-size phase transition threshold γ_c that separates a KR-dominated phase from a geometrically competitive phase, computed with exact (non-approximate) entropy across a wide range of poset sizes.
 
 In this work, we take a direct numerical approach. We construct an ensemble of seven structurally distinct poset families, compute exact linear extension counts using dynamic programming for N up to 44, and define a decomposable action with separately controllable neutral and geometric penalty terms. Our main finding is that the critical coupling γ_c for Lorentzian-like 2D posets to overtake KR posets remains bounded and O(1) across all tested sizes.
 
@@ -100,7 +100,7 @@ The N = 10 value is an outlier due to finite-size effects in the small-poset reg
 
 ![Figure 1: Critical coupling γ_c(N) under A2 (exact entropy) for Lor2D vs KR. The N=10 outlier reflects finite-size effects; for N ≥ 12, γ_c remains O(1) within [0.15, 1.00].](manuscript_figures/fig1_gamma_c_curve.png)
 
-**Critical control**: Under A1 (neutral penalty only), no γ_c exists at any tested N (verified across N = 20–44 in the ablation set and N = 10–16 in the confirmatory set). Lorentzian-like structures never overtake KR without geometric penalties. This confirms that the phase transition is driven by the geometry–entropy competition encoded in A2, not by neutral structural differences alone.
+**Critical control**: Under A1 (neutral penalty only), no γ_c exists at any tested N (verified across N = 20–44 in the ablation set and N = 10–16 in the confirmatory set). Lorentzian-like structures never overtake KR without geometric penalties. This supports the conclusion that the phase transition is driven by the geometry–entropy competition encoded in A2, not by neutral structural differences alone.
 
 ### 3.2 Ablation of Geometric Sub-Terms
 
@@ -165,9 +165,9 @@ The dimension consistency constraint captures the idea that genuine manifold-lik
 
 ### 4.2 Relation to Prior Work
 
-Carlip [4] argued qualitatively that midpoint-scaling properties of causal diamonds should disfavor KR structures. For the first time, our work translates this intuition into an explicit numerical computation of γ_c as a function of N, with exact entropy and systematic ablation. The bounded γ_c we observe is consistent with Carlip's expectation but goes beyond it in two ways: (i) it provides quantitative finite-size values, and (ii) it identifies the specific structural properties that drive the transition.
+Carlip [4] reviewed the evidence for dimensional reduction across several quantum gravity programmes, including causal set theory. Our work provides the first quantitative γ_c(N) curve with exact entropy and systematic ablation, translating qualitative intuitions about KR suppression into explicit finite-size values.
 
-Recent work on 2D causal set dynamics [6, 8] has used Markov chain approaches to sample from CST partition functions. Our approach is complementary: rather than sampling from the full space of N-element posets, we compare representative structures from distinct families, which allows exact computation and complete ablation control.
+Loomis and Carlip [6] analytically demonstrated the suppression of non-manifold-like sets in the causal set path integral. Our approach is complementary: rather than sampling from the full space of N-element posets, we compare representative structures from distinct families, which allows exact computation and complete ablation control.
 
 ### 4.3 Limitations
 
@@ -197,7 +197,7 @@ The non-circular replacement result also opens a conceptual direction: if the mi
 
 [4] S. Carlip, "Dimension and dimensional reduction in quantum gravity," Class. Quantum Grav. **34**, 193001 (2017). arXiv:1705.05417. DOI: 10.1088/1361-6382/aa8535.
 
-[5] S. Surya, "The causal set approach to quantum gravity," Living Rev. Relativ. **22**, 5 (2019). arXiv:1905.13498. DOI: 10.1007/s41114-019-0023-1.
+[5] S. Surya, “The causal set approach to quantum gravity,” Living Rev. Relativ. **22**, 5 (2019). arXiv:1903.11544. DOI: 10.1007/s41114-019-0023-1.
 
 [6] S. P. Loomis and S. Carlip, "Suppression of non-manifold-like sets in the causal set path integral," Class. Quantum Grav. **35**, 024002 (2018). DOI: 10.1088/1361-6382/aa980b.
 

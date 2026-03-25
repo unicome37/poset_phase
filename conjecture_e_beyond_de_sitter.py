@@ -691,7 +691,7 @@ def generate_report(
     lines.append("Phase A shows that Conjecture E's bulk structure is not purely a de Sitter artifact.\n")
     lines.append("But the signal degradation at d=4 and the lack of a clean α target mean that the\n")
     lines.append("power-law FRW generalization is weaker than the de Sitter result. The gap has\n")
-    lines.append("**narrowed** (from 'untested' to 'partially confirmed with caveats') but is not closed.\n")
+    lines.append("**narrowed** (from 'untested' to 'partially supported with caveats') but is not closed.\n")
 
     return "\n".join(lines)
 

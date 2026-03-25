@@ -400,9 +400,9 @@ def print_summary_B(rows: list[dict]) -> None:
     print(f"  mean F[KR]    = {mean_F_kr:.4f}")
     print(f"  Lor2D wins    = {lor_wins}/{len(lor)} ({100*lor_wins/len(lor):.0f}%)")
     if mean_F_lor < mean_F_kr:
-        print(f"  → B CONFIRMED: Lor2D has lower structural cost (ΔF = {mean_F_kr - mean_F_lor:.4f})")
+        print(f"  → B SUPPORTED: Lor2D has lower structural cost (ΔF = {mean_F_kr - mean_F_lor:.4f})")
     else:
-        print(f"  → B not confirmed at these weights (ΔF = {mean_F_kr - mean_F_lor:.4f})")
+        print(f"  → B not supported at these weights (ΔF = {mean_F_kr - mean_F_lor:.4f})")
 
 
 def print_summary_C(rows: list[dict]) -> None:
@@ -419,9 +419,9 @@ def print_summary_C(rows: list[dict]) -> None:
     print(f"  corr(n_layers, log_H) = {r:.4f}")
     print(f"  layer range: {int(layers.min())}–{int(layers.max())}")
     if r < -0.1:
-        print(f"  → C direction CONFIRMED: deeper layers correlate with lower entropy")
+        print(f"  → C direction SUPPORTED: deeper layers correlate with lower entropy")
     else:
-        print(f"  → C direction not confirmed (r = {r:.4f})")
+        print(f"  → C direction not supported (r = {r:.4f})")
 
 
 def print_summary_A(rows: list[dict]) -> None:
@@ -485,9 +485,9 @@ def print_summary_D(rows: list[dict]) -> None:
     lor_drift = np.mean([r["abs_delta_F"] for r in rows if r["family"] == "Lor2D"])
     kr_drift = np.mean([r["abs_delta_F"] for r in rows if r["family"] == "KR_like"])
     if lor_drift < kr_drift:
-        print(f"  → D direction CONFIRMED: Lor2D more stable under coarse-graining")
+        print(f"  → D direction SUPPORTED: Lor2D more stable under coarse-graining")
     else:
-        print(f"  → D direction not confirmed")
+        print(f"  → D direction not supported")
 
 
 # ---------------------------------------------------------------------------

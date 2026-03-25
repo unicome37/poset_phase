@@ -469,7 +469,7 @@ def build_report(
     L.append(f"  B₀ difference      = {abs(closures['Z_full'].B0 - closures['Z_B1fix'].B0):.6f}")
     L.append("")
     conjecture_ok = abs(b1f - LN2_OVER_4) / b1f < 0.01
-    L.append(f"  Verdict: {'CONFIRMED (< 1% deviation)' if conjecture_ok else 'INCONCLUSIVE'}")
+    L.append(f"  Verdict: {'SUPPORTED (< 1% deviation)' if conjecture_ok else 'INCONCLUSIVE'}")
     L.append("")
 
     # ── Part 3: Closure comparison ───────────────────────────────
@@ -525,7 +525,7 @@ def build_report(
         "   from geometry alone — no poset regeneration needed."
     )
     L.append(
-        f"2. B₁ = ln(2)/4 conjecture: {'CONFIRMED' if conjecture_ok else 'needs more data'}."
+        f"2. B₁ = ln(2)/4 conjecture: {'SUPPORTED' if conjecture_ok else 'needs more data'}."
     )
     L.append(
         "   Fixing B₁ = ln(2)/4 preserves Ξ accuracy to < 1 percentage point."

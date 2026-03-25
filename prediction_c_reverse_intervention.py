@@ -248,12 +248,12 @@ def run():
     # F. Conclusion
     print("\n" + "=" * 70)
     if crit_all["delta_log_H"].mean() > 0 and crit_all["delta_log_H"].mean() > noncrit_all["delta_log_H"].mean():
-        print("  ✓ REVERSE INTERVENTION CONFIRMED:")
+        print("  ✓ REVERSE INTERVENTION SUPPORTED:")
         print("    Removing layer-merging edges INCREASES entropy")
         print("    Bidirectional causal link established:")
         print("    split → entropy ↓  AND  merge → entropy ↑")
     else:
-        print("  ✗ Reverse intervention not confirmed")
+        print("  ✗ Reverse intervention not supported")
     print("=" * 70)
 
 

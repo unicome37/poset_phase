@@ -66,7 +66,7 @@ def alexandrov_volume_prefactor(d):
     
     Vol_d(τ) = ω_d · τ^d
     
-    Standard result (e.g., Surya 2019 review, Eq. 2.3):
+    Standard result (e.g., Surya 2019 review, Sec. 2):
     ω_d = V_{d-2} / (d · 2^{d-1})
     where V_{d-2} = π^((d-2)/2) / Γ((d-2)/2 + 1) is the volume of
     the (d-2)-dimensional unit ball.

@@ -2,7 +2,7 @@
 
 Goal
 ----
-Previous n=32 high-power test confirmed that the pooled ρ(Δpenalty_cg,
+Previous n=32 high-power test showed that the pooled ρ(Δpenalty_cg,
 Δscore_local) is driven by between-stratum composition, not within-stratum
 mechanism. This script attempts to recover a within-stratum signal by:
 

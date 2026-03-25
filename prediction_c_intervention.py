@@ -209,7 +209,7 @@ def run():
     # ── Conclusion ──────────────────────────────────────────
     print("\n" + "=" * 60)
     if len(split_all) >= 3 and len(nosplit_all) >= 3:
-        direction = "CONFIRMED" if split_all["abs_delta_log_H"].mean() > nosplit_all["abs_delta_log_H"].mean() else "NOT confirmed"
+        direction = "SUPPORTED" if split_all["abs_delta_log_H"].mean() > nosplit_all["abs_delta_log_H"].mean() else "NOT supported"
         print(f"  Prediction C direction: {direction}")
         print(f"  (Adding an edge that increases layer count should")
         print(f"   reduce entropy MORE than one that does not.)")

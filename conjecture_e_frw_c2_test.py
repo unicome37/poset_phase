@@ -14,7 +14,7 @@ If FRW (R≠0, non-uniform) recovers strong beyond-density signals in the
 antichain channel, it confirms:
   1. Antichain channel responds to scalar curvature R
   2. Schwarzschild weakness is because R=0 (Ricci-flat), NOT because of non-uniformity
-  3. DDT C2 escape is CONFIRMED for R≠0 non-uniform backgrounds
+  3. DDT C2 escape is SUPPORTED for R≠0 non-uniform backgrounds
 
 Design:
   - Metric: ds² = -dt² + (t/t₀)^{2p} Σ dx_i²
@@ -476,7 +476,7 @@ def generate_report(
     lines.append("it confirms that:\n")
     lines.append("1. The antichain channel responds to scalar curvature R")
     lines.append("2. Schwarzschild weakness is because R=0, not because of non-uniformity")
-    lines.append("3. DDT C2 escape is confirmed for R≠0 non-uniform backgrounds\n")
+    lines.append("3. DDT C2 escape is supported for R≠0 non-uniform backgrounds\n")
 
     lines.append("## Experiment Design\n")
     lines.append(f"- Spacetime dimensions: d = {dims}")
@@ -564,7 +564,7 @@ def generate_report(
     lines.append("## Q3: Density-Residual Analysis (OLS remove n_causal_pairs)\n")
     lines.append("Does each feature's residual (after density removal) still correlate with mean |R|?\n")
     lines.append("**This is the decisive DDT C2 test.** If antichain features survive density")
-    lines.append("removal in FRW (R≠0), DDT C2 escape is confirmed for non-uniform backgrounds.\n")
+    lines.append("removal in FRW (R≠0), DDT C2 escape is supported for non-uniform backgrounds.\n")
 
     grand_beyond = 0
     grand_total = 0
@@ -726,7 +726,7 @@ def generate_report(
         lines.append(f"- Raw ρ(bin_|R|, bin_layer_ratio): {rho_raw:+.3f} (p={p_raw:.2e})")
         lines.append(f"- Density-residualized ρ: {rho_resid:+.3f} (p={p_resid:.2e})")
         if abs(rho_resid) > 0.3 and p_resid < 0.01:
-            lines.append("- **LOCAL scalar curvature response confirmed beyond density**\n")
+            lines.append("- **LOCAL scalar curvature response supported beyond density**\n")
         elif abs(rho_resid) > 0.15:
             lines.append("- Marginal local curvature response after density removal\n")
         else:
@@ -826,7 +826,7 @@ def generate_report(
         lines.append("in FRW with R≠0 (non-uniform). This CONFIRMS the §4.1.42 interpretation:\n")
         lines.append("1. The antichain (transverse) channel primarily responds to **scalar curvature R**")
         lines.append("2. Schwarzschild weakness (4/32) is because R=0 (Ricci-flat), NOT non-uniformity")
-        lines.append("3. **DDT C2 escape confirmed for R≠0 non-uniform backgrounds**")
+        lines.append("3. **DDT C2 escape supported for R≠0 non-uniform backgrounds**")
         lines.append("4. The DDT escape hierarchy is: antichains (R≠0) >> C_k intervals >> Weyl-only\n")
     elif ac_beyond > 0:
         lines.append(f"**PARTIAL POSITIVE: {ac_beyond}/{ac_total} antichain features beyond density.**")

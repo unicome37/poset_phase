@@ -31,7 +31,7 @@
 - Causal set theory (CST) posits spacetime as a locally finite partial order
 - Kleitman–Rothschild (1975): asymptotically almost all finite posets are 3-layered, maximally entropic, and non-geometric
 - This creates a "KR entropy catastrophe": naive ensemble averages are dominated by non-geometric structures
-- Carlip (2017, CQG): proposed midpoint-scaling arguments to suppress KR, but no explicit action-based phase transition demonstrated at finite N
+- Carlip (2017, CQG): reviewed evidence for dimensional reduction in quantum gravity, including causal set approaches, but no explicit action-based phase transition demonstrated at finite N
 
 ### 1.2 Our Approach
 - Construct explicit poset ensembles with 7 candidate families
@@ -153,9 +153,9 @@
   - mixed near-wall `N=52/56` extends the competition without overclaiming a crossing
 
 ### 4.2 Relation to Prior Work
-- Carlip (2017): argued for KR suppression via midpoint scaling; our work provides the first explicit finite-size γ_c computation
+- Carlip (2017): reviewed evidence for dimensional reduction; our work provides the first explicit finite-size γ_c computation
 - Surya (2012): CST partition function formalism; our ensemble is a discrete realization
-- Loomis & Carlip (2018): 2D causal set simulations; our approach uses exact enumeration rather than Markov chain sampling
+- Loomis & Carlip (2018): analytically demonstrated suppression of non-manifold-like sets; our approach uses exact enumeration rather than sampling
 
 ### 4.3 Limitations and Outlook
 - **Finite-size**: N = 10–44 is far from thermodynamic limit. The key open question is whether γ_c remains bounded as N → ∞.

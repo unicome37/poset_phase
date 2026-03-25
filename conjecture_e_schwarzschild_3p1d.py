@@ -717,7 +717,7 @@ def generate_report(
         lines.append(f"- Raw ρ(bin_K, bin_layer_ratio): {rho_raw:+.3f} (p={p_raw:.2e})")
         lines.append(f"- Density-residualized ρ: {rho_resid:+.3f} (p={p_resid:.2e})")
         if abs(rho_resid) > 0.3 and p_resid < 0.01:
-            lines.append("- **LOCAL curvature response confirmed beyond density**\n")
+            lines.append("- **LOCAL curvature response supported beyond density**\n")
         else:
             lines.append("- Local curvature response not significant after density removal\n")
 
@@ -781,7 +781,7 @@ def generate_report(
         lines.append("beyond density in 3+1D Schwarzschild — a substantial improvement over")
         lines.append("the 1+1D result (2/27). The transverse (antichain) channel, which is")
         lines.append("the strongest DDT escape path in de Sitter, also responds to non-uniform")
-        lines.append("Weyl curvature in Schwarzschild. DDT condition C2 is confirmed to be")
+        lines.append("Weyl curvature in Schwarzschild. DDT condition C2 is supported to be")
         lines.append("essential: non-uniform backgrounds allow curvature signals that")
         lines.append("constant-curvature DDT cannot absorb.\n")
     elif beyond_count >= 2:

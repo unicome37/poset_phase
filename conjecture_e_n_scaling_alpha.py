@@ -3,7 +3,7 @@
 Tests the central hypothesis: does α_eff(N, d=4) → 2 as N → ∞?
 
 If discrete observables track H^α with α(N) → 2, then the H→R bridge
-is a continuum-limit phenomenon and the BDG theorem is confirmed
+is a continuum-limit phenomenon and the BDG theorem is supported
 constructively.
 
 Design:
@@ -19,7 +19,7 @@ Design:
 References:
   - §4.1.32: α≈1.25 (w_max_ratio), α≈1.00 (b1_std) at d=4, N≤512
   - §4.1.33: No algebraic bridge works (0/9)
-  - T4: No spectral ratio achieves α≈2 (confirmed §4.1.33)
+  - T4: No spectral ratio achieves α≈2 (supported §4.1.33)
 """
 
 from __future__ import annotations
@@ -213,7 +213,7 @@ def main():
     lines.append(f"- Runtime = {total_time:.0f}s\n")
     lines.append("## Hypothesis\n")
     lines.append("If α_eff(N) → 2 as N → ∞, the H→R bridge is a continuum-limit")
-    lines.append("phenomenon and the BDG theorem is constructively confirmed.\n")
+    lines.append("phenomenon and the BDG theorem is constructively supported.\n")
 
     # ================================================================
     # Section 1: Per-N density-residual correlation with H²

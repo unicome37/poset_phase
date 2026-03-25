@@ -17,7 +17,7 @@ Dear Editors,
 
 We are pleased to submit the above manuscript for consideration in *Foundations of Physics*.
 
-**Summary.** A longstanding obstacle in causal set theory (CST) is the *entropy catastrophe*: the Kleitman–Rothschild theorem implies that almost all finite posets are 3-layered and non-geometric, dominating any entropy-weighted partition function and preventing geometric phases from emerging. While Carlip (2017) and Loomis & Carlip (2018) have provided qualitative arguments and 2D MCMC evidence that geometric penalties can suppress KR structures, no prior work has established an explicit, finite-size phase transition threshold computed with exact entropy across a systematic range of poset sizes.
+**Summary.** A longstanding obstacle in causal set theory (CST) is the *entropy catastrophe*: the Kleitman–Rothschild theorem implies that almost all finite posets are 3-layered and non-geometric, dominating any entropy-weighted partition function and preventing geometric phases from emerging. While Carlip (2017) reviewed the evidence for dimensional reduction in quantum gravity approaches and Loomis & Carlip (2018) analytically demonstrated the suppression of non-manifold-like sets in the causal set path integral, no prior work has established an explicit, finite-size phase transition threshold computed with exact entropy across a systematic range of poset sizes.
 
 **Key contributions.** In this work we:
 

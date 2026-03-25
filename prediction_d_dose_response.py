@@ -368,7 +368,7 @@ def synthesis(grand, pooled_df):
     D: see table above
 
   Assessment:
-    {'DOSE-RESPONSE CONFIRMED' if all_positive and all_sig else 'DOSE-RESPONSE PARTIALLY CONFIRMED'}
+    {'DOSE-RESPONSE SUPPORTED' if all_positive and all_sig else 'DOSE-RESPONSE PARTIALLY SUPPORTED'}
     {'with N-steepening' if steepening else 'WITHOUT N-steepening (dose-response exists but does not strengthen)'}
 """)
 

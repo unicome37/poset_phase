@@ -410,7 +410,7 @@ def generate_report(
     if beyond_count > 0:
         lines.append(f"**{beyond_count}/{total_tested}** features carry curvature info beyond density")
         lines.append(" in Schwarzschild background. DDT condition C2 (uniform curvature)")
-        lines.append(" is confirmed to be essential — non-uniform backgrounds allow")
+        lines.append(" is supported to be essential — non-uniform backgrounds allow")
         lines.append(" curvature signals that constant-curvature DDT cannot absorb.\n")
     else:
         lines.append("No features survive density residualization in 1+1D Schwarzschild.")

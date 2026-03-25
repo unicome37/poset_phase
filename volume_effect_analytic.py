@@ -282,7 +282,7 @@ def main() -> int:
     lines.append("- The ratio $c_2/c_1$ encodes the mean $\\langle \\tau \\rangle$ of the sprinkled diamond\n")
     lines.append("**Conclusion**: Theory path item 4 is resolved. The \"volume effect\" is the physical")
     lines.append("de Sitter volume enhancement $g(H\\tau, d)$, analytically derivable from the metric,")
-    lines.append("and numerically confirmed by $\\alpha > 2$ in all dimensions.")
+    lines.append("and numerically supported by $\\alpha > 2$ in all dimensions.")
     
     report_text = "\n".join(lines) + "\n"
     report_path.write_text(report_text, encoding="utf-8")

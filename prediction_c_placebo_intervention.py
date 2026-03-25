@@ -232,9 +232,9 @@ def run():
         if all_positive_d and all_sig:
             print("  ✓ PLACEBO TEST PASSED: Same-layer interventions reduce entropy")
             print("    more than cross-layer interventions across ALL families.")
-            print("    The layer-splitting mechanism is confirmed as causal pathway.")
+            print("    The layer-splitting mechanism is supported as causal pathway.")
         elif all_positive_d:
-            print("  ~ Direction confirmed in all families, not all reach p<0.05")
+            print("  ~ Direction supported in all families, not all reach p<0.05")
         else:
             print("  ✗ Placebo test FAILED in at least one family")
 

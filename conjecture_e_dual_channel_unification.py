@@ -1,7 +1,7 @@
 """Conjecture E — §4.1.31: Dual-Channel Unification Experiment.
 
 Tests whether the antichain (transverse) and B_ℓ (spectral) channels —
-the two confirmed DDT escape paths — converge to the same geometric content.
+the two supported DDT escape paths — converge to the same geometric content.
 
 Design:
   - Extract BOTH antichain and B_ℓ features from the SAME de Sitter sprinklings.
@@ -151,7 +151,7 @@ def generate_report(
     lines.append(f"- Hubble values: {hubbles}")
     lines.append(f"- Total realizations: {len(rows)}")
     lines.append("- Both antichain and B_ℓ features extracted from the **same** sprinklings")
-    lines.append("- Core question: do the two confirmed DDT escape channels measure the same geometric content?\n")
+    lines.append("- Core question: do the two supported DDT escape channels measure the same geometric content?\n")
 
     ac_feats = [
         "w_max_ratio", "layer_ratio", "mean_layer_width",

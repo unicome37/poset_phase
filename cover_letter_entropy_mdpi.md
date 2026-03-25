@@ -30,7 +30,7 @@ We are pleased to submit the enclosed manuscript for consideration in *Entropy*.
 
 4. **Non-circular replacement.** The dimension-dependent backbone component can be replaced by a non-target-anchored alternative — penalizing local–global dimension *inconsistency* rather than deviation from a specific target $d = 2$ — with the phase transition preserved at the same order of magnitude. This directly addresses the concern that geometric penalties might circularly "reward looking geometric."
 
-**Novelty.** While prior work (Carlip 2017; Loomis & Carlip 2018) has argued qualitatively and via MCMC for KR suppression in causal set models, no previous study has provided an explicit $\gamma_c(N)$ curve with exact entropy across a systematic range of sizes, combined with full ablation and non-circular replacement analysis.
+**Novelty.** While prior work (Carlip 2017; Loomis & Carlip 2018) has provided a review of dimensional reduction evidence and analytic arguments for the suppression of non-manifold-like sets in causal set models, no previous study has provided an explicit $\gamma_c(N)$ curve with exact entropy across a systematic range of sizes, combined with full ablation and non-circular replacement analysis.
 
 **Declarations.**
 - This manuscript is original, has not been published elsewhere, and is not under consideration by another journal.

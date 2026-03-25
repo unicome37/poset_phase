@@ -1,9 +1,12 @@
 """
 Prediction A — Full BDG Action vs Link-Proxy Comparison
 
-GPT / literature review identified a critical distinction:
-- Our S_BD_d2 = N - 2*C_0 is the "link action" / d=2 BD action
-- The standard d=4 BDG action from Machet-Wang (2020) / Carlip (2024) is:
+The standard higher-dimensional BDG action coefficients are derived from:
+- Benincasa-Dowker (2010, PRL 104, 181301): d=2 scalar curvature action
+- Benincasa-Dowker-Schmitzer (2011, CQG 28, 105018): extension to d=4
+
+Our S_BD_d2 = N - 2*C_0 is the "link action" / d=2 BD action.
+The standard d=4 BDG action is:
     S^(4) = N - C_0 + 9*C_1 - 16*C_2 + 8*C_3
   where C_k = intervals with k interior elements
 
@@ -36,7 +39,7 @@ def s_link_d2(row) -> float:
     return (row["n"] - 2 * row["C0_links"]) / row["n"]
 
 def s_bdg_d4_standard(row) -> float:
-    """Standard BDG d=4 from Machet-Wang / Carlip:
+    """Standard BDG d=4 (Benincasa-Dowker-Schmitzer 2011):
     S^(4) = N - C_0 + 9*C_1 - 16*C_2 + 8*C_3
     """
     s = row["n"] - row["C0_links"] + 9*row["C1"] - 16*row["C2"] + 8*row["C3"]

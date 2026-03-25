@@ -3,7 +3,7 @@
 Uses cached data from prediction_b_f7_scaling.csv (which has all 5 families
 at N=20-72) to recompute F8a and check:
   A: Lor4D is local minimum (vs Lor2D/3D/5D ordering)
-  B: Already confirmed 100%
+  B: Already supported at 100% pass rate
   C: corr(Σ_hist, F8a) < 0 within Lor2D (deeper layers → lower cost)
   D: Needs coarse-graining data — will generate fresh if needed
 

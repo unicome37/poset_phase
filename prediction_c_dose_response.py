@@ -197,11 +197,11 @@ def run():
     all_slopes_negative = all(r["slope"] < 0 for _, r in reg_df.iterrows())
     all_significant = all(r["p_value"] < 0.05 for _, r in reg_df.iterrows())
     if all_slopes_negative and all_significant:
-        print("  ✓ Dose-response CONFIRMED: log_H decreases with k at all N")
+        print("  ✓ Dose-response SUPPORTED: log_H decreases with k at all N")
     elif all_slopes_negative:
-        print("  ~ Direction confirmed but not all slopes significant")
+        print("  ~ Direction supported but not all slopes significant")
     else:
-        print("  ✗ Dose-response NOT confirmed")
+        print("  ✗ Dose-response NOT supported")
     print("=" * 60)
 
 
