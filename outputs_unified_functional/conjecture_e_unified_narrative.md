@@ -1,16 +1,16 @@
-# Conjecture E: Unified Narrative of §4.1.21–35
+# Conjecture E: Unified Narrative of §4.1.21–42
 
-# 猜想 E：§4.1.21–35 统一叙事
+# 猜想 E：§4.1.21–42 统一叙事
 
-> **One-sentence summary**: Fifteen numerical experiments, comprising over 6,000 causal-set sprinklings across dimensions $d=2,3,4$ and element counts $N=64$–$2048$, progressively establish that a finite causal set encodes spacetime curvature at three distinct levels — an admissibility wall, a first-order bulk recovery of expansion rate $H$, and a characterized (but incomplete) second-order bridge to scalar curvature $R$ — with the signal confirmed both globally and locally in non-constant-curvature backgrounds.
+> **One-sentence summary**: Twenty-two numerical experiments, comprising over 10,000 causal-set sprinklings across dimensions $d=2,3,4$ and element counts $N=64$–$2048$, progressively establish that a finite causal set encodes spacetime curvature at three distinct levels — an admissibility wall, a first-order bulk recovery of expansion rate $H$, and a constructible second-order bridge to scalar curvature $R$ via two-step calibration-then-squaring ($R^2 = 0.987$/$0.9996$) — with the signal triple-confirmed in non-constant-curvature backgrounds (global, local, and N-scaling). DDT Condition C2 (non-uniform curvature) partially answered: 3+1D Schwarzschild yields 4/32 beyond density; the antichain channel requires $R \neq 0$ (primarily responds to scalar curvature, not Weyl).
 
-> **一句话摘要**：十五项数值实验、超过 6000 次因果集 sprinkling（覆盖 $d=2,3,4$ 维、$N=64$–$2048$ 元素），逐步建立了有限因果集在三个层次上编码时空曲率的证据——准入壁（wall）、膨胀率 $H$ 的一阶 bulk 恢复、以及已定性但尚未完成的到标量曲率 $R$ 的二阶桥接——且该信号在非常曲率背景中已获全局与局域双重确认。
+> **一句话摘要**：二十二项数值实验、超过 10,000 次因果集 sprinkling（覆盖 $d=2,3,4$ 维、$N=64$–$2048$ 元素），逐步建立了有限因果集在三个层次上编码时空曲率的证据——准入壁（wall）、膨胀率 $H$ 的一阶 bulk 恢复、以及通过两步校准-平方法可构造的到标量曲率 $R$ 的二阶桥接（$R^2 = 0.987$/$0.9996$）——且该信号在非常曲率背景中已获三重确认（全局 + 局域 + N-scaling）。DDT 条件 C2（非均匀曲率）部分回答：3+1D Schwarzschild 4/32 超越密度；反链通道需 $R \neq 0$（主要响应标量曲率，非 Weyl）。
 
 ---
 
-## Overview: The Four Phases / 概览：四个阶段
+## Overview: The Five Phases / 概览：五个阶段
 
-The experimental programme divides naturally into four phases:
+The experimental programme divides naturally into five phases:
 
 | Phase | Experiments | Central Question | Outcome |
 |-------|------------|-----------------|---------|
@@ -18,8 +18,9 @@ The experimental programme divides naturally into four phases:
 | **II. DDT Escape** | §4.1.27–30 | Can any purely causal observable carry curvature information *beyond* density? | Yes: spectral (B_ℓ eigenvalues) and transverse (antichain structure) channels escape DDT |
 | **III. Unification** | §4.1.31–33 | Are the escape channels independent, and what geometric quantity do they track? | Single post-density DoF; target = $H$ at $d=4$; EH bridge = continuum limit |
 | **IV. Generalization** | §4.1.34–35 | Does the signal survive outside de Sitter? | Yes: global + local confirmation in power-law FRW (anti-monotone direction) |
+| **V. EH Bridge** | §4.1.36–40 | Can the $H \to R \sim H^2$ bridge be constructed at finite $N$? | T3 two-step squaring positive ($R^2=0.987$/$0.9996$); T1/T2/T4 negative; second-order = squared amplitude of first-order deviation |
 
-实验纲领自然分为四个阶段：
+实验纲领自然分为五个阶段：
 
 | 阶段 | 实验 | 核心问题 | 结论 |
 |------|------|---------|------|
@@ -27,6 +28,7 @@ The experimental programme divides naturally into four phases:
 | **II. DDT 逃逸** | §4.1.27–30 | 是否有纯因果可观测量能携带密度之外的曲率信息？ | 有：谱通道（$B_\ell$ 特征值）和横向通道（反链结构）逃逸 DDT |
 | **III. 统一** | §4.1.31–33 | 逃逸通道是否独立？它们追踪的几何量是什么？ | 单一 post-density DoF；$d=4$ 靶标 = $H$；EH 桥接 = 连续极限 |
 | **IV. 推广** | §4.1.34–35 | 信号在 de Sitter 之外是否存活？ | 是：幂律 FRW 中全局 + 局域确认（反单调方向） |
+| **V. EH 桥接** | §4.1.36–40 | 有限 $N$ 下能否构造 $H \to R \sim H^2$ 桥接？ | T3 两步平方阳性（$R^2=0.987$/$0.9996$）；T1/T2/T4 阴性；二阶 = 一阶偏移之平方幅度 |
 
 ---
 
@@ -348,32 +350,86 @@ The complete picture of what a causal set "knows" about curvature, organized by 
 
 ---
 
-## Confidence Assessment (Post-§4.1.35)
+## Phase V: EH Bridge — Systematic Construction Testing (§4.1.36–40)
+
+## 第五阶段：EH 桥接——系统构造测试（§4.1.36–40）
+
+Phase III identified the geometric target as the expansion rate $H$ (first-order) and characterized the second-order bridge ($H \to R \sim H^2$) as a continuum-limit construction. Phase V systematically tests **five candidate construction paths** on 2,088 de Sitter realizations ($d=4$, $N=128$–$1024$, $H=0$–$2$) to determine whether the bridge can be realized at finite $N$.
+
+第三阶段识别了几何靶标为膨胀率 $H$（一阶），并将二阶桥接（$H \to R \sim H^2$）定性为连续极限构造。第五阶段在 2,088 次 de Sitter realization（$d=4$, $N=128$–$1024$, $H=0$–$2$）上系统测试**五条候选构造路径**，确定桥接能否在有限 $N$ 实现。
+
+### T4: Spectral Ratio Bridge (§4.1.36) ❌
+
+Eight eigenvalue ratio/gap features tested against $\alpha \approx 2$ target. All saturate at grid ceiling ($\alpha = 8.00$), with weak residual signal and step-function artifacts from only 4 non-zero $H$ levels. `b1_std_over_mean` shows $|\rho_\text{resid}| > 0.3$ at $d=4$ but **sign flips** between $N=256$ (+0.495) and $N=512$ (−0.677). **Conclusion**: eigenvalue algebraic operations cannot produce an $R$-tracking shortcut.
+
+### T5: $N$-Scaling of $\alpha_\text{eff}$ (§4.1.37) ✅
+
+320 realizations. Three independent methods all confirm $\alpha_\text{eff}(N)$ **monotonically increasing** ($\rho = +1.00$): (A) $R^2$ grid scan, (B) log-log slope, (C) $R^2(H^2)/R^2(H)$ ratio. $H^2$ explains 2.2–2.9× more variance than $H$ at per-realization level. Extrapolation convergence rate $\gamma \approx 0.17$–$0.22$ (slow; $N \sim 10^9$ to reach $\alpha = 1.9$). **Significance**: the second-order signal is real and growing, not a finite-size artifact.
+
+### T1: Density-Assisted BDG Calibration (§4.1.38) ❌
+
+320 realizations, 6 strategies. Raw `b1_mean` is DDT-trapped ($|\rho| < 0.11$). Density correction $\rho^{2/d}$ **overcorrects** rather than helps ($R^2$: $0.904 \to 0.719$). OLS residualization destroys signal (b1_std and density are nonlinearly entangled). **b1_mean route permanently closed**; raw `b1_std` confirmed as **unique robust spectral bulk observable**.
+
+### T3: Two-Step Analytical Squaring (§4.1.39) ✅ **POSITIVE**
+
+320 realizations, 5 strategies. **Core discovery**: $H^2$ information is **extraction-sensitive**, not absent.
+
+| Strategy | $R^2(\hat{R}, H^2)$ @ $N\!=\!1024$ | $\alpha_\text{eff}$ |
+|----------|--------------------------------------|---------------------|
+| S1 Global OLS (b1_std) | **0.987** | 1.50 |
+| S3 Rank-preserving | **0.9996** | **2.00** at ALL $N$ |
+| S5 Antichain (w_max_ratio) | 0.993 ($N\!=\!512$) | 1.75 |
+
+All 5 strategies × all $N$ × both channels: $\Delta R^2 > 0$ (universal improvement). **Correction to §4.1.33**: the original "bridge = continuum limit" was overly conservative — $H^2$ information is already encoded in the finite-$N$ rank structure; what was missing was the extraction method, not the information itself. Correct convergence target: $\alpha_\text{raw} \to 1$ (then square to 2), estimated $N \sim 10^4$–$10^5$ (far better than T5's $10^9$).
+
+### T2: Cross-Scale Variance (§4.1.40) ❌
+
+768 realizations, three methods all negative. (A) Inter-realization variance anti-correlates $H$ (CLT-driven, $\beta < 0$). (B) Sub-block variance fails (structure destroyed). (C) Per-realization $\delta = (\text{obs} - \text{baseline})^2$ achieves $R^2(H^2) = 0.992$ but is **algebraically equivalent to T3**.
+
+**KEY CONCEPTUAL INSIGHT**: The second-order EH bridge is **NOT an independent variance mode** but the **squared amplitude of the first-order bulk deviation from flat baseline** — obs measures $H$, $(\text{obs} - \text{baseline})^2$ measures $H^2 \sim R$. One natural chain, not two independent channels.
+
+### T1–T5 全景结论 / Panoramic Conclusion
+
+| Construction | § | Result | Key finding |
+|-------------|---|--------|------------|
+| T4 Spectral ratios | 4.1.36 | ❌ | 0/8 features reach $\alpha \approx 2$ |
+| T5 $N$-scaling | 4.1.37 | ✅ | $\alpha_\text{eff}(N)$ monotonically increasing ($\rho = +1.00$) |
+| T1 Density calibration | 4.1.38 | ❌ | $\rho^{2/d}$ overcorrects; b1_mean permanently closed |
+| T3 Two-step squaring | 4.1.39 | ✅ | $R^2 = 0.987$ (OLS) / $0.9996$ (rank-preserving) |
+| T2 Cross-scale variance | 4.1.40 | ❌ | No independent variance channel; $\delta \equiv$ T3 algebraically |
+
+Three paths closed (T1, T2, T4), one path confirmed (T3), convergence direction verified (T5). The second-order bridge is not a separate theoretical construction but the natural consequence of squaring a well-calibrated first-order observable.
+
+三条路径关闭（T1、T2、T4），一条路径确认（T3），收敛方向已验证（T5）。二阶桥接不是独立的理论构造，而是对校准良好的一阶可观测量取平方的自然结果。
+
+---
+
+## Confidence Assessment (Post-§4.1.40, T1–T5 Complete)
 
 | Layer | Confidence | Key evidence |
 |-------|-----------|-------------|
 | **E-wall** | **90–95%** | Sigmoid → EH as curvature upper bound; direction, scaling, convergence all confirmed |
 | **E-bulk-first-order** | **91–95%** | DDT escape (antichain 21/21, spectral 6/18); dual-channel convergence to single DoF ($|\rho| \to 0.86$); geometric target = $H$ at $d=4$; global FRW extension 37/126; **local $H(t)$ tracking 24/24 anti-monotone, 12/30 beyond-density** |
-| **E-bulk-second-order** | **75–80%** | $H \to R$ bridge characterized as continuum-limit construction; 0/9 algebraic candidates at $d=4$ |
-| **Overall Conjecture E** | **91–95%** | Main theory closed in de Sitter; beyond-dS gap substantially closed by global + local dual confirmation |
+| **E-bulk-second-order** | **85–90%** | T3 two-step squaring $R^2 = 0.987$ (OLS) / $0.9996$ (rank-preserving); T5 confirms $\alpha_\text{eff}(N)$ monotonically increasing; T1/T2/T4 negative but informative; second-order = squared amplitude of first-order deviation |
+| **Overall Conjecture E** | **92–95%** | Main theory closed in de Sitter; beyond-dS dual-confirmed; T1–T5 complete — viable bridge path identified (T3), convergence direction confirmed (T5) |
 
 ---
 
 ## Remaining Open Questions
 
-1. **Second-order EH bridge**: The lift from $H$-tracking to $R \sim H^2$ is a theoretical construction at the continuum-limit / BDG theorem level. This is the only remaining **conceptual** gap.
+1. ~~**Second-order EH bridge**~~: **Resolved by T1–T5 (§4.1.36–40)**. T3 two-step squaring demonstrates the bridge is constructible at finite $N$ ($R^2 = 0.987$ OLS / $0.9996$ rank-preserving). The remaining task is convergence: $\alpha_\text{raw} \to 1$ at $N \sim 10^4$–$10^5$.
 
-2. **$d=4$ local signal N-scaling**: The §4.1.35 local test used $N=128/256$. Verifying that the local beyond-density signal at $d=4$ strengthens with $N$ (as in the de Sitter case) would further solidify the generalization.
+2. ~~**$d=4$ local signal N-scaling**~~: **Resolved by §4.1.41**. Extending §4.1.35 to $N=512$ confirms: `layer_width_std` $|\rho_\text{resid}|$: $0.527 \to 0.571 \to 0.604$ (Spearman $\rho(N, |\rho|) = +1.0$); total beyond-density 12/30 → **19/42**; d=2 signal emerges at $N=512$. Anti-monotone direction 0/480 early > late.
 
-3. **DDT Condition C2**: Non-uniform curvature backgrounds (Schwarzschild §4.1.29 was weak at 1+1D). A 3+1D non-uniform background test remains open.
+3. ~~**DDT Condition C2**~~: **Partially answered by §4.1.42**. 3+1D Schwarzschild sprinkling (150 realizations) yields 4/32 beyond density — improvement over 1+1D (2/27) but far weaker than de Sitter (21/21). The antichain channel is density-dominated in Ricci-flat backgrounds; beyond-density signals come from interval distribution shape ($C_1$, $C_2$). **Physical interpretation**: the antichain channel primarily responds to scalar curvature $R$ (de Sitter expansion widens spatial slices), not Weyl curvature. DDT C2 is partially confirmed: non-uniform backgrounds do allow weak escape, but the strongest channel (antichains) requires $R \neq 0$.
 
-4. **English paper**: The only remaining open problem from the overall theory system.
+4. **English paper**: The only remaining fully open problem from the overall theory system.
 
 ### 剩余开放问题
-1. **二阶 EH 桥接**：$H \to R$ 的提升是连续极限层面的理论构造。
-2. **$d=4$ 局域信号 $N$-scaling**：§4.1.35 使用 $N=128/256$，需验证 $d=4$ 的 beyond-density 信号随 $N$ 增强。
-3. **DDT 条件 C2**：非均匀曲率背景需 3+1D 检验。
-4. **英文论文**：整个理论体系唯一剩余的开放问题。
+1. ~~**二阶 EH 桥接**~~：**已由 T1–T5（§4.1.36–40）解决**。T3 两步平方证明桥接在有限 $N$ 可构造（$R^2 = 0.987$ OLS / $0.9996$ 秩保持）。剩余任务是收敛：$\alpha_\text{raw} \to 1$，估计 $N \sim 10^4$–$10^5$。
+2. ~~**$d=4$ 局域信号 $N$-scaling**~~：**已由 §4.1.41 解决**。将 §4.1.35 扩展至 $N=512$：`layer_width_std` $|\rho_\text{resid}|$: $0.527 \to 0.571 \to 0.604$（$\rho(N, |\rho|) = +1.0$）；beyond-density 总计 12/30 → **19/42**；$d=2$ 新信号涌现。反单调方向 0/480。
+3. ~~**DDT 条件 C2**~~：**§4.1.42 部分回答**。3+1D Schwarzschild（150 次 realization）：4/32 超越密度（vs 1+1D 2/27），但远弱于 de Sitter（21/21）。反链通道在 Ricci 平坦背景下被密度吸收；超密度信号来自 $C_1$/$C_2$ 区间分布形状。反链通道主要响应标量曲率 $R$，非 Weyl 曲率。DDT C2 部分确认：非均匀背景允许弱逃逸，但最强通道需 $R \neq 0$。
+4. **英文论文**：整个理论体系唯一完全开放的问题。
 
 ---
 
@@ -397,10 +453,17 @@ The complete picture of what a causal set "knows" about curvature, organized by 
 | 4.1.33 | EH bridge candidates | 360 | 0/9 at $d=4$; bridge = continuum limit |
 | 4.1.34 | Beyond de Sitter (global) | 432 | Phase A: 37/126 beyond density |
 | 4.1.35 | Local $H(t)$ tracking | 768+384 | 24/24 anti-monotone; 12/30 beyond density |
+| 4.1.36 | T4: Spectral ratio bridge | 360 | 0/8 features reach $\alpha \approx 2$; eigenvalue algebra path closed |
+| 4.1.37 | T5: $N$-scaling of $\alpha_\text{eff}$ | 320 | $\alpha_\text{eff}(N)$ monotonically increasing ($\rho = +1.00$); $\gamma \approx 0.2$ |
+| 4.1.38 | T1: Density-assisted BDG | 320 | 0/6 strategies improve on raw b1_std; density correction overcorrects |
+| 4.1.39 | T3: Two-step squaring | 320 | $R^2 = 0.987$ (OLS) / $0.9996$ (rank-preserving); **POSITIVE** |
+| 4.1.40 | T2: Cross-scale variance | 768 | No independent variance channel; $\delta \equiv$ T3 algebraically |
+| 4.1.41 | Local $H(t)$ N-scaling | 1152+576 | $d=4$ beyond-density strengthens with $N$; 19/42 total; 0/480 anti-monotone |
+| 4.1.42 | 3+1D Schwarzschild | 150 | 4/32 beyond density; antichain density-dominated in Ricci-flat; $C_1$/$C_2$ weak escape |
 
-**Total**: ~6,100+ realizations across 15 experiments.
+**Total**: ~10,066+ realizations across 22 experiments.
 
 ---
 
-*Document generated: 2026-03-24*
-*Status: Conjecture E — main theory closed, beyond-dS dual-confirmed, second-order bridge characterized*
+*Document generated: 2026-03-24; updated 2026-03-25 (Phase V: T1–T5; §4.1.41: N-scaling; §4.1.42: 3+1D Schwarzschild)*
+*Status: Conjecture E — main theory closed, beyond-dS triple-confirmed, EH bridge T1–T5 complete, DDT C2 partially answered (Weyl weak / antichain requires R≠0), confidence 92–95%*
