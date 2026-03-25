@@ -1,10 +1,10 @@
-# Conjecture E: Unified Narrative of §4.1.21–42
+# Conjecture E: Unified Narrative of §4.1.21–43
 
-# 猜想 E：§4.1.21–42 统一叙事
+# 猜想 E：§4.1.21–43 统一叙事
 
-> **One-sentence summary**: Twenty-two numerical experiments, comprising over 10,000 causal-set sprinklings across dimensions $d=2,3,4$ and element counts $N=64$–$2048$, progressively establish that a finite causal set encodes spacetime curvature at three distinct levels — an admissibility wall, a first-order bulk recovery of expansion rate $H$, and a constructible second-order bridge to scalar curvature $R$ via two-step calibration-then-squaring ($R^2 = 0.987$/$0.9996$) — with the signal triple-confirmed in non-constant-curvature backgrounds (global, local, and N-scaling). DDT Condition C2 (non-uniform curvature) partially answered: 3+1D Schwarzschild yields 4/32 beyond density; the antichain channel requires $R \neq 0$ (primarily responds to scalar curvature, not Weyl).
+> **One-sentence summary**: Twenty-three numerical experiments, comprising over 10,600 causal-set sprinklings across dimensions $d=2,3,4$ and element counts $N=64$–$2048$, progressively establish that a finite causal set encodes spacetime curvature at three distinct levels — an admissibility wall, a first-order bulk recovery of expansion rate $H$, and a constructible second-order bridge to scalar curvature $R$ via two-step calibration-then-squaring ($R^2 = 0.987$/$0.9996$) — with the signal triple-confirmed in non-constant-curvature backgrounds (global, local, and N-scaling). DDT Condition C2 (non-uniform curvature) **decisively answered**: FRW power-law ($R \neq 0$, non-uniform) yields **45/96** beyond density ($d=3$: 27/32), confirming the antichain channel responds to scalar curvature $R$, not Weyl; Schwarzschild ($R=0$) only 4/32.
 
-> **一句话摘要**：二十二项数值实验、超过 10,000 次因果集 sprinkling（覆盖 $d=2,3,4$ 维、$N=64$–$2048$ 元素），逐步建立了有限因果集在三个层次上编码时空曲率的证据——准入壁（wall）、膨胀率 $H$ 的一阶 bulk 恢复、以及通过两步校准-平方法可构造的到标量曲率 $R$ 的二阶桥接（$R^2 = 0.987$/$0.9996$）——且该信号在非常曲率背景中已获三重确认（全局 + 局域 + N-scaling）。DDT 条件 C2（非均匀曲率）部分回答：3+1D Schwarzschild 4/32 超越密度；反链通道需 $R \neq 0$（主要响应标量曲率，非 Weyl）。
+> **一句话摘要**：二十三项数值实验、超过 10,600 次因果集 sprinkling（覆盖 $d=2,3,4$ 维、$N=64$–$2048$ 元素），逐步建立了有限因果集在三个层次上编码时空曲率的证据——准入壁（wall）、膨胀率 $H$ 的一阶 bulk 恢复、以及通过两步校准-平方法可构造的到标量曲率 $R$ 的二阶桥接（$R^2 = 0.987$/$0.9996$）——且该信号在非常曲率背景中已获三重确认（全局 + 局域 + N-scaling）。DDT 条件 C2（非均匀曲率）**已决定性回答**：幂律 FRW（$R \neq 0$, 非均匀）**45/96** 超越密度（$d=3$: 27/32），确认反链通道响应标量曲率 $R$；Schwarzschild（$R=0$）仅 4/32。
 
 ---
 
@@ -460,10 +460,11 @@ Three paths closed (T1, T2, T4), one path confirmed (T3), convergence direction 
 | 4.1.40 | T2: Cross-scale variance | 768 | No independent variance channel; $\delta \equiv$ T3 algebraically |
 | 4.1.41 | Local $H(t)$ N-scaling | 1152+576 | $d=4$ beyond-density strengthens with $N$; 19/42 total; 0/480 anti-monotone |
 | 4.1.42 | 3+1D Schwarzschild | 150 | 4/32 beyond density; antichain density-dominated in Ricci-flat; $C_1$/$C_2$ weak escape |
+| 4.1.43 | FRW power-law C2 test | 540 | **45/96** beyond density ($d=3$: 27/32); $R \neq 0$ is key; DDT C2 **decisively confirmed** |
 
-**Total**: ~10,066+ realizations across 22 experiments.
+**Total**: ~10,606+ realizations across 23 experiments.
 
 ---
 
-*Document generated: 2026-03-24; updated 2026-03-25 (Phase V: T1–T5; §4.1.41: N-scaling; §4.1.42: 3+1D Schwarzschild)*
-*Status: Conjecture E — main theory closed, beyond-dS triple-confirmed, EH bridge T1–T5 complete, DDT C2 partially answered (Weyl weak / antichain requires R≠0), confidence 92–95%*
+*Document generated: 2026-03-24; updated 2026-03-25 (Phase V: T1–T5; §4.1.41: N-scaling; §4.1.42: 3+1D Schwarzschild; §4.1.43: FRW C2 decisive test)*
+*Status: Conjecture E — main theory closed, beyond-dS triple-confirmed, EH bridge T1–T5 complete, **DDT C2 decisively confirmed** (FRW R≠0: 45/96; Schwarzschild R=0: 4/32; antichain channel responds to scalar R), confidence 92–95%*
