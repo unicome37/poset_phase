@@ -80,6 +80,8 @@ The key structural consequence of higher dimensionality: \texttt{lor4d} has (i)~
 
 For each family and each $N \in \{20, 24, 28, \ldots, 72\}$ (14 sizes), we generate $K$ independent samples per family: $K = 8$ for $N \leq 40$ (exact computation regime) and $K = 4$ for $N > 40$ (SIS regime). This two-tier design reflects the increasing computational cost of linear extension counting at larger $N$. Linear extension counts~\cite{brightwell1991} are computed exactly for \texttt{lor2d} at all $N$ (sub-second up to $N = 72$) and via SIS (Sequential Importance Sampling, 4096 runs) for other families at $N > 32$. The SIS coefficient of variation for $\log|L(P)|$ is typically below $5\%$ at $N = 72$. Since the entropy term $H$ appears linearly in the action and margins of victory grow with $N$ (Table~\ref{tab:margin}), SIS noise is subdominant for the main results but may contribute to the marginal wins/losses at small~$N$. As a cross-check, we compare SIS ($R = 4096$) against exact counts at $N = 20$--$36$ for \texttt{KR}, \texttt{lor3d}, and \texttt{lor4d} (4 samples each): the mean absolute error in $\log|L(P)|$ is $0.074$ at $N = 28$--$32$ (the switchover region), or $\sim 2.3\%$ of the typical entropy magnitude --- well below the observed winning margins of $3$--$7$ points.
 
+We emphasize that $\log|L(P)|$ is used here as a \emph{combinatorial measure term}: for an unlabeled poset~$P$, the number of natural labelings consistent with the order equals the number of linear extensions, so any labeled path sum implicitly weights $P$ by $|L(P)|$. This is a choice of ensemble and measure, not a claim that $\log|L(P)|$ is a unique or physically correct definition of gravitational entropy.
+
 \subsection{Action Variants}
 
 All actions share the form $S(P) = -\beta H(P) + \gamma \cdot I(P)$, with $\beta = 1$ and penalty $I$ decomposed into neutral and geometric components. We test six variants (Table~\ref{tab:variants}).
@@ -294,6 +296,19 @@ The 4D win rate is remarkably stable: $\geq 91\%$ across the entire tested range
 The results confirm the prediction: the consistency-based action naturally selects higher-dimensional geometric structures. The logic is straightforward. The 4D family has higher entropy (competitive at low $\gamma$), low consistency penalty (competitive at high $\gamma$), but high target-anchored penalty under $g_{\text{dim}}$ (suppressed under the original action). The consistency replacement removes this artificial suppression while retaining the dimensional coherence reward.
 
 Both Prediction A and the companion paper's Prediction B employ the same methodology --- diagnosis, ablation, replacement, robustness check --- and arrive at the same structural conclusion: the mechanism depends on dimensional \emph{consistency}, not dimensional \emph{identity}.
+
+\subsection{Physical Interpretation of $\log|L(P)|$}
+
+$\log|L(P)|$ admits a physical reading as a \emph{measure of residual ordering
+freedom}: it counts the number of ways the discrete causal structure can be
+``unfolded'' into a total order. High $|L(P)|$ means the partial order
+constrains element ordering weakly; low $|L(P)|$ means the causal structure is
+rigid. In this sense, $\log|L(P)|$ measures the gap between the information
+contained in the partial order and a complete specification of events.
+
+This interpretation is deliberately model-agnostic: it does not depend on
+identifying $\log|L(P)|$ with Boltzmann, Shannon, or Bekenstein--Hawking
+entropy.
 
 \subsection{Relation to Prior Work}
 

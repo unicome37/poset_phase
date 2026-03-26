@@ -132,7 +132,7 @@ The remainder of the paper is organised as follows. Section~\ref{sec:methods} de
 
 \subsection{Poset Ensemble}
 
-We study the same eight-family finite causal poset ensemble introduced in the companion papers~\cite{zhang2026predB,zhang2026predA}. Each family is parametrized by the poset size~$N$ (number of elements) and a deterministic seed. The families and their structural signatures are summarized in Table~\ref{tab:families}.
+We study the same ten-family finite causal poset ensemble introduced in the companion papers~\cite{zhang2026predB,zhang2026predA}. Each family is parametrized by the poset size~$N$ (number of elements) and a deterministic seed. The families and their structural signatures are summarized in Table~\ref{tab:families}.
 
 \begin{table}[H]
 \caption{Poset family glossary.\label{tab:families}}
@@ -162,6 +162,8 @@ The primary outcome variable is the combinatorial entropy
     \label{eq:entropy}
 \end{equation}
 where $L(P)$ is the set of all linear extensions of the poset~$P$. Each linear extension is a total order on the $N$ elements that is compatible with the partial order. This quantity controls the entropic weight of $P$ in a Boltzmann-weighted causal set ensemble~\cite{surya2012}.
+
+We emphasize that $\log|L(P)|$ is used here as a \emph{combinatorial measure term}: for an unlabeled poset~$P$, the number of natural labelings consistent with the order equals the number of linear extensions, so any labeled path sum implicitly weights $P$ by $|L(P)|$. This is a choice of ensemble and measure, not a claim that $\log|L(P)|$ is a unique or physically correct definition of gravitational entropy.
 
 \textbf{Exact computation.} For $N \le 16$ (Tier~1), $|L(P)|$ is computed exactly via dynamic programming over antichains~\cite{brightwell1991}. \textbf{Approximate computation.} For $N > 16$ (Tiers~2--3), Lor2D samples use exact DP where computationally feasible; MLR samples at $N \ge 30$ use sequential importance sampling (SIS) with 2000 permutations and 3 independent runs, taking the median. SIS estimates were validated against exact values at $N = 16$ with mean absolute error $< 0.5\%$.
 

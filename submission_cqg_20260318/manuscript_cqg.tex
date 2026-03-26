@@ -173,7 +173,7 @@ out-of-grid validation (Section~\ref{sec:robustness}).
 \label{sec:ensemble}
 
 We consider finite posets $P = (V, \leq)$ with $|V| = N$ elements, generating
-samples from eight structurally distinct families organized in two tiers:
+samples from ten structurally distinct families organized in two tiers:
 
 \medskip
 \noindent\textbf{Tier-1 (geometric causal competition pool):}
@@ -245,6 +245,8 @@ counts for \texttt{kr}, \texttt{lor3d}, and \texttt{lor4d} are estimated via
 Sequential Importance Sampling (SIS, 4096 runs). As a cross-check, SIS versus
 exact counts at $N = 20$--$36$ yield a mean absolute error of $0.074$ in
 $\log|L(P)|$ ($\sim 2.3\%$), well below observed winning margins.
+
+We emphasize that $\log|L(P)|$ is used here as a \emph{combinatorial measure term}: for an unlabeled poset~$P$, the number of natural labelings consistent with the order equals the number of linear extensions, so any labeled path sum implicitly weights $P$ by $|L(P)|$. This is a choice of ensemble and measure, not a claim that $\log|L(P)|$ is a unique or physically correct definition of gravitational entropy.
 
 \subsection{Action definition}
 \label{sec:action}
@@ -687,6 +689,19 @@ A Mann--Whitney $U$ test gives $p = 1.94 \times 10^{-28}$ for Lor2D vs.\ all
 Tier-2 (720 samples). This ratio is already computable from existing observables
 and provides a clean separation, though incorporating it into the action itself
 is left for future work.
+
+\subsection{Physical Interpretation of $\log|L(P)|$}
+
+$\log|L(P)|$ admits a physical reading as a \emph{measure of residual ordering
+freedom}: it counts the number of ways the discrete causal structure can be
+``unfolded'' into a total order. High $|L(P)|$ means the partial order
+constrains element ordering weakly; low $|L(P)|$ means the causal structure is
+rigid. In this sense, $\log|L(P)|$ measures the gap between the information
+contained in the partial order and a complete specification of events.
+
+This interpretation is deliberately model-agnostic: it does not depend on
+identifying $\log|L(P)|$ with Boltzmann, Shannon, or Bekenstein--Hawking
+entropy.
 
 \subsection{Relation to prior work}
 

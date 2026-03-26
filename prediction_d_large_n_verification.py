@@ -213,6 +213,7 @@ def recovery_dynamics(
     n_steps: int = 100,
     temperature: float = 1.0,
     seed: int = 42,
+    max_seconds: float = 120.0,
 ) -> dict:
     rng = np.random.default_rng(seed)
     current = perturbed
@@ -220,8 +221,11 @@ def recovery_dynamics(
     cf_now = comparable_fraction(current)
     returned_basin = False
     return_step_basin = -1
+    t0 = time.time()
 
     for step in range(1, n_steps + 1):
+        if time.time() - t0 > max_seconds:
+            break
         new_closure = propose_swap_move(current.closure, rng)
         if new_closure is None:
             continue

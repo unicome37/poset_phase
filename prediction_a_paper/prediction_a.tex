@@ -280,6 +280,8 @@ For small posets ($N \leq N_\text{exact}$), we compute $|L(G)|$ by dynamic progr
 For larger posets, we use the Sequential Importance Sampling (SIS)
 algorithm~\cite{Cunningham2020,Huber2006} with 4096 runs.
 
+We emphasize that $\ln|L(G)|$ is used here as a \emph{combinatorial measure term}: for an unlabeled poset~$G$, the number of natural labelings consistent with the order equals the number of linear extensions, so any labeled path sum implicitly weights $G$ by $|L(G)|$. This is a choice of ensemble and measure, not a claim that $\ln|L(G)|$ is a unique or physically correct definition of gravitational entropy.
+
 \subsection{Interval Counts}
 \label{sec:intervals}
 

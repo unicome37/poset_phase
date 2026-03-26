@@ -166,7 +166,7 @@ out-of-grid validation (Section~\ref{sec:robustness}).
 \label{sec:ensemble}
 
 We consider finite posets $P = (V, \leq)$ with $|V| = N$ elements, generating
-samples from eight structurally distinct families organized in two tiers:
+samples from ten structurally distinct families organized in two tiers:
 
 \medskip
 \noindent\textbf{Tier-1 (geometric causal competition pool):}
@@ -749,6 +749,19 @@ A Mann--Whitney $U$ test gives $p = 1.94 \times 10^{-28}$ for Lor2D vs.\ all
 Tier-2 (720 samples). This ratio is already computable from existing observables
 and provides a clean separation, though incorporating it into the action itself
 is left for future work.
+
+\subsection{Physical Interpretation of $\log|L(P)|$}
+
+$\log|L(P)|$ admits a physical reading as a \emph{measure of residual ordering
+freedom}: it counts the number of ways the discrete causal structure can be
+``unfolded'' into a total order. High $|L(P)|$ means the partial order
+constrains element ordering weakly; low $|L(P)|$ means the causal structure is
+rigid. In this sense, $\log|L(P)|$ measures the gap between the information
+contained in the partial order and a complete specification of events.
+
+This interpretation is deliberately model-agnostic: it does not depend on
+identifying $\log|L(P)|$ with Boltzmann, Shannon, or Bekenstein--Hawking
+entropy.
 
 \subsection{Relation to prior work}
 
