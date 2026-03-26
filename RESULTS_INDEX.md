@@ -301,6 +301,103 @@ KR_like: d_eff=2.745, c₁/c₀=0.000, width=0.500, F=1.200
 
 **结论**：LSD-Well 不仅在小 N 有效——随 N 增大，Lor4D 的结构性优势**扩大**而非缩小。N→∞ 极限下判别力发散增长。
 
+### 理论解释：为什么 LSD-Well 如此稳健
+
+> The agreement of the oracle, extrapolated, and constant-center LSD-well variants is not an accident of tuning. It reflects an intrinsic geometric separation in feature space: Lor4D is the unique family simultaneously satisfying $d_{\mathrm{eff}}\approx 4$, intermediate $C_1/C_0$, and intermediate width. The variations in $c^*(N)$ and $w^*(N)$ are too small to overturn this ordering once inserted quadratically, while the dominant width term and the fixed $d_{\mathrm{eff}}$ anchor already provide strong class-level separation. Thus, the success of the LSD-well is fundamentally structural rather than center-sensitive.
+
+**中文版**：LSD-Well 的 oracle、外推与常数中心三种模式给出完全一致结果，并非调参巧合，而是源于特征空间中的内禀几何分离：Lor4D 恰好是唯一同时满足 $d_{\mathrm{eff}}\approx4$、中等 $C_1/C_0$ 与中等 width 的家族。$c^*(N)$ 与 $w^*(N)$ 的变化量即使存在，进入二次项后的贡献也太小，不足以翻转排序；而 fixed $d_{\mathrm{eff}}$ 锚点与高权重 width 项已经完成了强烈的类别分离。因此，LSD-Well 的成功本质上是结构性的，而非 well center 敏感的。
+
+**四层论证结构**：
+1. **d_eff 做粗分层**（第一道门）— fixed d*=4 已经把 Lor4D/5D 与 Layered/KR/低维 Lor 大类分开
+2. **width 是真正的判别主轴** — γ=5.0 最高权重，且 Lor4D 到 runner-up 的 margin 远大于 w* 漂移
+3. **center 漂移无法翻盘** — c*/w* 变化 ~0.10 进入二次项后 O(10⁻⁴)，数值上注定翻不了盘
+4. **根因：Lor4D 结构性唯一** — 唯一同时满足三条件的家族，在纯因果几何特征空间中占据孤立中间点
+
+**认识论地位**：LSD-Well 不再只是一个"能把 Lor4D 选出来的经验评分器"，而是一个在特征空间中识别 **Lor4D 结构孤立性** 的几何判别器。
+
+---
+
+## Predictions A–E 验证状态总表
+
+### 综合概览
+
+| 推论 | 名称 | 状态 | 依赖 logH? | Carlip 冲击 | LSD-Well 兼容? |
+|------|------|------|:----------:|:-----------:|:--------------:|
+| **A** | 3+1 维涌现 | ✅ Confirmed | 部分 | 🟡 轻 | ✅ 完全 |
+| **B** | 有界 γ_c 相变 | ⚠️ Needs revision | ✅ 核心 | 🔴 重 | ⚠️ 需重审 |
+| **C** | 层级-熵机制 | ✅ Confirmed | 目标变量 | 🟡 中 | ✅ 间接 |
+| **D** | CG 稳定性 | ✅ Confirmed (窗口) | 间接 | 🟡 轻 | ✅ 间接 |
+| **E** | 曲率编码 | ✅ Confirmed (最强) | ❌ 零 | 🟢 无 | ✅ 独立 |
+
+### Prediction A: 3+1 维涌现
+
+**声称**：在非目标锚定一致性约束下，`Lor4D` 系统性地跨 N=20–72 获胜。
+
+**证据**：
+- 一致性替代版：N=48→72 维持 100% 胜率（7/7 γ 点全胜）
+- Ξ 参数：$\Xi_{4\to5} \approx 10$，CV=13.9%；解析闭合公式 $\Xi_{4\to5}=11.8$
+- **LSD-Well**：d_eff 项 (d*=4) 作为第一道粗分层门，N=256 时 d_eff=3.982±0.069
+
+**状态**：✅ 在一致性替代版下确认。原始 A2_full 仍偏向低维。
+
+**剩余缺口**：A2_full 未稳定选择 4D；有限尺寸标度分析未执行；N>48 基于 SIS。
+
+### Prediction B: 有界 γ_c 相变窗口
+
+**声称**：Lor2D 对 KR_like 的相变耦合 γ_c 在 N=10–44 内有限且非发散。
+
+**证据**：
+- 冻结精确窗 N=10–16 确认 γ_c 存在且有限
+- N=20–44 精确扫描：γ_c = 0.98–1.24
+- **Carlip 冲击** 🔴：17 家族测试中 N≥28 时 Lor4D 排 #8–#11，被 random layered 击败
+
+**状态**：⚠️ 窄版声称（F7(Lor)<F7(KR_like) 在小 N）成立，但宽版声称在扩展样本空间后不成立。
+
+**剩余缺口**：需替换 logH 物理基础；需在 17 族扩展空间下重验。
+
+### Prediction C: 因果层级整合与组合熵压缩
+
+**声称**：更深因果层级整合度（HII）→ 更低组合熵 logH，且粗粒化下结构身份更稳定。
+
+**证据**：
+- 跨族 HII→logH 偏相关：r=−0.836 (p<0.001, 34 配对)
+- 配对 Δ 分析：r(HII_delta, ΔlogH)=−0.834（46 配对）
+- CG 稳定性：layer_count→cg_switch_rate r=−0.874
+- 准因果证据塔：9/9 实验方向一致，Cohen's d=1.05–2.68
+
+**状态**：✅ 核心负相关是组合数学事实，不受 logH 物理解释影响。
+
+**剩余缺口**：族内正相关（Simpson's Paradox）；HII 应收缩至 layer_count + mean_layer_gap。
+
+### Prediction D: 粗粒化稳定性预测排名增益
+
+**声称**：冻结 CG 协议下，$I_{\mathrm{cg}}$ 是非平凡的全局过滤器，预测动态过程排名效应。
+
+**证据**：
+- 冻结确认窗口 N=30, keep=0.6, γ=0.2：full/switch/no_switch 全部 ρ>0, p≤5e-6
+- 剂量-反应：9/9 单调（高 I_cg → 高 improve_rank），斜率 p<1e-30
+- v12 tie-aware 修复后稳定
+
+**状态**：✅ 窗口声称确认；证据等级"结构协变"（非 within-stratum 准因果）。
+
+**剩余缺口**：γ=0.8 不稳定；是窗口声称非全局定理；未包含 KR_2layer/4layer/random layered。
+
+### Prediction E: 因果集编码时空曲率
+
+**声称**：有限因果集在三层编码时空曲率 — Wall（上界）、EH 桥接（bulk 恢复）、标量曲率（二阶）。
+
+**证据**：
+- Wall 建立：R 与 H 反相关 (d=4, N=1024: R(H=0)=0.709, R(H=2)=0.078)
+- DDT 逃逸：谱通道 d=4 有 4/6 beyond-density 特征
+- EH 桥接 T3：两步平方 R²=0.987/0.9996
+- E1 熵不对称：Lor4D mean=+0.370, A>0 占 67.8%
+- E2v4 结构效率：前向 η>后向 η，p<1e-7
+- **完全不依赖 logH/F7，Carlip 批评零影响**
+
+**状态**：✅ **项目中最坚实的部分** — 完全独立于 logH 和家族选择。
+
+**剩余缺口**：E2 效应弱 (R>1 仅 ~30%)；第三层 bridge 增量小 (ΔR²=+0.018)；时间箭头个体变异大。
+
 ---
 
 ## Rule
