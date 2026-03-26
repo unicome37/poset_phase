@@ -218,9 +218,9 @@ def fig_b_separation_trajectories(df: pd.DataFrame):
     axes[0].set_ylabel(r"Mean $S_{\rm norm}$ (A2)")
     axes[1].legend(loc="best", fontsize=8, ncol=1)
 
+    fig.tight_layout(rect=[0, 0, 1, 0.93])
     fig.suptitle("Control group separation: score trajectories across "
-                 r"$\gamma$", fontsize=13, y=1.02)
-    fig.tight_layout()
+                 r"$\gamma$", fontsize=13)
     fig.savefig(OUT_DIR / "fig_control_separation.png")
     fig.savefig(OUT_DIR / "fig_control_separation.pdf")
     plt.close(fig)
@@ -241,6 +241,27 @@ def fig_c_entropy_vs_geometry(df: pd.DataFrame):
 
     fig, ax = plt.subplots(figsize=(7, 5.5))
 
+    # Manual label offsets for dense clusters
+    OFFSETS = {
+        "lorentzian_like_2d": (-35, -12),
+        "interval_order": (-40, -12),
+        "random_layered_k8_uniform": (8, -12),
+        "random_layered_k6_uniform": (-38, 6),
+        "random_layered_k6_longjump": (8, -12),
+        "random_layered_k6_tapered": (8, 8),
+        "random_layered_k6_middle_heavy": (8, -12),
+        "transitive_percolation": (-30, 8),
+        "random_layered_k4_uniform": (-30, -12),
+        "multi_layer_random": (-12, 10),
+        "KR_4layer": (-50, 10),
+        "lorentzian_like_3d": (8, 6),
+        "absolute_layered": (-5, 8),
+        "KR_like": (8, 6),
+        "lorentzian_like_4d": (8, 4),
+        "lorentzian_like_5d": (8, 4),
+        "KR_2layer": (8, 4),
+    }
+
     for _, row in agg.iterrows():
         fam = row["family"]
         c = get_category_color(fam)
@@ -249,11 +270,10 @@ def fig_c_entropy_vs_geometry(df: pd.DataFrame):
         edge = RED if fam in CONTROLS else "white"
         ax.scatter(row["mean_logH"], row["mean_geo"], c=c, s=size,
                    marker=marker, edgecolors=edge, linewidths=1.2, zorder=3)
-        # Label
-        dx, dy = 0.5, 0.02
+        oxy = OFFSETS.get(fam, (8, 4))
         ax.annotate(SHORT_NAMES.get(fam, fam),
                     (row["mean_logH"], row["mean_geo"]),
-                    textcoords="offset points", xytext=(8, 4),
+                    textcoords="offset points", xytext=oxy,
                     fontsize=6.5, color=c, alpha=0.85)
 
     # Legend patches

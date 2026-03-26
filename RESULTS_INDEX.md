@@ -101,9 +101,49 @@
     - B↔C：`Lor2D` 相对 `KR_like` 的层级优势同时对应更低惩罚和更低 `log_H`，形成有限 `gamma_c`
     - A↔C：`Lor4D` 在 `N=20..72` 上从未高于 `Lor2D` 或 `Lor3D` 的 HII，因此 A 的 4D 优势并不等同于“更深层级”
 
+## Control Group (added post hoc)
+
+- `outputs/` (full 17-family experiment)
+  - 来源配置：`config.yaml`
+  - 来源脚本：`experiment.py`
+  - 作用：包含全部 17 个 family（含 KR_2layer/KR_4layer 对照组）的完整实验，N=20/40/60/80，16 samples × 5 gammas × 3 actions = 16,320 行
+  - 关键文件：
+    - `raw_samples.csv` — 完整原始数据
+    - `summary.csv` — 分组汇总统计
+    - `bootstrap_summary.csv` — Bootstrap CI
+
+- `outputs_control/` (dedicated control experiment)
+  - 来源脚本：`control_group_experiment.py`
+  - 作用：9 族子集 × N=10-20 × 8 samples × 5 gammas，精确 logH 对比
+  - 关键结论：
+    - KR_2layer 拥有最高 logH 但最弱几何结构 → γ>0.4 时被有效筛除（排名 16-17/17）
+    - KR_4layer 与 KR_like 表现接近 → 不产生误导信号
+
+- `manuscript_figures/fig_control_*.{png,pdf}` (3 figures)
+  - 来源脚本：`plot_control_group_figures.py`
+  - **Fig A** `fig_control_ranking_heatmap`: 17 族 × 5 γ 排名热图（A2, N=80）
+    - KR_2layer 在 γ≤0.2 稳定排名 #17；γ=0.4 跃升至 #4（logH 主导）
+    - 证明 geometric penalty 在适当 γ 下有效区分几何良/劣
+  - **Fig B** `fig_control_separation`: 关键 family score_norm 轨迹（N=60, 80）
+    - Lor2D 稳定在 +1.0（不受 γ 影响）；KR_2layer 从 -1.9 线性增长至 +3.6
+    - 分离点 γ≈0.3 处 KR_2layer 超越 KR_like → 标志 logH 主导的伪信号转折
+  - **Fig C** `fig_entropy_geometry_scatter`: logH vs Π_geo 散点（N=80, A2）
+    - 各 family 类别在熵-几何平面上清晰分离
+    - Lor2D 左下角（紧致）、KR_2layer 右上角（松散）、Layered 变体聚集中间
+
+### KR_2layer 大 γ 翻转的解释
+
+KR_2layer 在 γ≥0.4 时排名跃升**不代表**其具有几何优势。机制如下：
+- `score = β·logH - γ·penalty`（A2 模式下 penalty = penalty_geometric + penalty_neutral）
+- KR_2layer 的 logH=229.7 是所有 17 族最高（因 2-layer 结构几乎不施加偏序约束）
+- 当 γ 增大时，`-γ·penalty` 项的绝对值增长受限于 penalty 有限（56.4），但 `logH` 贡献恒定
+- **Normalization 机制**：score_norm 按 n 组做 robust z-score。大 γ 下所有 family 的 score 绝对值拉开，KR_2layer 的 logH 优势被放大
+- **论文不应在 γ > γ_c 区域下结论**——γ_c 定义为 Lor2D 超越 KR_like 的阈值（~0.2-0.4），超过此点结论稳健；但继续增大 γ 会引入 logH 主导的伪信号
+
 ## Rule
 
 简单规则：
 
 - 冻结配置直接产出的结果，归 `confirmatory`
 - 为解释当前失败点或扩展候选空间新增的试验，归 `exploratory`
+- 对照组实验及图表，归 `control group`
