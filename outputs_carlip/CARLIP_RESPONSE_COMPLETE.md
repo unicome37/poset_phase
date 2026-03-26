@@ -288,7 +288,12 @@ $$F \approx \sum_i \lambda_i \big(I_i - I_i^{(4D)}(N)\big)^2$$
    - S_MD 唯一选出 Lor4D（全 N #1）
    - 联合选择 {BD window} ∩ {MD well} = {Lor4D}
    - 形式关系：S_BD=线性超平面 vs S_MD=二次椭球，互补
-5. Prediction B 在不同种子下的再现性测试（待完成）
+5. ✅ **Prediction B 种子再现性测试**（10 独立种子 × 8 N × 20 reps = 27,200 样本）：
+   - LSD-Well: **80/80 全部 #1**（100%），包括 N=16
+   - Mahalanobis: 79/80 #1（99%），唯一失败 seed=1001 N=16（margin 仅 0.6）
+   - N=16 LSD-Well 最小 margin=0.003（seed=3141），最大=0.152（seed=8888）
+   - Mahalanobis margin 随 N 发散：N=16 均值 3.0 → N=128 均值 40.4
+   - **结论**：Lor4D 优势完全可复现，非种子偶然
 
 ### 8.3 投稿策略
 1. 核心论文：LSD-Well 框架 + A/E 确认结果
@@ -319,6 +324,7 @@ $$F \approx \sum_i \lambda_i \big(I_i - I_i^{(4D)}(N)\big)^2$$
 | `kr_2layer_analysis.py` | KR_2layer深度分析 | width占60-93%, C₁/C₀≡0, 偶然相似 |
 | `cstar_wstar_first_principles.py` | c*/w*第一性原理 | c*(∞)=0.374, w∝N^{-0.284}, β≈1/d |
 | `smd_sbd_connection.py` | S_MD↔S_BD联系 | 不相关, 联合选择=Lor4D |
+| `prediction_b_seed_reproducibility.py` | B种子再现性 | LSD 80/80 #1, Mahal 79/80 #1 |
 
 ---
 

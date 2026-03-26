@@ -101,6 +101,17 @@
     - B↔C：`Lor2D` 相对 `KR_like` 的层级优势同时对应更低惩罚和更低 `log_H`，形成有限 `gamma_c`
     - A↔C：`Lor4D` 在 `N=20..72` 上从未高于 `Lor2D` 或 `Lor3D` 的 HII，因此 A 的 4D 优势并不等同于“更深层级”
 
+## Carlip Response — Seed Reproducibility
+
+- `outputs_carlip/prediction_b_seed_reproducibility.md`
+  - 来源脚本：`prediction_b_seed_reproducibility.py`
+  - 作用：10 独立种子（42–8888）下 Prediction B 的两种度量（LSD-Well + Mahalanobis）再现性
+  - 关键结论：
+    - LSD-Well: 80/80 (seed,N) 组合 Lor4D 均 #1（100%）
+    - Mahalanobis: 79/80 #1（99%），唯一失败 = seed 1001, N=16
+    - N=16 LSD-Well margins: 0.003–0.152（均正），确认非种子偶然
+    - Mahalanobis margin 随 N 发散（3.0 → 40.4），几何可分性增强
+
 ## Control Group (added post hoc)
 
 - `outputs/` (full 17-family experiment)
