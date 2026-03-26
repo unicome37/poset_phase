@@ -56,7 +56,11 @@ For each family and $N \in \{10, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44\}$, we g
 
 \subsection{Exact linear extension count}
 
-We define $H(P) = \log |L(P)|$ where $L(P)$ is the set of linear extensions, computed exactly via dynamic programming over antichains~\cite{brightwell1991}. The cost depends strongly on antichain structure: sub-second for \texttt{lor2d} at $N = 48$, about $3.8$\,s at $N = 72$, about $33.8$\,s at $N = 88$, and about $127.4$\,s at $N = 104$, but already 54\,s for \texttt{kr} at $N = 44$. The merged timing frontier is recorded in \texttt{outputs\_exploratory/lor2d\_exact\_timing\_frontier/lor2d\_exact\_timing\_frontier.csv} and visualized in \texttt{manuscript\_figures/fig4\_exact\_timing\_frontier.pdf}. This asymmetry motivates the single-sided exact extension strategy adopted in our follow-up large-$N$ benchmarking.
+We define $H(P) = \log |L(P)|$ where $L(P)$ is the set of linear extensions, computed exactly via dynamic programming over antichains~\cite{brightwell1991}.
+
+We emphasize that $\log|L(P)|$ is used here as a \emph{combinatorial measure term}: for an unlabeled poset~$P$, the number of natural labelings consistent with the order equals the number of linear extensions, so any labeled path sum implicitly weights $P$ by $|L(P)|$. This is a choice of ensemble and measure, not a claim that $\log|L(P)|$ is a unique or physically correct definition of gravitational entropy. Alternative formulations that sum over unlabeled posets with $1/|\mathrm{Aut}(P)|$ factors may change which families dominate.
+
+The cost depends strongly on antichain structure: sub-second for \texttt{lor2d} at $N = 48$, about $3.8$\,s at $N = 72$, about $33.8$\,s at $N = 88$, and about $127.4$\,s at $N = 104$, but already 54\,s for \texttt{kr} at $N = 44$. The merged timing frontier is recorded in \texttt{outputs\_exploratory/lor2d\_exact\_timing\_frontier/lor2d\_exact\_timing\_frontier.csv} and visualized in \texttt{manuscript\_figures/fig4\_exact\_timing\_frontier.pdf}. This asymmetry motivates the single-sided exact extension strategy adopted in our follow-up large-$N$ benchmarking.
 
 \begin{figure}[h]
     \includegraphics[width=\columnwidth]{manuscript_figures/fig4_exact_timing_frontier.png}
@@ -159,13 +163,44 @@ The important point, however, is not the absence of crossing but the scale of th
 
 Our results provide the first finite-size evidence for a bounded geometric phase transition in poset ensembles with exact entropy. The confirmatory core is the exact $N = 10$--$44$ window, where $\gamma_c$ exists throughout and remains $O(1)$ under $A_2$. Beyond that window, the evidence becomes intentionally asymmetric rather than absent: one-sided exact timing shows that \texttt{lor2d} remains exactly tractable up to $N = 104$, while near-wall mixed scans at $N = 52$ and $56$ show that the \texttt{lor2d}--\texttt{kr} competition remains active and close to degeneracy at the high-$\gamma$ boundary. The mechanism reduces to two structurally interpretable constraints: causal chain non-degeneracy (width-height balance) and dimensional scale consistency (local--global coherence), neither requiring a target dimension.
 
+\subsection{Physical Interpretation of $\log|L(P)|$}
+
+A natural objection is that $\log|L(P)|$, as the logarithm of the number of
+linear extensions, has no established relation to physical entropy as defined in
+thermodynamics or in the Bekenstein--Hawking formula. We address this directly.
+
+We do not claim such a relation. Rather, $\log|L(P)|$ enters our functional as
+the \emph{combinatorial measure factor} of a labeled path sum: any scheme that
+samples labeled causal sets automatically weights each unlabeled order $P$ by
+$|L(P)|$, the number of distinct labelings compatible with the partial order.
+
+$\log|L(P)|$ admits a physical reading as a \emph{measure of residual ordering
+freedom}: it counts the number of ways the discrete causal structure can be
+``unfolded'' into a total order. High $|L(P)|$ means the partial order
+constrains element ordering weakly; low $|L(P)|$ means the causal structure is
+rigid. In this sense, $\log|L(P)|$ measures the gap between the information
+contained in the partial order and a complete specification of events.
+
+For manifold-like posets, this residual freedom grows moderately with $N$. For
+KR-like posets, the 3-layer structure leaves most pairs incomparable, leading to
+combinatorially large $|L(P)|$. The competition parameter $\gamma$ thus
+controls the trade-off between this combinatorial measure factor and the
+geometric penalty: a bounded $\gamma_c$ means that a finite geometric action
+suffices to overcome the entropy advantage of KR structures.
+
+This interpretation is deliberately model-agnostic: it does not depend on
+identifying $\log|L(P)|$ with Boltzmann, Shannon, or Bekenstein--Hawking
+entropy.
+
+\subsection{Relation to Prior Work}
+
 Carlip~\cite{carlip2017} reviewed the evidence for dimensional reduction across several quantum gravity programmes, including causal set theory; we provide the first quantitative $\gamma_c(N)$ curve with exact entropy and systematic ablation. Loomis and Carlip~\cite{loomis2018} analytically demonstrated the suppression of non-manifold-like sets in the causal set path integral; our approach complements their work by enabling exact computation and complete ablation control. Glaser et~al.~\cite{glaser2018} studied finite-size scaling in 2D CST, finding evidence for a continuum phase; our finite-size evidence for bounded $\gamma_c$ is consistent with and complementary to that work.
 
 \textbf{Relation to the Benincasa--Dowker action.} The standard discrete action in CST is the BD action~\cite{benincasa2010,benincasa2011}, which discretizes the Einstein--Hilbert action with a known continuum limit. Our action $A_2$ differs in both form and purpose: it is a decomposable penalty functional for ablation studies, not a discretization of a continuum action. The advantage of decomposability is that systematic ablation can identify which structural constraints drive geometric phase emergence --- a diagnostic capability that the BD action does not directly provide. Whether the BD action itself produces a bounded $\gamma_c$ in our sense is an important open question.
 
 This yields a cleaner evidence hierarchy than a single undifferentiated large-$N$ claim. The bounded-window statement is confirmatory only on exact $N \leq 44$ data. The single-sided exact frontier does not by itself establish phase persistence, but it justifies continuing the program beyond the symmetric exact range. The mixed $N = 52/56$ scans then add a narrower statement: no crossing is yet seen up to $\gamma = 2.0$, but the residual gap contracts to near-degeneracy rather than reopening. Taken together, these three layers support a cautious but nontrivial conclusion: the Lorentzian--KR competition remains structurally live beyond the exact confirmatory window, even though persistence of a bounded $\gamma_c$ at larger $N$ is not yet proven.
 
-Key limitations include finite size (confirmatory exact data end at $N = 44$), restricted family coverage (7 types), and a residual 2D calibration in the dimension estimator ($R_{2,\text{ref}} = 0.5009$). The most important next steps are extending the asymmetric exact-plus-mixed strategy to larger $N$, broadening family coverage, and obtaining independent MCMC verification.
+Key limitations include finite size (confirmatory exact data end at $N = 44$), restricted family coverage (9 types, including the KR 2-layer and 4-layer controls added post hoc), and a residual 2D calibration in the dimension estimator ($R_{2,\text{ref}} = 0.5009$). The most important next steps are extending the asymmetric exact-plus-mixed strategy to larger $N$, broadening family coverage, and obtaining independent MCMC verification.
 
 %=================================================================
 \section*{Acknowledgments}

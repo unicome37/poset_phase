@@ -40,6 +40,8 @@ For each family and each N ∈ {10, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44}, we 
 
 The entropy of a poset P is defined as H(P) = log |L(P)|, where L(P) is the set of linear extensions (topological sorts). We compute |L(P)| exactly using dynamic programming over antichains [7]. The state space is the set of all antichains of the poset (equivalently characterized as maximal antichains of the remaining down-set); transitions correspond to removing a minimal element.
 
+We emphasize that log|L(P)| is used here as a **combinatorial measure term**: for an unlabeled poset P, the number of natural labelings consistent with the order equals the number of linear extensions, so any labeled path sum implicitly weights P by |L(P)|. This is a choice of ensemble and measure, **not a claim** that log|L(P)| is a unique or physically correct definition of gravitational entropy. Alternative formulations that sum over unlabeled posets with 1/|Aut(P)| factors may change which families dominate.
+
 A key structural observation is that the computational cost of this algorithm depends strongly on the poset's antichain structure. For `lor2d`, whose antichain width grows slowly with N, exact computation remains sub-second to N = 48. For `kr`, whose middle layer is O(N), the cost grows dramatically and becomes impractical beyond N ≈ 50. This asymmetry is a structural fact about the posets, not an algorithmic artifact.
 
 | N | lor2d time | kr time |
@@ -163,23 +165,35 @@ The width-height balance constraint has a particularly clean physical interpreta
 
 The dimension consistency constraint captures the idea that genuine manifold-like structures should exhibit coherent dimensionality across scales. Lorentzian-like posets naturally satisfy this; KR posets do not. The fact that this constraint need not specify d = 2 is important: it means the mechanism would, in principle, favor *any* dimensionally coherent geometric structure over KR, not specifically 2D ones.
 
-### 4.2 Relation to Prior Work
+### 4.2 Physical Interpretation of log|L(P)|
+
+A natural objection is that log|L(P)|, as the logarithm of the number of linear extensions, has no established relation to physical entropy as defined in thermodynamics or in the Bekenstein–Hawking formula. We address this directly.
+
+We do not claim such a relation. Rather, log|L(P)| enters our functional as the *combinatorial measure factor* of a labeled path sum: any scheme that samples labeled causal sets automatically weights each unlabeled order P by |L(P)|, the number of distinct labelings compatible with the partial order.
+
+log|L(P)| admits a physical reading as a *measure of residual ordering freedom*: it counts the number of ways the discrete causal structure can be "unfolded" into a total order. High |L(P)| means the partial order constrains element ordering weakly; low |L(P)| means the causal structure is rigid. In this sense, log|L(P)| measures the gap between the information contained in the partial order and a complete specification of events.
+
+For manifold-like posets, this residual freedom grows moderately with N. For KR-like posets, the 3-layer structure leaves most pairs incomparable, leading to combinatorially large |L(P)|. The competition parameter γ thus controls the trade-off between this combinatorial measure factor and the geometric penalty: a bounded γ_c means that a finite geometric action suffices to overcome the entropy advantage of KR structures.
+
+This interpretation is deliberately model-agnostic: it does not depend on identifying log|L(P)| with Boltzmann, Shannon, or Bekenstein–Hawking entropy.
+
+### 4.3 Relation to Prior Work
 
 Carlip [4] reviewed the evidence for dimensional reduction across several quantum gravity programmes, including causal set theory. Our work provides the first quantitative γ_c(N) curve with exact entropy and systematic ablation, translating qualitative intuitions about KR suppression into explicit finite-size values.
 
 Loomis and Carlip [6] analytically demonstrated the suppression of non-manifold-like sets in the causal set path integral. Our approach is complementary: rather than sampling from the full space of N-element posets, we compare representative structures from distinct families, which allows exact computation and complete ablation control.
 
-### 4.3 Limitations
+### 4.4 Limitations
 
 Several important caveats apply:
 
 1. **Finite size**: N = 44 is far from any thermodynamic limit. Whether γ_c remains bounded as N → ∞ is the central open question.
-2. **Family coverage**: Seven families do not exhaust all posets. Our claim is "competitive phase among tested structural types," not global dominance.
+2. **Family coverage**: Nine families (including the KR 2-layer and 4-layer controls added post hoc) do not exhaust all posets. Our claim is "competitive phase among tested structural types," not global dominance.
 3. **Generator dependence**: Each family is defined by a specific generator. Structural properties (and thus penalty values) depend on generator parameters.
 4. **Weight sensitivity**: The minimal non-circular backbone requires weight adjustment at N = 44, suggesting proximity to a critical boundary at larger N.
 5. **Estimator calibration**: The dimension proxy $d_{\text{eff}}(r)$ is calibrated at the 2D Minkowski order fraction $R_{2,\text{ref}} = 0.5009$. While the consistency penalty $g_{\text{con}}$ does not penalize deviation from d = 2, the estimator's calibration point introduces a residual 2D reference. A fully dimension-agnostic estimator (e.g., based on interval cardinality ratios without a fixed reference) would further strengthen the non-circularity claim.
 
-### 4.4 Outlook
+### 4.5 Outlook
 
 The most important next step is pushing the exact computation to larger N. The favorable scaling of exact linear extension counts for Lorentzian-like posets (sub-second to N = 48) makes this feasible for the geometric side; the bottleneck is KR computation. Beyond exact computation, an independent verification using Markov chain methods on the full poset space at moderate N would significantly strengthen the case.
 

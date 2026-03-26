@@ -69,6 +69,8 @@ For each family and each $N \in \{10, 12, 14, 16, 20, 24, 28, 32, 36, 40, 44\}$,
 
 The entropy of a poset $P$ is defined as $H(P) = \log |L(P)|$, where $L(P)$ is the set of linear extensions (topological sorts). We compute $|L(P)|$ exactly using dynamic programming over antichains~\cite{brightwell1991}. The state space is the set of all antichains of the poset (equivalently characterized as maximal antichains of the remaining down-set); transitions correspond to removing a minimal element.
 
+We emphasize that $\log|L(P)|$ is used here as a \emph{combinatorial measure term}: for an unlabeled poset~$P$, the number of natural labelings consistent with the order equals the number of linear extensions, so any labeled path sum implicitly weights $P$ by $|L(P)|$. This is a choice of ensemble and measure, not a claim that $\log|L(P)|$ is a unique or physically correct definition of gravitational entropy. Alternative formulations that sum over unlabeled posets with $1/|\mathrm{Aut}(P)|$ factors may change which families dominate.
+
 A key structural observation is that the computational cost of this algorithm depends strongly on the poset's antichain structure. For \texttt{lor2d}, whose antichain width grows slowly with $N$, exact computation remains sub-second to $N = 48$. For \texttt{kr}, whose middle layer is $O(N)$, the cost grows dramatically and becomes impractical beyond $N \approx 50$.
 
 \begin{table}[H]
@@ -224,6 +226,35 @@ $g_{\text{wh}}$ only & $N=24,28$ only & $\times$ \\
 
 Our results provide the first finite-size evidence for a bounded geometric phase transition in poset ensembles with exact entropy computation. The width-height balance constraint has a clean physical interpretation: penalizing degenerate causal depth is equivalent to requiring non-trivial temporal evolution. The dimension consistency constraint captures the idea that genuine manifold-like structures should exhibit coherent dimensionality across scales --- and need not specify $d = 2$.
 
+\subsection{Physical Interpretation of $\log|L(P)|$}
+
+A natural objection is that $\log|L(P)|$, as the logarithm of the number of
+linear extensions, has no established relation to physical entropy as defined in
+thermodynamics or in the Bekenstein--Hawking formula. We address this directly.
+
+We do not claim such a relation. Rather, $\log|L(P)|$ enters our functional as
+the \emph{combinatorial measure factor} of a labeled path sum: any scheme that
+samples labeled causal sets automatically weights each unlabeled order $P$ by
+$|L(P)|$, the number of distinct labelings compatible with the partial order.
+
+$\log|L(P)|$ admits a physical reading as a \emph{measure of residual ordering
+freedom}: it counts the number of ways the discrete causal structure can be
+``unfolded'' into a total order. High $|L(P)|$ means the partial order
+constrains element ordering weakly; low $|L(P)|$ means the causal structure is
+rigid. In this sense, $\log|L(P)|$ measures the gap between the information
+contained in the partial order and a complete specification of events.
+
+For manifold-like posets, this residual freedom grows moderately with $N$. For
+KR-like posets, the 3-layer structure leaves most pairs incomparable, leading to
+combinatorially large $|L(P)|$. The competition parameter $\gamma$ thus
+controls the trade-off between this combinatorial measure factor and the
+geometric penalty: a bounded $\gamma_c$ means that a finite geometric action
+suffices to overcome the entropy advantage of KR structures.
+
+This interpretation is deliberately model-agnostic: it does not depend on
+identifying $\log|L(P)|$ with Boltzmann, Shannon, or Bekenstein--Hawking
+entropy.
+
 \subsection{Relation to Prior Work}
 
 Carlip~\cite{carlip2017} reviewed evidence for dimensional reduction at short distances across several quantum gravity programs. Loomis and Carlip~\cite{loomis2018} analytically showed that the BD action can suppress non-manifold-like sets in the causal set path integral. Our work differs from these in that we provide an explicit numerical computation of $\gamma_c$ as a function of $N$ with exact entropy and systematic ablation. Recent work on 2D causal set dynamics~\cite{cunningham2020} has used numerical approaches; our approach is complementary, allowing exact combinatorial computation and complete ablation control.
@@ -232,7 +263,7 @@ Carlip~\cite{carlip2017} reviewed evidence for dimensional reduction at short di
 
 \begin{enumerate}[nosep]
     \item \textbf{Finite size}: $N = 44$ is far from any thermodynamic limit.
-    \item \textbf{Family coverage}: Seven families do not exhaust all posets.
+    \item \textbf{Family coverage}: Nine families (including the KR 2-layer and 4-layer controls added post hoc) do not exhaust all posets.
     \item \textbf{Generator dependence}: Structural properties depend on generator parameters.
     \item \textbf{Weight sensitivity}: The minimal non-circular backbone requires weight adjustment at $N = 44$.
     \item \textbf{Estimator calibration}: The dimension proxy $d_{\text{eff}}(r)$ is calibrated at $R_{2,\text{ref}} = 0.5009$ (2D Minkowski). A fully dimension-agnostic estimator would further strengthen the non-circularity claim.

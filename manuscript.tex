@@ -270,6 +270,45 @@ The width-height balance constraint has a particularly clean physical interpreta
 
 The dimension consistency constraint captures the idea that genuine manifold-like structures should exhibit coherent dimensionality across scales. Lorentzian-like posets naturally satisfy this; KR posets do not. The fact that this constraint need not specify $d = 2$ is important: it means the mechanism would, in principle, favor \emph{any} dimensionally coherent geometric structure over KR, not specifically 2D ones.
 
+\subsection{Physical Interpretation of $\log|L(P)|$}
+\label{sec:log_interpret}
+
+A natural objection is that $\log|L(P)|$, as the logarithm of the number of
+linear extensions, has no established relation to physical entropy as defined in
+thermodynamics or in the Bekenstein--Hawking formula. We address this directly.
+
+We do not claim such a relation. Rather, $\log|L(P)|$ enters our functional as
+the \emph{combinatorial measure factor} of a labeled path sum: any scheme that
+samples labeled causal sets automatically weights each unlabeled order $P$ by
+$|L(P)|$, the number of distinct labelings compatible with the partial order.
+This is a standard feature of causal set path-sum constructions (see
+e.g.~\cite{mathur2021,surya2012}).
+
+That said, $\log|L(P)|$ admits a physical reading as a \emph{measure of
+residual ordering freedom}: it counts the number of ways the discrete causal
+structure can be ``unfolded'' into a total order. High $|L(P)|$ means the
+partial order constrains element ordering weakly --- many orderings are
+compatible. Low $|L(P)|$ means the causal structure is rigid, leaving few
+compatible orderings. In this sense, $\log|L(P)|$ measures the gap between the
+information contained in the partial order and a complete specification of
+events.
+
+For manifold-like (Lorentzian) posets, this residual freedom grows moderately
+with $N$, reflecting the fact that a causal structure embedded in a
+low-dimensional manifold constrains many pairs of events. For KR-like posets,
+the 3-layer structure leaves most pairs of elements incomparable, leading to
+combinatorially large $|L(P)|$ (as quantified by the Kleitman--Rothschild
+theorem~\cite{kleitman1975}). The competition parameter $\gamma$ in our
+functional thus controls the trade-off between this combinatorial measure
+factor and the geometric penalty $\Pi_{\mathrm{geo}}$: the existence of a
+bounded $\gamma_c$ means that a finite geometric action suffices to overcome the
+entropy advantage of KR structures.
+
+This interpretation is deliberately model-agnostic: it does not depend on
+identifying $\log|L(P)|$ with Boltzmann, Shannon, or Bekenstein--Hawking
+entropy. Whether a deeper connection exists between $|L(P)|$ and physical
+entropy in a full causal set quantum gravity theory remains an open question.
+
 \subsection{Relation to Prior Work}
 
 Carlip~\cite{carlip2017} reviews the broader landscape of dimensional
@@ -289,7 +328,7 @@ Several important caveats apply:
 
 \begin{enumerate}[nosep]
     \item \textbf{Finite size}: $N = 44$ is far from any thermodynamic limit. Whether $\gamma_c$ remains bounded as $N \to \infty$ is the central open question.
-    \item \textbf{Family coverage}: Seven families do not exhaust all posets. Our claim is ``competitive phase among tested structural types,'' not global dominance.
+    \item \textbf{Family coverage}: Nine families (including the KR 2-layer and 4-layer controls added post hoc) do not exhaust all posets. Our claim is ``competitive phase among tested structural types,'' not global dominance.
     \item \textbf{Generator dependence}: Each family is defined by a specific generator. Structural properties (and thus penalty values) depend on generator parameters.
     \item \textbf{Weight sensitivity}: The minimal non-circular backbone requires weight adjustment at $N = 44$, suggesting proximity to a critical boundary at larger~$N$.
     \item \textbf{Estimator calibration}: The dimension proxy $d_{\text{eff}}(r)$ is calibrated at the 2D Minkowski order fraction $R_{2,\text{ref}} = 0.5009$. While the consistency penalty $g_{\text{con}}$ does not penalize deviation from $d = 2$, the estimator's calibration point introduces a residual 2D reference. A fully dimension-agnostic estimator (e.g., based on interval cardinality ratios without a fixed reference) would further strengthen the non-circularity claim.
