@@ -218,7 +218,12 @@ $$F \approx \sum_i \lambda_i \big(I_i - I_i^{(4D)}(N)\big)^2$$
 ## §8. 未来方向
 
 ### 8.1 理论推进
-1. **权重 → 噪声逆协方差**：如果最优权重 ≈ Σ⁻¹（Lor4D 特征协方差矩阵的逆），则 LSD-Well 不是经验调参而是 Fisher 信息自然加权
+1. **权重 → 噪声逆协方差** ✅ **已验证**：
+   - 方差排序: σ²(w) < σ²(c) < σ²(d) → 1/σ² 排序完美匹配 γ > β > α
+   - Σ⁻¹ 对角预测 (α=0.5, β=4.45, γ=7.16) → γ 比值 1.43 接近经验值
+   - Mahalanobis 距离（完整 Σ⁻¹）在所有 N 处均 #1
+   - 经验权重 = 纯 Σ⁻¹ 与 Fisher 判别的混合体
+   - **结论**：权重排序由信息论决定，非自由参数
 2. **二次井 → 有限 N 最小失真作用量**：$F_{\mathrm{LSD}} = \sum_i \lambda_i (I_i - I_i^{(4D)}(N))^2$ 的算子形式
 3. **第四不变量搜索**：验证三联体是否为最小完备判别基
 4. **分层筛选原理**：LSD-Well 不是 fundamental law 而是 effective selector
@@ -248,6 +253,7 @@ $$F \approx \sum_i \lambda_i \big(I_i - I_i^{(4D)}(N)\big)^2$$
 | `_lsd_well_mode_analysis.py` | 三模式一致性分析 | 结构性孤立 |
 | `carlip_lsd_well_large_n.py` | Large-N 可扩展性 (N=16–256) | margin 单调增长 |
 | `prediction_b_lsd_well_revision.py` | B 修订版 | N≥20 #1/17 |
+| `carlip_fisher_weight_test.py` | Fisher 信息权重假说 | Σ⁻¹排序=经验排序, Mahalanobis全#1 |
 
 ---
 
