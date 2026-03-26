@@ -14,6 +14,8 @@ from generators import (
     generate_absolute_layered,
     generate_interval_order,
     generate_kr_like,
+    generate_kr_2layer,
+    generate_kr_4layer,
     generate_lorentzian_like_2d,
     generate_lorentzian_like_3d,
     generate_lorentzian_like_4d,
@@ -35,6 +37,8 @@ from observables_geo import geometric_penalty
 FAMILIES = {
     "absolute_layered": generate_absolute_layered,
     "KR_like": generate_kr_like,
+    "KR_2layer": generate_kr_2layer,
+    "KR_4layer": generate_kr_4layer,
     "lorentzian_like_2d": generate_lorentzian_like_2d,
     "lorentzian_like_3d": generate_lorentzian_like_3d,
     "lorentzian_like_4d": generate_lorentzian_like_4d,

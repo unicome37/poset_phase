@@ -278,3 +278,33 @@ def generate_random_layered_k6_middle_heavy(n: int, seed: int | None = None) -> 
 
 def generate_random_layered_k6_longjump(n: int, seed: int | None = None) -> Poset:
     return generate_random_layered(n=n, n_layers=6, imbalance_mode="uniform", adjacent_p=0.32, skip_p=0.16, seed=seed)
+
+
+def generate_kr_2layer(n: int, p: float = 0.5, seed: int | None = None) -> Poset:
+    """2-layer bipartite poset (KR control): bottom ~n/4, top ~3n/4."""
+    rng = np.random.default_rng(seed)
+    n_bot = max(1, n // 4)
+    n_top = n - n_bot
+    idx = rng.permutation(n)
+    bot, top = idx[:n_bot], idx[n_bot:]
+    adj = np.zeros((n, n), dtype=bool)
+    adj[np.ix_(bot, top)] = rng.random((n_bot, n_top)) < p
+    return Poset(transitive_closure(adj))
+
+
+def generate_kr_4layer(n: int, p: float = 0.5, seed: int | None = None) -> Poset:
+    """4-layer KR-extended poset: ratio ~1:3:3:1, adjacent-layer edges only."""
+    rng = np.random.default_rng(seed)
+    s1 = max(1, n // 8)
+    s4 = max(1, n // 8)
+    mid = n - s1 - s4
+    s2 = mid // 2
+    s3 = mid - s2
+    sizes = [s1, s2, s3, s4]
+    idx = rng.permutation(n)
+    layers = _split_with_sizes(idx, sizes)
+    adj = np.zeros((n, n), dtype=bool)
+    for i in range(len(layers) - 1):
+        mask = rng.random((len(layers[i]), len(layers[i + 1]))) < p
+        adj[np.ix_(layers[i], layers[i + 1])] = mask
+    return Poset(transitive_closure(adj))
