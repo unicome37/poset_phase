@@ -1,6 +1,6 @@
 # Prediction D Writeup Draft (Frozen Confirmatory Window)
 
-> Last updated: 2026-03-25
+> Last updated: 2026-03-26
 > Scope: turn the current Prediction D validation pipeline into a paper/section-ready narrative, with a **frozen confirmatory window** and explicit boundaries.
 
 ---
@@ -630,16 +630,140 @@ Higher-dimensional Lorentzian posets (Lor5D) have dramatically higher basin rete
 
 **STRONG**: Both W₁ and ΔH_int survive large-N extension with pooled ★★★ significance. The dual-indicator independence from F7 is confirmed from N=16 (small-N) through N=100 (large-N), spanning a 6× range in poset size.
 
-### 7.5 Limitations and Next Steps
+### 7.5 Limitations (r5 run)
 
-1. **Per-N weakening**: Future runs should increase reps to ≥15 per (family, N) to achieve n≥75 per N-slice
-2. **Recovery dynamics steps**: At N=100, 40 steps may be insufficient — consider 80–120 steps with longer runtime budget
-3. **N=128+ frontier**: The O(N³) transitive closure bottleneck makes N≥128 expensive (~5s per swap) but feasible with overnight runs
+1. **Per-N weakening**: n=25 per slice insufficient — addressed in §7.6
+2. **Recovery dynamics steps**: At N=100, 40 steps may be insufficient
+3. **N=128+ frontier**: O(N³) transitive closure bottleneck
+
+### 7.6 High-Rep Verification (r15, 15 reps per family×N)
+
+> Added: 2026-03-26
+
+To resolve the per-N statistical power limitation (§7.5.1), we reran the experiment with 15 reps per (family, N), yielding n=75 per N-slice and n=300 pooled. A per-trial timeout (120s) was added to prevent recovery dynamics hangs at large N.
+
+**Design**: 300 posets (4 N × 5 families × 15 reps), 1800 recovery trials, ~150 min runtime.
+
+**Q1: Pooled partial correlations — ALL ★★★ (strengthened)**
+
+| Test | r5 (n=100) | r15 (n=300) |
+|------|------------|-------------|
+| W₁ \| F7 | −0.599 | **−0.671** |
+| ΔH_int \| F7 | −0.325 | **−0.312** |
+| W₁ \| F7,N | +0.346 | **+0.276** |
+| ΔH_int \| F7,N | +0.460 | **+0.500** |
+
+All p < 10⁻⁴. W₁ main effect strengthened from −0.599 to −0.671.
+
+**Q2: Family discrimination — ALL ★★★ at EVERY N (major upgrade)**
+
+| N | W₁ H-stat (r5→r15) | ΔH_int H-stat (r5→r15) |
+|---|---------------------|------------------------|
+| 36 | 22.53 → **68.42** | 13.60 → **45.41** |
+| 52 | 21.97 → **68.00** | 16.65 → **48.82** |
+| 72 | 22.41 → **70.21** | 17.82 → **57.02** |
+| 100 | 23.08 → **71.05** | 21.00 → **64.56** |
+
+ΔH_int upgraded from ★★ (r5, N=36/52/72) to **★★★ at all N** — the 3× sample increase resolved the power issue for family discrimination.
+
+**Q3: Per-N partial correlations — power question resolved**
+
+| N | n | ρ(W₁,Pb\|F7) r5 | ρ(W₁,Pb\|F7) r15 | ΔH p (r15) |
+|---|---|-----------------|-------------------|------------|
+| 36 | 75 | −0.652* | **−0.730*** | 0.031* |
+| 52 | 75 | −0.381 (p=.06) | **−0.474*** | 0.902 |
+| 72 | 75 | −0.167 | −0.115 | 0.364 |
+| 100 | 75 | +0.137 | −0.092 | 0.046* |
+
+Key finding: W₁ at N=52 is now **significant** (was marginal). The monotone weakening trend (ρ=−1.0) persists with 3× more data, confirming it is a **real N-scaling effect**, not a statistical power artifact. Possible causes: (1) adaptive recovery steps insufficient at large N; (2) P_basin variance compression at large N.
+
+**Physical: Lor5D dominance confirmed at all N**
+
+| N | Lor5D P_basin | Lor4D | Others |
+|---|---------------|-------|--------|
+| 36 | 86.7% | 51.1% | 0–11% |
+| 52 | 71.1% | 20.0% | 0% |
+| 72 | 64.4% | 2.2% | 0% |
+| 100 | 66.7% | 15.6% | 0–3.3% |
+
+### 7.7 Consolidated Verdict
+
+**STRONG**: Both W₁ and ΔH_int survive large-N extension across two independent runs (r5: n=100, r15: n=300). All pooled tests ★★★. Family discrimination ★★★ at every N with adequate power. Per-N W₁ weakening is a genuine N-scaling phenomenon, not a power artifact. The dual-indicator independence from F7 is confirmed from N=16 through N=100.
+
+### 7.8 Per-N W₁ Weakening: Root Cause Diagnosis
+
+> Added: 2026-03-26. Script: `prediction_d_weakening_diagnosis.py`
+
+The monotone decline of ρ(W₁, P_basin | F7) from −0.730 (N=36) to −0.092 (N=100) was diagnosed via six analyses. **Two root causes identified:**
+
+**Root cause 1: F7–W₁ collinearity increases with N**
+
+| N | ρ(W₁,F7) | ρ(F7,Pb) | ρ(W₁,Pb) raw | ρ(W₁,Pb\|F7) |
+|---|-----------|----------|-------------|--------------|
+| 36 | −0.475 | +0.127 | −0.694 | −0.730 |
+| 52 | −0.812 | +0.677 | −0.778 | −0.474 |
+| 72 | −0.870 | +0.705 | −0.693 | −0.115 |
+| 100 | −0.866 | +0.825 | −0.789 | −0.092 |
+
+The raw ρ(W₁, Pb) is **stable** across all N (−0.69 to −0.79). What weakens is the *partial* correlation after controlling F7. This is because F7 and W₁ become nearly collinear at large N (ρ = −0.87 at N≥72), so controlling for F7 removes most of W₁'s variance. This is a **collinearity artifact**, not a loss of W₁'s predictive signal.
+
+**Root cause 2: P_basin variance compression**
+
+| N | Pb_std | Pb_var (non-Lor5D) | frac(Pb=0) |
+|---|--------|--------------------|------------|
+| 36 | 0.368 | 0.065 | 52% |
+| 52 | 0.305 | 0.023 | 68% |
+| 72 | 0.275 | 0.001 | 77% |
+| 100 | 0.269 | 0.008 | 60% |
+
+P_basin std decreases monotonically with N (ρ = −1.0). At N=72, non-Lor5D P_basin variance collapses to near zero (almost all samples hit the P_basin = 0 floor). With no variance to explain, no predictor can achieve a strong partial correlation.
+
+**Interpretation**: The per-N partial correlation decline does **not** mean W₁ loses relevance at large N. Rather: (1) F7 and W₁ converge to carry the same information in larger posets, and (2) P_basin becomes nearly binary (Lor5D recovers, others don't), leaving insufficient variance for continuous predictors. The pooled test (n=300, controlling for N) avoids both issues by exploiting cross-N variance.
+
+### 7.8a F7–W₁ Convergence: Physical Mechanism
+
+> Added: 2026-03-26. Script: `prediction_d_f7_w1_convergence.py`
+
+The F7–W₁ collinearity at large N was further analyzed to determine whether they measure the same physical quantity. **Key finding: family-mediated convergence, not intrinsic coupling.**
+
+**Evidence 1: Family membership explains nearly all variance at large N**
+
+| N | η²(F7) | η²(W₁) | η²(cf) |
+|---|--------|--------|--------|
+| 36 | 0.926 | 0.915 | 0.948 |
+| 52 | 0.964 | 0.950 | 0.978 |
+| 72 | 0.986 | 0.972 | 0.974 |
+| 100 | 0.986 | 0.983 | 0.986 |
+
+At N=100, family membership alone explains 98%+ of both F7 and W₁ variance.
+
+**Evidence 2: After removing family effects, F7–W₁ correlation nearly vanishes**
+- N=36: ρ_resid = −0.087 (n.s.)
+- N=52: ρ_resid = −0.062 (n.s.)
+- N=72: ρ_resid = −0.362 (p=0.001)
+- N=100: ρ_resid = −0.327 (p=0.004)
+
+**Evidence 3: Comparable fraction (cf) is the common hidden variable**
+- ρ(cf, W₁) = +0.95 to +0.98 at all N (W₁ ≈ f(cf))
+- ρ(cf, F7) strengthens from −0.54 (N=36) to −0.87 (N=100)
+- cf is geometrically fixed per family (Lor5D: 0.10, Lor4D: 0.17, Lor3D: 0.29, KR: 0.38, Lor2D: 0.50)
+
+**Physical interpretation — spectral rigidity**: As N grows, within-family variance shrinks (between/within ratio: F7 12.5→72.6, W₁ 10.7→57.7). Both F7 and W₁ become near-perfect "family detectors", hence their aggregate correlation approaches −1. But they are **not the same physical quantity** — within families, they carry largely independent information. The convergence is a finite-size noise reduction effect, analogous to thermodynamic observables becoming more correlated as system size increases.
+
+### 7.9 Remaining Limitations
+
+1. **F7–W₁ convergence**: At N≥72, these two measures become near-collinear; future work should investigate whether a third independent indicator exists
+2. **N=128+ frontier**: Feasible with overnight runs but O(N³) transitive closure is bottleneck
+3. **P_basin binarization**: At large N, recovery dynamics may need more steps (currently 40 at N=100) to produce graded P_basin values
 
 Repro:
 - script: `prediction_d_large_n_verification.py`
-- outputs: `outputs_d_recovery/prediction_d_large_n.csv`, `outputs_d_recovery/prediction_d_large_n.md`
-- command: `python prediction_d_large_n_verification.py --ns 36 52 72 100 --reps 5 --pert-reps 2`
+- diagnosis: `prediction_d_weakening_diagnosis.py`
+- r5 outputs: `outputs_d_recovery/prediction_d_large_n.csv/md`
+- r15 outputs: `outputs_d_recovery/prediction_d_large_n_r15.csv/md`
+- diagnosis output: `outputs_d_recovery/prediction_d_weakening_diagnosis.md`
+- r5 command: `python prediction_d_large_n_verification.py --ns 36 52 72 100 --reps 5 --pert-reps 2`
+- r15 command: `python prediction_d_large_n_verification.py --reps 15 --suffix _r15`
 
 ---
 
