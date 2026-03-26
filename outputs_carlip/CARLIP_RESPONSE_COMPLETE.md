@@ -224,7 +224,11 @@ $$F \approx \sum_i \lambda_i \big(I_i - I_i^{(4D)}(N)\big)^2$$
    - Mahalanobis 距离（完整 Σ⁻¹）在所有 N 处均 #1
    - 经验权重 = 纯 Σ⁻¹ 与 Fisher 判别的混合体
    - **结论**：权重排序由信息论决定，非自由参数
-2. **二次井 → 有限 N 最小失真作用量**：$F_{\mathrm{LSD}} = \sum_i \lambda_i (I_i - I_i^{(4D)}(N))^2$ 的算子形式
+2. **二次井 → 有限 N 最小失真作用量** ✅ **已推导并验证**：
+   - $S_{\mathrm{MD}} = \boldsymbol{\delta}^{\top}\Lambda\boldsymbol{\delta}$: Landau 展开的最低阶有效作用量
+   - σ² ∝ N^{-1} (三特征 p ≈ 1.0) → margin 随 N 发散 → Lyapunov 泛函
+   - Mahalanobis margin 比对角 margin 大 100× → 协方差结构可进一步利用
+   - 混合指数 η = 0.74 ± 0.08 跨 N 稳定 → 理论结构具有普适性
 3. **第四不变量搜索**：验证三联体是否为最小完备判别基
 4. **分层筛选原理**：LSD-Well 不是 fundamental law 而是 effective selector
 
