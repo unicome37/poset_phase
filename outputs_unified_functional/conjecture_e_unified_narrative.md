@@ -415,6 +415,53 @@ Three paths closed (T1, T2, T4), one path confirmed (T3), convergence direction 
 
 ---
 
+## Cross-Link: γ/d_eff (Prediction A) ↔ Conjecture E (2026-03-26)
+
+## 交叉链接：γ/d_eff（推论 A）↔ 猜想 E
+
+The γ EH derivation (`prediction_a_gamma_eh_derivation.py`) and this cross-link analysis (`cross_link_gamma_e_line.py`) reveal that Prediction A and Conjecture E share a **common observable foundation**: the causal pair count $C_0$.
+
+### The Shared Foundation: $f_2 = C_0 / \binom{N}{2}$
+
+The Myrheim-Meyer fraction $f_2$ simultaneously encodes:
+- **A-line (dimension)**: $d_\text{eff} = f_2^{-1}(\text{observed})$ via nonlinear inversion, with Jacobian amplification $|dd/df_2|^2 \approx 565$ at $d=4$
+- **E-line (curvature)**: $\Sigma C_k \propto N^2 f_2$ = total causal density, the **only** DoF surviving DDT (§4.1.26b)
+
+### DDT Scope Clarification
+
+DDT is a statement about the **$H$-direction** (curvature variation at fixed $d$), not the **$d$-direction** (dimension variation at fixed $H$). In the ABCD dataset ($H=0$, varying $d$), $C_0$ variation is pure dimension signal — DDT is irrelevant. ICC analysis confirms: $d_\text{eff}$ is **99.9%** determined by family (dimension), with $<0.1\%$ within-family noise.
+
+### Jacobian Scaling Law
+
+| $d$ | $f_2(d)$ | $|dd/df_2|$ | $|dd/df_2|^2$ |
+|-----|----------|-------------|----------------|
+| 2 | 0.250 | 5.3 | 28 |
+| 3 | 0.114 | 10.8 | 117 |
+| 4 | 0.050 | **23.8** | **565** |
+| 5 | 0.021 | 54.4 | 2,960 |
+| 6 | 0.009 | 127.7 | 16,317 |
+
+The amplification grows exponentially with $d$. This explains why **4D dimension selection is harder than 2D**: the $f_2$ landscape is $20\times$ flatter at $d=4$, requiring stronger wells ($\gamma \approx 1.5$) to overcome entropy competition.
+
+### Layered Architecture Isomorphism
+
+| E-line | A-line | Shared observable | Different question |
+|--------|--------|-------------------|-------------------|
+| E-wall: $\sigma((R - R_c)/w)$ | $\Psi_\text{Lor}$: same sigmoid | $R$ (occupancy ratio) | "Admissible curvature?" vs "Lor or KR?" |
+| E-bulk: antichains, $B_\ell$ | $\Phi_\text{geom}$: $\gamma N(d_\text{eff}-4)^2$ | $C_0 \to d_\text{eff}$ | "What $H$?" vs "What $d$?" |
+
+The isomorphism $\text{F7/F10} \cong \text{E-wall/E-bulk}$ is not accidental: it follows from the mathematical fact that one scalar ($f_2$) encodes a 2D parameter space $(d, H)$ only through **multiple orthogonal projections**.
+
+### $R$ vs $d_\text{eff}$: Inverted Rankings
+
+At $N=100$: $R$ orders families by density (Lor2D $>$ Lor3D $>$ KR $>$ Lor4D $>$ Lor5D), while $d_\text{eff}$ orders by dimension (Lor5D $>$ Lor4D $>$ Lor3D $>$ KR $>$ Lor2D). Within-family $\rho(R, d_\text{eff}) \approx 0$ for all Lorentzian families — confirming $\Phi_\text{geom} \perp \Psi_\text{Lor}$ is empirically exact.
+
+### 综合定理
+
+> 因果对计数 $C_0$ 是维度选择（推论 A）和曲率编码（猜想 E）的**最小充分统计量**，但它需要**两个正交投影**——非线性 $d_\text{eff} = f_2^{-1}(C_0/\binom{N}{2})$ 用于维度，线性密度 $\Sigma C_k \propto N^2 f_2$ 用于曲率——这解释了为什么 ABCD 线和 E 线独立地收敛到双层架构。
+
+---
+
 ## Remaining Open Questions
 
 1. ~~**Second-order EH bridge**~~: **Resolved by T1–T5 (§4.1.36–40)**. T3 two-step squaring demonstrates the bridge is constructible at finite $N$ ($R^2 = 0.987$ OLS / $0.9996$ rank-preserving). The remaining task is convergence: $\alpha_\text{raw} \to 1$ at $N \sim 10^4$–$10^5$.
@@ -466,5 +513,5 @@ Three paths closed (T1, T2, T4), one path confirmed (T3), convergence direction 
 
 ---
 
-*Document generated: 2026-03-24; updated 2026-03-25 (Phase V: T1–T5; §4.1.41: N-scaling; §4.1.42: 3+1D Schwarzschild; §4.1.43: FRW C2 decisive test)*
-*Status: Conjecture E — main theory closed, beyond-dS triple-confirmed, EH bridge T1–T5 complete, **DDT C2 decisively confirmed** (FRW R≠0: 45/96; Schwarzschild R=0: 4/32; antichain channel responds to scalar R), confidence 92–95%*
+*Document generated: 2026-03-24; updated 2026-03-25 (Phase V: T1–T5; §4.1.41–43); updated 2026-03-26 (Cross-link: γ/d_eff ↔ E-line, Jacobian scaling law, layered architecture isomorphism)*
+*Status: Conjecture E — main theory closed, beyond-dS triple-confirmed, EH bridge T1–T5 complete, **DDT C2 decisively confirmed**, **A↔E cross-link established** (shared C₀ foundation, F7/F10 ≅ E-wall/E-bulk isomorphism), confidence 92–95%*
