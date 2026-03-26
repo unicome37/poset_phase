@@ -589,6 +589,41 @@ $$\hat{\mu}(N) = \mu(\infty) + \mathbf{a}/N + \mathbf{b}/N^2, \quad \hat{\Sigma}
 
 ---
 
+## Large-N Extreme Test: N=128–1024 (2025-06-30)
+
+**目的**：在极端 N 下确认 Mahalanobis margin 发散，验证热力学极限预测。
+
+| N | Lor4D rank | Mahal margin | Runner-up | d_eff ± σ |
+|---|:----------:|:------------:|:---------:|:---------:|
+| 128 | #1 | 93 | Lor5D | 3.977 ± 0.063 |
+| 256 | #1 | 243 | Lor5D | 3.948 ± 0.031 |
+| 384 | #1 | 121 | Lor5D | 3.965 ± 0.055 |
+| 512 | #1 | 5,690 | RLk6_mid | 3.949 ± 0.050 |
+| 768 | #1 | 18,150,000 | IntOrder | 3.940 ± 0.030 |
+| 1024 | #1 | **193,000,000** | Lor5D | 3.937 ± 0.032 |
+
+**Margin 发散已确认**：幂律拟合 slope > 7，margin 从 93 (N=128) 增长到 1.93×10⁸ (N=1024)。
+
+**文件**：[`large_n_extreme_test.py`](large_n_extreme_test.py), [`outputs_carlip/large_n_extreme.md`](outputs_carlip/large_n_extreme.md)
+
+---
+
+## KR_2layer Deep Analysis (2025-06-30)
+
+**目的**：解析 KR_2layer 为何是最强竞争者。
+
+**核心发现**：
+- KR_2layer 的 d_eff ≈ 3.87 (Z < 1 at all N) — 2-layer 1:3 结构偶然模拟 4D 维度
+- **主要区分特征是 width**（贡献 60–93% Mahalanobis 距离）
+- C₁/C₀ ≡ 0（二部图无 2-step interval）vs Lor4D 的 ~0.35
+- Width ~0.75 vs Lor4D ~0.30 → 两者均随 N 发散
+
+**结论**：KR_2layer 的结构相似是**偶然的、非几何性的**。gap 单调增长到 N=1024，不构成真正威胁。
+
+**文件**：[`kr_2layer_analysis.py`](kr_2layer_analysis.py), [`outputs_carlip/kr_2layer_analysis.md`](outputs_carlip/kr_2layer_analysis.md)
+
+---
+
 ## Rule
 
 简单规则：
