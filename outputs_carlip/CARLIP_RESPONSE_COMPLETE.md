@@ -233,9 +233,18 @@ $$F \approx \sum_i \lambda_i \big(I_i - I_i^{(4D)}(N)\big)^2$$
    - Feature ablation: 三联体 margin=101.5; +height 仅 +5.0, +order_frac 仅 +15.5
    - d_eff 严格必要; C₁/C₀ 和 width 提供 margin 协同但非严格必要
    - 结论：(d_eff, C₁/C₀, w) 是 Lor4D manifold-likeness 的最小高效判别基
-4. **分层筛选原理**：LSD-Well 不是 fundamental law 而是 effective selector
+4. **分层筛选原理** ✅ **已完整验证**：
+   - 3σ 层级筛选 (d→c→w): Level 1 消除 12.0/16 族, Level 2 +2.4, Level 3 +0.2
+   - N≥96：全部 16 非 Lor4D 族被消除；N<96 残存者仅 Lor5D (最近邻维度)
+   - k_min 从 1.24σ(N=20) 增长到 4.91σ(N=128) → 筛选半径随 N 发散
+   - 6 种排列总消除数相同(14.6/16)，但 d→c→w 是 Level-1 效率最高的自然顺序
    - Mahalanobis LSD (零参数版) 全 N 全 #1, 交叉验证 100%, 种子稳健 100%
-   - 进一步确认：判别器由 Lor4D 统计几何唯一确定
+5. **μ(N) 轨迹理论对象** ✅ **已构建**：
+   - μ̂(N) = μ(∞) + a/N + b/N²: c₁/c₀ 拟合 R²=0.99, width R²=0.997
+   - σ²(N) = A·N^{-p}: d 1.05, c 1.11, w 1.32 — 所有特征 ~N⁻¹ 经典收缩
+   - det(Σ) ∝ N^{-3.38} → Lor4D 点云体积 ~ N^{-1.69}
+   - 轨迹曲率 κ 从 0.59 (N=20) 递减到 0.04 (N=192) → 接近固定点
+   - (μ̂, Σ̂) 构成 **Lor4D 参考流形**: 特征空间中的一参数高斯云族
 
 ### 8.2 实验推进
 1. N=512/1024 极限测试（确认 margin 发散）
@@ -266,6 +275,8 @@ $$F \approx \sum_i \lambda_i \big(I_i - I_i^{(4D)}(N)\big)^2$$
 | `min_distortion_verify.py` | 最小失真作用量验证 | σ²∝N⁻¹, η=0.74±0.08 |
 | `feature_ablation_test.py` | 特征剔除最小完备性 | 三联体margin=101, 第四特征+15 |
 | `mahalanobis_lsd_test.py` | 零参数Mahalanobis版 | 全#1, CV 100%, 种子100% |
+| `mu_trajectory_theory.py` | μ(N)轨迹理论对象 | σ²∝N⁻¹, 曲率→0, R²=0.997 |
+| `hierarchical_screening_test.py` | 层级筛选原理 | d→c→w消除14.6/16, N≥96完美 |
 
 ---
 

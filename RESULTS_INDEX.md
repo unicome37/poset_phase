@@ -523,6 +523,72 @@ $$S_M[\mathcal{P}, N] = (\mathbf{I}(\mathcal{P}) - \boldsymbol{\mu}(N))^{\top} \
 
 ---
 
+## μ(N) Trajectory — Theory Object (2025-06-30)
+
+**目的**：将 Lor4D 的经验轨迹 μ(N)=(d_eff, c₁/c₀, w) 和协方差 Σ(N) 构造为形式化理论对象。
+
+**有限尺度标度拟合**（μ_i(N) = μ_i(∞) + a_i/N + b_i/N²）：
+
+| 特征 | μ(∞) | a | R² |
+|------|:----:|:--:|:--:|
+| d_eff | 3.957 | −0.34 | 0.14 |
+| c₁/c₀ | 0.357 | −9.45 | 0.99 |
+| width | 0.215 | +11.63 | 0.997 |
+
+**方差标度**：σ²(N) ∝ N^{−p}
+
+| 特征 | p | 解释 |
+|------|:-:|:----:|
+| d_eff | 1.05 | 经典 N⁻¹ |
+| c₁/c₀ | 1.11 | 经典 N⁻¹ |
+| width | 1.32 | 超经典收缩 |
+
+**协方差体积**：det(Σ) ∝ N^{−3.38}，Lor4D 点云体积 ~ N^{−1.69}
+
+**特征值缩放**：λ₁ ∝ N^{−1.06}, λ₂ ∝ N^{−1.14}, λ₃ ∝ N^{−1.18} — 三个本征模式以近似相同速率收缩
+
+**轨迹曲率**：κ(N) 从 0.59 (N=20) 单调递减到 0.04 (N=192) — 接近固定点时趋于直线
+
+**理论对象定义**：
+$$\hat{\mu}(N) = \mu(\infty) + \mathbf{a}/N + \mathbf{b}/N^2, \quad \hat{\Sigma}(N) = \mathrm{diag}(A_i \cdot N^{-p_i})$$
+
+(μ̂(N), Σ̂(N)) 完整定义了 **Lor4D 参考流形** — 特征空间中以 N 为参数的一参数高斯云族。
+
+**文件**：[`mu_trajectory_theory.py`](mu_trajectory_theory.py), [`outputs_carlip/mu_trajectory.md`](outputs_carlip/mu_trajectory.md)
+
+---
+
+## Hierarchical Screening Principle (2025-06-30)
+
+**目的**：验证三特征是否支持层级化筛选（dimension → interval → width），并量化最优筛选顺序。
+
+**筛选结构**（3σ 阈值，d→c→w 顺序）：
+
+| 层级 | 筛选特征 | 平均消除 |
+|------|:--------:|:-------:|
+| Level 1 | d_eff ≈ 4 | 12.0/16 族 |
+| Level 2 | c₁/c₀ ≈ c*(N) | +2.4 族 |
+| Level 3 | w ≈ w*(N) | +0.2 族 |
+| 总计 | — | 14.6/16 族 |
+
+**残存者分析**：
+- N≤64：Lor5D 是最后残存者（Z≈2.1-2.9，在 3σ 边界内）
+- N≥96：全部 16 族被消除 ✅
+- k_min 从 1.24σ (N=20) 增长到 4.91σ (N=128)
+
+**6种排列比较**：
+- 所有排列的总消除数相同（14.6/16）
+- d→c→w 是自然顺序：Level 1 消除最多(12)，最高效
+- 关键洞察：**全序不影响最终结果，但 d_eff 是最强第一筛**
+
+**与 Mahalanobis 一致性**：
+- N≥96：层级筛选 = Mahalanobis = 仅 Lor4D ✅
+- N<96：Mahalanobis 仍 #1，但层级有残存者（需更细阈值）
+
+**文件**：[`hierarchical_screening_test.py`](hierarchical_screening_test.py), [`outputs_carlip/hierarchical_screening.md`](outputs_carlip/hierarchical_screening.md)
+
+---
+
 ## Rule
 
 简单规则：
