@@ -624,6 +624,46 @@ $$\hat{\mu}(N) = \mu(\infty) + \mathbf{a}/N + \mathbf{b}/N^2, \quad \hat{\Sigma}
 
 ---
 
+## c*(∞) and w*(∞) First-Principles Derivation (2025-06-30)
+
+**目的**：从因果集理论第一性原理推导 μ(∞) = (d*, c*, w*) 各分量。
+
+**核心发现**：
+- **d*(∞) = 4.000**：Myrheim-Meyer 公式确定，✅ 完全可导出
+- **c*(∞) = 0.374 ± 0.007**：有限尺度标度拟合 R²=0.987；Beta(2,2) 积分给出正确趋势但需要重标度参数 α≈0.0024
+- **w*(∞) → 0**：幂律 w(N) = 1.22·N^{−0.284}，指数 β=0.284 ≈ 1/4 = 1/d (d=4 理论预测）✅
+  - 二次拟合给出 w*(∞)=0.204（有限 N 偏差）
+  - 幂律拟合明确指向 w(N)→0，R²=0.995
+
+**理论意义**：
+- well center 不是自由参数，而是因果几何的推论
+- 参数数从 LSD-W2 的 6 个减至 4 个（3 权重 + 1 重标度）
+- Mahalanobis LSD 彻底绕过此问题：0 自由参数
+
+**文件**：[`cstar_wstar_first_principles.py`](cstar_wstar_first_principles.py), [`outputs_carlip/cstar_wstar_first_principles.md`](outputs_carlip/cstar_wstar_first_principles.md)
+
+---
+
+## S_MD ↔ S_BD Explicit Connection (2025-06-30)
+
+**目的**：建立最小畸变作用量 S_MD 与 Benincasa-Dowker 因果集作用量 S_BD 的显式联系。
+
+**核心发现**：
+- **S_BD 和 S_MD 几乎不相关**：Pearson r 从 0.57(N=48)→0.07(N=64)→−0.26(N=128)
+- **S_BD 不能唯一选择 Lor4D**：N=128 排名第 14/17（KR_like 最小）
+- **S_MD 唯一选择 Lor4D**：所有 N 均排名 #1，S_MD=2.9 vs 第二名≥18
+- **联合选择 {BD window} ∩ {MD well} = {Lor4D}** ✅
+- **Jacobian 分析**：C₁/C₀ 主要由 C₁ 决定（J₁≈+9-12），width 由 C_k 部分解释（R²≈0.5）
+
+**形式关系**：
+- S_BD = S_BD* + c^T · ΔC （线性，一阶泛函）
+- S_MD = ΔC^T · J^T Σ⁻¹ J · ΔC （二阶泛函）
+- S_BD 定义超平面（正确曲率），S_MD 定义椭球（正确几何），二者互补
+
+**文件**：[`smd_sbd_connection.py`](smd_sbd_connection.py), [`outputs_carlip/smd_sbd_connection.md`](outputs_carlip/smd_sbd_connection.md)
+
+---
+
 ## Rule
 
 简单规则：

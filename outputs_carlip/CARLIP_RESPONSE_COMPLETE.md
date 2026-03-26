@@ -277,8 +277,18 @@ $$F \approx \sum_i \lambda_i \big(I_i - I_i^{(4D)}(N)\big)^2$$
    - C₁/C₀ = 0 (二部图无 2-step interval) vs Lor4D 的 0.35 → 随 N 发散
    - Width 0.75 vs Lor4D 0.30 → 同样随 N 发散
    - **结论**：结构相似是**偶然的**，非几何性的；gap 单调增长到 N=1024
-3. 连续时空极限 N→∞ 下 c*(∞), w*(∞) 的理论预测（待完成）
-4. Prediction B 在不同种子下的再现性测试（待完成）
+3. ✅ **c*(∞), w*(∞) 第一性原理推导**：
+   - d*(∞) = 4.000（Myrheim-Meyer，精确）
+   - c*(∞) = 0.374±0.007（有限尺度标度 R²=0.987）
+   - w*(∞) → 0：幂律 w∝N^{−0.284}，β=0.284 ≈ 1/d=0.25（d=4 理论预测）✅
+   - Well center 是因果几何推论，非自由参数
+4. ✅ **S_MD ↔ S_BD 显式联系**：
+   - 两个作用量几乎不相关（Pearson r≈0 at N=64）
+   - S_BD 不能唯一选出 Lor4D（N=128 排名 14/17）
+   - S_MD 唯一选出 Lor4D（全 N #1）
+   - 联合选择 {BD window} ∩ {MD well} = {Lor4D}
+   - 形式关系：S_BD=线性超平面 vs S_MD=二次椭球，互补
+5. Prediction B 在不同种子下的再现性测试（待完成）
 
 ### 8.3 投稿策略
 1. 核心论文：LSD-Well 框架 + A/E 确认结果
@@ -305,6 +315,10 @@ $$F \approx \sum_i \lambda_i \big(I_i - I_i^{(4D)}(N)\big)^2$$
 | `mahalanobis_lsd_test.py` | 零参数Mahalanobis版 | 全#1, CV 100%, 种子100% |
 | `mu_trajectory_theory.py` | μ(N)轨迹理论对象 | σ²∝N⁻¹, 曲率→0, R²=0.997 |
 | `hierarchical_screening_test.py` | 层级筛选原理 | d→c→w消除14.6/16, N≥96完美 |
+| `large_n_extreme_test.py` | N=128-1024极限 | margin 93→1.93亿, slope>7 |
+| `kr_2layer_analysis.py` | KR_2layer深度分析 | width占60-93%, C₁/C₀≡0, 偶然相似 |
+| `cstar_wstar_first_principles.py` | c*/w*第一性原理 | c*(∞)=0.374, w∝N^{-0.284}, β≈1/d |
+| `smd_sbd_connection.py` | S_MD↔S_BD联系 | 不相关, 联合选择=Lor4D |
 
 ---
 
