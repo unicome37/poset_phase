@@ -468,6 +468,61 @@ $$S_{\mathrm{MD}}[\mathcal{P}, N] = \boldsymbol{\delta}^{\top} \Lambda(N)\, \bol
 
 ---
 
+## Feature Ablation: Minimal Complete Basis Test (2025-06-30)
+
+**目的**：验证 (d_eff, C₁/C₀, width) 是否为 Lor4D 判别的最小完备基。
+
+**方法**：9 种配置 × Mahalanobis 距离 × 17 族 × 8 N values (3400 样本)。
+
+**结果**：
+
+| 配置 | 全 N #1? | 平均 margin |
+|------|:--------:|:----------:|
+| Full (d,c,w) | ✅ | 101.5 |
+| Drop d_eff | ❌ N=16 失败 | 6.9 |
+| Drop C₁/C₀ | ✅ | 60.1 |
+| Drop width | ✅ | 27.2 |
+| d only | ❌ 7/8 失败 | -0.3 |
+| c only | ❌ 2/8 失败 | 5.4 |
+| w only | ❌ 5/8 失败 | -0.2 |
+| +height | ✅ | 106.5 (+5.0) |
+| +order_frac | ✅ | 117.0 (+15.5) |
+
+**结论**：
+- **d_eff 严格必要**：唯一去掉后导致失败的特征
+- **C₁/C₀ 和 width 非严格必要但提供巨大 margin 增益**：去掉各损失 41 和 74 的 margin
+- **三联体的价值在于 margin 协同效应**：Full margin=101 远超任何双特征组合
+- **第四特征边际递减**：height +5, order_frac +15.5 — 不改变排名
+- **结论：三联体是 Lor4D manifold-likeness 的最小高效判别基**
+
+**文件**：[`feature_ablation_test.py`](feature_ablation_test.py), [`outputs_carlip/feature_ablation_test.md`](outputs_carlip/feature_ablation_test.md)
+
+---
+
+## Mahalanobis LSD: Parameter-Free Discriminator (2025-06-30)
+
+**目的**：用 Lor4D 协方差矩阵 Σ⁻¹(N) 替换手调权重，实现零参数判别器。
+
+$$S_M[\mathcal{P}, N] = (\mathbf{I}(\mathcal{P}) - \boldsymbol{\mu}(N))^{\top} \Sigma^{-1}(N) (\mathbf{I}(\mathcal{P}) - \boldsymbol{\mu}(N))$$
+
+**结果**：
+
+| 测试 | 结果 |
+|------|------|
+| 全 N 排名 #1 | ✅ 8/8 |
+| Margin vs 手调版 | Mahal margin 4–297 vs 手调 0.04–1.06 (100-300×) |
+| 交叉验证 (Leave-5-Out) | 100% #1 (48/48 次) |
+| 种子稳健性 (3 seeds × 8 N) | 100% #1 (24/24 次) |
+
+**意义**：
+- LSD-Well 的三个自由参数 (α,β,γ) **可以完全消除**
+- 判别器由 Lor4D 统计几何唯一确定
+- 这是 S_MD 算子形式 Λ=Σ⁻¹ 的直接实现
+
+**文件**：[`mahalanobis_lsd_test.py`](mahalanobis_lsd_test.py), [`outputs_carlip/mahalanobis_lsd.md`](outputs_carlip/mahalanobis_lsd.md)
+
+---
+
 ## Rule
 
 简单规则：

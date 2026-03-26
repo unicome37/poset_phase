@@ -229,8 +229,13 @@ $$F \approx \sum_i \lambda_i \big(I_i - I_i^{(4D)}(N)\big)^2$$
    - σ² ∝ N^{-1} (三特征 p ≈ 1.0) → margin 随 N 发散 → Lyapunov 泛函
    - Mahalanobis margin 比对角 margin 大 100× → 协方差结构可进一步利用
    - 混合指数 η = 0.74 ± 0.08 跨 N 稳定 → 理论结构具有普适性
-3. **第四不变量搜索**：验证三联体是否为最小完备判别基
+3. **第四不变量搜索** ✅ **已验证**：
+   - Feature ablation: 三联体 margin=101.5; +height 仅 +5.0, +order_frac 仅 +15.5
+   - d_eff 严格必要; C₁/C₀ 和 width 提供 margin 协同但非严格必要
+   - 结论：(d_eff, C₁/C₀, w) 是 Lor4D manifold-likeness 的最小高效判别基
 4. **分层筛选原理**：LSD-Well 不是 fundamental law 而是 effective selector
+   - Mahalanobis LSD (零参数版) 全 N 全 #1, 交叉验证 100%, 种子稳健 100%
+   - 进一步确认：判别器由 Lor4D 统计几何唯一确定
 
 ### 8.2 实验推进
 1. N=512/1024 极限测试（确认 margin 发散）
@@ -258,6 +263,9 @@ $$F \approx \sum_i \lambda_i \big(I_i - I_i^{(4D)}(N)\big)^2$$
 | `carlip_lsd_well_large_n.py` | Large-N 可扩展性 (N=16–256) | margin 单调增长 |
 | `prediction_b_lsd_well_revision.py` | B 修订版 | N≥20 #1/17 |
 | `carlip_fisher_weight_test.py` | Fisher 信息权重假说 | Σ⁻¹排序=经验排序, Mahalanobis全#1 |
+| `min_distortion_verify.py` | 最小失真作用量验证 | σ²∝N⁻¹, η=0.74±0.08 |
+| `feature_ablation_test.py` | 特征剔除最小完备性 | 三联体margin=101, 第四特征+15 |
+| `mahalanobis_lsd_test.py` | 零参数Mahalanobis版 | 全#1, CV 100%, 种子100% |
 
 ---
 
