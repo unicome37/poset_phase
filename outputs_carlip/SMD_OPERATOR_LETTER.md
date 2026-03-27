@@ -7,13 +7,13 @@
 
 ## Abstract
 
-We introduce a structural action $S_{\mathrm{MD}}[P,N] = \delta^\top \Sigma^{-1}(N)\,\delta$ that measures the Mahalanobis distance of a finite poset $P$ from the 4D Lorentzian reference manifold in a three-dimensional feature space of causal-set observables. The action has **zero free parameters**: its center $\boldsymbol{\mu}(N)$ and metric $\Sigma^{-1}(N)$ are entirely determined by the ensemble statistics of $N$-element Lorentzian sprinklings into a 4D causal diamond. We identify a sharp **identity turn-on** at $N_{\mathrm{id}} \approx 14$: for all $N \geq 14$ and across 25 structurally diverse poset families (including 8 adversarial constructions), $S_{\mathrm{MD}}$ uniquely assigns the minimum value to 4D Lorentzian causal sets in 10/10 independent trials, with the separation margin growing monotonically from $+1.28$ to $+4.59$ over $N = 14$–$32$ and the Mahalanobis gap reaching $1.93 \times 10^8$ at $N = 1024$. Below the resolution floor ($N = 12$), identification is incomplete (6/10), consistent with the physical overlap of 4D/5D causal geometry at very small $N$. Combined with the Benincasa-Dowker action (a linear admissibility gate), $S_{\mathrm{MD}}$ completes a two-layer screening architecture that uniquely selects 4D Lorentzian geometry from the poset landscape.
+We introduce a structural action $S_{\mathrm{MD}}[P,N] = \delta^\top \Sigma^{-1}(N)\,\delta$ that measures the Mahalanobis distance of a finite poset $P$ from the 4D Lorentzian reference manifold in a three-dimensional feature space of causal-set observables. The action has **zero free parameters**: its center $\boldsymbol{\mu}(N)$ and metric $\Sigma^{-1}(N)$ are entirely determined by the ensemble statistics of $N$-element Lorentzian sprinklings into a 4D causal diamond. We identify a sharp **identity turn-on** at $N_{\mathrm{id}} \approx 14$: for all $N \geq 14$ and across 25 structurally diverse poset families (including 8 adversarial constructions), $S_{\mathrm{MD}}$ uniquely assigns the minimum value to 4D Lorentzian causal sets in 10/10 independent trials, with the separation margin growing from $+1.28$ ($N=14$) to $+4.0$–$4.6$ ($N=28$–$32$) and the Mahalanobis gap reaching $1.93 \times 10^8$ at $N = 1024$. Below the resolution floor ($N = 12$), identification is incomplete (6/10), consistent with the physical overlap of 4D/5D causal geometry at very small $N$. Combined with the Benincasa-Dowker action (a linear admissibility gate), $S_{\mathrm{MD}}$ completes a two-layer screening architecture that uniquely selects 4D Lorentzian geometry within the tested library.
 
 ---
 
 ## 1. Motivation
 
-The causal set path integral faces the Kleitman-Rothschild entropy catastrophe: generic $n$-element posets are non-geometric three-layered structures [Kleitman & Rothschild 1975; Dhar 1978], and their combinatorial entropy overwhelms the Boltzmann suppression provided by known discrete actions [Loomis & Carlip 2018]. The Benincasa-Dowker (BD) action $S_{\mathrm{BD}}$ [Benincasa & Dowker 2010], while correctly encoding average scalar curvature, ranks 4D Lorentzian causal sets (Lor4D) only 14th out of 17 families at $N = 128$—it functions as a linear admissibility gate, not an identity selector.
+The causal set path integral faces the Kleitman-Rothschild entropy catastrophe: generic $n$-element posets are non-geometric three-layered structures [Kleitman & Rothschild 1975; Dhar 1978], and their combinatorial entropy overwhelms the Boltzmann suppression provided by known discrete actions [Loomis & Carlip 2018]. The Benincasa-Dowker (BD) action $S_{\mathrm{BD}}$ [Benincasa & Dowker 2010], while correctly encoding average scalar curvature, ranks 4D Lorentzian causal sets (Lor4D) only 14th out of 17 original families at $N = 128$—it functions as a linear admissibility gate, not an identity selector.
 
 This motivates the search for an additional selection mechanism. We report that such a mechanism exists as a natural quadratic extension: the Mahalanobis distance from the Lor4D reference manifold in structural feature space.
 
@@ -51,7 +51,7 @@ $$\boxed{S_{\mathrm{MD}}[P,N] = \bigl(\mathbf{I}(P) - \boldsymbol{\mu}(N)\bigr)^
 
 This is the squared Mahalanobis distance from the Lor4D reference manifold. It has **zero tunable parameters**: $\boldsymbol{\mu}(N)$ and $\Sigma(N)$ are computed entirely from the Lor4D ensemble.
 
-**Operator form.** Defining $\delta = \mathbf{I}(P) - \boldsymbol{\mu}(N)$ and the Fisher-weighted matrix $\Lambda(N) = (1-\eta)\Sigma^{-1}(N) + \eta\, F_{\mathrm{disc}}(N)$, the generalized action $S_{\mathrm{MD}} = \delta^\top \Lambda\, \delta$ interpolates between pure Mahalanobis ($\eta=0$) and maximum-discrimination ($\eta=1$) weighting, with optimal mixing at $\eta = 0.74 \pm 0.08$.
+Throughout this Letter we use the pure Mahalanobis form ($\Sigma^{-1}$ weighting). A generalized form $S = \delta^\top [(1-\eta)\Sigma^{-1} + \eta\, F_{\mathrm{disc}}]\, \delta$ that interpolates toward maximum-discrimination weighting (optimal at $\eta \approx 0.74$) exists but is not needed for the results reported here.
 
 ### 2.4 Small-$N$ Reference Ensemble Precision
 
@@ -85,13 +85,15 @@ We test $S_{\mathrm{MD}}$ on a library of 25 poset families (4 Lorentzian dimens
 | 256 | #1 | — | $2.1 \times 10^4$ | — |
 | 1024 | #1 | — | $1.93 \times 10^8$ | — |
 
-Lor4D is ranked #1 at all $N \geq 14$ across all 25 families and 10 independent seeds. At $N = 12$, the identification is seed-dependent (6/10), consistent with the physical resolution floor (§2.4). The turn-on at $N_{\mathrm{id}} \approx 14$ is sharp: margin jumps from $+0.10$ to $+1.28$ between $N=12$ and $N=14$, then grows monotonically.
+Lor4D is ranked #1 at all $N \geq 14$ across all 25 families and 10 independent seeds. At $N = 12$, the identification is seed-dependent (6/10), consistent with the physical resolution floor (§2.4). The turn-on at $N_{\mathrm{id}} \approx 14$ is sharp: margin jumps from $+0.10$ to $+1.28$ between $N=12$ and $N=14$, then grows with $N$.
+
+**Figure 1.** $S_{\mathrm{MD}}$ turn-on diagnostics (REPS=80, 25 families, 10 seeds). (a) Mean margin ± std vs $N$, with min–max range shaded; the green dashed line marks the turn-on at $N=14$. (b) Lor4D rank-#1 success rate: 100% for $N \geq 14$, 60% at $N=12$. (c) Worst-case (minimum) margin across seeds: negative only at $N=12$. (d) Reference manifold components $\mu_{d_{\mathrm{eff}}}(N)$, $\mu_{C_1/C_0}(N)$, $\mu_{w/N}(N)$ converging toward their theoretical limits.
 
 ### 3.2 Robustness
 
-- **Cross-validation** (5-fold): LSD-Well 98% rank-1 rate; Mahalanobis 94%.
-- **Seed reproducibility** (10 independent seeds): LSD-Well 80/80 rank-1; Mahalanobis 79/80.
-- **Adversarial families**: No adversarial construction achieves a lower $S_{\mathrm{MD}}$ than Lor4D at any tested $N$.
+- **Seed reproducibility** (10 seeds, REPS=80): Lor4D rank #1 in 10/10 seeds for all $N \geq 14$ (Table 1). At $N=12$, 6/10.
+- **Adversarial families**: No adversarial construction (8 families designed to challenge the discriminator) achieves a lower $S_{\mathrm{MD}}$ than Lor4D at any tested $N \geq 14$.
+- **Cross-validation** (5-fold, REPS=20 reference): LSD-Well 98% rank-1 rate; Mahalanobis 94%. The lower CV rate reflects the smaller reference ensemble; the REPS=80 protocol (Table 1) eliminates this gap.
 
 ### 3.3 Basin Deepening Scalings
 
@@ -115,7 +117,7 @@ The two layers are nearly orthogonal (Pearson $r \to 0$ as $N$ grows). Their int
 
 $$\{S_{\mathrm{BD}} \in \text{admissible window}\} \;\cap\; \{S_{\mathrm{MD}} \approx 0\} = \{\text{Lor4D}\}.$$
 
-A magnitude-level gradient correlation ($|\cos(\nabla S_{\mathrm{BD}}, \nabla F_{\mathrm{LSD}})| \approx 0.85$) suggests that the two layers encode related geometric information at different algebraic orders—an *order-raising* relationship from first-order linear gating to second-order quadratic confinement—but the sign of this cosine is numerically unstable due to Jacobian pseudo-inverse ill-conditioning, and we do not claim pointwise gradient identity.
+The algebraic relationship between the two layers—from first-order linear gating to second-order quadratic confinement—suggests an *order-raising* structure, though we do not claim a formal derivation of $S_{\mathrm{MD}}$ from $S_{\mathrm{BD}}$.
 
 ## 5. Discussion
 
