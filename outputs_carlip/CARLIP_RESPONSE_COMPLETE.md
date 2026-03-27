@@ -327,6 +327,8 @@ $$F \approx \sum_i \lambda_i \big(I_i - I_i^{(4D)}(N)\big)^2$$
 | `prediction_b_seed_reproducibility.py` | B种子再现性 | LSD 80/80 #1, Mahal 79/80 #1 |
 | `prediction_b_cross_validation.py` | B交叉验证非过拟合 | CV LSD 98% #1, Mahal 94% #1, margin保留率>95% |
 | `n16_mahalanobis_cv_rootcause.py` | N=16 Mahal CV失败根因 | 唯一入侵者=Lor5D, 物理分辨率极限 |
+| `bootstrap_confidence.py` | Bootstrap 95%置信区间 | N≥20 P(#1)≥97%, margin CI全正 |
+| `lor5d_dimension_encoding.py` | Lor5D维度编码分析 | MM 分辨率 ~2.4σ at N=16, 临界 N≈20 |
 
 ---
 
