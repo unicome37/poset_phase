@@ -684,6 +684,55 @@ $$\hat{\mu}(N) = \mu(\infty) + \mathbf{a}/N + \mathbf{b}/N^2, \quad \hat{\Sigma}
 
 ---
 
+## Gradient Sign-Flip Diagnostic — Phase 13.1 (2025-06-30)
+
+**目的**：诊断 cos(∇S_BD, ∇F_LSD) 从 N=48 的 +0.97 翻转到 N=96 的 -0.94 的根因。
+
+**核心发现**：
+- **根因**: w*(∞)=0.3255 > w_centroid(∞)≈0.22-0.25，LSD-Well 宽度井心系统偏高
+- **翻转机制**: ∂F/∂w = 10(w_cent − w*) 在 w_cent < w* 时变负，而 ∇S_BD 宽度分量恒正
+- **Jacobian 伪逆 R²=0.5-0.76**: 数值脆弱，不宜承担第一性原理桥主论证
+
+**文件**：[`gradient_signflip_diagnostic.py`](gradient_signflip_diagnostic.py), [`outputs_carlip/gradient_signflip_diagnostic.txt`](outputs_carlip/gradient_signflip_diagnostic.txt)
+
+---
+
+## Reference-Manifold Gradient Alignment — Phase 13.2 (2025-06-30)
+
+**目的**：将 w*(N) 升级为 μ_w(N)（Lor4D 实际质心轨迹），验证 sign-flip 是否消除。
+
+**核心发现**：
+- **μ_w(N) 轨迹**：μ_w(∞)=0.227, a=+9.65/N, R²=0.990（vs 旧 w*=0.3255+3.80/N）
+- **|cos| 稳定化**：修复后 |cos|≈0.85 跨所有 N（旧版波动 0.26-0.98）
+- **符号仍不稳定**：新版 sign-flips 6/11（旧 1/11）—— 但这是 ∇S_BD 自身方向的不稳定
+- **确定性结论**：sign instability 来自 Jacobian 伪逆方向的内在脆弱性，而非 well-center 偏置
+- **理论降级**：梯度 cosine 论证降级为辅助，主轴保留为两层筛选 + basin deepening + 鲁棒性
+
+**关键数据（Local Jacobian，w*(N)→μ_w(N)）**：
+
+| N | cos_old | cos_new | |cos_new| |
+|---:|:------:|:------:|:--------:|
+| 16 | +0.81 | +0.85 | 0.85 |
+| 20 | +0.84 | +0.85 | 0.85 |
+| 36 | +0.80 | +0.85 | 0.85 |
+| 48 | −0.93 | −0.84 | 0.84 |
+| 64 | +0.44 | +0.85 | 0.85 |
+| 96 | +0.79 | −0.86 | 0.86 |
+| 128 | +0.83 | −0.86 | 0.86 |
+| 256 | +0.83 | −0.85 | 0.85 |
+
+**Real-family departure test**：对 Lor3D/Lor5D/KR_like 等实际族，cos_old ≈ cos_new，表明 well-center 偏移对真实族评估影响有限。
+
+**最终判断**：
+> Phase 13.2 confirms: gradient magnitude alignment is structurally robust (|cos|≈0.85),
+> but sign stability requires stable ∇S_BD, which the Jacobian pseudo-inverse cannot guarantee.
+> The gradient bridge is demoted to auxiliary evidence; primary support for two-layer theory
+> comes from admissibility/identity separation, basin deepening, and family-library robustness.
+
+**文件**：[`gradient_alignment_v2.py`](gradient_alignment_v2.py), [`outputs_carlip/gradient_alignment_v2.md`](outputs_carlip/gradient_alignment_v2.md), [`outputs_carlip/gradient_alignment_v2_fix.png`](outputs_carlip/gradient_alignment_v2_fix.png)
+
+---
+
 ## Rule
 
 简单规则：
