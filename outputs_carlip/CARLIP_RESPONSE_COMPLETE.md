@@ -317,13 +317,13 @@ $$F \approx \sum_i \lambda_i \big(I_i - I_i^{(4D)}(N)\big)^2$$
    - **无任何对抗性家族在任何 N 处击败 Lor4D** ✅
    - Margin 增长：LSD-Well +0.04→+0.77; Mahalanobis +0.97→+122.6
 
-9. ✅ **EH/BDG → LSD-Well 第一性原理连接**（eh_bdg_lsd_connection.py）：
-   - 梯度对齐：cos(∇S_BD, ∇F_LSD) = **+0.97** (N=48), +0.79 (N=64)
-   - S_BD 在 LSD-Well 特征空间 R² = 0.16–0.74（部分重叠）
-   - 族内相关弱（Pearson r ≈ 0.1–0.2）: S_BD 与 F_LSD 在 Lor4D 内部不对齐
-   - 约束 S_BD (d∈[3.5,4.5]) → Lor4D rank 3/3–5（从 8–14 大幅改善）
-   - **结构关系**：S_BD = cᵀC (线性/一阶曲率) vs F_LSD = ΔCᵀJᵀWJΔC (二次/二阶认同)
-   - **结论**：梯度高度对齐但功能互补——准入(线性)+身份(二次)两层架构得到第一性原理支撑
+9. ⚠️ **EH/BDG → LSD-Well 梯度关联**（eh_bdg_lsd_connection.py → gradient_alignment_v2.py）：
+   - 初始发现：cos(∇S_BD, ∇F_LSD) = +0.97 (N=48)——但后续诊断发现此值不稳定
+   - **Phase 13.1 诊断**：sign-flip 根因 = w*(∞)=0.3255 偏高 + Jacobian 伪逆病态
+   - **Phase 13.2 修正**：w*(N)→μ_w(N) 后 |cos|≈0.85 跨所有 N 稳定，但符号仍 6/11 翻转
+   - **结论（修正后）**：梯度桥降级为辅助证据——幅度级关联真实（|cos|≈0.85），但符号级方向不可靠（Jacobian 伪逆 R²_w=0.49-0.92）。两层架构的主支撑来自准入/认同分离、basin deepening 和 25 族鲁棒性，而非梯度对齐。
+   - **升阶关系**：S_BD = cᵀC (线性/一阶曲率) → S_MD = δᵀΛδ (二次/二阶认同)，是"升阶"而非"逐点梯度同一"
+   - 详见 [`outputs_carlip/DISCUSSION_THEORY_IMPLICATIONS.md`](DISCUSSION_THEORY_IMPLICATIONS.md)
 
 ### 8.3 投稿策略
 1. 核心论文：LSD-Well 框架 + A/E 确认结果
@@ -362,7 +362,9 @@ $$F \approx \sum_i \lambda_i \big(I_i - I_i^{(4D)}(N)\big)^2$$
 | `triple_screening_quantitative.py` | 三重筛选(E₁×E₂×E₃)定量化 | Lor4D rank #12 (Lor2D wins); 三重筛选=准入门, 非身份选择器 |
 | `basin_deepening_experiment.py` | Basin深化N-scaling | Mahal gap -0.8→94.1; V_eff∝N^{-1.57}; Fisher∝N^{1.00} |
 | `expanded_family_robustness.py` | 25族(+8对抗)鲁棒性 | LSD-Well Lor4D全N#1, 无新挑战者 |
-| `eh_bdg_lsd_connection.py` | EH/BDG→LSD-Well第一性原理桥 | cos(∇S_BD,∇F_LSD)=0.97(N=48); 约束S_BD排名3/3-5; 线性+二次互补 |
+| `eh_bdg_lsd_connection.py` | EH/BDG→LSD-Well梯度关联 | \|cos\|≈0.85(幅度稳定)；符号不可靠(Jacobian病态)；降级为辅助 |
+| `gradient_signflip_diagnostic.py` | sign-flip诊断(Phase 13.1) | w*偏置+Jacobian伪逆→符号跳变根因 |
+| `gradient_alignment_v2.py` | reference-manifold梯度(Phase 13.2) | μ_w(∞)=0.227; \|cos\|≈0.85; 梯度桥定位为辅助 |
 
 ---
 
