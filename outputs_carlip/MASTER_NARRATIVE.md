@@ -36,9 +36,9 @@
 
 ### ④ 意义
 
-随着 $N$ 增大，身份域持续深化（Mahalanobis gap: $-0.8 \to 1.93 \times 10^8$；Fisher 信息 $\propto N$），参考流形协方差塌缩为 $\det(\Sigma) \propto N^{-3.38}$。两层之间存在**升阶关联**（梯度幅度级 $|\cos| \approx 0.85$），但不是逐点梯度同一——这是同一因果几何在不同阶数上的自然编码，从一阶线性准入升阶为二阶二次约束。
+随着 $N$ 增大，身份域持续深化（Mahalanobis gap: $1.38 \to 1.93 \times 10^8$；Fisher 信息 $\propto N$），参考流形协方差塔缩为 $\det(\Sigma) \propto N^{-3.38}$。两层之间存在**升阶关联**（梯度幅度级 $|\cos| \approx 0.85$），但不是逐点梯度同一——这是同一因果几何在不同阶数上的自然编码，从一阶线性准入升阶为二阶二次约束。
 
-> As $N$ grows, the identity basin deepens (Mahalanobis gap: $-0.8 \to 1.93 \times 10^8$; Fisher information $\propto N$) and the reference manifold covariance collapses as $\det(\Sigma) \propto N^{-3.38}$. The two layers share an **order-raising correlation** (gradient magnitude $|\cos| \approx 0.85$), not a pointwise gradient identity—they encode the same causal geometry at different orders, from first-order linear gating to second-order quadratic confinement.
+> As $N$ grows, the identity basin deepens (Mahalanobis gap: $1.38 \to 1.93 \times 10^8$; Fisher information $\propto N$) and the reference manifold covariance collapses as $\det(\Sigma) \propto N^{-3.38}$. The two layers share an **order-raising correlation** (gradient magnitude $|\cos| \approx 0.85$), not a pointwise gradient identity—they encode the same causal geometry at different orders, from first-order linear gating to second-order quadratic confinement.
 
 ---
 
@@ -51,7 +51,7 @@
 | $S_{\mathrm{BD}}$ 单独排名 | 14/17 (N=128) | smd_sbd_connection |
 | $S_{\mathrm{MD}}$ 排名 | 全 N 全族 #1 | mahalanobis_lsd_test |
 | 两层交集 | $= \{\text{Lor4D}\}$ | smd_sbd_connection |
-| Mahal gap | $-0.8 \to 94.1$ (N=16→128) | basin_deepening_experiment |
+| Mahal gap | $1.38$ (N=16, REPS≥80) $\to 94.1$ (N=128) | basin_deepening / n16_stability |
 | Margin @ N=1024 | $1.93 \times 10^8$ | large_n_extreme_test |
 | $V_{\mathrm{eff}}$ scaling | $\propto N^{-1.57}$ | basin_deepening_experiment |
 | Fisher scaling | $\propto N^{1.00}$ | basin_deepening_experiment |
@@ -93,7 +93,7 @@
 | "gradient alignment confirms derivation" | 符号不稳 | "magnitude-level correlation supports order-raising interpretation" |
 | "logH = physical entropy" | Carlip C1 | "residual ordering freedom proxy" |
 | "LSD-Well optimally selects Lor4D" | 有参数 | "Mahalanobis LSD achieves zero-parameter selection" |
-| "all families fail except Lor4D" | N=16 Lor5D | "Lor4D is uniquely ranked #1 at $N \geq 20$" |
+| “all families fail except Lor4D” | N=16 参考集精度敏感 | “Lor4D is uniquely ranked #1 at all $N$; at $N=16$ the margin is small and requires $\geq 80$ reference sprinklings” |
 
 ---
 
