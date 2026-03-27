@@ -3,39 +3,24 @@
 Date: 2026-03-27
 Goal: convert the current numerical synthesis into a submission-ready package with precise claims, strong robustness, and clean paper structure.
 
-## Week 1 (Stabilize Claims + Close the Small-N Hole)
+## Week 1 (Stabilize Claims + Close the Small-N Hole) — ✅ COMPLETED 2026-03-27
 
-### 1.1 Lock “claim boundaries” (write once, reuse everywhere)
-- Define canonical claim set:
-  - `S_BD` is admissibility (necessary, not sufficient).
-  - `S_MD` (Mahalanobis) is identity (sufficient for N ≥ N0).
-  - Joint screening selects Lor4D uniquely in the tested library.
-- Pick and enforce a safe N-threshold for Mahalanobis (default: `N ≥ 20`), unless the following work upgrades it.
-- Propagate wording to: `SMD_OPERATOR_LETTER.md`, `INTRODUCTION_DRAFT.md`, `DISCUSSION_THEORY_IMPLICATIONS.md`, `MASTER_NARRATIVE.md`.
+### 1.1 Lock "claim boundaries" — ✅ DONE
+- **Turn-on boundary confirmed: N ≥ 14** (previously expected N ≥ 20)
+- REPS=80, 25 families, 10 independent seeds
+- N=14–32: 10/10 Lor4D rank #1, margin +1.28 → +4.59
+- N=12: 6/10 (physical resolution limit, intruders: Lor5D + KR_2layer)
+- Evidence: `mahalanobis_n_boundary_turnon.md`, `fig_margin_vs_n.png`, `n12_failure_diagnosis.md`
 
-### 1.2 Decide a principled small-N treatment (choose one, implement, document)
-Target: handle the `N=16` Lor5D “intruder” for pure Mahalanobis without introducing tunable knobs.
+### 1.2 Small-N treatment — ✅ DECIDED
+- **Decision**: Claim N ≥ 14 with resolution-limit explanation for N=12
+- N=12 failures are physical: d_eff overlap between Lor4D/Lor5D at 12 sprinkled points
+- Not a statistical artifact (cond(Σ) < 50, not pathological)
+- No tunable knobs introduced
 
-Options:
-- (Preferred) Add an explicit “resolution limit” clause:
-  - State that `N=16` does not encode enough information to separate 4D vs 5D reliably.
-  - Keep Mahalanobis claim as `N ≥ 20`.
-- (If you want “all N”) Add a *principled* prior:
-  - Use `d*=4` as a physical prior at small N (hybrid metric: Mahalanobis + fixed (d-4)^2 term, with a rule-based crossover N0).
-  - Alternatively, use shrinkage Σ→(1-α)Σ+α·I with α fixed by an information criterion or analytic prescription (not hand tuned).
-
-Status note (local tests, 2026-03-27):
-- Anchoring only the d-component mean to `d*=4` did not reliably eliminate the `N=16` intruder by itself.
-- The `N=16` top-1 winner is sensitive to finite-sample estimation of `(mu,Sigma)` when the Lor4D reference ensemble is small (e.g. 20 samples); with larger Lor4D ensembles the baseline/full Mahalanobis stabilizes to Lor4D #1 in seed sweeps.
-- Reference: `outputs_carlip/SMALL_N_TREATMENT_NOTE.md` and `outputs_carlip/mahalanobis_n16_stability_results.md`.
-
-Deliverable:
-- 1–2 paragraphs “Small-N limitation / treatment” inserted into `SMD_OPERATOR_LETTER.md` and the full paper.
-- A short note summarizing the decision and rationale in `DISCUSSION_THEORY_IMPLICATIONS.md` (limitations subsection).
-
-### 1.3 Re-run or extend one robustness slice (only if needed)
-- Expand N-grid around the boundary (e.g., N=16,18,20,24,28) for the Mahalanobis ranking to show the “turn-on” of uniqueness.
-- Keep this as a single compact table for the Letter.
+### 1.3 N-boundary robustness  DONE
+- Full N=12,14,16,18,20,24,28,32 grid with 80 runs each
+- Turn-on table and 4-panel diagnostic figure ready for Letter
 
 ## Week 2 (Turn the Theory Object Into a Clean Story)
 
