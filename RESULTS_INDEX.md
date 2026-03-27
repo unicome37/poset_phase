@@ -112,6 +112,15 @@
     - N=16 LSD-Well margins: 0.003–0.152（均正），确认非种子偶然
     - Mahalanobis margin 随 N 发散（3.0 → 40.4），几何可分性增强
 
+- `outputs_carlip/prediction_b_cross_validation.md`
+  - 来源脚本：`prediction_b_cross_validation.py`
+  - 作用：5-fold CV 验证 Lor4D #1 非过拟合（train/test 分离）
+  - 关键结论：
+    - Oracle 模式: 24/24 全 #1
+    - CV 模式: LSD 117/120 (98%), Mahalanobis 113/120 (94%)
+    - Margin 保留率: LSD 106%, Mahalanobis 95% — 无过拟合
+    - 失败仅发生在 N=16/20，属于小样本协方差估计不稳定
+
 ## Control Group (added post hoc)
 
 - `outputs/` (full 17-family experiment)

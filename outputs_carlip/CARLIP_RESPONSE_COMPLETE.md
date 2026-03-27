@@ -325,6 +325,7 @@ $$F \approx \sum_i \lambda_i \big(I_i - I_i^{(4D)}(N)\big)^2$$
 | `cstar_wstar_first_principles.py` | c*/w*第一性原理 | c*(∞)=0.374, w∝N^{-0.284}, β≈1/d |
 | `smd_sbd_connection.py` | S_MD↔S_BD联系 | 不相关, 联合选择=Lor4D |
 | `prediction_b_seed_reproducibility.py` | B种子再现性 | LSD 80/80 #1, Mahal 79/80 #1 |
+| `prediction_b_cross_validation.py` | B交叉验证非过拟合 | CV LSD 98% #1, Mahal 94% #1, margin保留率>95% |
 
 ---
 
