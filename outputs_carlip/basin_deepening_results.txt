@@ -1,0 +1,59 @@
+# Basin Deepening Experiment Results
+======================================================================
+
+Theory: As N grows, the Lor4D well deepens — separation from
+competitors increases (historical sedimentation of structure).
+
+## Quantity Table
+
+    N   margin_ratio   mahal_gap         V_eff     tr_Fisher   n_lor4d
+----------------------------------------------------------------------
+   12         0.4911     -0.8160  3.321259e-03        197.03        30
+   16         1.4604      1.8877  1.582062e-03        469.15        30
+   20         1.7630      2.4617  2.393180e-03        367.81        30
+   28         3.4747      4.6039  1.074724e-03        540.39        30
+   36         3.4265      6.1711  8.521292e-04        658.73        30
+   48         7.2876     14.8328  2.838635e-04       1430.16        30
+   64         5.6130     17.4669  2.365604e-04       1588.99        30
+   96         5.1985     32.7068  1.311872e-04       1673.06        30
+  128         3.8265     37.2269  9.718781e-05       2355.36        30
+  192         1.7237     35.0666  6.289983e-05       3315.13        30
+  256         1.1722     94.0523  2.125657e-05       6533.10        30
+
+## LSD-Well Score Details
+
+  N=  12: Lor4D=0.146491  runner-up=0.071940  ratio=0.4911
+  N=  16: Lor4D=0.089009  runner-up=0.129993  ratio=1.4604
+  N=  20: Lor4D=0.109416  runner-up=0.192896  ratio=1.7630
+  N=  28: Lor4D=0.063857  runner-up=0.221882  ratio=3.4747
+  N=  36: Lor4D=0.050357  runner-up=0.172548  ratio=3.4265
+  N=  48: Lor4D=0.024011  runner-up=0.174987  ratio=7.2876
+  N=  64: Lor4D=0.024014  runner-up=0.134791  ratio=5.6130
+  N=  96: Lor4D=0.020112  runner-up=0.104550  ratio=5.1985
+  N= 128: Lor4D=0.027839  runner-up=0.106526  ratio=3.8265
+  N= 192: Lor4D=0.044680  runner-up=0.077017  ratio=1.7237
+  N= 256: Lor4D=0.059147  runner-up=0.069331  ratio=1.1722
+
+## Power-Law Fits
+
+  margin_ratio(N) = 7531.5348 * N^0.0001 + -7529.8024
+    → beta > 0: BASIN IS DEEPENING (margin grows with N)
+
+  V_eff(N) = 1.8018e-01 * N^(-1.5747)
+    → well narrows as N^(-1.57)
+
+  tr(Fisher)(N) = 2.0671e+01 * N^1.0024
+    → Fisher information grows as N^1.00
+
+## Monotonicity Check
+
+  margin_ratio monotonically increasing? NO
+  mahal_gap monotonically increasing?    NO
+  V_eff monotonically decreasing?        NO
+  tr(Fisher) monotonically increasing?   NO
+
+## Conclusion
+
+  Only 0/4 indicators monotonic — deepening not clearly established.
+  Deepening rate exponent: beta = 0.0001
+  Volume shrinkage exponent: p = 1.5747

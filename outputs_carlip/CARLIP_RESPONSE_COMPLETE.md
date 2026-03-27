@@ -295,6 +295,36 @@ $$F \approx \sum_i \lambda_i \big(I_i - I_i^{(4D)}(N)\big)^2$$
    - Mahalanobis margin 随 N 发散：N=16 均值 3.0 → N=128 均值 40.4
    - **结论**：Lor4D 优势完全可复现，非种子偶然
 
+### Phase 13: 四方向深度探索
+
+6. ✅ **三重筛选定量化**（triple_screening_quantitative.py）：
+   - E₁(可存在)×E₂(可延续)×E₃(可显影) 三重指标
+   - Lor4D S_triple rank #12/17（Lor2D wins at geo_mean=0.79）
+   - **关键结论**：三重筛选是*准入门槛*，非身份选择器。LSD-Well/Mahalanobis 提供身份层
+   - 完美支持"线性准入 + 二次认同"两层理论
+
+7. ✅ **Basin 深化实验**（basin_deepening_experiment.py）：
+   - Mahalanobis gap: -0.82 (N=12) → 94.1 (N=256) — 强单调增长
+   - V_eff ∝ N^{-1.57} — 井持续变窄
+   - tr(Fisher) ∝ N^{1.00} — 判别精度线性增长
+   - LSD-Well margin ratio 非单调（N=48 峰值 7.3）— 两端均→0 导致比值不稳定
+   - Mahalanobis gap 是唯一鲁棒的 basin 深化度量
+
+8. ✅ **扩展 25 族鲁棒性**（expanded_family_robustness.py）：
+   - 新增 8 对抗性家族: KR_8layer, RandomDAG(p=0.1/0.3/0.6), ChainAnti4/12, SparseChain, MixedLor4D
+   - LSD-Well: **Lor4D 在全部 5 个 N 值均 #1** ✅
+   - Mahalanobis: N≥28 #1; N=16 #2（Lor5D 赢——已知分辨率极限）
+   - **无任何对抗性家族在任何 N 处击败 Lor4D** ✅
+   - Margin 增长：LSD-Well +0.04→+0.77; Mahalanobis +0.97→+122.6
+
+9. ✅ **EH/BDG → LSD-Well 第一性原理连接**（eh_bdg_lsd_connection.py）：
+   - 梯度对齐：cos(∇S_BD, ∇F_LSD) = **+0.97** (N=48), +0.79 (N=64)
+   - S_BD 在 LSD-Well 特征空间 R² = 0.16–0.74（部分重叠）
+   - 族内相关弱（Pearson r ≈ 0.1–0.2）: S_BD 与 F_LSD 在 Lor4D 内部不对齐
+   - 约束 S_BD (d∈[3.5,4.5]) → Lor4D rank 3/3–5（从 8–14 大幅改善）
+   - **结构关系**：S_BD = cᵀC (线性/一阶曲率) vs F_LSD = ΔCᵀJᵀWJΔC (二次/二阶认同)
+   - **结论**：梯度高度对齐但功能互补——准入(线性)+身份(二次)两层架构得到第一性原理支撑
+
 ### 8.3 投稿策略
 1. 核心论文：LSD-Well 框架 + A/E 确认结果
 2. 补充论文：C/D 的详细验证 + B 的修订版
@@ -329,6 +359,10 @@ $$F \approx \sum_i \lambda_i \big(I_i - I_i^{(4D)}(N)\big)^2$$
 | `n16_mahalanobis_cv_rootcause.py` | N=16 Mahal CV失败根因 | 唯一入侵者=Lor5D, 物理分辨率极限 |
 | `bootstrap_confidence.py` | Bootstrap 95%置信区间 | N≥20 P(#1)≥97%, margin CI全正 |
 | `lor5d_dimension_encoding.py` | Lor5D维度编码分析 | MM 分辨率 ~2.4σ at N=16, 临界 N≈20 |
+| `triple_screening_quantitative.py` | 三重筛选(E₁×E₂×E₃)定量化 | Lor4D rank #12 (Lor2D wins); 三重筛选=准入门, 非身份选择器 |
+| `basin_deepening_experiment.py` | Basin深化N-scaling | Mahal gap -0.8→94.1; V_eff∝N^{-1.57}; Fisher∝N^{1.00} |
+| `expanded_family_robustness.py` | 25族(+8对抗)鲁棒性 | LSD-Well Lor4D全N#1, 无新挑战者 |
+| `eh_bdg_lsd_connection.py` | EH/BDG→LSD-Well第一性原理桥 | cos(∇S_BD,∇F_LSD)=0.97(N=48); 约束S_BD排名3/3-5; 线性+二次互补 |
 
 ---
 

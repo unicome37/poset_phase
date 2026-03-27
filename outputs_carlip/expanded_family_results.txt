@@ -1,0 +1,168 @@
+# Expanded Family Robustness Test — 25 Families
+
+Date: 2026-03-27 09:03
+Families: 17 original + 8 adversarial = 25
+N values: [16, 28, 48, 64, 96]
+Reps: 20
+
+## 1. Lor4D Rank Summary
+
+| N | LSD-Well rank | LSD-Well winner | Mahalanobis rank | Mahalanobis winner |
+|---|---|---|---|---|
+| 16 | 1 | Lor4D | 2 | Lor5D |
+| 28 | 1 | Lor4D | 1 | Lor4D |
+| 48 | 1 | Lor4D | 1 | Lor4D |
+| 64 | 1 | Lor4D | 1 | Lor4D |
+| 96 | 1 | Lor4D | 1 | Lor4D |
+
+**Lor4D #1 at ALL N (LSD-Well)?** ✅ YES
+**Lor4D #1 at ALL N (Mahalanobis)?** ❌ NO
+
+## 2. New Challenger Analysis
+
+Does any of the 8 new families beat Lor4D?
+
+| N | Metric | New family challengers (score < Lor4D) |
+|---|---|---|
+| 16 | LSD-Well | None |
+| 16 | Mahalanobis | None |
+| 28 | LSD-Well | None |
+| 28 | Mahalanobis | None |
+| 48 | LSD-Well | None |
+| 48 | Mahalanobis | None |
+| 64 | LSD-Well | None |
+| 64 | Mahalanobis | None |
+| 96 | LSD-Well | None |
+| 96 | Mahalanobis | None |
+
+**No new adversarial family beats Lor4D at any N.** ✅
+
+## 3. Top-5 Rankings at Each N
+
+### N = 16
+
+**LSD-Well Top 5:**
+
+| Rank | Family | Score | New? |
+|---|---|---|---|
+| 1 | Lor4D | 0.128370 |  |
+| 2 | Lor5D | 0.155730 |  |
+| 3 | KR_2layer | 0.168596 |  |
+| 4 | TransPerc | 0.208631 |  |
+| 5 | RandomDAG_sp | 0.379262 | ★ |
+
+**Mahalanobis Top 5:**
+
+| Rank | Family | Score | New? |
+|---|---|---|---|
+| 1 | Lor5D | 2.2696 |  |
+| 2 | Lor4D | 2.8500 |  |
+| 3 | KR_2layer | 3.8206 |  |
+| 4 | Lor3D | 12.1875 |  |
+| 5 | KR_like | 13.8307 |  |
+
+### N = 28
+
+**LSD-Well Top 5:**
+
+| Rank | Family | Score | New? |
+|---|---|---|---|
+| 1 | Lor4D | 0.047579 |  |
+| 2 | Lor5D | 0.148378 |  |
+| 3 | TransPerc | 0.288216 |  |
+| 4 | KR_2layer | 0.453706 |  |
+| 5 | RandomDAG_sp | 0.524381 | ★ |
+
+**Mahalanobis Top 5:**
+
+| Rank | Family | Score | New? |
+|---|---|---|---|
+| 1 | Lor4D | 2.8500 |  |
+| 2 | Lor5D | 8.0087 |  |
+| 3 | Lor3D | 21.3782 |  |
+| 4 | TransPerc | 40.0076 |  |
+| 5 | KR_2layer | 44.8584 |  |
+
+### N = 48
+
+**LSD-Well Top 5:**
+
+| Rank | Family | Score | New? |
+|---|---|---|---|
+| 1 | Lor4D | 0.025558 |  |
+| 2 | Lor5D | 0.199996 |  |
+| 3 | Lor3D | 0.336162 |  |
+| 4 | KR_2layer | 0.650887 |  |
+| 5 | TransPerc | 0.762860 |  |
+
+**Mahalanobis Top 5:**
+
+| Rank | Family | Score | New? |
+|---|---|---|---|
+| 1 | Lor4D | 2.8500 |  |
+| 2 | Lor5D | 12.9176 |  |
+| 3 | Lor3D | 24.6345 |  |
+| 4 | KR_2layer | 87.7056 |  |
+| 5 | KR_like | 123.0703 |  |
+
+### N = 64
+
+**LSD-Well Top 5:**
+
+| Rank | Family | Score | New? |
+|---|---|---|---|
+| 1 | Lor4D | 0.031181 |  |
+| 2 | Lor5D | 0.124087 |  |
+| 3 | Lor3D | 0.367921 |  |
+| 4 | KR_2layer | 0.722782 |  |
+| 5 | KR_like | 0.936054 |  |
+
+**Mahalanobis Top 5:**
+
+| Rank | Family | Score | New? |
+|---|---|---|---|
+| 1 | Lor4D | 2.8500 |  |
+| 2 | Lor5D | 11.4528 |  |
+| 3 | Lor3D | 25.1201 |  |
+| 4 | KR_2layer | 115.7383 |  |
+| 5 | KR_like | 145.5882 |  |
+
+### N = 96
+
+**LSD-Well Top 5:**
+
+| Rank | Family | Score | New? |
+|---|---|---|---|
+| 1 | Lor4D | 0.027693 |  |
+| 2 | Lor5D | 0.110826 |  |
+| 3 | Lor3D | 0.486861 |  |
+| 4 | KR_2layer | 0.799185 |  |
+| 5 | KR_like | 0.957903 |  |
+
+**Mahalanobis Top 5:**
+
+| Rank | Family | Score | New? |
+|---|---|---|---|
+| 1 | Lor4D | 2.8500 |  |
+| 2 | Lor5D | 30.9479 |  |
+| 3 | Lor3D | 59.7050 |  |
+| 4 | KR_2layer | 125.4920 |  |
+| 5 | KR_like | 183.8092 |  |
+
+## 4. Margin: Lor4D vs Best Non-Lorentzian
+
+| N | LSD-Well margin | Mahalanobis margin |
+|---|---|---|
+| 16 | +0.040226 | +0.9706 |
+| 28 | +0.240637 | +37.1576 |
+| 48 | +0.625329 | +84.8556 |
+| 64 | +0.691600 | +112.8883 |
+| 96 | +0.771492 | +122.6420 |
+
+## 5. Conclusion
+
+- Total families tested: 25 (17 original + 8 adversarial)
+- Lor4D LSD-Well #1 at all N: YES ✅
+- Lor4D Mahalanobis #1 at all N: NO ❌
+- New family challenger found: NO ✅
+- Runtime: 15.8s

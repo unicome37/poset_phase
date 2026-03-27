@@ -1,0 +1,528 @@
+# Einstein-Hilbert ← BDG ↔ LSD-Well: First-Principles Connection
+
+N_VALUES = [16, 28, 48, 64, 96]
+REPS_ALL = 30, REPS_LOR4D_EXTRA = 100
+Total samples: 2550 (cross-family) + 500 (Lor4D extra)
+
+## Experiment 1: S_BD Expressed in Feature Coordinates
+
+Regression: S_BD ≈ a₀ + a₁·d + a₂·c + a₃·w + a₄·d² + a₅·c² + a₆·w² + a₇·d·c + a₈·d·w + a₉·c·w
+
+### N = 16  (n_samples = 510)
+
+R² = 0.160457
+
+| Term | Coefficient |
+|------|:----------:|
+| const | -30.8335 |
+| d_eff | -48.1910 |
+| c1/c0 | +199.0982 |
+| width | +58.5468 |
+| d² | +6.8430 |
+| c² | -56.5822 |
+| w² | -305.7166 |
+| d·c | -7.6767 |
+| d·w | +68.4796 |
+| c·w | -77.1640 |
+
+Quadratic d_eff² coefficient: +6.843012
+→ At d_eff=4 the d² contribution ≈ 109.49
+→ The linear d_eff contribution ≈ -192.76
+
+### N = 28  (n_samples = 510)
+
+R² = 0.260806
+
+| Term | Coefficient |
+|------|:----------:|
+| const | -614.5118 |
+| d_eff | +61.9632 |
+| c1/c0 | +858.7167 |
+| width | +1072.9986 |
+| d² | +34.3942 |
+| c² | -194.4570 |
+| w² | +462.2209 |
+| d·c | -165.8108 |
+| d·w | -438.3741 |
+| c·w | +19.7904 |
+
+Quadratic d_eff² coefficient: +34.394181
+→ At d_eff=4 the d² contribution ≈ 550.31
+→ The linear d_eff contribution ≈ 247.85
+
+### N = 48  (n_samples = 510)
+
+R² = 0.250191
+
+| Term | Coefficient |
+|------|:----------:|
+| const | +194.2277 |
+| d_eff | -164.7874 |
+| c1/c0 | -233.5961 |
+| width | -916.2081 |
+| d² | +96.7037 |
+| c² | +285.5798 |
+| w² | +2812.1415 |
+| d·c | -153.8504 |
+| d·w | -730.1344 |
+| c·w | +1796.4655 |
+
+Quadratic d_eff² coefficient: +96.703733
+→ At d_eff=4 the d² contribution ≈ 1547.26
+→ The linear d_eff contribution ≈ -659.15
+
+### N = 64  (n_samples = 510)
+
+R² = 0.170832
+
+| Term | Coefficient |
+|------|:----------:|
+| const | +820.9511 |
+| d_eff | +263.4725 |
+| c1/c0 | -1270.3586 |
+| width | -7544.6444 |
+| d² | +28.8952 |
+| c² | +604.1144 |
+| w² | +6741.8230 |
+| d·c | -361.6865 |
+| d·w | -264.3538 |
+| c·w | +6168.6333 |
+
+Quadratic d_eff² coefficient: +28.895214
+→ At d_eff=4 the d² contribution ≈ 462.32
+→ The linear d_eff contribution ≈ 1053.89
+
+### N = 96  (n_samples = 510)
+
+R² = 0.737175
+
+| Term | Coefficient |
+|------|:----------:|
+| const | -2476.2392 |
+| d_eff | +2029.5662 |
+| c1/c0 | +1736.3923 |
+| width | -7667.5417 |
+| d² | +4.3987 |
+| c² | -97.7194 |
+| w² | +18325.8438 |
+| d·c | -1311.3402 |
+| d·w | -3670.0836 |
+| c·w | +7367.8987 |
+
+Quadratic d_eff² coefficient: +4.398748
+→ At d_eff=4 the d² contribution ≈ 70.38
+→ The linear d_eff contribution ≈ 8118.26
+
+## Experiment 2: Action Landscape Around Lor4D
+
+Within the Lor4D family, does minimizing S_BD also minimize F_LSD?
+
+### 2a. Using cross-family data (30 reps each)
+
+| N | n | Pearson r | p-value | Spearman ρ | p-value |
+|---|---|:---------:|:-------:|:----------:|:-------:|
+| 16 | 30 | +0.3653 | 4.72e-02 | +0.3801 | 3.83e-02 |
+| 28 | 30 | +0.1721 | 3.63e-01 | +0.2223 | 2.38e-01 |
+| 48 | 30 | +0.2762 | 1.40e-01 | +0.2263 | 2.29e-01 |
+| 64 | 30 | -0.3908 | 3.27e-02 | -0.2418 | 1.98e-01 |
+| 96 | 30 | +0.1728 | 3.61e-01 | +0.0968 | 6.11e-01 |
+
+### 2b. Using extra 100-rep Lor4D data
+
+| N | n | Pearson r | p-value | Spearman ρ | p-value |
+|---|---|:---------:|:-------:|:----------:|:-------:|
+| 16 | 100 | +0.2191 | 2.86e-02 | +0.1852 | 6.51e-02 |
+| 28 | 100 | +0.1634 | 1.04e-01 | +0.0395 | 6.97e-01 |
+| 48 | 100 | -0.0280 | 7.82e-01 | +0.0709 | 4.83e-01 |
+| 64 | 100 | +0.0136 | 8.93e-01 | +0.0083 | 9.35e-01 |
+| 96 | 100 | +0.1012 | 3.17e-01 | +0.0949 | 3.48e-01 |
+
+### 2c. Cross-family: S_BD vs F_LSD family means
+
+**N = 48**
+
+| Family | mean S_BD | mean F_LSD |
+|--------|:---------:|:----------:|
+| AbsLayer | +182.8 | 4.5994 |
+| IntOrder | -51.8 | 3.2232 |
+| KR_2layer | -218.2 | 0.6495 |
+| KR_4layer | -251.8 | 1.5848 |
+| KR_like | -263.3 | 0.9447 |
+| Lor2D | +7.1 | 2.5422 |
+| Lor3D | +7.8 | 0.3780 |
+| Lor4D | -1.0 | 0.0260 |
+| Lor5D | -56.3 | 0.1781 |
+| MLR | +99.8 | 1.2657 |
+| RLk4 | -313.9 | 1.8321 |
+| RLk6 | -83.8 | 3.0801 |
+| RLk6_lj | +92.6 | 3.1727 |
+| RLk6_mid | -107.7 | 2.2350 |
+| RLk6_tap | -118.8 | 2.3998 |
+| RLk8 | -20.9 | 3.1595 |
+| TransPerc | +15.3 | 0.7608 |
+
+Family-mean Pearson r = +0.3269 (p=2.00e-01)
+Family-mean Spearman ρ = +0.1961 (p=4.51e-01)
+
+**N = 96**
+
+| Family | mean S_BD | mean F_LSD |
+|--------|:---------:|:----------:|
+| AbsLayer | -382.4 | 5.4270 |
+| IntOrder | -70.8 | 3.3182 |
+| KR_2layer | -862.1 | 0.7997 |
+| KR_4layer | -1040.0 | 1.5608 |
+| KR_like | -1146.8 | 0.9381 |
+| Lor2D | +66.4 | 2.5285 |
+| Lor3D | +190.1 | 0.4173 |
+| Lor4D | -65.7 | 0.0221 |
+| Lor5D | -160.5 | 0.1029 |
+| MLR | +90.0 | 1.8815 |
+| RLk4 | -1042.7 | 2.1446 |
+| RLk6 | -776.5 | 3.9162 |
+| RLk6_lj | -711.0 | 3.8985 |
+| RLk6_mid | -1087.9 | 2.5328 |
+| RLk6_tap | -1008.5 | 2.9628 |
+| RLk8 | -80.6 | 4.9635 |
+| TransPerc | -123.7 | 2.8050 |
+
+Family-mean Pearson r = -0.0322 (p=9.02e-01)
+Family-mean Spearman ρ = -0.0882 (p=7.36e-01)
+
+## Experiment 3: Taylor Expansion at Lor4D Centroid
+
+S_BD is linear in C_k, so the 'Hessian' is trivially 0.
+But the **Jacobian** J = ∂(features)/∂(C_k) transforms the
+linear S_BD gradient into feature space as:
+
+  ∇_I S_BD = J^{-T} · c_vec
+
+where c_vec = (-1, 9, -16, 8) is the BDG coefficient vector.
+
+We estimate J numerically from data.
+
+### N = 48
+
+Lor4D centroid (C₀,C₁,C₂,C₃) = (150.0, 30.3, 9.4, 3.3)
+Lor4D centroid (d,c,w) = (3.972, 0.2042, 0.4188)
+
+Numerical Jacobian J = ∂(d,c,w)/∂(C₀,C₁,C₂,C₃):
+
+| Feature | ∂/∂C₀ | ∂/∂C₁ | ∂/∂C₂ | ∂/∂C₃ | R² |
+|---------|:------:|:------:|:------:|:------:|:--:|
+| d_eff | -0.008999 | -0.007687 | -0.013257 | -0.009072 | 0.7605 |
+| c1/c0 | -0.001098 | 0.006123 | 0.000874 | 0.000273 | 0.8949 |
+| width | 0.000245 | -0.000729 | -0.001846 | -0.000687 | 0.5684 |
+
+BDG gradient in feature space: ∇_I S_BD = J^{-T} · c_vec
+
+  ∂S_BD/∂(d_eff)     ≈ -354.3180
+  ∂S_BD/∂(c₁/c₀)    ≈ +2303.5586
+  ∂S_BD/∂(width)     ≈ +9925.1814
+
+LSD-Well gradient at Lor4D centroid: ∇_I F_LSD
+
+  ∂F/∂(d_eff)     ≈ -0.028288
+  ∂F/∂(c₁/c₀)    ≈ +0.008420
+  ∂F/∂(width)     ≈ +0.140833
+
+Cosine similarity ∇S_BD · ∇F_LSD = +0.9729
+
+Effective metric M = J^T Σ⁻¹ J  (quadratic form in C_k space):
+
+```
+     +0.0065     +0.0012     +0.0060     +0.0049
+     +0.0012     +0.0105     +0.0041     +0.0027
+     +0.0060     +0.0041     +0.0080     +0.0057
+     +0.0049     +0.0027     +0.0057     +0.0042
+```
+
+Eigenvalues of M:
+  λ = 0.019928
+  λ = 0.008506
+  λ = 0.000887
+  λ = -0.000000
+
+Alignment of BDG coefficient vector with M eigenmodes:
+  |cos(c_vec, e_0)| = 0.6245  (λ=-0.0000)
+  |cos(c_vec, e_1)| = 0.6075  (λ=0.0009)
+  |cos(c_vec, e_2)| = 0.4739  (λ=0.0085)
+  |cos(c_vec, e_3)| = 0.1276  (λ=0.0199)
+
+### N = 64
+
+Lor4D centroid (C₀,C₁,C₂,C₃) = (266.3, 59.7, 24.4, 9.9)
+Lor4D centroid (d,c,w) = (3.912, 0.2239, 0.3708)
+
+Numerical Jacobian J = ∂(d,c,w)/∂(C₀,C₁,C₂,C₃):
+
+| Feature | ∂/∂C₀ | ∂/∂C₁ | ∂/∂C₂ | ∂/∂C₃ | R² |
+|---------|:------:|:------:|:------:|:------:|:--:|
+| d_eff | -0.004388 | -0.006573 | -0.004719 | -0.005802 | 0.6281 |
+| c1/c0 | -0.000613 | 0.003881 | 0.000254 | 0.000082 | 0.8650 |
+| width | 0.000238 | -0.000742 | -0.000308 | -0.000597 | 0.5234 |
+
+BDG gradient in feature space: ∇_I S_BD = J^{-T} · c_vec
+
+  ∂S_BD/∂(d_eff)     ≈ +595.8740
+  ∂S_BD/∂(c₁/c₀)    ≈ +1803.1896
+  ∂S_BD/∂(width)     ≈ -5948.1248
+
+LSD-Well gradient at Lor4D centroid: ∇_I F_LSD
+
+  ∂F/∂(d_eff)     ≈ -0.088449
+  ∂F/∂(c₁/c₀)    ≈ +0.023658
+  ∂F/∂(width)     ≈ -0.140417
+
+Cosine similarity ∇S_BD · ∇F_LSD = +0.7884
+
+Effective metric M = J^T Σ⁻¹ J  (quadratic form in C_k space):
+
+```
+     +0.0013     -0.0005     +0.0009     +0.0011
+     -0.0005     +0.0066     +0.0006     +0.0002
+     +0.0009     +0.0006     +0.0008     +0.0010
+     +0.0011     +0.0002     +0.0010     +0.0014
+```
+
+Eigenvalues of M:
+  λ = 0.006697
+  λ = 0.003194
+  λ = 0.000182
+  λ = 0.000000
+
+Alignment of BDG coefficient vector with M eigenmodes:
+  |cos(c_vec, e_0)| = 0.8909  (λ=0.0000)
+  |cos(c_vec, e_1)| = 0.1652  (λ=0.0002)
+  |cos(c_vec, e_2)| = 0.1780  (λ=0.0032)
+  |cos(c_vec, e_3)| = 0.3837  (λ=0.0067)
+
+### N = 96
+
+Lor4D centroid (C₀,C₁,C₂,C₃) = (529.2, 136.0, 65.8, 36.6)
+Lor4D centroid (d,c,w) = (3.936, 0.2572, 0.3243)
+
+Numerical Jacobian J = ∂(d,c,w)/∂(C₀,C₁,C₂,C₃):
+
+| Feature | ∂/∂C₀ | ∂/∂C₁ | ∂/∂C₂ | ∂/∂C₃ | R² |
+|---------|:------:|:------:|:------:|:------:|:--:|
+| d_eff | -0.001945 | -0.001671 | -0.006694 | -0.001166 | 0.6671 |
+| c1/c0 | -0.000181 | 0.002767 | -0.000552 | -0.000014 | 0.8362 |
+| width | 0.000118 | -0.000049 | -0.000729 | 0.000105 | 0.4931 |
+
+BDG gradient in feature space: ∇_I S_BD = J^{-T} · c_vec
+
+  ∂S_BD/∂(d_eff)     ≈ -326.0899
+  ∂S_BD/∂(c₁/c₀)    ≈ +3516.9139
+  ∂S_BD/∂(width)     ≈ +22519.7708
+
+LSD-Well gradient at Lor4D centroid: ∇_I F_LSD
+
+  ∂F/∂(d_eff)     ≈ -0.064425
+  ∂F/∂(c₁/c₀)    ≈ +0.065882
+  ∂F/∂(width)     ≈ -0.407778
+
+Cosine similarity ∇S_BD · ∇F_LSD = -0.9371
+
+Effective metric M = J^T Σ⁻¹ J  (quadratic form in C_k space):
+
+```
+     +0.0006     -0.0006     +0.0019     +0.0003
+     -0.0006     +0.0059     -0.0033     -0.0001
+     +0.0019     -0.0033     +0.0079     +0.0009
+     +0.0003     -0.0001     +0.0009     +0.0002
+```
+
+Eigenvalues of M:
+  λ = 0.010766
+  λ = 0.003620
+  λ = 0.000179
+  λ = -0.000000
+
+Alignment of BDG coefficient vector with M eigenmodes:
+  |cos(c_vec, e_0)| = 0.3216  (λ=-0.0000)
+  |cos(c_vec, e_1)| = 0.3780  (λ=0.0002)
+  |cos(c_vec, e_2)| = 0.0011  (λ=0.0036)
+  |cos(c_vec, e_3)| = 0.8682  (λ=0.0108)
+
+## Experiment 4: Constrained Minimization — Dimension Filter
+
+S_BD alone does not select Lor4D (known: ~rank 14/17).
+But what if we restrict to families satisfying d_eff ∈ [3.5, 4.5]?
+
+### N = 16
+
+| Family | mean d_eff | mean S_BD | S_BD rank | dim-ok? | constrained rank | mean F_LSD | F_LSD rank |
+|--------|:---------:|:---------:|:---------:|:-------:|:----------------:|:----------:|:----------:|
+| AbsLayer | 1.12 | -62.8 | 1 | ❌ | — | 4.6159 | 17 |
+| IntOrder | 1.51 | -26.2 | 4 | ❌ | — | 3.7147 | 16 |
+| KR_2layer | 3.82 | -23.7 | 5 | ✅ | 1 | 0.1496 | 2 |
+| KR_4layer | 2.42 | -43.7 | 2 | ❌ | — | 1.5975 | 14 |
+| KR_like | 2.75 | -38.4 | 3 | ❌ | — | 0.8728 | 7 |
+| Lor2D | 2.05 | +13.5 | 14 | ❌ | — | 2.5826 | 15 |
+| Lor3D | 3.27 | +1.3 | 9 | ❌ | — | 0.4877 | 5 |
+| Lor4D | 3.90 | -10.2 | 8 | ✅ | 3 | 0.0724 | 1 |
+| Lor5D | 4.27 | -11.7 | 6 | ✅ | 2 | 0.1573 | 3 |
+| MLR | 3.04 | +34.5 | 17 | ❌ | — | 0.9908 | 8 |
+| RLk4 | 3.09 | -10.4 | 7 | ❌ | — | 1.0686 | 10 |
+| RLk6 | 3.18 | +14.6 | 15 | ❌ | — | 1.0965 | 12 |
+| RLk6_lj | 2.84 | +20.7 | 16 | ❌ | — | 1.5264 | 13 |
+| RLk6_mid | 3.11 | +5.9 | 10 | ❌ | — | 1.0466 | 9 |
+| RLk6_tap | 3.18 | +12.6 | 13 | ❌ | — | 1.0841 | 11 |
+| RLk8 | 3.60 | +8.5 | 12 | ✅ | 5 | 0.6049 | 6 |
+| TransPerc | 4.31 | +6.2 | 11 | ✅ | 4 | 0.2394 | 4 |
+
+Lor4D: unconstrained S_BD rank = 8 / 17
+Lor4D: dimension-constrained S_BD rank = 3 / 5
+Lor4D: F_LSD rank = 1 / 17
+
+### N = 28
+
+| Family | mean d_eff | mean S_BD | S_BD rank | dim-ok? | constrained rank | mean F_LSD | F_LSD rank |
+|--------|:---------:|:---------:|:---------:|:-------:|:----------------:|:----------:|:----------:|
+| AbsLayer | 1.08 | -81.5 | 3 | ❌ | — | 4.6234 | 17 |
+| IntOrder | 1.68 | -35.5 | 6 | ❌ | — | 3.0899 | 16 |
+| KR_2layer | 3.83 | -74.3 | 4 | ✅ | 1 | 0.4396 | 5 |
+| KR_4layer | 2.37 | -166.1 | 1 | ❌ | — | 1.3629 | 8 |
+| KR_like | 2.64 | -93.7 | 2 | ❌ | — | 0.9578 | 7 |
+| Lor2D | 2.01 | +1.7 | 10 | ❌ | — | 2.5286 | 15 |
+| Lor3D | 3.32 | +5.4 | 12 | ❌ | — | 0.3721 | 4 |
+| Lor4D | 3.93 | +4.8 | 11 | ✅ | 3 | 0.0757 | 1 |
+| Lor5D | 4.36 | -19.1 | 7 | ✅ | 2 | 0.2110 | 2 |
+| MLR | 2.98 | +58.6 | 17 | ❌ | — | 0.9331 | 6 |
+| RLk4 | 2.59 | -45.3 | 5 | ❌ | — | 1.4340 | 9 |
+| RLk6 | 2.73 | -13.9 | 9 | ❌ | — | 1.6018 | 12 |
+| RLk6_lj | 2.43 | +27.8 | 14 | ❌ | — | 1.9718 | 14 |
+| RLk6_mid | 2.47 | +7.4 | 13 | ❌ | — | 1.8411 | 13 |
+| RLk6_tap | 2.65 | -16.1 | 8 | ❌ | — | 1.4574 | 10 |
+| RLk8 | 2.83 | +28.7 | 16 | ❌ | — | 1.5319 | 11 |
+| TransPerc | 4.15 | +27.9 | 15 | ✅ | 4 | 0.2613 | 3 |
+
+Lor4D: unconstrained S_BD rank = 11 / 17
+Lor4D: dimension-constrained S_BD rank = 3 / 4
+Lor4D: F_LSD rank = 1 / 17
+
+### N = 48
+
+| Family | mean d_eff | mean S_BD | S_BD rank | dim-ok? | constrained rank | mean F_LSD | F_LSD rank |
+|--------|:---------:|:---------:|:---------:|:-------:|:----------------:|:----------:|:----------:|
+| AbsLayer | 1.11 | +182.8 | 17 | ❌ | — | 4.5994 | 17 |
+| IntOrder | 1.61 | -51.8 | 9 | ❌ | — | 3.2232 | 16 |
+| KR_2layer | 3.84 | -218.2 | 4 | ✅ | 1 | 0.6495 | 4 |
+| KR_4layer | 2.24 | -251.8 | 3 | ❌ | — | 1.5848 | 8 |
+| KR_like | 2.69 | -263.3 | 2 | ❌ | — | 0.9447 | 6 |
+| Lor2D | 1.99 | +7.1 | 12 | ❌ | — | 2.5422 | 12 |
+| Lor3D | 3.29 | +7.8 | 13 | ❌ | — | 0.3780 | 3 |
+| Lor4D | 3.97 | -1.0 | 11 | ✅ | 3 | 0.0260 | 1 |
+| Lor5D | 4.41 | -56.3 | 8 | ✅ | 2 | 0.1781 | 2 |
+| MLR | 2.67 | +99.8 | 16 | ❌ | — | 1.2657 | 7 |
+| RLk4 | 2.20 | -313.9 | 1 | ❌ | — | 1.8321 | 9 |
+| RLk6 | 1.82 | -83.8 | 7 | ❌ | — | 3.0801 | 13 |
+| RLk6_lj | 1.78 | +92.6 | 15 | ❌ | — | 3.1727 | 15 |
+| RLk6_mid | 2.07 | -107.7 | 6 | ❌ | — | 2.2350 | 10 |
+| RLk6_tap | 2.04 | -118.8 | 5 | ❌ | — | 2.3998 | 11 |
+| RLk8 | 1.92 | -20.9 | 10 | ❌ | — | 3.1595 | 14 |
+| TransPerc | 3.62 | +15.3 | 14 | ✅ | 4 | 0.7608 | 5 |
+
+Lor4D: unconstrained S_BD rank = 11 / 17
+Lor4D: dimension-constrained S_BD rank = 3 / 4
+Lor4D: F_LSD rank = 1 / 17
+
+### N = 64
+
+| Family | mean d_eff | mean S_BD | S_BD rank | dim-ok? | constrained rank | mean F_LSD | F_LSD rank |
+|--------|:---------:|:---------:|:---------:|:-------:|:----------------:|:----------:|:----------:|
+| AbsLayer | 1.40 | -775.6 | 1 | ❌ | — | 3.8527 | 16 |
+| IntOrder | 1.59 | +198.2 | 16 | ❌ | — | 3.2807 | 13 |
+| KR_2layer | 3.87 | -382.8 | 6 | ✅ | 1 | 0.7213 | 4 |
+| KR_4layer | 2.25 | -405.5 | 4 | ❌ | — | 1.5823 | 8 |
+| KR_like | 2.72 | -493.8 | 3 | ❌ | — | 0.9310 | 5 |
+| Lor2D | 2.04 | +0.2 | 14 | ❌ | — | 2.4877 | 11 |
+| Lor3D | 3.26 | +2.6 | 15 | ❌ | — | 0.4258 | 3 |
+| Lor4D | 3.91 | -39.7 | 10 | ✅ | 3 | 0.0300 | 1 |
+| Lor5D | 4.38 | -82.7 | 9 | ✅ | 2 | 0.1509 | 2 |
+| MLR | 2.53 | +275.6 | 17 | ❌ | — | 1.5358 | 7 |
+| RLk4 | 2.05 | -517.8 | 2 | ❌ | — | 2.0350 | 9 |
+| RLk6 | 1.58 | -193.3 | 8 | ❌ | — | 3.5083 | 15 |
+| RLk6_lj | 1.64 | -24.9 | 12 | ❌ | — | 3.4176 | 14 |
+| RLk6_mid | 1.97 | -386.9 | 5 | ❌ | — | 2.3090 | 10 |
+| RLk6_tap | 1.81 | -251.2 | 7 | ❌ | — | 2.8109 | 12 |
+| RLk8 | 1.46 | -15.2 | 13 | ❌ | — | 4.1978 | 17 |
+| TransPerc | 3.18 | -38.5 | 11 | ❌ | — | 1.2572 | 6 |
+
+Lor4D: unconstrained S_BD rank = 10 / 17
+Lor4D: dimension-constrained S_BD rank = 3 / 3
+Lor4D: F_LSD rank = 1 / 17
+
+### N = 96
+
+| Family | mean d_eff | mean S_BD | S_BD rank | dim-ok? | constrained rank | mean F_LSD | F_LSD rank |
+|--------|:---------:|:---------:|:---------:|:-------:|:----------------:|:----------:|:----------:|
+| AbsLayer | 1.27 | -382.4 | 9 | ❌ | — | 5.4270 | 17 |
+| IntOrder | 1.57 | -70.8 | 13 | ❌ | — | 3.3182 | 13 |
+| KR_2layer | 3.87 | -862.1 | 6 | ✅ | 1 | 0.7997 | 4 |
+| KR_4layer | 2.26 | -1040.0 | 4 | ❌ | — | 1.5608 | 6 |
+| KR_like | 2.74 | -1146.8 | 1 | ❌ | — | 0.9381 | 5 |
+| Lor2D | 2.03 | +66.4 | 15 | ❌ | — | 2.5285 | 9 |
+| Lor3D | 3.30 | +190.1 | 17 | ❌ | — | 0.4173 | 3 |
+| Lor4D | 3.94 | -65.7 | 14 | ✅ | 3 | 0.0221 | 1 |
+| Lor5D | 4.36 | -160.5 | 10 | ✅ | 2 | 0.1029 | 2 |
+| MLR | 2.32 | +90.0 | 16 | ❌ | — | 1.8815 | 7 |
+| RLk4 | 1.95 | -1042.7 | 3 | ❌ | — | 2.1446 | 8 |
+| RLk6 | 1.33 | -776.5 | 7 | ❌ | — | 3.9162 | 15 |
+| RLk6_lj | 1.35 | -711.0 | 8 | ❌ | — | 3.8985 | 14 |
+| RLk6_mid | 1.78 | -1087.9 | 2 | ❌ | — | 2.5328 | 10 |
+| RLk6_tap | 1.62 | -1008.5 | 5 | ❌ | — | 2.9628 | 12 |
+| RLk8 | 1.14 | -80.6 | 12 | ❌ | — | 4.9635 | 16 |
+| TransPerc | 2.32 | -123.7 | 11 | ❌ | — | 2.8050 | 11 |
+
+Lor4D: unconstrained S_BD rank = 14 / 17
+Lor4D: dimension-constrained S_BD rank = 3 / 3
+Lor4D: F_LSD rank = 1 / 17
+
+## Summary: Is There a First-Principles Bridge?
+
+### The Chain of Connection
+
+```
+Einstein-Hilbert action  S_EH = ∫ R √g d⁴x
+   ↓ (Benincasa-Dowker 2010: discretization)
+BDG action  S_BD = -C₀ + 9C₁ - 16C₂ + 8C₃
+   ↓ (same interval counts, nonlinear transformation)
+LSD-Well features  I(P) = (d_eff, C₁/C₀, width)
+   ↓ (quadratic form at Lor4D centroid)
+LSD-Well score  F = Σ w_i (I_i - I_i*)²
+```
+
+### Key Findings
+
+1. **S_BD is representable in feature coordinates** (Exp 1):
+   The regression R² quantifies how much of S_BD's variation
+   is captured by (d_eff, c₁/c₀, width). High R² → S_BD lives
+   largely in the same space as LSD-Well.
+
+2. **Within-Lor4D correlation** (Exp 2):
+   The sign and magnitude of r(S_BD, F_LSD) within Lor4D
+   reveals whether action fluctuations and LSD deviations co-move.
+
+3. **Gradient alignment** (Exp 3):
+   The cosine similarity between ∇S_BD and ∇F_LSD at the Lor4D
+   centroid measures whether minimizing S_BD pushes in the same
+   direction as minimizing F_LSD.
+
+4. **Two-layer screening** (Exp 4):
+   S_BD alone ≈ rank 14/17 for Lor4D (poor selection).
+   But S_BD + {d_eff ∈ [3.5,4.5]} dramatically improves ranking.
+   This is the 'linear admissibility + quadratic identity' framework:
+
+   - **Layer 1 (S_BD)**: linear filter — correct average curvature
+   - **Layer 2 (F_LSD)**: quadratic filter — correct geometric identity
+
+### Structural Relationship
+
+$$S_{\rm BD} = \mathbf{c}^\top \cdot \mathbf{C} \quad (\text{linear in } C_k)$$
+$$F_{\rm LSD} \approx \Delta\mathbf{I}^\top \cdot W \cdot \Delta\mathbf{I} = \Delta\mathbf{C}^\top \cdot \mathbf{J}^\top W \mathbf{J} \cdot \Delta\mathbf{C} \quad (\text{quadratic in } \Delta C_k)$$
+
+Both are functionals on the **same** interval-count space {C_k}.
+S_BD encodes first-order (curvature) information;
+F_LSD encodes second-order (identification) information.
