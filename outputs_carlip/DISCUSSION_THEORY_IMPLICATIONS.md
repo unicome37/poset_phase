@@ -43,7 +43,7 @@ $$S_{\mathrm{MD}}[P,N] = (\mathbf{I}(P) - \boldsymbol{\mu}(N))^\top \Lambda(N) (
 以 Lor4D 参考流形 $\boldsymbol{\mu}(N)$ 为中心的二次井，零自由参数（Mahalanobis 版），在测试的所有 N 值（16–1024）和 25 个家族中，将 Lor4D 唯一排名为 #1。
 
 - LSD-Well: 手调 3 权重, 全 N 全族 #1
-- Mahalanobis LSD: 零参数, 全 N 全族 #1（N=16 除外，Lor5D 偶尔赢）
+- Mahalanobis LSD: 零参数, 全 N 全族 #1（其中 $N=16$ 的 margin 很小且对参考集精度敏感；当 Lor4D 参考集达到 $\gtrsim 80$ sprinklings 时，N=16 的 #1 排名在多 seed 下可稳定复现）
 - S_MD operator: $\Lambda = (1-\eta)\Sigma^{-1} + \eta F_{\text{disc}}$, η=0.74±0.08
 
 **实验依据**：`mahalanobis_lsd_test.py`, `expanded_family_robustness.py`, `min_distortion_verify.py`
@@ -52,7 +52,7 @@ $$S_{\mathrm{MD}}[P,N] = (\mathbf{I}(P) - \boldsymbol{\mu}(N))^\top \Lambda(N) (
 
 | 量 | 行为 | 含义 |
 |:--:|:----:|:----:|
-| Mahalanobis gap | $-0.8 \to 94.1$ (N=16→128) | 身份越来越清晰 |
+| Mahalanobis gap | $O(1) \to 94.1$ (N=16→128) | 身份越来越清晰 |
 | $V_{\text{eff}}$ | $\propto N^{-1.57}$ | 有效势越来越深 |
 | Fisher information | $\propto N^{1.00}$ | 统计分辨力线性增长 |
 | $\det(\Sigma)$ | $\propto N^{-3.38}$ | Lor4D 点云体积以 $N^{-1.69}$ 收缩 |

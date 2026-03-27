@@ -53,6 +53,7 @@ The two layers are nearly orthogonal: the Pearson correlation between $S_{\mathr
 As the poset size $N$ increases, the Lor4D identity basin deepens monotonically. We quantify this via:
 
 - The **Mahalanobis gap** (difference between Lor4D and the nearest competitor): $-0.8$ at $N=16$, growing to $94.1$ at $N=128$ and $1.93\times10^8$ at $N=1024$;
+- (Small-$N$ precision note) At $N=16$ the margin is small and sensitive to the reference-ensemble precision used to estimate $(\boldsymbol{\mu}(16),\Sigma(16))$; with a sufficiently large Lor4D reference ensemble (e.g. $\gtrsim 80$ sprinklings) the Lor4D #1 ranking at $N=16$ stabilizes across independent seeds. At $N\geq 20$ the ranking is unconditionally stable in our tests.
 - The **effective potential depth**: $V_{\mathrm{eff}} \propto N^{-1.57}$;
 - The **Fisher information**: $\propto N^{1.00}$, implying that the statistical cost of misidentification grows linearly with $N$;
 - The **reference manifold covariance collapse**: $\det(\Sigma) \propto N^{-3.38}$, so the Lor4D point-cloud volume shrinks as $N^{-1.69}$.

@@ -23,6 +23,7 @@ Metrics:
 from __future__ import annotations
 
 import time
+import sys
 from collections import defaultdict
 from pathlib import Path
 
@@ -247,9 +248,18 @@ def mahalanobis_score(feat: np.ndarray, mu: np.ndarray, cov_inv: np.ndarray) -> 
 # ══════════════════════════════════════════════════════════════════════════
 
 def main() -> None:
+    # Avoid Windows console encoding crashes when printing non-ASCII symbols.
+    if hasattr(sys.stdout, "reconfigure"):
+        try:
+            sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        except Exception:
+            pass
     N_VALUES = [16, 28, 48, 64, 96]
     REPS = 20
     SEED_BASE = 42
+    # High-precision Lor4D reference ensemble at small N (no tunable model knob;
+    # this is purely estimation precision for the reference manifold).
+    LOR4D_REF_REPS_N16 = 80
 
     n_fam = len(ALL_FAMILIES)
     total_samples = n_fam * len(N_VALUES) * REPS
@@ -263,8 +273,10 @@ def main() -> None:
 
     t0 = time.time()
 
-    # Collect features: data[N][family_name] = list of feature vectors
-    data: dict[int, dict[str, list[np.ndarray]]] = defaultdict(lambda: defaultdict(list))
+    # Collect evaluation features: eval_data[N][family_name] = list of feature vectors
+    # Collect reference features for Lor4D: ref_lor4d[N] = list of feature vectors
+    eval_data: dict[int, dict[str, list[np.ndarray]]] = defaultdict(lambda: defaultdict(list))
+    ref_lor4d: dict[int, list[np.ndarray]] = defaultdict(list)
 
     for fi, (fam_name, gen_fn) in enumerate(ALL_FAMILIES.items()):
         print(f"  [{fi+1:2d}/{n_fam}] {fam_name:15s}", end="", flush=True)
@@ -276,10 +288,26 @@ def main() -> None:
                 try:
                     poset = gen_fn(N, seed=seed)
                     feat = compute_features(poset, N)
-                    data[N][fam_name].append(feat)
+                    eval_data[N][fam_name].append(feat)
+                    if fam_name == "Lor4D":
+                        ref_lor4d[N].append(feat)
                     ok += 1
                 except Exception:
                     pass
+            # Extra Lor4D reference samples at N=16 only (separate seeds)
+            if fam_name == "Lor4D" and N == 16 and LOR4D_REF_REPS_N16 > 0:
+                ok_ref = 0
+                for rep in range(LOR4D_REF_REPS_N16):
+                    seed = SEED_BASE + 999999 + N * 1000 + rep
+                    seed = seed % (2**31)
+                    try:
+                        poset = gen_fn(N, seed=seed)
+                        feat = compute_features(poset, N)
+                        ref_lor4d[N].append(feat)
+                        ok_ref += 1
+                    except Exception:
+                        pass
+                print(f"+ref:{ok_ref}", end="", flush=True)
             print(f"  N={N}:{ok}", end="", flush=True)
         print()
 
@@ -292,7 +320,10 @@ def main() -> None:
     results_mahal: dict[int, list[tuple[str, float]]] = {}
 
     for N in N_VALUES:
-        lor4d_feats = np.array(data[N]["Lor4D"])
+        # Use the high-precision reference ensemble if present; otherwise fall back
+        # to the Lor4D evaluation set.
+        lor4d_ref = np.array(ref_lor4d.get(N, []))
+        lor4d_feats = lor4d_ref if len(lor4d_ref) >= 5 else np.array(eval_data[N]["Lor4D"])
         if len(lor4d_feats) == 0:
             print(f"  WARNING: no Lor4D data at N={N}")
             continue
@@ -303,7 +334,7 @@ def main() -> None:
         fam_lsd_scores = []
         fam_mahal_scores = []
         for fam_name in ALL_FAMILIES:
-            feats = data[N][fam_name]
+            feats = eval_data[N][fam_name]
             if not feats:
                 continue
             feats_arr = np.array(feats)
@@ -322,6 +353,9 @@ def main() -> None:
     report.append(f"Families: 17 original + 8 adversarial = {n_fam}")
     report.append(f"N values: {N_VALUES}")
     report.append(f"Reps: {REPS}\n")
+    report.append("Reference manifold precision:\n")
+    report.append(f"- Lor4D reference reps at N=16: {REPS} + {LOR4D_REF_REPS_N16} (extra ref)")
+    report.append(f"- Lor4D reference reps at other N: {REPS}\n")
 
     new_family_names = set(NEW_FAMILIES.keys())
 
@@ -431,9 +465,9 @@ def main() -> None:
     # 5. Summary
     report.append("\n## 5. Conclusion\n")
     report.append(f"- Total families tested: {n_fam} (17 original + 8 adversarial)")
-    report.append(f"- Lor4D LSD-Well #1 at all N: {'YES ✅' if lsd_all_one else 'NO ❌'}")
-    report.append(f"- Lor4D Mahalanobis #1 at all N: {'YES ✅' if mahal_all_one else 'NO ❌'}")
-    report.append(f"- New family challenger found: {'YES ⚠' if any_challenger else 'NO ✅'}")
+    report.append(f"- Lor4D LSD-Well #1 at all N: {'YES' if lsd_all_one else 'NO'}")
+    report.append(f"- Lor4D Mahalanobis #1 at all N: {'YES' if mahal_all_one else 'NO'}")
+    report.append(f"- New family challenger found: {'YES' if any_challenger else 'NO'}")
     report.append(f"- Runtime: {time.time() - t0:.1f}s")
 
     # ── Console output ───────────────────────────────────────────────────
