@@ -1,7 +1,7 @@
 # Layered Structural Screening of 4D Lorentzian Causal Sets
 
 **Target**: Classical and Quantum Gravity (Full Paper)
-**Version**: Manuscript v0.6 — Very-large-N de Sitter convergence (N≤1024, 9276 s); ranking invariant across all 50 conditions
+**Version**: Manuscript v0.7 — Added FLRW/Schwarzschild pilot curvature tests + de Sitter N≤1024 robustness
 **Date**: 2026-03-28
 
 ---
@@ -432,6 +432,8 @@ The ranking result is unambiguous: **Lor4D retains rank #1 and dS4D retains rank
 
 The $S_{\mathrm{MD}}$ values at $H = 0.3$ show non-monotonic fluctuation across $N$ (18.2 → 135.4 → 63.9 → 101.1), reflecting covariance estimation noise with 15 realizations. Fitting $\log S_{\mathrm{MD}}$ vs $\log N$ over the full $N = 256$–$1024$ range yields $\beta = 0.55 \pm 0.22$ ($H = 0.1$, $R^2 = 0.76$) and $\beta = 1.10 \pm 0.69$ ($H = 0.3$, $R^2 = 0.56$). These are noisier than the two-point large-$N$ fits (Table 7); the low $R^2$ for $H = 0.3$ is consistent with the previously observed convexity—a single power law cannot capture both the slow initial growth and the rapidly accelerating large-$N$ behaviour. The crucial result is not the precise $\beta$ value but the invariance of the rank ordering: dS4D never falls below #2 in any of the 50 $(N, H)$ conditions tested across Tables 6–8.
 
+**Additional curved backgrounds (pilot).** We further tested two non-de-Sitter generators at $N \in \{64,128,256\}$ (15 realizations each): (i) a matter-dominated FLRW model with $a(t)=(1+\kappa t)^{2/3}$ and $\kappa \in \{0,0.3,1.0,3.0\}$, and (ii) a weak-field Schwarzschild proxy with compactness parameter $\phi_0 \in \{0,0.01,0.05,0.1\}$. In the weak-to-moderate range (FLRW $\kappa \le 1.0$, Schwarzschild $\phi_0 \le 0.1$), curved families remain within top-2 in nearly all tested conditions, and Lor4D remains rank #1 except a few baseline-fluctuation cases where the curved variant is statistically tied and appears as #1 at $N=256$. Under strong FLRW curvature ($\kappa=3.0$, corresponding to $H_0\approx2$), the rank drops to #4, consistent with the de Sitter divergent regime. This supports the same qualitative picture beyond de Sitter: layered identity is robust under mild curvature, but a curvature-adaptive reference $\mathcal{M}(\text{background})$ is needed in strongly curved regimes.
+
 ---
 
 ## §5. Historical Sedimentation and the Layered Screening Principle
@@ -515,7 +517,7 @@ Synthesizing §§2–4 and the sedimentation interpretation:
 | Sedimentation monotone trend | ✅ $\Delta_{\mathrm{hist}}$ increasing (ensemble mean) |
 | Analytical derivation | ❌ Skeleton only (§5.2) |
 | de Sitter sprinklings ($H = 0.01$–$2.0$, $N = 16$–$1024$) | ✅ Robust for $H \leq 0.3$ at $N \leq 1024$; ranking invariant across all 50 conditions (§4.7) |
-| Schwarzschild / FLRW sprinklings | ❌ Not yet tested |
+| Schwarzschild / FLRW sprinklings (pilot, $N=64$–$256$) | ✅ Weak-to-moderate curvature robust (top-2 in nearly all tested conditions); strong FLRW curvature diverges (rank #4 at $\kappa=3.0$) |
 | $N > 1024$ verification | ❌ Not yet tested ($N \leq 1024$ completed; $O(N^3)$ closure limits further scaling) |
 
 ---
@@ -589,7 +591,7 @@ We did not observe any need for a third layer in the present library—$S_{\math
 
 We reiterate the boundary conditions of our claims:
 
-1. **Curvature: de Sitter tested, other backgrounds pending.** A de Sitter scan (§4.7) shows that the flat-calibrated screening architecture is robust for $H \leq 0.3$ at all tested $N$ up to 1024: Lor4D retains rank #1 and dS4D retains rank #2 in every one of the 50 $(N, H)$ conditions tested (Tables 6–8). The critical Hubble $H_c \geq 0.3$ at all $N$. At $N = 1024$, the $H = 0$ baseline confirms statistical indistinguishability ($\Delta = +0.001$). The $S_{\mathrm{MD}}$ values show non-monotonic fluctuations at very large $N$ due to covariance estimation noise with finite realizations, but the rank ordering is invariant. Schwarzschild and FLRW backgrounds remain untested.
+1. **Curvature: de Sitter validated; FLRW/Schwarzschild partially validated.** A de Sitter scan (§4.7) shows that the flat-calibrated screening architecture is robust for $H \leq 0.3$ at all tested $N$ up to 1024: Lor4D retains rank #1 and dS4D retains rank #2 in every one of the 50 $(N, H)$ conditions tested (Tables 6–8). The critical Hubble $H_c \geq 0.3$ at all $N$. At $N = 1024$, the $H = 0$ baseline confirms statistical indistinguishability ($\Delta = +0.001$). Additional pilot tests for matter-FLRW and weak-field Schwarzschild at $N=64$–$256$ show the same qualitative behaviour under weak-to-moderate curvature, while strong FLRW curvature ($\kappa=3.0$) exits top-2. These non-de-Sitter tests are still preliminary (smaller $N$ range, proxy metrics), and full Schwarzschild/FLRW validation at $N\ge512$ remains open.
 
 2. **Library scope.** All results are established within a 25-family library. While this includes adversarial constructions, it does not exhaust the space of all possible posets. A family that matches Lor4D in all three features at all $N$ would defeat the screening—though we have found no such family despite targeted efforts.
 
@@ -613,7 +615,7 @@ We have presented numerical evidence for a **layered structural screening archit
 
 4. Beyond turn-on, the identity basin undergoes **historical sedimentation** (§5): the Mahalanobis gap grows (from $+0.86$ at $N = 14$ to $1.93 \times 10^8$ at $N = 1024$), the reference manifold sharpens ($\det(\Sigma) \propto N^{-3.31 \pm 0.14}$, $R^2 = 0.983$), and the effective basin volume contracts ($V_{\mathrm{eff}} \propto N^{-1.66 \pm 0.07}$)—making Lor4D an increasingly irreplaceable identity centre. Gap decomposition (§4.4) shows that the underlying physical separation is genuine ($d_E \approx 0.46$, flat), with the gap growth driven by statistical concentration.
 
-5. A **de Sitter robustness test** (§4.7) demonstrates that the screening architecture survives background curvature up to $H \leq 0.3$ at $N \leq 1024$: across all 50 tested $(N, H)$ conditions in the expanded 30-family library, Lor4D retains rank #1 and dS4D retains rank #2 with no exceptions. Three curvature regimes emerge: indistinguishable ($H \leq 0.01$), separated-but-near ($0.05 \leq H \leq 0.5$), and divergent ($H \geq 1.0$). The $H = 0$ limit at $N = 1024$ yields $\Delta = +0.001$, confirming that the de Sitter family recovers flat Lor4D as expected.
+5. A **curvature robustness program** (§4.7) shows that the screening architecture survives mild curvature across multiple backgrounds. For de Sitter, up to $H \leq 0.3$ at $N \leq 1024$, Lor4D remains #1 and dS4D remains #2 in all 50 tested $(N,H)$ conditions; the $H=0$ limit at $N=1024$ gives $\Delta=+0.001$. Pilot tests for matter-FLRW and weak-field Schwarzschild ($N=64$–$256$) show consistent weak-curvature robustness, while strong FLRW curvature exits top-2, matching the de Sitter divergent-regime picture.
 
 These results support the **Layered Structural Screening Principle**: the selection of 4D flat Lorentzian causal structure from a discrete poset space requires at least two functionally distinct mechanisms of different orders, whose intersection is Lor4D and whose identity basin deepens monotonically with system size.
 
@@ -647,5 +649,5 @@ The principle is proposed as a mid-level effective theory—more specific than t
 [12] F. Dowker and L. Glaser, “Causal set d’Alembertians for various dimensions,” *Class. Quantum Grav.* **30**, 195016 (2013).
 ---
 
-*Manuscript v0.6 — §1–§7 complete. Very-large-N de Sitter convergence (N≤1024, Table 8) integrated; ranking invariance confirmed across all 50 (N, H) conditions. Scope: flat Minkowski + de Sitter ($H \leq 0.3$, $N \leq 1024$). 2026-03-28.*
-*Cross-references: LAYERED_SCREENING_PRINCIPLE_OUTLINE.md (v2.0), MASTER_NARRATIVE.md, DISCUSSION_THEORY_IMPLICATIONS.md, manuscript_supplement_experiments.md, experiment_de_sitter.md, experiment_de_sitter_very_large_N.md.*
+*Manuscript v0.7 — §1–§7 complete. Very-large-N de Sitter convergence (N≤1024, Table 8) + FLRW/Schwarzschild pilot curvature tests integrated. Scope: flat Minkowski + de Sitter ($H \leq 0.3$, $N \leq 1024$) + preliminary non-de-Sitter curved backgrounds ($N=64$–$256$). 2026-03-28.*
+*Cross-references: LAYERED_SCREENING_PRINCIPLE_OUTLINE.md (v2.0), MASTER_NARRATIVE.md, DISCUSSION_THEORY_IMPLICATIONS.md, manuscript_supplement_experiments.md, experiment_de_sitter.md, experiment_de_sitter_very_large_N.md, experiment_curved_backgrounds.md.*
