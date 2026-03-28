@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-03-28T14:04:51.488604",
+  "dataset_root": "E:\\Kiro\\理论区\\poset_phase\\datasets\\ris_curved_backgrounds_v1",
+  "checks": {
+    "exists::README.md": true,
+    "exists::CITATION.cff": true,
+    "exists::data\\large_scale_robustness_results.json": true,
+    "exists::data\\cost_analysis.json": true,
+    "exists::reports\\large_scale_summary.md": true,
+    "exists::reports\\cost_analysis.md": true,
+    "exists::code\\README.md": true,
+    "json_parse::large_scale_robustness_results.json": true,
+    "json_parse::cost_analysis.json": true,
+    "robustness::partitions_512_1024_2048": true,
+    "robustness::total_trials_is_180": true,
+    "robustness::all_success_rate_100": true,
+    "cost::sizes_expected": true,
+    "cost::all_feasible": true,
+    "cost::max_memory_41_6_mb": true,
+    "citation::has_cff_version": true,
+    "citation::has_title": true,
+    "citation::has_type_dataset": true,
+    "citation::has_repository_code": true
+  },
+  "summary": {
+    "passed": 19,
+    "failed": 0
+  },
+  "warnings": []
+}

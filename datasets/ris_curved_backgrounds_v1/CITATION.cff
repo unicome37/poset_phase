@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: "RIS Curved Backgrounds Dataset v1"
+message: "If you use this dataset, please cite it using this metadata."
+type: dataset
+authors:
+  - family-names: "Li"
+    given-names: "Junyang"
+repository-code: "https://github.com/unicome37/poset_phase"
+version: "v1"
+date-released: "2026-03-28"
+keywords:
+  - influence-maximization
+  - curved-background
+  - FLRW
+  - schwarzschild
+  - robustness
+license: "See repository LICENSE"

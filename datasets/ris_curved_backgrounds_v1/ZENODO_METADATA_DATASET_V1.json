@@ -1,0 +1,23 @@
+{
+  "title": "RIS Curved Backgrounds Dataset v1 (N=512-2048)",
+  "upload_type": "dataset",
+  "description": "Open dataset for robustness verification of RIS under curved backgrounds (FLRW and Schwarzschild). Scope: N={512,1024,2048}, 6 configurations, 10 repeats per configuration, 180 total trials. Includes cost analysis, quality-check reports, and citation metadata.",
+  "creators": [
+    {
+      "name": "Li, Junyang",
+      "affiliation": "Independent Research"
+    }
+  ],
+  "access_right": "open",
+  "license": "mit-license",
+  "keywords": [
+    "influence-maximization",
+    "FLRW",
+    "Schwarzschild",
+    "curved-background",
+    "robustness",
+    "dataset"
+  ],
+  "version": "1.0.0",
+  "notes": "Companion open dataset for the poset_phase research line. Archive SHA256: 7f910be71aa008c10c88dc8a2f8faf456e705950eef8473562b500f4a49736de"
+}

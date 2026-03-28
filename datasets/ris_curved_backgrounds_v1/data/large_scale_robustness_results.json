@@ -1,0 +1,146 @@
+{
+  "N512": {
+    "n": 512,
+    "timestamp": "2026-03-28T13:35:28.243689",
+    "configurations": {
+      "FLRW_weak": {
+        "background_type": "FLRW",
+        "parameter": 0.5,
+        "num_trials": 10,
+        "success_rate": 1.0,
+        "elapsed_time": 0.9680459499359131,
+        "avg_trial_time": 0.09680459499359131,
+        "rank_diversity": 10,
+        "sample_seeds": [91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91]
+      },
+      "FLRW_moderate": {
+        "background_type": "FLRW",
+        "parameter": 1.0,
+        "num_trials": 10,
+        "success_rate": 1.0,
+        "elapsed_time": 0.4966318607330322,
+        "avg_trial_time": 0.04966318607330322,
+        "rank_diversity": 10,
+        "sample_seeds": [91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91]
+      },
+      "FLRW_strong": {
+        "background_type": "FLRW",
+        "parameter": 3.0,
+        "num_trials": 10,
+        "success_rate": 1.0,
+        "elapsed_time": 0.5003297328948975,
+        "avg_trial_time": 0.050032973289489746,
+        "rank_diversity": 10,
+        "sample_seeds": [91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91]
+      },
+      "Schwarzschild_weak": {
+        "background_type": "Schwarzschild",
+        "parameter": 0.01,
+        "num_trials": 10,
+        "success_rate": 1.0,
+        "elapsed_time": 0.44831228256225586,
+        "avg_trial_time": 0.04483122825622558,
+        "rank_diversity": 10,
+        "sample_seeds": [91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91]
+      },
+      "Schwarzschild_moderate": {
+        "background_type": "Schwarzschild",
+        "parameter": 0.03,
+        "num_trials": 10,
+        "success_rate": 1.0,
+        "elapsed_time": 0.3862345218658447,
+        "avg_trial_time": 0.03862345218658447,
+        "rank_diversity": 10,
+        "sample_seeds": [91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91,91]
+      },
+      "Schwarzschild_strong": {
+        "background_type": "Schwarzschild",
+        "parameter": 0.05,
+        "num_trials": 10,
+        "success_rate": 1.0,
+        "elapsed_time": 0.35160255432128906,
+        "avg_trial_time": 0.035160255432128903,
+        "rank_diversity": 10,
+        "sample_seeds": [372,372,372,372,372,372,372,372,372,372,372,372,372,372,372,372,372,372,372,372,372,372,372,372,372]
+      }
+    }
+  },
+  "N1024": {
+    "n": 1024,
+    "timestamp": "2026-03-28T13:35:31.476517",
+    "configurations": {
+      "FLRW_weak": {
+        "background_type": "FLRW",
+        "parameter": 0.5,
+        "num_trials": 10,
+        "success_rate": 1.0,
+        "elapsed_time": 2.3772330284118652,
+        "avg_trial_time": 0.23772330284118653,
+        "rank_diversity": 10,
+        "sample_seeds": [118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118]
+      },
+      "FLRW_moderate": {
+        "background_type": "FLRW",
+        "parameter": 1.0,
+        "num_trials": 10,
+        "success_rate": 1.0,
+        "elapsed_time": 2.36824107170105,
+        "avg_trial_time": 0.236824107170105,
+        "rank_diversity": 10,
+        "sample_seeds": [118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118]
+      },
+      "FLRW_strong": {
+        "background_type": "FLRW",
+        "parameter": 3.0,
+        "num_trials": 10,
+        "success_rate": 1.0,
+        "elapsed_time": 6.882676601409912,
+        "avg_trial_time": 0.6882676601409912,
+        "rank_diversity": 10,
+        "sample_seeds": [118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118]
+      },
+      "Schwarzschild_weak": {
+        "background_type": "Schwarzschild",
+        "parameter": 0.01,
+        "num_trials": 10,
+        "success_rate": 1.0,
+        "elapsed_time": 4.642237186431885,
+        "avg_trial_time": 0.46422371864318845,
+        "rank_diversity": 10,
+        "sample_seeds": [118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118]
+      },
+      "Schwarzschild_moderate": {
+        "background_type": "Schwarzschild",
+        "parameter": 0.03,
+        "num_trials": 10,
+        "success_rate": 1.0,
+        "elapsed_time": 18.534212112426758,
+        "avg_trial_time": 1.8534212112426758,
+        "rank_diversity": 10,
+        "sample_seeds": [118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118]
+      },
+      "Schwarzschild_strong": {
+        "background_type": "Schwarzschild",
+        "parameter": 0.05,
+        "num_trials": 10,
+        "success_rate": 1.0,
+        "elapsed_time": 12.60145616531372,
+        "avg_trial_time": 1.260145616531372,
+        "rank_diversity": 10,
+        "sample_seeds": [118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118,118]
+      }
+    }
+  },
+  "N2048": {
+    "n": 2048,
+    "timestamp": "2026-03-28T13:36:19.698201",
+    "configurations": {
+      "FLRW_weak": {"background_type": "FLRW", "parameter": 0.5, "num_trials": 10, "success_rate": 1.0, "elapsed_time": 36.43488574028015, "avg_trial_time": 3.643488574028015, "rank_diversity": 10},
+      "FLRW_moderate": {"background_type": "FLRW", "parameter": 1.0, "num_trials": 10, "success_rate": 1.0, "elapsed_time": 76.54010677337646, "avg_trial_time": 7.654010677337647, "rank_diversity": 10},
+      "FLRW_strong": {"background_type": "FLRW", "parameter": 3.0, "num_trials": 10, "success_rate": 1.0, "elapsed_time": 28.831037521362305, "avg_trial_time": 2.8831037521362304, "rank_diversity": 10},
+      "Schwarzschild_weak": {"background_type": "Schwarzschild", "parameter": 0.01, "num_trials": 10, "success_rate": 1.0, "elapsed_time": 21.955121278762817, "avg_trial_time": 2.195512127876282, "rank_diversity": 10},
+      "Schwarzschild_moderate": {"background_type": "Schwarzschild", "parameter": 0.03, "num_trials": 10, "success_rate": 1.0, "elapsed_time": 11.443832874298096, "avg_trial_time": 1.1443832874298097, "rank_diversity": 10},
+      "Schwarzschild_strong": {"background_type": "Schwarzschild", "parameter": 0.05, "num_trials": 10, "success_rate": 1.0, "elapsed_time": 10.41877269744873, "avg_trial_time": 1.041877269744873, "rank_diversity": 10}
+    }
+  }
+}
