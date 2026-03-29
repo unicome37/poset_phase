@@ -1,0 +1,20 @@
+experiment_id: falsify_c2_background_response_smoke
+output_dir: outputs_carlip/smoke
+seed_base: 42
+reps: 4
+n_grid: [256, 512]
+
+windows:
+  de_sitter_h: [0.1]
+  flrw_kappa: [0.3]
+  schwarz_phi0: [0.01]
+
+hard_fail:
+  min_fail_ratio: 0.5
+  top_k_required: 2
+  seed_runs: 2
+
+strong_regime:
+  de_sitter_h: [0.5]
+  flrw_kappa: [3.0]
+  schwarz_phi0: [0.1]

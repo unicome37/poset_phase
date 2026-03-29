@@ -1,0 +1,28 @@
+experiment_id: falsify_c1_family_pressure
+output_dir: outputs_carlip
+seed_base: 42
+reps: 80
+reference_reps: 80
+n_grid: [12, 14, 16, 20, 28, 48, 64, 96, 128, 256]
+
+# 预注册 C1 Hard Fail：
+# 任一非Lor4D家族在 >=3 个连续N 且每档 >=8/10 seeds 压过 Lor4D
+hard_fail:
+  consecutive_n: 3
+  min_seed_success: 8
+  seed_runs: 10
+
+# 使用现有注册家族（expanded_family_robustness.ALL_FAMILIES）
+# 可在后续迭代加入新生成器并在runner注册。
+family_registry: all
+
+# 重点近邻与对抗家族（报告中优先展示）
+focus_families:
+  - Lor5D
+  - KR_2layer
+  - KR_like
+  - RandomDAG
+  - RandomDAG_sp
+  - RandomDAG_dn
+  - MixedLor4D
+  - ChainAnti12

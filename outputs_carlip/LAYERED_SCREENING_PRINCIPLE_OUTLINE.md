@@ -29,7 +29,7 @@
 - **$S_{\mathrm{triple}}$**（三重积分）：刻画一般存在资格——可显影、可延续的粗筛
 - **$S_{\mathrm{BD}} = \mathbf{c}^\top \Delta\mathbf{C}$**（Benincasa-Dowker 线性超平面）：更接近 Lorentzian 几何的曲率型准入门
 
-两者均属准入级：排除明显非几何结构（KR-type、random DAG），但都无法从几何簇中正选 Lor4D。
+两者均属准入级：排除明显非几何结构（KR-type、random DAG），但都无法在几何簇中稳健识别 Lor4D 身份中心。
 
 #### 2.3 关键特征
 - 必要不充分
@@ -64,7 +64,7 @@
 **Phase II — 开启**（$N \approx N_{\mathrm{id}} \approx 14$）
 - 10/10 seeds rank #1，margin 从 +0.10 跳到 +1.28
 - 身份判别器从"偶尔有效"突变为"系统可靠"
-- **这是一个相变式 turn-on**
+- **这是 sharp finite-size turn-on / onset（非热力学相变主张）**
 
 **Phase III — 加深**（$N \gg N_{\mathrm{id}}$）
 - Margin 持续增长：$+1.28 \to +4.59$（N=14→28），非严格单调但趋势明确
@@ -163,11 +163,11 @@ $$\mathcal{M}_4 = \bigl\{(\boldsymbol{\mu}(N),\, \Sigma(N)) \;\big|\; N \geq N_{
 > 至少需要两个不同阶次的独立机制：
 >
 > 1. 一阶准入层（由 $S_{\mathrm{triple}}$ 与 $S_{\mathrm{BD}}$ 共同承载），排除非几何与非稳健结构；
-> 2. 二阶二次身份函数 $S_{\mathrm{MD}}$，将 Lor4D 从所有准入者中正选出来。
+> 2. 二阶二次身份函数 $S_{\mathrm{MD}}$，将 Lor4D 识别为准入者中的稳健身份中心。
 >
-> 两层在功能上分离，在统计上近弱相关（$r \to 0$），其交集在当前 25 族库中唯一稳健选出 Lor4D。
+> 两层在功能上分离，在统计上弱耦合（当前实证：相关性不稳定且无稳定单调依赖），其交集在当前 25 族库中稳健识别 Lor4D。
 >
-> 此外，认同层的身份井在 $N$ 增大时表现出单向累积的 basin deepening（历史沉积），使 Lor4D 在当前家族库中成为越来越不可替代的唯一稳健身份中心。
+> 此外，认同层的身份井在 $N$ 增大时表现出单向累积的 basin deepening（历史沉积），使 Lor4D 在当前家族库中呈现越来越稳定的身份中心地位。
 
 #### 7.2 数值证据强度
 
@@ -194,7 +194,7 @@ $$\mathcal{M}_4 = \bigl\{(\boldsymbol{\mu}(N),\, \Sigma(N)) \;\big|\; N \geq N_{
 
 ### 八、讨论
 
-#### 8.1 这不是机器学习
+#### 8.1 定位：reference-based one-class geometric discriminator（非训练黑箱）
 - 零自由参数
 - 参考流形由理论极限（Myrheim-Meyer, CLT）锚定，不是从数据"学"到
 - $S_{\mathrm{MD}}$ 是**单类判定**（one-class）——只依赖 Lor4D 自身统计量，无训练/测试拆分、无决策边界优化
@@ -215,10 +215,17 @@ $$\mathcal{M}_4 = \bigl\{(\boldsymbol{\mu}(N),\, \Sigma(N)) \;\big|\; N \geq N_{
 本文主动声明以下边界：
 
 - **这是中层有效理论**，不是终极 action、不是基本原理推导
-- **这是在当前 25 族扩展库下的稳健结论**，不是全结构空间的穷尽证明
+- **这是在当前 25 族扩展库下的稳健结论**，不是全结构空间的穷尽证明；当前正式 F1 family-pressure 检验（$N=12\text{–}256$, 10 seeds）未触发 C1 hard fail
+- **曲率稳健性是分背景成立**：当前 split low-$N$ 结果显示 de Sitter 与 weak-field Schwarzschild 通过，而 FLRW 在 $\kappa=1.0$ 已出现可重复 top-2 失守
 - **历史沉积命题是数值强支持**，不是解析定理；严格单调性尚未在所有 N 下排除反例（N=28→32 有波动）
 - **Reference manifold 是有效对象**，不预设严格微分流形结构
 - **Gradient bridge（$\cos(\nabla S_{\mathrm{BD}}, \nabla F_{\mathrm{LSD}}) = 0.97$）只是辅助支持**，不承担主论证
+
+#### 8.5 可证伪条件（Falsifiability）
+
+1. **Identity-layer failure**：若在扩展库中，非 Lor4D 家族在通过准入后可随 $N$ 稳定、重复压过 Lor4D，则当前认同层稳健识别主张失败。当前正式 F1 family-pressure 结果尚未触发该条件。
+2. **Background-response failure**：若弱/中曲率 4D 家族在更严格、metric-faithful 背景下系统性失去近邻层级（当前设定的 top-2 行为），则 flat-centered local basin 解释失败。当前 split low-$N$ 结果已显示这不是纯假设风险：de Sitter 与 weak-field Schwarzschild 通过，而 FLRW 在 $\kappa=1.0$ 触发当前 hard-fail 门槛。
+3. **Basis failure**：若可复现的替代特征基在同等可解释性下严格优于 $(d_{\mathrm{eff}}, C_1/C_0, w/N)$，则“tested library 内最小非冗余有效基”主张需修订。
 
 ### 九、下一步
 
@@ -234,7 +241,7 @@ $$\mathcal{M}_4 = \bigl\{(\boldsymbol{\mu}(N),\, \Sigma(N)) \;\big|\; N \geq N_{
 | 术语 | 定义 | 首次出现 |
 |---|---|---|
 | **准入层** | 一阶线性筛选（含粗筛 $S_{\mathrm{triple}}$ 与几何筛 $S_{\mathrm{BD}}$），排除非几何结构 | §二 |
-| **认同层** | 二阶二次筛选 $S_{\mathrm{MD}}$，在当前族库中稳健正选 Lor4D | §三 |
+| **认同层** | 二阶二次筛选 $S_{\mathrm{MD}}$，在当前族库中稳健识别 Lor4D 身份中心 | §三 |
 | **参考流形** $\mathcal{M}_4$ | $\{(\boldsymbol{\mu}(N), \Sigma(N))\}$，中层有效理论意义下的参数化参考对象 | §六 |
 | **Turn-on scale** $N_{\mathrm{id}}$ | 认同层可靠开启的最小 N（$\approx 14$） | §四.1 |
 | **Resolution floor** $N_{\mathrm{res}}$ | 信息量不足以支撑认同的尺度（$\approx 12$） | §四.1 |

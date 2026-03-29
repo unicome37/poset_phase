@@ -162,3 +162,32 @@ Test S_MD with all subsets of the 3 features:
 
 ---
 Total runtime: 1044s
+
+
+========================================================================
+# Exp 7: F3 Split low-N Background Response (C2) — 2026-03-28
+========================================================================
+
+Configuration (split runs):
+- N grid: [256, 512]
+- seeds: 5
+- reps: 10
+- C2 threshold: fail_ratio >= 0.5 for top-2 loss
+
+## Split summary
+
+| Background split | Parameters tested | Hard-fail? | Key observation |
+|---|---|---:|---|
+| de Sitter-only | H in {0.1, 0.3} | NO | Mostly rank #2; occasional rank #1 at H=0.1, N=256 |
+| FLRW-only | kappa in {0.3, 1.0} | YES | kappa=1.0 triggers fail_ratio=0.50 (1/2 bins) |
+| Schwarzschild-only | phi0 in {0.01, 0.05} | NO | Stable top-2, with occasional rank #1 at phi0=0.01 |
+
+Resulting interpretation:
+- C2 risk is now empirically background-dependent (not uniformly mild-curvature robust).
+- Current failure source in low-N split is localized at FLRW kappa=1.0.
+
+Primary artifacts:
+- `falsify_c2_background_response_desitter_n256.json/.md`
+- `falsify_c2_background_response_desitter_n512.json/.md`
+- `falsify_c2_background_response_flrw_lown.json/.md`
+- `falsify_c2_background_response_schwarz_lown.json/.md`

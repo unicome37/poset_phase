@@ -1,0 +1,915 @@
+{
+  "experiment_id": "falsify_c1_family_pressure",
+  "rule": {
+    "consecutive_n": 3,
+    "min_seed_success": 8,
+    "seed_runs": 10
+  },
+  "n_grid": [
+    12,
+    14,
+    16,
+    20,
+    28,
+    48,
+    64,
+    96,
+    128,
+    256
+  ],
+  "reps": 80,
+  "hard_fail": false,
+  "hard_fail_families": [],
+  "outrank_counts": {
+    "AbsLayer": {
+      "12": 0,
+      "14": 0,
+      "16": 0,
+      "20": 0,
+      "28": 0,
+      "48": 0,
+      "64": 0,
+      "96": 0,
+      "128": 0,
+      "256": 0
+    },
+    "ChainAnti12": {
+      "12": 0,
+      "14": 0,
+      "16": 0,
+      "20": 0,
+      "28": 0,
+      "48": 0,
+      "64": 0,
+      "96": 0,
+      "128": 0,
+      "256": 0
+    },
+    "ChainAnti4": {
+      "12": 0,
+      "14": 0,
+      "16": 0,
+      "20": 0,
+      "28": 0,
+      "48": 0,
+      "64": 0,
+      "96": 0,
+      "128": 0,
+      "256": 0
+    },
+    "IntOrder": {
+      "12": 0,
+      "14": 0,
+      "16": 0,
+      "20": 0,
+      "28": 0,
+      "48": 0,
+      "64": 0,
+      "96": 0,
+      "128": 0,
+      "256": 0
+    },
+    "KR_2layer": {
+      "12": 0,
+      "14": 0,
+      "16": 0,
+      "20": 0,
+      "28": 0,
+      "48": 0,
+      "64": 0,
+      "96": 0,
+      "128": 0,
+      "256": 0
+    },
+    "KR_4layer": {
+      "12": 0,
+      "14": 0,
+      "16": 0,
+      "20": 0,
+      "28": 0,
+      "48": 0,
+      "64": 0,
+      "96": 0,
+      "128": 0,
+      "256": 0
+    },
+    "KR_8layer": {
+      "12": 0,
+      "14": 0,
+      "16": 0,
+      "20": 0,
+      "28": 0,
+      "48": 0,
+      "64": 0,
+      "96": 0,
+      "128": 0,
+      "256": 0
+    },
+    "KR_like": {
+      "12": 0,
+      "14": 0,
+      "16": 0,
+      "20": 0,
+      "28": 0,
+      "48": 0,
+      "64": 0,
+      "96": 0,
+      "128": 0,
+      "256": 0
+    },
+    "Lor2D": {
+      "12": 0,
+      "14": 0,
+      "16": 0,
+      "20": 0,
+      "28": 0,
+      "48": 0,
+      "64": 0,
+      "96": 0,
+      "128": 0,
+      "256": 0
+    },
+    "Lor3D": {
+      "12": 0,
+      "14": 0,
+      "16": 0,
+      "20": 0,
+      "28": 0,
+      "48": 0,
+      "64": 0,
+      "96": 0,
+      "128": 0,
+      "256": 0
+    },
+    "Lor5D": {
+      "12": 0,
+      "14": 0,
+      "16": 0,
+      "20": 0,
+      "28": 0,
+      "48": 0,
+      "64": 0,
+      "96": 0,
+      "128": 0,
+      "256": 0
+    },
+    "MLR": {
+      "12": 0,
+      "14": 0,
+      "16": 0,
+      "20": 0,
+      "28": 0,
+      "48": 0,
+      "64": 0,
+      "96": 0,
+      "128": 0,
+      "256": 0
+    },
+    "MixedLor4D": {
+      "12": 0,
+      "14": 0,
+      "16": 0,
+      "20": 0,
+      "28": 0,
+      "48": 0,
+      "64": 0,
+      "96": 0,
+      "128": 0,
+      "256": 0
+    },
+    "RLk4": {
+      "12": 0,
+      "14": 0,
+      "16": 0,
+      "20": 0,
+      "28": 0,
+      "48": 0,
+      "64": 0,
+      "96": 0,
+      "128": 0,
+      "256": 0
+    },
+    "RLk6": {
+      "12": 0,
+      "14": 0,
+      "16": 0,
+      "20": 0,
+      "28": 0,
+      "48": 0,
+      "64": 0,
+      "96": 0,
+      "128": 0,
+      "256": 0
+    },
+    "RLk6_lj": {
+      "12": 0,
+      "14": 0,
+      "16": 0,
+      "20": 0,
+      "28": 0,
+      "48": 0,
+      "64": 0,
+      "96": 0,
+      "128": 0,
+      "256": 0
+    },
+    "RLk6_mid": {
+      "12": 0,
+      "14": 0,
+      "16": 0,
+      "20": 0,
+      "28": 0,
+      "48": 0,
+      "64": 0,
+      "96": 0,
+      "128": 0,
+      "256": 0
+    },
+    "RLk6_tap": {
+      "12": 0,
+      "14": 0,
+      "16": 0,
+      "20": 0,
+      "28": 0,
+      "48": 0,
+      "64": 0,
+      "96": 0,
+      "128": 0,
+      "256": 0
+    },
+    "RLk8": {
+      "12": 0,
+      "14": 0,
+      "16": 0,
+      "20": 0,
+      "28": 0,
+      "48": 0,
+      "64": 0,
+      "96": 0,
+      "128": 0,
+      "256": 0
+    },
+    "RandomDAG": {
+      "12": 0,
+      "14": 0,
+      "16": 0,
+      "20": 0,
+      "28": 0,
+      "48": 0,
+      "64": 0,
+      "96": 0,
+      "128": 0,
+      "256": 0
+    },
+    "RandomDAG_dn": {
+      "12": 0,
+      "14": 0,
+      "16": 0,
+      "20": 0,
+      "28": 0,
+      "48": 0,
+      "64": 0,
+      "96": 0,
+      "128": 0,
+      "256": 0
+    },
+    "RandomDAG_sp": {
+      "12": 0,
+      "14": 0,
+      "16": 0,
+      "20": 0,
+      "28": 0,
+      "48": 0,
+      "64": 0,
+      "96": 0,
+      "128": 0,
+      "256": 0
+    },
+    "SparseChain": {
+      "12": 0,
+      "14": 0,
+      "16": 0,
+      "20": 0,
+      "28": 0,
+      "48": 0,
+      "64": 0,
+      "96": 0,
+      "128": 0,
+      "256": 0
+    },
+    "TransPerc": {
+      "12": 0,
+      "14": 0,
+      "16": 0,
+      "20": 0,
+      "28": 0,
+      "48": 0,
+      "64": 0,
+      "96": 0,
+      "128": 0,
+      "256": 0
+    }
+  },
+  "per_seed_records": [
+    {
+      "seed_run": 0,
+      "N": 12,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 0,
+      "N": 14,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 0,
+      "N": 16,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 0,
+      "N": 20,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 0,
+      "N": 28,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 0,
+      "N": 48,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 0,
+      "N": 64,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 0,
+      "N": 96,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 0,
+      "N": 128,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 0,
+      "N": 256,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 1,
+      "N": 12,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 1,
+      "N": 14,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 1,
+      "N": 16,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 1,
+      "N": 20,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 1,
+      "N": 28,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 1,
+      "N": 48,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 1,
+      "N": 64,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 1,
+      "N": 96,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 1,
+      "N": 128,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 1,
+      "N": 256,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 2,
+      "N": 12,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 2,
+      "N": 14,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 2,
+      "N": 16,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 2,
+      "N": 20,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 2,
+      "N": 28,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 2,
+      "N": 48,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 2,
+      "N": 64,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 2,
+      "N": 96,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 2,
+      "N": 128,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 2,
+      "N": 256,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 3,
+      "N": 12,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 3,
+      "N": 14,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 3,
+      "N": 16,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 3,
+      "N": 20,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 3,
+      "N": 28,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 3,
+      "N": 48,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 3,
+      "N": 64,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 3,
+      "N": 96,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 3,
+      "N": 128,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 3,
+      "N": 256,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 4,
+      "N": 12,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 4,
+      "N": 14,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 4,
+      "N": 16,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 4,
+      "N": 20,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 4,
+      "N": 28,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 4,
+      "N": 48,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 4,
+      "N": 64,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 4,
+      "N": 96,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 4,
+      "N": 128,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 4,
+      "N": 256,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 5,
+      "N": 12,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 5,
+      "N": 14,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 5,
+      "N": 16,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 5,
+      "N": 20,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 5,
+      "N": 28,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 5,
+      "N": 48,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 5,
+      "N": 64,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 5,
+      "N": 96,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 5,
+      "N": 128,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 5,
+      "N": 256,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 6,
+      "N": 12,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 6,
+      "N": 14,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 6,
+      "N": 16,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 6,
+      "N": 20,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 6,
+      "N": 28,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 6,
+      "N": 48,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 6,
+      "N": 64,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 6,
+      "N": 96,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 6,
+      "N": 128,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 6,
+      "N": 256,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 7,
+      "N": 12,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 7,
+      "N": 14,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 7,
+      "N": 16,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 7,
+      "N": 20,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 7,
+      "N": 28,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 7,
+      "N": 48,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 7,
+      "N": 64,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 7,
+      "N": 96,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 7,
+      "N": 128,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 7,
+      "N": 256,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 8,
+      "N": 12,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 8,
+      "N": 14,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 8,
+      "N": 16,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 8,
+      "N": 20,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 8,
+      "N": 28,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 8,
+      "N": 48,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 8,
+      "N": 64,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 8,
+      "N": 96,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 8,
+      "N": 128,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 8,
+      "N": 256,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 9,
+      "N": 12,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 9,
+      "N": 14,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 9,
+      "N": 16,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 9,
+      "N": 20,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 9,
+      "N": 28,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 9,
+      "N": 48,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 9,
+      "N": 64,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 9,
+      "N": 96,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 9,
+      "N": 128,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    },
+    {
+      "seed_run": 9,
+      "N": 256,
+      "lor4d_rank": 1,
+      "winner": "Lor4D"
+    }
+  ]
+}

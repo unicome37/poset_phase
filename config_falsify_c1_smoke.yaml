@@ -1,0 +1,17 @@
+experiment_id: falsify_c1_family_pressure_smoke
+output_dir: outputs_carlip/smoke
+seed_base: 42
+reps: 8
+reference_reps: 8
+n_grid: [12, 16, 28]
+
+hard_fail:
+  consecutive_n: 2
+  min_seed_success: 1
+  seed_runs: 2
+
+family_registry: all
+focus_families:
+  - Lor5D
+  - KR_2layer
+  - KR_like

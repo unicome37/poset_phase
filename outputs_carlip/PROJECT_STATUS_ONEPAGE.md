@@ -3,6 +3,8 @@
 Date: 2026-03-27
 Scope: Post-Carlip rebuild → “Two-layer screening” (S_BD admissibility + S_MD identity)
 
+Update note (2026-03-28): F3 split low-N falsification now shows background-dependent curvature behavior.
+
 ## 1) Where We Are Now (Current Thesis)
 
 The project has converged from the original F7/logH-based narrative to a two-layer screening architecture:
@@ -47,6 +49,14 @@ Source: `expanded_family_results.txt`.
 
 ## 3) What Is Still “Open” (Main Risks / Gaps)
 
+### Risk 0: Background-dependent curvature response (newly elevated)
+- Split low-N F3 runs (N=256/512) now separate the C2 picture by background:
+  - de Sitter: pass (top-2 maintained)
+  - weak-field Schwarzschild: pass (top-2 maintained)
+  - matter-FLRW: hard-fail triggered at $\kappa=1.0$ (repeatable top-2 loss under current threshold)
+- Implication: avoid any unified “mild-curvature robustness” wording; use **background-dependent robustness**.
+- Immediate priority: finish FLRW high-N (N=768/1024) and decide whether failure persists, worsens, or recovers.
+
 ### Risk 1: Small-N exception for pure Mahalanobis
 - At N=16, Mahalanobis may rank Lor5D ahead of Lor4D (depending on dataset/estimation).
 - Diagnosis: not primarily covariance conditioning; it is feature overlap at low resolution (“physical resolution limit”).
@@ -86,3 +96,9 @@ Source synthesis: `MASTER_NARRATIVE.md`, `TWO_LAYER_SCREENING_THEORY.md`, `DISCU
 - Letter-style short paper draft: `SMD_OPERATOR_LETTER.md`
 - Full-paper entry points: `INTRODUCTION_DRAFT.md`, `DISCUSSION_THEORY_IMPLICATIONS.md`
 - Unified “one sentence + tables”: `MASTER_NARRATIVE.md`
+
+## 6) Newly Added Status Artifacts (2026-03-28)
+
+- `outputs_carlip/F1_ONEPAGE_SUMMARY_20260328.md`
+- `outputs_carlip/F3_LOWN_SPLIT_SUMMARY_20260328.md`
+- `outputs_carlip/CURRENT_REVIEW_RISK_STATUS_20260328.md`

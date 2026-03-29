@@ -1,0 +1,83 @@
+{
+  "experiment_id": "falsify_c2_background_response_schwarz_highn",
+  "output_basename": "falsify_c2_background_response_schwarz_highn",
+  "include_families": [
+    "schwarzschild"
+  ],
+  "family_param_counts": {
+    "de_sitter": 0,
+    "flrw": 0,
+    "schwarzschild": 2
+  },
+  "rule": {
+    "min_fail_ratio": 0.5,
+    "top_k_required": 2,
+    "seed_runs": 5
+  },
+  "n_grid": [
+    768,
+    1024
+  ],
+  "reps": 10,
+  "completed_seed_runs": 2,
+  "total_seed_runs": 5,
+  "records_so_far": 8,
+  "records": [
+    {
+      "seed_run": 0,
+      "N": 768,
+      "family": "schwarzschild",
+      "param": 0.01,
+      "rank": 2
+    },
+    {
+      "seed_run": 0,
+      "N": 768,
+      "family": "schwarzschild",
+      "param": 0.05,
+      "rank": 2
+    },
+    {
+      "seed_run": 0,
+      "N": 1024,
+      "family": "schwarzschild",
+      "param": 0.01,
+      "rank": 2
+    },
+    {
+      "seed_run": 0,
+      "N": 1024,
+      "family": "schwarzschild",
+      "param": 0.05,
+      "rank": 2
+    },
+    {
+      "seed_run": 1,
+      "N": 768,
+      "family": "schwarzschild",
+      "param": 0.01,
+      "rank": 2
+    },
+    {
+      "seed_run": 1,
+      "N": 768,
+      "family": "schwarzschild",
+      "param": 0.05,
+      "rank": 2
+    },
+    {
+      "seed_run": 1,
+      "N": 1024,
+      "family": "schwarzschild",
+      "param": 0.01,
+      "rank": 2
+    },
+    {
+      "seed_run": 1,
+      "N": 1024,
+      "family": "schwarzschild",
+      "param": 0.05,
+      "rank": 2
+    }
+  ]
+}
