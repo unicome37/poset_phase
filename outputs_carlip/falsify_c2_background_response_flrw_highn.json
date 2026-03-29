@@ -1,6 +1,5 @@
 {
   "experiment_id": "falsify_c2_background_response_flrw_highn",
-  "output_basename": "falsify_c2_background_response_flrw_highn",
   "include_families": [
     "flrw"
   ],
@@ -19,9 +18,6 @@
     1024
   ],
   "reps": 10,
-  "completed_seed_runs": 5,
-  "total_seed_runs": 5,
-  "records_so_far": 20,
   "records": [
     {
       "seed_run": 0,
@@ -163,5 +159,7 @@
       "param": 1.0,
       "rank": 2
     }
-  ]
+  ],
+  "hard_fail": false,
+  "hard_fail_items": []
 }

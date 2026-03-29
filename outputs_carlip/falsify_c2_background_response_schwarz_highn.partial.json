@@ -19,9 +19,9 @@
     1024
   ],
   "reps": 10,
-  "completed_seed_runs": 2,
+  "completed_seed_runs": 5,
   "total_seed_runs": 5,
-  "records_so_far": 8,
+  "records_so_far": 20,
   "records": [
     {
       "seed_run": 0,
@@ -74,6 +74,90 @@
     },
     {
       "seed_run": 1,
+      "N": 1024,
+      "family": "schwarzschild",
+      "param": 0.05,
+      "rank": 2
+    },
+    {
+      "seed_run": 2,
+      "N": 768,
+      "family": "schwarzschild",
+      "param": 0.01,
+      "rank": 2
+    },
+    {
+      "seed_run": 2,
+      "N": 768,
+      "family": "schwarzschild",
+      "param": 0.05,
+      "rank": 2
+    },
+    {
+      "seed_run": 2,
+      "N": 1024,
+      "family": "schwarzschild",
+      "param": 0.01,
+      "rank": 2
+    },
+    {
+      "seed_run": 2,
+      "N": 1024,
+      "family": "schwarzschild",
+      "param": 0.05,
+      "rank": 2
+    },
+    {
+      "seed_run": 3,
+      "N": 768,
+      "family": "schwarzschild",
+      "param": 0.01,
+      "rank": 2
+    },
+    {
+      "seed_run": 3,
+      "N": 768,
+      "family": "schwarzschild",
+      "param": 0.05,
+      "rank": 2
+    },
+    {
+      "seed_run": 3,
+      "N": 1024,
+      "family": "schwarzschild",
+      "param": 0.01,
+      "rank": 2
+    },
+    {
+      "seed_run": 3,
+      "N": 1024,
+      "family": "schwarzschild",
+      "param": 0.05,
+      "rank": 2
+    },
+    {
+      "seed_run": 4,
+      "N": 768,
+      "family": "schwarzschild",
+      "param": 0.01,
+      "rank": 2
+    },
+    {
+      "seed_run": 4,
+      "N": 768,
+      "family": "schwarzschild",
+      "param": 0.05,
+      "rank": 2
+    },
+    {
+      "seed_run": 4,
+      "N": 1024,
+      "family": "schwarzschild",
+      "param": 0.01,
+      "rank": 2
+    },
+    {
+      "seed_run": 4,
       "N": 1024,
       "family": "schwarzschild",
       "param": 0.05,

@@ -1,2 +1,5 @@
 {"event": "seed_complete", "seed_run": 0, "completed_cells": 2, "total_cells": 10, "records_so_far": 4}
 {"event": "seed_complete", "seed_run": 1, "completed_cells": 4, "total_cells": 10, "records_so_far": 8}
+{"event": "seed_complete", "seed_run": 2, "completed_cells": 6, "total_cells": 10, "records_so_far": 12}
+{"event": "seed_complete", "seed_run": 3, "completed_cells": 8, "total_cells": 10, "records_so_far": 16}
+{"event": "seed_complete", "seed_run": 4, "completed_cells": 10, "total_cells": 10, "records_so_far": 20}

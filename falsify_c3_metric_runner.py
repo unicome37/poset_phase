@@ -132,18 +132,36 @@ def run(cfg: dict[str, Any]) -> dict[str, Any]:
     seedlog_path = out_dir / f"{output_basename}.seedlog.jsonl"
     snapshot_path = out_dir / f"{output_basename}.partial.json"
     checkpoint_every_seed = bool(cfg.get("checkpoint_every_seed", True))
+    resume_from_partial = bool(cfg.get("resume_from_partial", True))
+
+    records: list[dict[str, Any]] = []
+    start_seed = 0
+
+    if resume_from_partial and snapshot_path.exists():
+        try:
+            prev = json.loads(snapshot_path.read_text(encoding="utf-8"))
+            prev_records = prev.get("records", [])
+            prev_completed = int(prev.get("completed_seed_runs", 0))
+            if isinstance(prev_records, list) and prev_completed > 0:
+                records = prev_records
+                start_seed = min(prev_completed, rule.seed_runs)
+        except Exception:
+            # fall back to fresh run when snapshot is malformed
+            records = []
+            start_seed = 0
 
     if checkpoint_every_seed:
-        # clear previous run log
-        seedlog_path.write_text("", encoding="utf-8")
-
-    records = []
+        if start_seed == 0:
+            # fresh run: clear previous seed log
+            seedlog_path.write_text("", encoding="utf-8")
+        elif not seedlog_path.exists():
+            seedlog_path.write_text("", encoding="utf-8")
 
     n_seeds = rule.seed_runs
     n_cells = n_seeds * len(n_grid)
-    cell_done = 0
+    cell_done = start_seed * len(n_grid)
 
-    for s in range(n_seeds):
+    for s in range(start_seed, n_seeds):
         for n in n_grid:
             cell_done += 1
             print(f"[F3] seed={s+1}/{n_seeds} N={n} ({cell_done}/{n_cells}) include={sorted(include_families)}", flush=True)

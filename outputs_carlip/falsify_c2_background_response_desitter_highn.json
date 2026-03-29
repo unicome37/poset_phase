@@ -1,12 +1,11 @@
 {
-  "experiment_id": "falsify_c2_background_response_flrw_highn",
-  "output_basename": "falsify_c2_background_response_flrw_highn",
+  "experiment_id": "falsify_c2_background_response_desitter_highn",
   "include_families": [
-    "flrw"
+    "de_sitter"
   ],
   "family_param_counts": {
-    "de_sitter": 0,
-    "flrw": 2,
+    "de_sitter": 2,
+    "flrw": 0,
     "schwarzschild": 0
   },
   "rule": {
@@ -19,149 +18,148 @@
     1024
   ],
   "reps": 10,
-  "completed_seed_runs": 5,
-  "total_seed_runs": 5,
-  "records_so_far": 20,
   "records": [
     {
       "seed_run": 0,
       "N": 768,
-      "family": "flrw",
-      "param": 0.3,
+      "family": "de_sitter",
+      "param": 0.1,
       "rank": 2
     },
     {
       "seed_run": 0,
       "N": 768,
-      "family": "flrw",
-      "param": 1.0,
-      "rank": 2
-    },
-    {
-      "seed_run": 0,
-      "N": 1024,
-      "family": "flrw",
+      "family": "de_sitter",
       "param": 0.3,
       "rank": 2
     },
     {
       "seed_run": 0,
       "N": 1024,
-      "family": "flrw",
-      "param": 1.0,
+      "family": "de_sitter",
+      "param": 0.1,
       "rank": 2
     },
     {
-      "seed_run": 1,
-      "N": 768,
-      "family": "flrw",
+      "seed_run": 0,
+      "N": 1024,
+      "family": "de_sitter",
       "param": 0.3,
       "rank": 2
     },
     {
       "seed_run": 1,
       "N": 768,
-      "family": "flrw",
-      "param": 1.0,
+      "family": "de_sitter",
+      "param": 0.1,
+      "rank": 2
+    },
+    {
+      "seed_run": 1,
+      "N": 768,
+      "family": "de_sitter",
+      "param": 0.3,
       "rank": 2
     },
     {
       "seed_run": 1,
       "N": 1024,
-      "family": "flrw",
-      "param": 0.3,
+      "family": "de_sitter",
+      "param": 0.1,
       "rank": 2
     },
     {
       "seed_run": 1,
       "N": 1024,
-      "family": "flrw",
-      "param": 1.0,
-      "rank": 3
-    },
-    {
-      "seed_run": 2,
-      "N": 768,
-      "family": "flrw",
+      "family": "de_sitter",
       "param": 0.3,
       "rank": 2
     },
     {
       "seed_run": 2,
       "N": 768,
-      "family": "flrw",
-      "param": 1.0,
-      "rank": 3
-    },
-    {
-      "seed_run": 2,
-      "N": 1024,
-      "family": "flrw",
-      "param": 0.3,
+      "family": "de_sitter",
+      "param": 0.1,
       "rank": 2
     },
     {
       "seed_run": 2,
-      "N": 1024,
-      "family": "flrw",
-      "param": 1.0,
+      "N": 768,
+      "family": "de_sitter",
+      "param": 0.3,
       "rank": 2
     },
     {
-      "seed_run": 3,
-      "N": 768,
-      "family": "flrw",
+      "seed_run": 2,
+      "N": 1024,
+      "family": "de_sitter",
+      "param": 0.1,
+      "rank": 2
+    },
+    {
+      "seed_run": 2,
+      "N": 1024,
+      "family": "de_sitter",
       "param": 0.3,
       "rank": 2
     },
     {
       "seed_run": 3,
       "N": 768,
-      "family": "flrw",
-      "param": 1.0,
+      "family": "de_sitter",
+      "param": 0.1,
+      "rank": 2
+    },
+    {
+      "seed_run": 3,
+      "N": 768,
+      "family": "de_sitter",
+      "param": 0.3,
       "rank": 2
     },
     {
       "seed_run": 3,
       "N": 1024,
-      "family": "flrw",
-      "param": 0.3,
+      "family": "de_sitter",
+      "param": 0.1,
       "rank": 2
     },
     {
       "seed_run": 3,
       "N": 1024,
-      "family": "flrw",
-      "param": 1.0,
-      "rank": 3
-    },
-    {
-      "seed_run": 4,
-      "N": 768,
-      "family": "flrw",
+      "family": "de_sitter",
       "param": 0.3,
       "rank": 2
     },
     {
       "seed_run": 4,
       "N": 768,
-      "family": "flrw",
-      "param": 1.0,
+      "family": "de_sitter",
+      "param": 0.1,
       "rank": 2
     },
     {
       "seed_run": 4,
-      "N": 1024,
-      "family": "flrw",
+      "N": 768,
+      "family": "de_sitter",
       "param": 0.3,
       "rank": 2
     },
     {
       "seed_run": 4,
       "N": 1024,
-      "family": "flrw",
-      "param": 1.0,
+      "family": "de_sitter",
+      "param": 0.1,
+      "rank": 2
+    },
+    {
+      "seed_run": 4,
+      "N": 1024,
+      "family": "de_sitter",
+      "param": 0.3,
       "rank": 2
     }
-  ]
+  ],
+  "hard_fail": false,
+  "hard_fail_items": []
 }
