@@ -4,6 +4,18 @@
 
 Exact numerical framework for studying geometric phase transitions in finite partially ordered sets (posets). Investigates whether Lorentzian-like structures can emerge as competitive phases against high-entropy non-geometric structures in action-weighted poset ensembles.
 
+## Status Snapshot (2026-03-30)
+
+- **Current truth source**: `进展.md`
+- **Current mainline**: two-layer screening (`S_BD` admissibility + `S_MD` identity)
+- **Updated onset claim**: Lor4D identity turn-on is now supported from **`N ≥ 10`** under the fixed-reference F2 protocol
+- **Curvature wording**: use **`background-dependent robustness`**, not any unified “mild-curvature robustness” claim
+- **Boundary-risk focus**: matter-FLRW at `κ = 1.0` is currently a **boundary-sensitive** case (lowN threshold hit, highN partial recovery, P0 metric-faithful PhaseA fail ratio `11/60 = 0.183`)
+- **Entry documents**:
+  - `进展.md` — current project truth source
+  - `outputs_carlip/FLRW_KAPPA1_DEFENSE_BRIEF_20260330.md` — one-page FLRW defense brief
+  - `outputs_carlip/REPRO_RUNBOOK_20260330.md` — reproducibility runbook for F1/F2/F3/P0
+
 ## Preprints
 
 | Paper | DOI | Status |
@@ -87,6 +99,19 @@ python experiment.py --config config_frozen_exact.yaml
 # Extended exact mainline (N=20–44)
 python experiment.py --config config_confirmatory_medium_exact_scan.yaml
 ```
+
+## Current Two-Layer / Falsification Entry Points
+
+For the current post-Carlip mainline, prefer the dedicated runbook rather than the historical README command list:
+
+- `outputs_carlip/REPRO_RUNBOOK_20260330.md` — canonical runner/config/output mapping
+- `outputs_carlip/NEXT_RUN_ENTRYPOINT_20260330.md` — short execution order
+
+The most relevant current scripts are:
+
+- `falsify_c1_runner.py` — F1 family-pressure + P1 turn-on winner-only refit
+- `f2_turnon_margin_runner.py` — F2 margin-aware onset refit
+- `falsify_c3_metric_runner.py` — F3 / P0 background-response runs
 
 ## Reproducing Key Results
 

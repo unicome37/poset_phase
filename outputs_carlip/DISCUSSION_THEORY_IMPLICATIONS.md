@@ -77,7 +77,7 @@ $$\boldsymbol{\mu}(N) = \boldsymbol{\mu}(\infty) + \mathbf{a}/N + \mathbf{b}/N^2
 
 在 17 个标准族 + 8 个对抗性族（KR_8layer, RandomDAG×3, ChainAnti×2, SparseChain, MixedLor4D）下：
 
-- LSD-Well: **全 N 全族 Lor4D #1** ✅
+- LSD-Well: **在既有 tested range 内持续保持 Lor4D #1；当前 manuscript-safe 主线仍以 Mahalanobis / F2 口径为准** ✅
 - 无任何对抗性家族在任何 N 处击败 Lor4D
 - Non-overfitting: 5-fold CV LSD 98%, Mahalanobis 94%, margin 保留率 ≥95%
 - 10-seed 再现: LSD-Well 80/80 全#1, Mahalanobis 79/80
@@ -90,7 +90,7 @@ $$\{S_{\mathrm{BD}} \in \text{window}\} \cap \{S_{\mathrm{MD}} \approx 0\} = \{\
 
 $S_{\mathrm{BD}}$ 与 $S_{\mathrm{MD}}$ 几乎不相关（Pearson $r: 0.57 \to 0.07 \to -0.26$ 随 N 增长）。  
 $S_{\mathrm{BD}}$ 单独不能选 Lor4D（N=128 排名 14/17）。  
-$S_{\mathrm{MD}}$ 单独选择 Lor4D（全 N #1）。  
+$S_{\mathrm{MD}}$ 单独选择 Lor4D（当前安全口径：fixed-reference F2 下 `N≥10` 起 #1）。  
 二者联合 = 仅 Lor4D 通过。
 
 ---
@@ -235,11 +235,11 @@ Phase 13.2 进一步明确了"历史沉积"不应被理解为某个局部梯度�
 
 ### 6.1 Two-Layer Architecture
 
-> The numerical experiments reveal a two-layer screening structure for 4D Lorentzian selection. The first layer is the Benincasa-Dowker action $S_{\mathrm{BD}}$, a linear functional of interval counts that defines an admissibility hyperplane in count space—filtering out posets with incorrect average curvature but failing to uniquely select Lor4D (rank 14/17 at $N=128$). The second layer is the minimum distortion action $S_{\mathrm{MD}}$, a quadratic functional measuring Mahalanobis distance from the Lor4D reference manifold $\boldsymbol{\mu}(N)$—uniquely selecting Lor4D across all tested scales ($N=16$–$1024$) and all 25 poset families with zero free parameters.
+> The numerical experiments reveal a two-layer screening structure for 4D Lorentzian selection. The first layer is the Benincasa-Dowker action $S_{\mathrm{BD}}$, a linear functional of interval counts that defines an admissibility hyperplane in count space—filtering out posets with incorrect average curvature but failing to uniquely select Lor4D (rank 14/17 at $N=128$). The second layer is the minimum distortion action $S_{\mathrm{MD}}$, a quadratic functional measuring Mahalanobis distance from the Lor4D reference manifold $\boldsymbol{\mu}(N)$—robustly selecting Lor4D from $N\geq10$ onward under the fixed-reference F2 protocol, and continuing to rank Lor4D first at broader tested scales in the 25-family library, with zero free parameters.
 
 ### 6.2 Basin Deepening
 
-> As $N$ increases, the Lor4D identity basin deepens monotonically: the Mahalanobis gap grows from $-0.8$ ($N=16$) to $94.1$ ($N=128$) and reaches $1.93\times10^8$ at $N=1024$; the effective potential depth scales as $V_{\mathrm{eff}} \propto N^{-1.57}$; Fisher information scales as $\propto N^{1.00}$. Simultaneously, the reference manifold covariance shrinks as $\det(\Sigma) \propto N^{-3.38}$, and individual feature variances follow $\sigma^2 \propto N^{-1}$ (standard CLT scaling). This means that the "cost of impersonation" for any non-Lor4D poset grows without bound, while the Lor4D identity signature becomes increasingly unambiguous.
+> As $N$ increases, the Lor4D identity basin deepens monotonically: the Mahalanobis gap grows from $+0.308$ ($N=10$, F2 fixed-reference onset study) to $94.1$ ($N=128$) and reaches $1.93\times10^8$ at $N=1024$; the effective potential depth scales as $V_{\mathrm{eff}} \propto N^{-1.57}$; Fisher information scales as $\propto N^{1.00}$. Simultaneously, the reference manifold covariance shrinks as $\det(\Sigma) \propto N^{-3.38}$, and individual feature variances follow $\sigma^2 \propto N^{-1}$ (standard CLT scaling). This means that the "cost of impersonation" for any non-Lor4D poset grows without bound, while the Lor4D identity signature becomes increasingly unambiguous.
 
 ### 6.3 Gradient Bridge (Auxiliary)
 

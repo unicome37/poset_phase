@@ -1,7 +1,7 @@
-# Small-N Treatment Note (N=16) — Attempt Toward “All N”
+# Small-N Treatment Note (Historical N=16 Issue → superseded by F2)
 
-Date: 2026-03-27
-Context: Mahalanobis `S_MD(P,N) = (I(P)-mu(N))^T Sigma(N)^{-1} (I(P)-mu(N))` sometimes shows an `N=16` Lor5D intruder in earlier robustness runs.
+Date: 2026-03-30
+Context: this note records the **historical** `N=16` Mahalanobis intruder issue from earlier robustness runs. The current safe claim is no longer derived from this note, but from the fixed-reference F2 protocol.
 
 ## What We Tried (Principled, No Hand-Tuned Knobs)
 
@@ -30,9 +30,10 @@ If the paper wants to claim “all N including N=16”, the cleanest *principled
 - **Define** `mu(N), Sigma(N)` as ensemble objects estimated to a fixed precision, and
 - **Use a larger Lor4D ensemble at N=16** when constructing `mu(16), Sigma(16)` (computational budget, not a tunable model knob).
 
-If we prefer the most conservative paper-grade statement, keep:
+If one wants to quote the historical conservative paper-grade statement, it was:
 - “Mahalanobis selects Lor4D uniquely for `N >= 20`”, and treat `N=16` as a resolution-limit regime.
-- "Mahalanobis selects Lor4D uniquely for `N >= 20`", and treat `N=16` as a resolution-limit regime.
+
+This wording is now **obsolete** and should be retained only as a historical record of the pre-F2 stage.
 
 ## 2026-03-30 Update: F2 margin-aware refit resolved this
 

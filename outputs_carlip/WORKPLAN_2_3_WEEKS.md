@@ -1,22 +1,28 @@
 # Work Plan (2–3 Weeks) — poset_phase / Two-Layer Screening
 
-Date: 2026-03-27
+Date: 2026-03-30
 Goal: convert the current numerical synthesis into a submission-ready package with precise claims, strong robustness, and clean paper structure.
+
+> **2026-03-30 supersession note**
+>
+> This work plan is now partially superseded by the F2 margin-aware refit and P0 metric-faithful PhaseA results:
+> - the safe onset claim is now **`N ≥ 10`**, not `N ≥ 14`;
+> - the curvature wording should now be **`background-dependent robustness`**;
+> - the current immediate deliverables are: (i) full manuscript wording sync, (ii) a one-page FLRW `κ=1.0` defense brief, and (iii) a reproducibility runbook.
 
 ## Week 1 (Stabilize Claims + Close the Small-N Hole) — ✅ COMPLETED 2026-03-27
 
 ### 1.1 Lock "claim boundaries" — ✅ DONE
-- **Turn-on boundary confirmed: N ≥ 14** (previously expected N ≥ 20)
-- REPS=80, 25 families, 10 independent seeds
-- N=14–32: 10/10 Lor4D rank #1, margin +1.28 → +4.59
-- N=12: 6/10 (physical resolution limit, intruders: Lor5D + KR_2layer)
-- Evidence: `mahalanobis_n_boundary_turnon.md`, `fig_margin_vs_n.png`, `n12_failure_diagnosis.md`
+- **Turn-on boundary superseded: N ≥ 10 under fixed-reference F2 protocol**
+- F2 protocol: 20 seeds × 120 reps, separate reference ensemble
+- N=10–24: 20/20 Lor4D rank #1; manuscript-safe onset already holds at N=10
+- Older `N=12/14/16` instability belongs to shared-reference contamination diagnostics, not the current safe claim boundary
+- Evidence: `f2_turnon_margin_refit.md`, `falsify_c1_turnon_refit.md`, `P1_STRONGER_THAN_OLD_DIAGNOSIS_20260330.md`
 
 ### 1.2 Small-N treatment — ✅ DECIDED
-- **Decision**: Claim N ≥ 14 with resolution-limit explanation for N=12
-- N=12 failures are physical: d_eff overlap between Lor4D/Lor5D at 12 sprinkled points
-- Not a statistical artifact (cond(Σ) < 50, not pathological)
-- No tunable knobs introduced
+- **Decision (updated)**: Claim `N ≥ 10` under the fixed-reference protocol.
+- Earlier N=12–16 instability should be described as a reference/test contamination artifact in the shared-seed CV regime, not as the current safe physical boundary.
+- No tunable knobs are introduced; the change is protocol-level (independent reference ensemble + larger reference reps).
 
 ### 1.3 N-boundary robustness  DONE
 - Full N=12,14,16,18,20,24,28,32 grid with 80 runs each
@@ -53,6 +59,11 @@ Deliverable:
 
 ## Week 3 (Submission Packaging)
 
+### 3.0 Current front-loaded priorities (2026-03-30)
+- Produce `FLRW_KAPPA1_DEFENSE_BRIEF_20260330.md`
+- Produce `REPRO_RUNBOOK_20260330.md`
+- Sweep remaining docs for old `N ≥ 14/16` and “uniform mild-curvature robustness” wording
+
 ### 3.1 Letter finalization (CQG Letters / PRL-style)
 - Ensure the Letter is self-contained:
   - 1 figure (two-layer picture or margin vs N),
@@ -78,5 +89,5 @@ Deliverable:
 ## Concrete Definition of “Done”
 
 - Claims are consistent across all drafts.
-- Mahalanobis small-N behavior is either (a) cleanly bounded by N0 with a resolution-limit explanation, or (b) fixed by a principled rule that does not reintroduce tunable knobs.
+- Mahalanobis small-N behavior is stated using the current safe threshold (`N ≥ 10` under the fixed-reference protocol), with old CV/shared-reference instability clearly labeled as historical/diagnostic.
 - Letter draft reads as a short, defensible numerical discovery with explicit limits and strong robustness.

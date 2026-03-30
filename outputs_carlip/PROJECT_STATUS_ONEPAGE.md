@@ -1,9 +1,11 @@
 # Project Status (One Page) — poset_phase / outputs_carlip
 
-Date: 2026-03-27
+Date: 2026-03-30
 Scope: Post-Carlip rebuild → “Two-layer screening” (S_BD admissibility + S_MD identity)
 
-Update note (2026-03-28): F3 split low-N falsification now shows background-dependent curvature behavior.
+Update note (2026-03-30):
+- F2 margin-aware refit now supports the safe onset claim **`N ≥ 10`** under a fixed-reference protocol.
+- FLRW `κ=1.0` should now be treated as a **boundary-sensitive** background case under **background-dependent robustness**, not as evidence of global failure.
 
 ## 1) Where We Are Now (Current Thesis)
 
@@ -33,7 +35,7 @@ Sources: `综合诊断_两轮实验.md`, `lsd_17family_test.md`, `lsd_well_17fam
 
 ### C. Zero-parameter identity via Mahalanobis (core advance)
 - Mahalanobis LSD replaces hand-tuned weights with Σ(N)^{-1} from Lor4D ensemble statistics.
-- Cross-validation and seed robustness are strong for N ≥ 20; margins grow rapidly with N.
+- Under the fixed-reference F2 protocol (20 seeds × 120 reps, separate reference ensemble), Lor4D is ranked #1 from **N = 10** onward; margins then grow rapidly with N.
 Sources: `mahalanobis_lsd.md`, `prediction_b_cross_validation.md`, `prediction_b_seed_reproducibility.md`, `large_n_extreme.md`.
 
 ### D. Basin deepening + reference manifold as “theory object”
@@ -44,7 +46,7 @@ Sources: `mu_trajectory.md`, `basin_deepening_results.txt`, `large_n_extreme.md`
 ### E. Adversarial robustness (expanded family library)
 - A 25-family library (17 standard + 8 adversarial) has been tested.
 - LSD-Well keeps Lor4D rank #1 at all tested N in that report.
-- Mahalanobis is #1 for N ≥ 28 in that report, with a small-N exception at N=16.
+- The old Mahalanobis `N=16` exception now belongs to the **historical CV/shared-reference regime**; the current safe onset statement is `N ≥ 10` under the fixed-reference F2 protocol.
 Source: `expanded_family_results.txt`.
 
 ## 3) What Is Still “Open” (Main Risks / Gaps)
@@ -54,16 +56,18 @@ Source: `expanded_family_results.txt`.
   - de Sitter: pass (top-2 maintained)
   - weak-field Schwarzschild: pass (top-2 maintained)
   - matter-FLRW: hard-fail triggered at $\kappa=1.0$ (repeatable top-2 loss under current threshold)
+- Completed high-N runs (N=768/1024) show **partial recovery** for FLRW at $\kappa=1.0$ with failure ratio $0.3 < 0.5$.
+- P0 metric-faithful PhaseA refines the same picture: metric branch `11/60 = 0.183`, proxy branch `0/60`.
 - Implication: avoid any unified “mild-curvature robustness” wording; use **background-dependent robustness**.
-- Immediate priority: finish FLRW high-N (N=768/1024) and decide whether failure persists, worsens, or recovers.
+- Immediate priority: package FLRW `κ=1.0` into a one-page reviewer-defense brief, then decide whether PhaseB (`N=1024/1536/2048`) is needed.
 
 ### Risk 1: Small-N exception for pure Mahalanobis
-- At N=16, Mahalanobis may rank Lor5D ahead of Lor4D (depending on dataset/estimation).
-- Diagnosis: not primarily covariance conditioning; it is feature overlap at low resolution (“physical resolution limit”).
+- The old N=16 Mahalanobis exception should now be treated as a **historical diagnostic** tied to CV/shared-reference contamination and small reference ensembles.
+- Current safe claim: under the fixed-reference protocol, Mahalanobis uniquely selects Lor4D for **N ≥ 10**.
 Source: `n16_mahalanobis_cv_rootcause.md`, plus `expanded_family_results.txt` (N=16 line).
 
 Implication for claims:
-- Avoid “all N” absolutes for Mahalanobis; state a safe threshold (e.g., N ≥ 20) unless you add a principled small-N treatment.
+- Avoid “all N” absolutes for Mahalanobis; state the current safe threshold **`N ≥ 10` under the fixed-reference protocol** and keep the older CV instability explicitly labeled as historical/diagnostic.
 
 Principled small-N treatment (attempted):
 - Anchoring only the dimension mean to d*=4 does not reliably eliminate the N=16 intruder.
@@ -96,6 +100,8 @@ Source synthesis: `MASTER_NARRATIVE.md`, `TWO_LAYER_SCREENING_THEORY.md`, `DISCU
 - Letter-style short paper draft: `SMD_OPERATOR_LETTER.md`
 - Full-paper entry points: `INTRODUCTION_DRAFT.md`, `DISCUSSION_THEORY_IMPLICATIONS.md`
 - Unified “one sentence + tables”: `MASTER_NARRATIVE.md`
+- FLRW one-page defense brief: `FLRW_KAPPA1_DEFENSE_BRIEF_20260330.md`
+- Reproducibility guide: `REPRO_RUNBOOK_20260330.md`
 
 ## 6) Newly Added Status Artifacts (2026-03-28)
 
