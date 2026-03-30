@@ -1,5 +1,13 @@
 # N=12 Failure Diagnosis
 
+> **2026-03-30 supersession note**
+>
+> 本文件是旧协议下的小 N 异常诊断记录。其末尾关于 “Letter should claim `N≥14`” 的结论已被 **fixed-reference F2 protocol** 废止。
+>
+> - 当前安全 onset：**`N≥10`**
+> - `N=12` 这里记录的是历史 shared-reference / small-reference 诊断，不是现行主稿边界
+> - 当前真值源：`进展.md`
+
 N=12, REPS=80, 25 families, 10 seeds
 
 ## seed=42 — **PASS** (Lor4D rank=1, winner=Lor4D)

@@ -1,5 +1,13 @@
 # Mahalanobis S_MD — N-Boundary Turn-On Table
 
+> **2026-03-30 supersession note**
+>
+> 本表记录的是 **2026-03-27 的旧边界扫描**（10 seeds × REPS=80），其 `N≥14` 结论已被后续 **fixed-reference F2 margin-aware refit** 正式 supersede。
+>
+> - 当前安全 onset：**`N≥10`**
+> - 当前真值源：`进展.md`
+> - 本文件应仅作为历史比较与方法学演进记录，不再作为主稿边界依据。
+
 Date: 2026-03-27 16:12
 Families: 25 (17 standard + 8 adversarial)
 Seeds: 10

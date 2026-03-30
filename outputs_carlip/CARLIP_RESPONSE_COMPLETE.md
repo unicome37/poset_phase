@@ -1,5 +1,14 @@
 # Carlip 批评完整回应：从 F7 到 LSD-Well 的范式重建
 
+> **2026-03-30 supersession note**
+>
+> 本文件是 **Carlip 后重建早期阶段的历史回应档案**，不再作为当前对外口径或主稿真值源。
+>
+> - 当前真值源：`进展.md`
+> - 当前 onset 安全口径：fixed-reference F2 protocol 下 **`N≥10`**
+> - 当前曲率口径：**`background-dependent robustness`**
+> - 本文件中出现的 `N≥20` / `N=16` / “全 N #1” 等表述，应视为 **历史阶段结论**，不可直接用于现行主稿、摘要或回复信。
+
 **日期**：2026-03
 **状态**：Post-desk-rejection 系统回应
 
