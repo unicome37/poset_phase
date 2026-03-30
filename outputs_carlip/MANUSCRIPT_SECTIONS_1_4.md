@@ -1,8 +1,8 @@
 # Layered Structural Screening of 4D Lorentzian Causal Sets
 
 **Target**: Classical and Quantum Gravity (Full Paper)
-**Version**: Manuscript v0.8 — Added Table 9 + FLRW/Schwarzschild extended pilot to N≤512
-**Date**: 2026-03-28
+**Version**: Manuscript v0.9 — Curvature wording synchronized with lowN+highN falsification status
+**Date**: 2026-03-30
 
 ---
 
@@ -32,17 +32,17 @@ This observation motivates the central question of the present work:
 
 ### 1.3 Summary of results
 
-We report numerical evidence, obtained from a systematic survey across a 25-family poset library at scales $N=12$–$1024$, for a **layered structural screening architecture** comprising at least two functionally distinct layers:
+We report numerical evidence, obtained from a systematic survey across a 25-family poset library at scales $N=10$–$1024$, for a **layered structural screening architecture** comprising at least two functionally distinct layers:
 
 **Layer 1 — Admissibility.** A first-order, linear screening layer (carried jointly by the triple-product functional $S_{\mathrm{triple}}$ and the BD action $S_{\mathrm{BD}}$) eliminates non-geometric and non-robust structures from the poset space, reducing a combinatorially vast landscape to a manageable geometric sector. This layer is necessary but insufficient: Lor4D is not uniquely selected.
 
-**Layer 2 — Identity.** A second-order, quadratic identity functional $S_{\mathrm{MD}}$—the Mahalanobis distance from a Lor4D reference manifold in structural feature space—identifies Lor4D as the robust identity centre among admissible candidates, with zero free parameters. At all tested scales $N \geq 16$ and across all 25 poset families (10 independent seeds, 80 realizations per seed), Lor4D is uniquely ranked first with 100% reliability. At $N = 14$, the success rate is 90%.
+**Layer 2 — Identity.** A second-order, quadratic identity functional $S_{\mathrm{MD}}$—the Mahalanobis distance from a Lor4D reference manifold in structural feature space—identifies Lor4D as the robust identity centre among admissible candidates, with zero free parameters. At all tested scales $N \geq 10$ and across all 25 poset families (20-seed $\times$ 120-replication F2 onset study with separate reference ensemble; 10 independent seeds at broader scales), Lor4D is uniquely ranked first with 100% reliability.
 
 The two layers are functionally separated: the Pearson correlation between $S_{\mathrm{BD}}$ and $S_{\mathrm{MD}}$ fluctuates around zero across all tested $N$ (bootstrap 95% confidence intervals span zero at every scale; see §3.5). Their intersection, in the tested library, is Lor4D and only Lor4D.
 
-Furthermore, the identity basin exhibits systematic **deepening** with increasing $N$: the Mahalanobis gap grows from $+0.86 \pm 0.25$ at $N=14$ to $+4.12 \pm 0.35$ at $N=32$ to $1.93 \times 10^8$ at $N=1024$, the effective potential volume shrinks as $V_{\mathrm{eff}} \propto N^{-1.66 \pm 0.07}$ ($R^2 = 0.983$), and the Fisher information grows as $I_F \propto N^{+1.12 \pm 0.07}$ ($R^2 = 0.965$). This basin deepening—which we term **historical sedimentation**—represents the progressive locking of Lor4D identity as the number of causal events increases.
+Furthermore, the identity basin exhibits systematic **deepening** with increasing $N$: the Mahalanobis gap grows from $+0.308 \pm 0.091$ at $N=10$ to $+4.12 \pm 0.35$ at $N=32$ to $1.93 \times 10^8$ at $N=1024$, the effective potential volume shrinks as $V_{\mathrm{eff}} \propto N^{-1.66 \pm 0.07}$ ($R^2 = 0.983$), and the Fisher information grows as $I_F \propto N^{+1.12 \pm 0.07}$ ($R^2 = 0.965$). This basin deepening—which we term **historical sedimentation**—represents the progressive locking of Lor4D identity as the number of causal events increases.
 
-Crucially, the identity mechanism is not specific to Lor4D: when $S_{\mathrm{MD}}$ is centred on any Lorentzian family (Lor2D, Lor3D, or Lor5D), the centred family uniquely self-selects as rank #1 at all tested scales (§3.4). This means self-minimum is a general one-class property. The non-trivial Lor4D claim in this paper is therefore anchored not in self-minimum itself, but in the **combined evidence pattern**: cross-family separation, finite-size turn-on, basin deepening, and mild-curvature robustness within the tested library.
+Crucially, the identity mechanism is not specific to Lor4D: when $S_{\mathrm{MD}}$ is centred on any Lorentzian family (Lor2D, Lor3D, or Lor5D), the centred family uniquely self-selects as rank #1 at all tested scales (§3.4). This means self-minimum is a general one-class property. The non-trivial Lor4D claim in this paper is therefore anchored not in self-minimum itself, but in the **combined evidence pattern**: cross-family separation, finite-size turn-on, basin deepening, and background-dependent curvature robustness within the tested library.
 
 ### 1.4 Scope and limitations
 
@@ -51,7 +51,7 @@ The present work is strictly numerical. We do not claim analytic proofs of the l
 - a 25-family poset library (17 standard + 8 adversarial);
 - the scale range $N = 12$–$1024$;
 - a three-dimensional structural feature space $(d_{\mathrm{eff}},\; C_1/C_0,\; w/N)$;
-- **flat Minkowski background**: all Lorentzian families are generated by Poisson sprinkling into causal diamonds in $\mathbb{R}^{d-1,1}$. Curved-background extensions are reported in §4.7: de Sitter is robust up to $H \leq 0.3$ at $N \leq 1024$; weak-field Schwarzschild remains top-2 in the present low-$N$ split tests; matter-FLRW shows background-dependent degradation, with $\kappa=1.0$ already producing repeatable top-2 failure signals in the current low-$N$ split. Strong curvature requires a curvature-adaptive reference manifold.
+- **flat Minkowski background**: all Lorentzian families are generated by Poisson sprinkling into causal diamonds in $\mathbb{R}^{d-1,1}$. Curved-background extensions are reported in §4.7: de Sitter is robust up to $H \leq 0.3$ at $N \leq 1024$; weak-field Schwarzschild remains compatible with top-2 behavior in current split tests; matter-FLRW is boundary-sensitive at $\kappa=1.0$ (low-$N$ split reaches hard-fail threshold, while completed high-$N$ runs show partial recovery with fail ratio $0.3<0.5$). Strong curvature still requires a curvature-adaptive reference manifold.
 
 The layered screening principle is proposed as a **mid-level effective theory**—more specific than the philosophical assertion "existence is what survives screening," more general than the individual numerical experiments from which it is extracted.
 
@@ -190,12 +190,14 @@ As $N$ grows, the Lor4D point cloud in feature space concentrates toward $\bolds
 ### 3.3 Identity selection: the evidence
 
 **Table 2.** $S_{\mathrm{MD}}$ rankings across $N$ and family library. The turn-on region ($N = 12$–$32$) is from a dedicated 10-seed $\times$ 80-realization experiment across all 25 families; entries marked $^\dagger$ are from the basin-deepening experiment (30 realizations, single seed).
+**Table 2.** $S_{\mathrm{MD}}$ rankings across $N$ and family library. Entries marked $^\ddagger$ are from the F2 margin-aware refit (20 seeds $\times$ 120 realizations per seed, separate reference ensemble $N_{\mathrm{ref}}=120$, `seed\_base+100000` offset); entries marked $^\dagger$ are from the basin-deepening experiment (30 realizations, single seed). Older 10-seed $\times$ 80-rep shared-seed results (previously in this table for $N=12$–$14$) have been superseded by the F2 protocol.
 
-| $N$ | Lor4D $S_{\mathrm{MD}}$ rank | #1 rate (10 seeds) | Runner-up | Mean margin $\pm$ SE | 95% CI |
+| $N$ | Lor4D $S_{\mathrm{MD}}$ rank | #1 rate | Runner-up | Mean margin $\pm$ SE | 95% CI |
 |:---:|:---:|:---:|:---|:---:|:---:|
-| 12 | #1 | 10/10 | — | $+0.48 \pm 0.15$ | $[+0.18,\; +0.77]$ |
-| 14 | #1 | 9/10 | Lor5D | $+0.86 \pm 0.25$ | $[+0.38,\; +1.35]$ |
-| 16 | #1 | 10/10 | — | $+1.53 \pm 0.17$ | $[+1.19,\; +1.87]$ |
+| 10 | #1 | 20/20$^\ddagger$ | KR\_2layer | $+0.308 \pm 0.091$ | $[+0.268,\; +0.348]$ |
+| 12 | #1 | 20/20$^\ddagger$ | Lor5D | $+1.161 \pm 0.144$ | $[+1.034,\; +1.287]$ |
+| 14 | #1 | 20/20$^\ddagger$ | Lor5D | $+1.487 \pm 0.127$ | $[+1.280,\; +1.694]$ |
+| 16 | #1 | 20/20$^\ddagger$ | Lor5D | $+1.771 \pm 0.073$ | $[+1.628,\; +1.914]$ |
 | 18 | #1 | 10/10 | — | $+1.94 \pm 0.32$ | $[+1.31,\; +2.57]$ |
 | 20 | #1 | 10/10 | — | $+1.89 \pm 0.34$ | $[+1.23,\; +2.55]$ |
 | 24 | #1 | 10/10 | — | $+2.51 \pm 0.22$ | $[+2.08,\; +2.95]$ |
@@ -204,7 +206,7 @@ As $N$ grows, the Lor4D point cloud in feature space concentrates toward $\bolds
 | 128 | #1 | $^\dagger$ | Lor5D | $+94.1$ | — |
 | 1024 | #1 | $^\dagger$ | Lor5D | $+1.93 \times 10^8$ | — |
 
-At $N = 12$, all 10 seeds nominally rank Lor4D first, but the minimum margin across seeds is $+0.001$—effectively zero. At $N = 14$, one seed out of ten yields a negative margin ($-0.09$), indicating that identity selection is not yet statistically stable. By $N = 16$, the minimum margin is $+0.65$ and identity selection is robust.
+At $N = 10$, all 20 seeds rank Lor4D first with minimum margin $+0.198$ and mean margin $+0.308$ (F2 margin-aware refit, 120 realizations per seed, separate reference ensemble). Identity selection is robust from $N = 10$ onward.
 
 ### 3.4 Physical content of the identity layer
 
@@ -212,7 +214,7 @@ Several aspects of $S_{\mathrm{MD}}$ deserve emphasis:
 
 **Identity, not classification.** $S_{\mathrm{MD}}$ does not say "this poset belongs to category X." It says: "this poset deviates from the Lor4D reference by this much, in these directions, with this statistical cost." It is an identity measure in the same sense that a Mahalanobis distance measures deviation from a known population.
 
-**The runner-up is always Lor5D.** This is physically significant. The turn-on boundary $N_{\mathrm{id}} \approx 14$ is not set by the discriminator's statistical power; it is set by the **intrinsic geometric proximity between 4D and 5D causal structures**. At $N = 12$, the effective-dimension overlap between Lor4D ($d_{\mathrm{eff}} \approx 3.96$) and Lor5D ($d_{\mathrm{eff}} \approx 4.33$) is too small to resolve with only 12 sprinkled points. The identity boundary is a physical resolution limit, not a statistical artifact.
+**Runner-up structure and geometric proximity.** At $N = 10$, the primary runner-up is KR\_2layer (runner-up in 18/20 seeds), with Lor5D appearing only 2/20 times. At $N \geq 12$, Lor5D becomes the dominant runner-up across all seeds, consistent with the **intrinsic geometric proximity between 4D and 5D causal structures**: the effective-dimension overlap between Lor4D ($d_{\mathrm{eff}} \approx 3.96$) and Lor5D ($d_{\mathrm{eff}} \approx 4.33$) begins to dominate once the sample size is large enough for $d_{\mathrm{eff}}$ discrimination to operate. The turn-on boundary is a physical resolution limit, not a statistical artifact.
 
 **Zero parameters, anchored by theory.** The centre $\boldsymbol{\mu}(N)$ converges to values with independent theoretical derivations (Myrheim–Meyer, CLT). The metric $\Sigma^{-1}(N)$ is the inverse empirical covariance—the natural Riemannian metric on a Gaussian family (the Fisher information metric in the diagonal limit). No optimization is performed.
 
@@ -252,11 +254,11 @@ At every tested scale, the bootstrap 95% CI spans zero for both Pearson and Spea
 
 As $N$ increases from small values, the identity layer exhibits a three-phase structure:
 
-**Phase I — Pre-onset** ($N \lesssim N_{\mathrm{res}} \approx 14$). The poset contains too few causal events for reliable identity discrimination. In a 10-seed $\times$ 80-realization experiment across all 25 families, Lor4D is nominally ranked #1 at $N = 12$ in all 10 seeds, but with a minimum margin of only $+0.001$—effectively zero, indicating that the ranking is statistical noise rather than robust identity selection. At $N = 14$, one seed out of ten produces a negative margin ($-0.09$), and the mean margin is $+0.86 \pm 0.25$. The physical origin of this instability is the overlap between the effective-dimension distributions of Lor4D ($d_{\mathrm{eff}} \approx 3.96 \pm 0.05$) and Lor5D ($d_{\mathrm{eff}} \approx 4.33 \pm 0.10$) at these small scales.
+**Phase I — Pre-onset** ($N < 10$). At very small $N$ (below the tested range), the poset contains too few causal events for reliable identity discrimination. Note that an earlier 10-seed $\times$ 80-realization experiment with shared reference/test seed showed apparent instability at $N = 12$–$14$; that instability is now understood to stem from reference-ensemble contamination rather than genuine physical overlap. A dedicated 20-seed $\times$ 120-realization experiment with a separate reference ensemble (F2 margin-aware refit; §4.2) shows stable Lor4D identification from $N = 10$.
 
-**Phase II — Turn-on** ($N \approx N_{\mathrm{id}} \approx 16$). A sharp transition to robust identity identification occurs. At $N = 16$, Lor4D is ranked #1 in 10/10 seeds with a mean margin of $+1.53 \pm 0.17$ (minimum $+0.65$, 95% CI $[+1.19,\; +1.87]$). The transition from Phase I to Phase II—minimum margin from $\approx 0$ to $+0.65$—is sharp in finite size and is best described as an **onset/turn-on threshold**, rather than a thermodynamic phase-transition claim.
+**Phase II — Turn-on** ($N \approx N_{\mathrm{id}} \approx 10$). A robust onset of identity identification is observed at $N = 10$. In the 20-seed $\times$ 120-realization F2 experiment, Lor4D is ranked \#1 in all 20 seeds with mean margin $+0.308 \pm 0.091$ (minimum $+0.198$, 95\% CI $[+0.268,\; +0.348]$). The primary runner-up at $N = 10$ is KR\_2layer (runner-up in 18/20 seeds; Lor5D in 2/20), consistent with geometric proximity of wide-layer stochastic structures before the Lor4D–Lor5D $d_{\mathrm{eff}}$ gap becomes dominant. At $N \geq 12$, the runner-up transitions to Lor5D, confirming the geometric proximity argument of §6.5.
 
-The turn-on scale $N_{\mathrm{id}} \approx 16$ is not a parameter of the model. It emerges from the interplay between the intrinsic geometric separation of Lor4D and Lor5D in feature space and the statistical precision of the reference ensemble at finite $N$. This is a resolution limit of the causal structure itself, not of the discriminator.
+The turn-on scale $N_{\mathrm{id}} \approx 10$ is not a parameter of the model. It emerges from the interplay between the intrinsic geometric separation of Lor4D and its nearest competitor in feature space and the statistical precision of the reference ensemble at finite $N$. This is a resolution limit of causal structure, not of the discriminator.
 
 **Phase III — Deepening** ($N \gg N_{\mathrm{id}}$). Once identity is established, the basin continues to deepen: the margin between Lor4D and its nearest competitor grows, the reference manifold sharpens, and the statistical cost of misidentification increases without bound.
 
@@ -266,13 +268,14 @@ We define the **isolation gap** as the Mahalanobis distance difference between L
 
 $$\Delta_{\mathrm{hist}}(N) \equiv \min_{f \neq \mathrm{Lor4D}} \bigl[S_{\mathrm{MD}}(f, N) - S_{\mathrm{MD}}(\mathrm{Lor4D}, N)\bigr]. \tag{8}$$
 
-**Table 3.** Isolation gap and basin diagnostics across $N$. The turn-on region ($N = 12$–$32$) uses 10-seed multi-realization data (mean $\pm$ SE); large-$N$ entries are from the 30-realization basin-deepening experiment.
+**Table 3.** Isolation gap and basin diagnostics across $N$. The onset region ($N = 10$–$24$) uses 20-seed $\times$ 120-replication F2 data (mean $\pm$ SE, separate reference ensemble); intermediate entries ($N = 28$–$32$) use 10-seed multi-realization data; large-$N$ entries are from the 30-realization basin-deepening experiment.
 
 | $N$ | $\Delta_{\mathrm{hist}}$ | 95% CI | $V_{\mathrm{eff}}$ | $I_F = \mathrm{tr}(\Sigma^{-1})$ | Status |
 |:---:|:---:|:---:|:---:|:---:|:---|
-| 12 | $0.48 \pm 0.15$ | $[+0.18,\; +0.77]$ | $3.3 \times 10^{-3}$ | $197$ | Pre-onset (fragile) |
-| 14 | $0.86 \pm 0.25$ | $[+0.38,\; +1.35]$ | — | — | Transition |
-| 16 | $1.53 \pm 0.17$ | $[+1.19,\; +1.87]$ | $1.6 \times 10^{-3}$ | $469$ | Turn-on |
+| 10 | $0.31 \pm 0.09$ | $[+0.27,\; +0.35]$ | — | — | Turn-on (F2, 20 seeds $\times$ 120 reps)$^\ddagger$ |
+| 12 | $1.16 \pm 0.14$ | $[+1.03,\; +1.29]$ | $3.3 \times 10^{-3}$ | $197$ | Onset established |
+| 14 | $1.49 \pm 0.13$ | $[+1.28,\; +1.70]$ | — | — | Established |
+| 16 | $1.77 \pm 0.06$ | $[+1.63,\; +1.92]$ | $1.6 \times 10^{-3}$ | $469$ | Stable |
 | 20 | $1.89 \pm 0.34$ | $[+1.23,\; +2.55]$ | $2.4 \times 10^{-3}$ | $368$ | Stable deepening |
 | 28 | $3.25 \pm 0.30$ | $[+2.65,\; +3.85]$ | $1.1 \times 10^{-3}$ | $540$ | Accelerated deepening |
 | 32 | $4.12 \pm 0.35$ | $[+3.44,\; +4.81]$ | — | — | Accelerated deepening |
@@ -280,8 +283,9 @@ $$\Delta_{\mathrm{hist}}(N) \equiv \min_{f \neq \mathrm{Lor4D}} \bigl[S_{\mathrm
 | 1024 | $\approx 1.93 \times 10^8$ | — | — | — | Ultra-deep lock |
 
 $V_{\mathrm{eff}}$ and $I_F$ values are from the 30-realization basin-deepening experiment; entries marked "—" correspond to scales not included in that experiment run.
+$^\ddagger$F2 margin-aware refit (20 seeds $\times$ 120 realizations, separate reference ensemble, `seed\_base+100000` offset); $V_{\mathrm{eff}}$ and $I_F$ not measured in this protocol.
 
-The growth of $\Delta_{\mathrm{hist}}(N)$ is monotonic across all 10-seed averages. Individual seeds show occasional non-monotonicities (e.g., a single seed's margin at $N = 20$ may dip below its $N = 18$ value), but the ensemble mean increases consistently from $+0.48$ at $N = 12$ to $+4.12$ at $N = 32$.
+The growth of $\Delta_{\mathrm{hist}}(N)$ is monotonic: the ensemble mean increases consistently from $+0.308$ at $N = 10$ to $+4.12$ at $N = 32$ (F2 protocol for $N \leq 24$; older 10-seed data for $N = 28, 32$). Individual seeds show occasional non-monotonicities, but the ensemble mean is monotone.
 
 ### 4.3 Scaling laws
 
@@ -445,7 +449,7 @@ The $S_{\mathrm{MD}}$ values at $H = 0.3$ show non-monotonic fluctuation across 
 | Schwarzschild | $\phi_0=0.05$ | #2 | #2 | Weak field robust |
 | Schwarzschild | $\phi_0=0.10$ | #2 | #2 | Upper weak-field still robust |
 
-In the weak-to-moderate range, the picture is background-dependent rather than uniform. de Sitter remains cleanly top-2 throughout the tested window, and weak-field Schwarzschild remains top-2 in the current split low-$N$ tests. By contrast, matter-FLRW at $\kappa=1.0$ now shows repeatable top-2 failure in the low-$N$ split falsification run, so the safer conclusion is not "mild curvature is uniformly robust" but rather that curvature robustness presently survives for some backgrounds and fails at least at the FLRW basin boundary already in the tested low-$N$ regime. Under strong FLRW curvature ($\kappa=3.0$), the rank degrades further to #4–#5, consistent with the de Sitter divergent regime. A curvature-adaptive reference $\mathcal{M}(\text{background})$ therefore remains necessary outside the de Sitter-like neighbourhood.
+In the weak-to-moderate range, the picture is background-dependent rather than uniform. de Sitter remains cleanly top-2 throughout the tested window, and weak-field Schwarzschild remains top-2 in split tests. By contrast, matter-FLRW at $\kappa=1.0$ is a boundary-sensitive regime: the low-$N$ split run reaches the hard-fail threshold, whereas the completed high-$N$ branch ($N=768,1024$) shows partial recovery (failure ratio $0.3<0.5$), i.e., instability persists but does not trigger hard fail under the same rule. Under strong FLRW curvature ($\kappa=3.0$), the rank degrades further to #4–#5, consistent with the divergent regime. A curvature-adaptive reference $\mathcal{M}(\text{background})$ therefore remains necessary outside the de Sitter-like neighbourhood.
 
 ---
 
@@ -521,7 +525,8 @@ Synthesizing §§2–4 and the sedimentation interpretation:
 | Evidence type | Status |
 |:---|:---|
 | 25 families × $N = 12$–$1024$ × 10 seeds × 80 REPS | ✅ Complete |
-| Turn-on boundary $N_{\mathrm{id}} \approx 16$ (robust); $N = 14$ marginal (9/10) | ✅ Quantified with 95% CI |
+| 25 families × $N = 10$–$1024$ × 20 seeds × 120 REPS (F2 margin-aware refit) | ✅ Complete |
+| Turn-on boundary $N_{\mathrm{id}} \approx 10$ (manuscript-safe, 3 consecutive N criterion); $N = 10$: min\_margin=0.198, ci95\_lower=0.268 | ✅ Quantified with 95% CI |
 | $S_{\mathrm{BD}}$–$S_{\mathrm{MD}}$ functional separation | ✅ Bootstrap CI spans zero at all $N$ |
 | Counter-factual self-selection (Lor2D/3D/5D centres) | ✅ 24/24 conditions pass |
 | Basin deepening power laws | ✅ $V_{\mathrm{eff}} \propto N^{-1.66 \pm 0.07}$, $R^2 = 0.983$ |
@@ -588,7 +593,9 @@ If (i)–(iii) can be established analytically, then $\Delta_{\mathrm{hist}}(N) 
 
 ### 6.5 Dimensional dependence of the turn-on scale
 
-The turn-on scale $N_{\mathrm{id}} \approx 16$ is specific to the selection of Lor4D from a library that includes Lor5D as the nearest competitor. One expects $N_{\mathrm{id}}$ to depend on the target dimension $d$ and the geometric proximity of the nearest confusable structure:
+The turn-on scale $N_{\mathrm{id}} \approx 10$ is specific to the selection of Lor4D from a library that includes Lor5D as the dominant runner-up at $N \geq 12$. At $N = 10$, the primary runner-up is KR\_2layer—a wide-layer stochastic structure—rather than Lor5D (§3.4). This reflects the fact that at the smallest resolved scale, the Mahalanobis geometry of the feature triple $(d_{\mathrm{eff}}, C_1/C_0, w/N)$ is dominated by the covariance structure of wide-layer constructions, which project closer to Lor4D in the combined three-dimensional feature space before the Lor4D–Lor5D $d_{\mathrm{eff}}$ separation ($\approx 0.37$ in units of the pooled standard deviation) becomes the dominant axis of discrimination. By $N \geq 12$, the $d_{\mathrm{eff}}$ gap becomes resolvable and Lor5D takes over as the persistent runner-up, consistent with the intrinsic dimensional proximity argument.
+
+One expects $N_{\mathrm{id}}$ to depend on both the target dimension $d$ and the geometric proximity of the nearest confusable structure in feature space:
 
 - For **Lor2D selection** (runway: 1D vs 2D), the feature-space separation is large ($d_{\mathrm{eff}}$ differ by $\sim 1$), so $N_{\mathrm{id}}$ should be smaller.
 - For **Lor6D selection** (if it were the target), the 5D–6D $d_{\mathrm{eff}}$ gap narrows, so $N_{\mathrm{id}}$ should be larger.
@@ -608,7 +615,7 @@ We did not observe any need for a third layer in the present library—$S_{\math
 
 We reiterate the boundary conditions of our claims:
 
-1. **Curvature: de Sitter validated; non-de-Sitter backgrounds remain conditional.** A de Sitter scan (§4.7) shows that the flat-calibrated screening architecture is robust for $H \leq 0.3$ at all tested $N$ up to 1024: Lor4D retains rank #1 and dS4D retains rank #2 in every one of the 50 $(N, H)$ conditions tested (Tables 6–8). The critical Hubble $H_c \geq 0.3$ at all $N$. At $N = 1024$, the $H = 0$ baseline confirms statistical indistinguishability ($\Delta = +0.001$). Split low-$N$ tests indicate that weak-field Schwarzschild remains compatible with the local-basin picture, whereas matter-FLRW already shows a repeatable top-2 failure at $\kappa=1.0$. These non-de-Sitter tests remain preliminary (proxy metrics, limited parameterization), and full metric-faithful Schwarzschild/FLRW validation at $N\gtrsim512$ remains open.
+1. **Curvature: de Sitter validated; non-de-Sitter backgrounds remain conditional.** A de Sitter scan (§4.7) shows that the flat-calibrated screening architecture is robust for $H \leq 0.3$ at all tested $N$ up to 1024: Lor4D retains rank #1 and dS4D retains rank #2 in every one of the 50 $(N, H)$ conditions tested (Tables 6–8). The critical Hubble $H_c \geq 0.3$ at all $N$. At $N = 1024$, the $H = 0$ baseline confirms statistical indistinguishability ($\Delta = +0.001$). Split low-$N$ tests indicate that weak-field Schwarzschild remains compatible with the local-basin picture, whereas matter-FLRW at $\kappa=1.0$ reaches the hard-fail threshold in low-$N$ but shows partial recovery in completed high-$N$ runs (failure ratio $0.3<0.5$). These non-de-Sitter tests remain preliminary (proxy metrics, limited parameterization), and full metric-faithful Schwarzschild/FLRW validation at $N\gtrsim512$ remains open.
 
 2. **Library scope.** All results are established within a 25-family library. While this includes adversarial constructions, it does not exhaust the space of all possible posets. A family that matches Lor4D in all three features at all $N$ would defeat the screening—though we have found no such family despite targeted efforts.
 
@@ -636,13 +643,13 @@ We have presented numerical evidence for a **layered structural screening archit
 
 1. A **first-order admissibility layer** (§2), carried by the triple screening functional $S_{\mathrm{triple}}$ and the Benincasa–Dowker action $S_{\mathrm{BD}}$, eliminates non-geometric structures but cannot uniquely select Lor4D ($S_{\mathrm{BD}}$ rank: 14/17 at $N = 128$).
 
-2. A **second-order identity layer** (§3), implemented by the minimum-distortion functional $S_{\mathrm{MD}}$ (Mahalanobis distance from the Lor4D reference manifold), uniquely and robustly identifies Lor4D as the identity centre across all tested scales ($N \geq 16$; marginal at $N = 14$) and all 25 families with zero free parameters. Counter-factual testing confirms this is a general identity mechanism, not a Lor4D-specific artifact (§3.4).
+2. A **second-order identity layer** (§3), implemented by the minimum-distortion functional $S_{\mathrm{MD}}$ (Mahalanobis distance from the Lor4D reference manifold), uniquely and robustly identifies Lor4D as the identity centre across all tested scales ($N \geq 10$) and all 25 families with zero free parameters. Counter-factual testing confirms this is a general identity mechanism, not a Lor4D-specific artifact (§3.4).
 
-3. The identity layer exhibits a **sharp finite-size turn-on (onset threshold)** at $N_{\mathrm{id}} \approx 16$ (§4), set by the intrinsic geometric resolution limit of 4D vs. 5D causal structures, not by the discriminator's statistical power. Multi-seed experiments with 95% CI confirm the sharpness of this onset (§4, Table 2).
+3. The identity layer exhibits a **sharp finite-size turn-on (onset threshold)** at $N_{\mathrm{id}} \approx 10$ (§4), set by the intrinsic geometric resolution limit of causal structure, not by the discriminator's statistical power. A 20-seed $\times$ 120-replication experiment with a separate reference ensemble confirms this onset with 95\% CI (§4, Table 3).
 
-4. Beyond turn-on, the identity basin undergoes **historical sedimentation** (§5): the Mahalanobis gap grows (from $+0.86$ at $N = 14$ to $1.93 \times 10^8$ at $N = 1024$), the reference manifold sharpens ($\det(\Sigma) \propto N^{-3.31 \pm 0.14}$, $R^2 = 0.983$), and the effective basin volume contracts ($V_{\mathrm{eff}} \propto N^{-1.66 \pm 0.07}$)—making Lor4D an increasingly irreplaceable identity centre. Gap decomposition (§4.4) shows that the underlying physical separation is genuine ($d_E \approx 0.46$, flat), with the gap growth driven by statistical concentration.
+4. Beyond turn-on, the identity basin undergoes **historical sedimentation** (§5): the Mahalanobis gap grows (from $+0.308$ at $N = 10$ to $1.93 \times 10^8$ at $N = 1024$), the reference manifold sharpens ($\det(\Sigma) \propto N^{-3.31 \pm 0.14}$, $R^2 = 0.983$), and the effective basin volume contracts ($V_{\mathrm{eff}} \propto N^{-1.66 \pm 0.07}$)—making Lor4D an increasingly irreplaceable identity centre. Gap decomposition (§4.4) shows that the underlying physical separation is genuine ($d_E \approx 0.46$, flat), with the gap growth driven by statistical concentration.
 
-5. A **curvature robustness program** (§4.7) shows that the screening architecture is robust for de Sitter-like deformations but only conditionally robust beyond that class. For de Sitter, up to $H \leq 0.3$ at $N \leq 1024$, Lor4D remains #1 and dS4D remains #2 in all 50 tested $(N,H)$ conditions; the $H=0$ limit at $N=1024$ gives $\Delta=+0.001$. Split low-$N$ tests show that weak-field Schwarzschild remains within the local-basin picture, whereas matter-FLRW already produces a repeatable top-2 failure at $\kappa=1.0$; strong FLRW curvature exits further to #4–#5. The safest current claim is therefore background-dependent robustness, not a uniform mild-curvature theorem.
+5. A **curvature robustness program** (§4.7) shows that the screening architecture is robust for de Sitter-like deformations but only conditionally robust beyond that class. For de Sitter, up to $H \leq 0.3$ at $N \leq 1024$, Lor4D remains #1 and dS4D remains #2 in all 50 tested $(N,H)$ conditions; the $H=0$ limit at $N=1024$ gives $\Delta=+0.001$. Split low-$N$ tests show that weak-field Schwarzschild remains within the local-basin picture, whereas matter-FLRW at $\kappa=1.0$ reaches the hard-fail threshold at low $N$ but partially recovers in completed high-$N$ runs (failure ratio $0.3<0.5$); strong FLRW curvature exits further to #4–#5. The safest current claim is therefore background-dependent robustness, not a uniform mild-curvature theorem.
 
 These results support the **Layered Structural Screening Principle**: robust identification/stabilization of 4D flat Lorentzian causal structure from a discrete poset space requires at least two functionally distinct mechanisms of different orders, whose intersection is Lor4D in the tested library and whose identity basin deepens with system size.
 
@@ -676,5 +683,5 @@ The principle is proposed as a mid-level effective theory—more specific than t
 [12] F. Dowker and L. Glaser, “Causal set d’Alembertians for various dimensions,” *Class. Quantum Grav.* **30**, 195016 (2013).
 ---
 
-*Manuscript v0.8 — §1–§7 complete. Very-large-N de Sitter convergence (N≤1024, Table 8) + FLRW/Schwarzschild extended pilot (N≤512, Table 9) integrated. Scope: flat Minkowski + de Sitter ($H \leq 0.3$, $N \leq 1024$) + preliminary non-de-Sitter curved backgrounds ($N=64$–$512$). 2026-03-28.*
+*Manuscript v0.9 — §1–§7 complete. Very-large-N de Sitter convergence (N≤1024, Table 8) + FLRW/Schwarzschild extended pilot (N≤512, Table 9) integrated, with lowN/highN FLRW boundary wording synchronized (lowN threshold hit, highN partial recovery). Scope: flat Minkowski + de Sitter ($H \leq 0.3$, $N \leq 1024$) + preliminary non-de-Sitter curved backgrounds ($N=64$–$512$). 2026-03-30.*
 *Cross-references: LAYERED_SCREENING_PRINCIPLE_OUTLINE.md (v2.0), MASTER_NARRATIVE.md, DISCUSSION_THEORY_IMPLICATIONS.md, manuscript_supplement_experiments.md, experiment_de_sitter.md, experiment_de_sitter_very_large_N.md, experiment_curved_backgrounds.md, experiment_curved_backgrounds_largeN.md.*

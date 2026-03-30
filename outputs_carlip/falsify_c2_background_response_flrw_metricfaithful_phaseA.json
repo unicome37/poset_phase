@@ -1,0 +1,447 @@
+{
+  "experiment_id": "falsify_c2_background_response_flrw_metricfaithful_phaseA",
+  "include_families": [
+    "flrw"
+  ],
+  "family_param_counts": {
+    "de_sitter": 0,
+    "flrw": 2,
+    "schwarzschild": 0
+  },
+  "flrw_mode": "metric_current",
+  "rule": {
+    "min_fail_ratio": 0.5,
+    "top_k_required": 2,
+    "seed_runs": 10
+  },
+  "n_grid": [
+    512,
+    768,
+    1024
+  ],
+  "reps": 15,
+  "records": [
+    {
+      "seed_run": 0,
+      "N": 512,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 0,
+      "N": 512,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 2
+    },
+    {
+      "seed_run": 0,
+      "N": 768,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 0,
+      "N": 768,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 2
+    },
+    {
+      "seed_run": 0,
+      "N": 1024,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 0,
+      "N": 1024,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 2
+    },
+    {
+      "seed_run": 1,
+      "N": 512,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 1,
+      "N": 512,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 2
+    },
+    {
+      "seed_run": 1,
+      "N": 768,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 1,
+      "N": 768,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 2
+    },
+    {
+      "seed_run": 1,
+      "N": 1024,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 1,
+      "N": 1024,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 3
+    },
+    {
+      "seed_run": 2,
+      "N": 512,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 2,
+      "N": 512,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 3
+    },
+    {
+      "seed_run": 2,
+      "N": 768,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 2,
+      "N": 768,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 3
+    },
+    {
+      "seed_run": 2,
+      "N": 1024,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 2,
+      "N": 1024,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 2
+    },
+    {
+      "seed_run": 3,
+      "N": 512,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 3,
+      "N": 512,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 3
+    },
+    {
+      "seed_run": 3,
+      "N": 768,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 3,
+      "N": 768,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 2
+    },
+    {
+      "seed_run": 3,
+      "N": 1024,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 3,
+      "N": 1024,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 3
+    },
+    {
+      "seed_run": 4,
+      "N": 512,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 4,
+      "N": 512,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 2
+    },
+    {
+      "seed_run": 4,
+      "N": 768,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 4,
+      "N": 768,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 2
+    },
+    {
+      "seed_run": 4,
+      "N": 1024,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 4,
+      "N": 1024,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 2
+    },
+    {
+      "seed_run": 5,
+      "N": 512,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 5,
+      "N": 512,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 3
+    },
+    {
+      "seed_run": 5,
+      "N": 768,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 5,
+      "N": 768,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 3
+    },
+    {
+      "seed_run": 5,
+      "N": 1024,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 5,
+      "N": 1024,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 2
+    },
+    {
+      "seed_run": 6,
+      "N": 512,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 6,
+      "N": 512,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 2
+    },
+    {
+      "seed_run": 6,
+      "N": 768,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 6,
+      "N": 768,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 2
+    },
+    {
+      "seed_run": 6,
+      "N": 1024,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 6,
+      "N": 1024,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 2
+    },
+    {
+      "seed_run": 7,
+      "N": 512,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 7,
+      "N": 512,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 3
+    },
+    {
+      "seed_run": 7,
+      "N": 768,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 7,
+      "N": 768,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 2
+    },
+    {
+      "seed_run": 7,
+      "N": 1024,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 7,
+      "N": 1024,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 3
+    },
+    {
+      "seed_run": 8,
+      "N": 512,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 8,
+      "N": 512,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 3
+    },
+    {
+      "seed_run": 8,
+      "N": 768,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 8,
+      "N": 768,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 3
+    },
+    {
+      "seed_run": 8,
+      "N": 1024,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 8,
+      "N": 1024,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 2
+    },
+    {
+      "seed_run": 9,
+      "N": 512,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 9,
+      "N": 512,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 2
+    },
+    {
+      "seed_run": 9,
+      "N": 768,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 9,
+      "N": 768,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 2
+    },
+    {
+      "seed_run": 9,
+      "N": 1024,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 9,
+      "N": 1024,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 2
+    }
+  ],
+  "hard_fail": false,
+  "hard_fail_items": []
+}

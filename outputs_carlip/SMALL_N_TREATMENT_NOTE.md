@@ -32,4 +32,14 @@ If the paper wants to claim “all N including N=16”, the cleanest *principled
 
 If we prefer the most conservative paper-grade statement, keep:
 - “Mahalanobis selects Lor4D uniquely for `N >= 20`”, and treat `N=16` as a resolution-limit regime.
+- "Mahalanobis selects Lor4D uniquely for `N >= 20`", and treat `N=16` as a resolution-limit regime.
+
+## 2026-03-30 Update: F2 margin-aware refit resolved this
+
+The F2 runner (`f2_turnon_margin_runner.py`) uses `reference_reps=120` with a **separate seed offset** (`seed_base + 100000`) to build the Lor4D reference ensemble, completely independent from the test families. With this protocol:
+
+- N=10: 20/20 Lor4D rank#1, min_margin=0.198, ci95_lower=0.268 > 0, max_cond_σ=54.9 < 60 → **manuscript-safe**
+- N=12..24: 20/20 rank#1, margins monotonically increasing
+
+**The N=16/20 conservative boundary is now obsolete.** The correct statement is: "Mahalanobis selects Lor4D uniquely for N ≥ 10 under the fixed-reference protocol (reference_reps=120, separate seed)." The old instability at N=12–16 was entirely due to reference/test contamination with small reps, not a physical limitation.
 

@@ -1,8 +1,8 @@
 # F1 Falsification Report — Family Pressure
 
 - Hard fail: **NO**
-- Rule: consecutive_N >= 2, seed_hits >= 2/2
-- N grid: [10, 14, 20, 24]
+- Rule: consecutive_N >= 3, seed_hits >= 16/20
+- N grid: [10, 12, 14, 16, 18, 20, 22, 24]
 
 ## Families triggering hard fail
 - None
