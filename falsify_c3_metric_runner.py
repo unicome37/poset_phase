@@ -79,10 +79,15 @@ def _make_ds_gen(h: float):
     return _gen
 
 
-def _make_flrw_gen(kappa: float):
+def _make_flrw_gen(kappa: float, mode: str = "metric_current"):
     def _gen(n: int, seed: int):
         pts = sprinkle_flrw_matter_diamond(n=n, d_spatial=3, kappa=kappa, seed=seed)
-        return poset_from_flrw_matter_points(pts, kappa=kappa)
+        if mode == "metric_current":
+            return poset_from_flrw_matter_points(pts, kappa=kappa)
+        if mode == "proxy_flatcausal":
+            # Control branch: keep FLRW sampling weights, but flatten causal cone to Minkowski.
+            return poset_from_flrw_matter_points(pts, kappa=0.0)
+        raise ValueError(f"Unknown flrw_mode: {mode}")
 
     return _gen
 
@@ -118,6 +123,7 @@ def run(cfg: dict[str, Any]) -> dict[str, Any]:
 
     windows = cfg["windows"]
     include_families = set(cfg.get("include_families", ["de_sitter", "flrw", "schwarzschild"]))
+    flrw_mode = str(cfg.get("flrw_mode", "metric_current"))
     h_weak = list(windows["de_sitter_h"])
     k_weak = list(windows["flrw_kappa"])
     p_weak = list(windows["schwarz_phi0"])
@@ -175,7 +181,7 @@ def run(cfg: dict[str, Any]) -> dict[str, Any]:
 
             if "flrw" in include_families:
                 for k in k_weak:
-                    score = _ensemble_score(_make_flrw_gen(k), n, reps, mu, cov_inv, seed_base + s * 2000 + int(k * 100))
+                    score = _ensemble_score(_make_flrw_gen(k, mode=flrw_mode), n, reps, mu, cov_inv, seed_base + s * 2000 + int(k * 100))
                     rank = _rank_of_background(f"FLRW_k{k}", score, base_scores)
                     records.append({"seed_run": s, "N": n, "family": "flrw", "param": k, "rank": rank})
 
@@ -251,6 +257,7 @@ def run(cfg: dict[str, Any]) -> dict[str, Any]:
         "experiment_id": cfg.get("experiment_id", "falsify_c2_background_response"),
         "include_families": sorted(include_families),
         "family_param_counts": family_param_counts,
+        "flrw_mode": flrw_mode,
         "rule": {
             "min_fail_ratio": rule.min_fail_ratio,
             "top_k_required": rule.top_k_required,
@@ -274,6 +281,7 @@ def run(cfg: dict[str, Any]) -> dict[str, Any]:
         "",
         f"- Hard fail: **{'YES' if hard_fail else 'NO'}**",
         f"- Included families: {sorted(include_families)}",
+        f"- FLRW mode: {flrw_mode}",
         f"- Rule: fail_ratio >= {rule.min_fail_ratio}, top-k requirement={rule.top_k_required}",
         f"- N grid: {n_grid}",
         "",

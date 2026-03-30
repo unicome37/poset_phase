@@ -1,0 +1,28 @@
+experiment_id: falsify_c2_background_response_flrw_proxy_control_phaseA
+output_dir: d:/Kiro/理论体系/poset_phase/outputs_carlip
+output_basename: falsify_c2_background_response_flrw_proxy_control_phaseA
+seed_base: 42
+reps: 15
+n_grid: [512, 768, 1024]
+include_families: [flrw]
+
+# 新增 runner 模式：保持FLRW抽样，但用平直因果锥做对照
+flrw_mode: proxy_flatcausal
+
+windows:
+  de_sitter_h: [0.1, 0.3]
+  flrw_kappa: [0.3, 1.0]
+  schwarz_phi0: [0.01, 0.05]
+
+hard_fail:
+  min_fail_ratio: 0.5
+  top_k_required: 2
+  seed_runs: 10
+
+strong_regime:
+  de_sitter_h: [0.5, 1.0]
+  flrw_kappa: [3.0]
+  schwarz_phi0: [0.1]
+
+checkpoint_every_seed: true
+resume_from_partial: true

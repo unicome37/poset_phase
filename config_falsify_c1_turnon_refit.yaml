@@ -1,0 +1,27 @@
+experiment_id: falsify_c1_turnon_refit
+output_dir: d:/Kiro/理论体系/poset_phase/outputs_carlip
+output_basename: falsify_c1_turnon_refit
+seed_base: 42
+reps: 120
+reference_reps: 120
+n_grid: [10, 12, 14, 16, 18, 20, 22, 24]
+
+# F2 目标：重估 N_id 后验区间与连续稳定段
+# 20 seeds 对齐原 10 seeds 规则：min_seed_success=16 等价于 8/10 强度
+hard_fail:
+  consecutive_n: 3
+  min_seed_success: 16
+  seed_runs: 20
+
+family_registry: all
+
+focus_families:
+  - Lor5D
+  - KR_2layer
+  - KR_like
+  - RandomDAG_sp
+  - RandomDAG_dn
+  - MixedLor4D
+
+checkpoint_every_seed: true
+resume_from_partial: true

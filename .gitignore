@@ -43,3 +43,10 @@ zenodo_release/
 
 # Backup files
 *_old.md
+
+# Local scratch / backup / checkpoint artifacts
+_local_backup_untracked_*/
+outputs_carlip/outputs_carlip/
+outputs_carlip/*.partial.json
+outputs_carlip/*.seedlog.jsonl
+outputs_carlip/*checkpoint*.txt

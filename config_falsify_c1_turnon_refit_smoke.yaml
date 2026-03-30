@@ -1,0 +1,18 @@
+experiment_id: falsify_c1_turnon_refit_smoke
+output_dir: d:/Kiro/理论体系/poset_phase/outputs_carlip
+output_basename: falsify_c1_turnon_refit_smoke
+seed_base: 42
+reps: 20
+reference_reps: 20
+n_grid: [10, 14, 20, 24]
+
+hard_fail:
+  consecutive_n: 2
+  min_seed_success: 2
+  seed_runs: 2
+
+family_registry: all
+focus_families:
+  - Lor5D
+  - KR_2layer
+  - KR_like

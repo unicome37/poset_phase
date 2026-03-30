@@ -1,0 +1,32 @@
+experiment_id: f2_turnon_margin_refit_smoke
+output_dir: d:/Kiro/理论体系/poset_phase/outputs_carlip
+output_basename: f2_turnon_margin_refit_smoke
+seed_base: 42
+reps: 20
+reference_reps: 20
+seed_runs: 2
+n_grid: [10, 12, 14]
+
+family_registry: all
+focus_families:
+  - Lor5D
+  - KR_2layer
+  - KR_like
+  - RandomDAG_sp
+  - RandomDAG_dn
+  - MixedLor4D
+
+checkpoint_every_seed: true
+
+onset_levels:
+  consecutive_n: 3
+  manuscript_safe:
+    min_rank1_count: 2
+    require_min_margin_positive: true
+    require_ci95_lower_positive: true
+    max_cond_sigma: 60.0
+  operational:
+    min_rank1_count: 2
+    require_mean_margin_positive: true
+  winner_only:
+    min_rank1_count: 2

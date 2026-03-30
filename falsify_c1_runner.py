@@ -91,6 +91,8 @@ def _find_consecutive(ns: list[int], hit_map: dict[int, int], min_hits: int, k: 
 def run(cfg: dict[str, Any]) -> dict[str, Any]:
     out_dir = Path(cfg.get("output_dir", "outputs_carlip"))
     out_dir.mkdir(parents=True, exist_ok=True)
+    output_basename = str(cfg.get("output_basename", "falsify_c1_family_pressure"))
+    checkpoint_every_seed = bool(cfg.get("checkpoint_every_seed", True))
 
     n_grid: list[int] = list(cfg["n_grid"])
     reps: int = int(cfg.get("reps", 80))
@@ -106,6 +108,11 @@ def run(cfg: dict[str, Any]) -> dict[str, Any]:
     family_names = sorted(list(ALL_FAMILIES.keys()))
     if "Lor4D" not in family_names:
         raise RuntimeError("Lor4D missing in ALL_FAMILIES")
+
+    seedlog_path = out_dir / f"{output_basename}.seedlog.jsonl"
+    snapshot_path = out_dir / f"{output_basename}.partial.json"
+    if checkpoint_every_seed:
+        seedlog_path.write_text("", encoding="utf-8")
 
     # per family, per N: count seed-runs where family outranks Lor4D
     outrank_counts: dict[str, dict[int, int]] = {
@@ -124,6 +131,34 @@ def run(cfg: dict[str, Any]) -> dict[str, Any]:
                 if ordered.index(fam) < ordered.index("Lor4D"):
                     outrank_counts[fam][n] += 1
 
+        if checkpoint_every_seed:
+            event = {
+                "event": "seed_complete",
+                "seed_run": s,
+                "completed_seed_runs": s + 1,
+                "total_seed_runs": rule.seed_runs,
+                "records_so_far": len(per_seed_records),
+            }
+            with seedlog_path.open("a", encoding="utf-8") as f:
+                f.write(json.dumps(event, ensure_ascii=False) + "\n")
+
+            partial = {
+                "experiment_id": cfg.get("experiment_id", "falsify_c1_family_pressure"),
+                "output_basename": output_basename,
+                "rule": {
+                    "consecutive_n": rule.consecutive_n,
+                    "min_seed_success": rule.min_seed_success,
+                    "seed_runs": rule.seed_runs,
+                },
+                "n_grid": n_grid,
+                "reps": reps,
+                "completed_seed_runs": s + 1,
+                "total_seed_runs": rule.seed_runs,
+                "outrank_counts": outrank_counts,
+                "per_seed_records": per_seed_records,
+            }
+            snapshot_path.write_text(json.dumps(partial, ensure_ascii=False, indent=2), encoding="utf-8")
+
     # evaluate hard-fail
     hard_fail_families = []
     for fam, hit_map in outrank_counts.items():
@@ -135,6 +170,7 @@ def run(cfg: dict[str, Any]) -> dict[str, Any]:
 
     result = {
         "experiment_id": cfg.get("experiment_id", "falsify_c1_family_pressure"),
+        "output_basename": output_basename,
         "rule": {
             "consecutive_n": rule.consecutive_n,
             "min_seed_success": rule.min_seed_success,
@@ -149,11 +185,20 @@ def run(cfg: dict[str, Any]) -> dict[str, Any]:
     }
 
     # write outputs
-    json_path = out_dir / "falsify_c1_family_pressure.json"
-    md_path = out_dir / "falsify_c1_family_pressure.md"
+    json_path = out_dir / f"{output_basename}.json"
+    md_path = out_dir / f"{output_basename}.md"
 
     with json_path.open("w", encoding="utf-8") as f:
         json.dump(result, f, ensure_ascii=False, indent=2)
+
+    if checkpoint_every_seed:
+        event = {
+            "event": "run_complete",
+            "completed_seed_runs": rule.seed_runs,
+            "hard_fail": hard_fail,
+        }
+        with seedlog_path.open("a", encoding="utf-8") as f:
+            f.write(json.dumps(event, ensure_ascii=False) + "\n")
 
     lines = [
         "# F1 Falsification Report — Family Pressure",
@@ -184,7 +229,8 @@ def main() -> None:
     cfg = _load_yaml(Path(args.config))
     result = run(cfg)
     print("HARD_FAIL" if result["hard_fail"] else "PASS")
-    print("outputs_carlip/falsify_c1_family_pressure.json")
+    output_basename = str(cfg.get("output_basename", "falsify_c1_family_pressure"))
+    print(f"outputs_carlip/{output_basename}.json")
 
 
 if __name__ == "__main__":
