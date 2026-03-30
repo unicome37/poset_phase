@@ -40,10 +40,10 @@ $$E_1 \times E_2 \times E_3 : \text{Lor4D rank = \#12/17}$$
 
 $$S_{\mathrm{MD}}[P,N] = (\mathbf{I}(P) - \boldsymbol{\mu}(N))^\top \Lambda(N) (\mathbf{I}(P) - \boldsymbol{\mu}(N))$$
 
-以 Lor4D 参考流形 $\boldsymbol{\mu}(N)$ 为中心的二次井，零自由参数（Mahalanobis 版），在测试的所有 N 值（16–1024）和 25 个家族中，将 Lor4D 唯一排名为 #1。
+以 Lor4D 参考流形 $\boldsymbol{\mu}(N)$ 为中心的二次井，零自由参数（Mahalanobis 版）；在当前 fixed-reference F2 protocol 下，Lor4D 从 `N=10` 起达到 manuscript-safe 的唯一 #1，并在更大尺度与 25 家族库中持续保持该身份选择优势。
 
 - LSD-Well: 手调 3 权重, 全 N 全族 #1
-- Mahalanobis LSD: 零参数, 全 N 全族 #1（其中 $N=16$ 的 margin 很小且对参考集精度敏感；当 Lor4D 参考集达到 $\gtrsim 80$ sprinklings 时，N=16 的 #1 排名在多 seed 下可稳定复现）
+- Mahalanobis LSD: 零参数；当前安全口径为 fixed-reference F2 下 `N≥10` 起 #1。旧的 $N=16$ 敏感性属于历史 shared-reference / CV 诊断，不再是主稿边界
 - S_MD operator: $\Lambda = (1-\eta)\Sigma^{-1} + \eta F_{\text{disc}}$, η=0.74±0.08
 
 **实验依据**：`mahalanobis_lsd_test.py`, `expanded_family_robustness.py`, `min_distortion_verify.py`
@@ -52,7 +52,7 @@ $$S_{\mathrm{MD}}[P,N] = (\mathbf{I}(P) - \boldsymbol{\mu}(N))^\top \Lambda(N) (
 
 | 量 | 行为 | 含义 |
 |:--:|:----:|:----:|
-| Mahalanobis gap | $O(1) \to 94.1$ (N=16→128) | 身份越来越清晰 |
+| Mahalanobis gap | $0.308 \to 94.1$ (N=10 F2 → 128) | 身份越来越清晰 |
 | $V_{\text{eff}}$ | $\propto N^{-1.57}$ | 有效势越来越深 |
 | Fisher information | $\propto N^{1.00}$ | 统计分辨力线性增长 |
 | $\det(\Sigma)$ | $\propto N^{-3.38}$ | Lor4D 点云体积以 $N^{-1.69}$ 收缩 |
@@ -80,7 +80,7 @@ $$\boldsymbol{\mu}(N) = \boldsymbol{\mu}(\infty) + \mathbf{a}/N + \mathbf{b}/N^2
 - LSD-Well: **在既有 tested range 内持续保持 Lor4D #1；当前 manuscript-safe 主线仍以 Mahalanobis / F2 口径为准** ✅
 - 无任何对抗性家族在任何 N 处击败 Lor4D
 - Non-overfitting: 5-fold CV LSD 98%, Mahalanobis 94%, margin 保留率 ≥95%
-- 10-seed 再现: LSD-Well 80/80 全#1, Mahalanobis 79/80
+- 10-seed 再现: LSD-Well 80/80 全#1；Mahalanobis 79/80 属于历史 seed/CV 记录，而现行 F2 onset 口径已前推至 `N≥10`
 
 **实验依据**：`expanded_family_robustness.py`, `prediction_b_seed_reproducibility.py`, `prediction_b_cross_validation.py`
 

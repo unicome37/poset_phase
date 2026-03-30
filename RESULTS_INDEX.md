@@ -108,9 +108,9 @@
   - 作用：10 独立种子（42–8888）下 Prediction B 的两种度量（LSD-Well + Mahalanobis）再现性
   - 关键结论：
     - LSD-Well: 80/80 (seed,N) 组合 Lor4D 均 #1（100%）
-    - Mahalanobis: 79/80 #1（99%），唯一失败 = seed 1001, N=16
+    - Mahalanobis: 79/80 #1（99%），唯一失败 = seed 1001, N=16；这属于**历史 shared-reference / CV 记录**
     - N=16 LSD-Well margins: 0.003–0.152（均正），确认非种子偶然
-    - Mahalanobis margin 随 N 发散（3.0 → 40.4），几何可分性增强
+    - 当前主线应补充引用 F2：在独立参考集 fixed-reference protocol 下，Lor4D onset 已前推到 `N≥10`
 
 - `outputs_carlip/prediction_b_cross_validation.md`
   - 来源脚本：`prediction_b_cross_validation.py`
@@ -119,7 +119,7 @@
     - Oracle 模式: 24/24 全 #1
     - CV 模式: LSD 117/120 (98%), Mahalanobis 113/120 (94%)
     - Margin 保留率: LSD 106%, Mahalanobis 95% — 无过拟合
-    - 失败仅发生在 N=16/20，属于小样本协方差估计不稳定
+    - 失败仅发生在 N=16/20，属于**历史 CV/shared-reference 小样本估计不稳定**；现行安全边界改由 F2 fixed-reference 给出 (`N≥10`)
 
 ## Control Group (added post hoc)
 
@@ -529,7 +529,8 @@ $$S_M[\mathcal{P}, N] = (\mathbf{I}(\mathcal{P}) - \boldsymbol{\mu}(N))^{\top} \
 
 | 测试 | 结果 |
 |------|------|
-| 全 N 排名 #1 | ✅ 8/8 |
+| 当前安全口径 | ✅ fixed-reference F2 下 `N≥10` 起 #1 |
+| 历史 8 点测试网格 | ✅ 8/8 |
 | Margin vs 手调版 | Mahal margin 4–297 vs 手调 0.04–1.06 (100-300×) |
 | 交叉验证 (Leave-5-Out) | 100% #1 (48/48 次) |
 | 种子稳健性 (3 seeds × 8 N) | 100% #1 (24/24 次) |
@@ -538,6 +539,7 @@ $$S_M[\mathcal{P}, N] = (\mathbf{I}(\mathcal{P}) - \boldsymbol{\mu}(N))^{\top} \
 - LSD-Well 的三个自由参数 (α,β,γ) **可以完全消除**
 - 判别器由 Lor4D 统计几何唯一确定
 - 这是 S_MD 算子形式 Λ=Σ⁻¹ 的直接实现
+- 当前主稿与对外口径应优先引用 F2 fixed-reference onset 结果，而不是把早期 8 点网格直接表述成“all N”
 
 **文件**：[`mahalanobis_lsd_test.py`](mahalanobis_lsd_test.py), [`outputs_carlip/mahalanobis_lsd.md`](outputs_carlip/mahalanobis_lsd.md)
 

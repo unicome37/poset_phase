@@ -1,7 +1,7 @@
 # Introduction — Two-Layer Screening of 4D Lorentzian Causal Sets
 
 **Target journal**: Classical and Quantum Gravity  
-**Status**: Draft v1 — ready for author review and expansion
+**Status**: Draft v1 — updated to 2026-03-30 wording baseline
 
 ---
 
@@ -44,7 +44,7 @@ The central finding of this paper is that 4D Lorentzian causal sets are selected
 
 $$S_{\mathrm{MD}}[P,N] = \bigl(\mathbf{I}(P) - \boldsymbol{\mu}(N)\bigr)^\top \Sigma^{-1}(N) \bigl(\mathbf{I}(P) - \boldsymbol{\mu}(N)\bigr)$$
 
-measures the Mahalanobis distance from the Lor4D reference manifold $\boldsymbol{\mu}(N)$ in feature space, weighted by the inverse covariance $\Sigma^{-1}(N)$ of the Lor4D ensemble. This quadratic functional has **zero free parameters**: the center and metric are entirely determined by the Lor4D ensemble statistics. It uniquely ranks Lor4D first across all tested scales ($N=16$–$1024$) and all 25 poset families, including 8 adversarial constructions designed to challenge the ranking.
+measures the Mahalanobis distance from the Lor4D reference manifold $\boldsymbol{\mu}(N)$ in feature space, weighted by the inverse covariance $\Sigma^{-1}(N)$ of the Lor4D ensemble. This quadratic functional has **zero free parameters**: the center and metric are entirely determined by the Lor4D ensemble statistics. Under the current fixed-reference F2 protocol, it supports Lor4D identity turn-on already from $N\geq10$, and it continues to rank Lor4D first across broader tested scales in the 25-family library, including 8 adversarial constructions designed to challenge the ranking.
 
 The two layers are nearly orthogonal: the Pearson correlation between $S_{\mathrm{BD}}$ and $S_{\mathrm{MD}}$ ranges from $0.57$ ($N=16$) to $-0.26$ ($N=256$), approaching zero as $N$ grows. Their intersection is Lor4D and only Lor4D.
 
@@ -52,8 +52,8 @@ The two layers are nearly orthogonal: the Pearson correlation between $S_{\mathr
 
 As the poset size $N$ increases, the Lor4D identity basin deepens monotonically. We quantify this via:
 
-- The **Mahalanobis gap** (difference between Lor4D and the nearest competitor): $-0.8$ at $N=16$, growing to $94.1$ at $N=128$ and $1.93\times10^8$ at $N=1024$;
-- (Small-$N$ precision note) At $N=16$ the margin is small and sensitive to the reference-ensemble precision used to estimate $(\boldsymbol{\mu}(16),\Sigma(16))$; with a sufficiently large Lor4D reference ensemble (e.g. $\gtrsim 80$ sprinklings) the Lor4D #1 ranking at $N=16$ stabilizes across independent seeds. At $N\geq 20$ the ranking is unconditionally stable in our tests.
+- The **Mahalanobis gap** (difference between Lor4D and the nearest competitor): $+0.308$ at $N=10$ in the fixed-reference F2 onset study, growing to $94.1$ at $N=128$ and $1.93\times10^8$ at $N=1024$;
+- (Small-$N$ precision note) Earlier shared-reference / CV runs showed an $N=16$ sensitivity window, but this now belongs to the historical diagnostic stage. Under the current fixed-reference protocol with an independent reference ensemble, Lor4D is already manuscript-safe from $N\geq10$.
 - The **effective potential depth**: $V_{\mathrm{eff}} \propto N^{-1.57}$;
 - The **Fisher information**: $\propto N^{1.00}$, implying that the statistical cost of misidentification grows linearly with $N$;
 - The **reference manifold covariance collapse**: $\det(\Sigma) \propto N^{-3.38}$, so the Lor4D point-cloud volume shrinks as $N^{-1.69}$.
