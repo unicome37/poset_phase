@@ -1,0 +1,11 @@
+﻿partial_pearson,partial_spearman,permutation_p_abs_pearson,n,dataset,target_col,cg_col,n_controls
+0.8696830777886158,0.8017391304347826,0.0001999600079984003,30,outputs_exploratory/pairwise_compressibility_duel_expanded,log_H,switch_zscore,6.0
+0.8231486892418187,0.8304347826086956,0.0001999600079984003,40,outputs_exploratory/pairwise_compressibility_duel_expanded,log_H,switch_zscore,6.0
+0.9436359558595333,0.9440559440559441,0.0005998800239952009,44,outputs_exploratory/frozen_exploratory_submodel_44_expanded/duel,log_H,switch_zscore,6.0
+0.691754968225375,0.6190476190476191,0.0609878024395121,48,outputs_exploratory/frozen_exploratory_submodel_48_expanded/duel,log_H,switch_zscore,6.0
+0.9547942338283344,0.8461538461538461,0.0001999600079984003,52,outputs_exploratory/frozen_exploratory_submodel_52_moderate/duel,log_H,switch_zscore,6.0
+0.6791245768144876,0.75,0.003799240151969606,52,outputs_exploratory/frozen_exploratory_submodel_52_p5p95/duel,log_H,switch_zscore,6.0
+0.6048224637486216,0.5441176470588235,0.01279744051189762,52,outputs_exploratory/frozen_exploratory_submodel_52_rescue/duel,log_H,switch_zscore,6.0
+0.9795488960812423,0.9790209790209791,0.0001999600079984003,56,outputs_exploratory/frozen_exploratory_submodel_56_moderate/duel,log_H,switch_zscore,6.0
+0.39123009528904457,0.3,0.13737252549490103,56,outputs_exploratory/frozen_exploratory_submodel_56_p5p95/duel,log_H,switch_zscore,6.0
+0.15215832271912494,0.12352941176470589,0.5764847030593881,56,outputs_exploratory/frozen_exploratory_submodel_56_rescue/duel,log_H,switch_zscore,6.0

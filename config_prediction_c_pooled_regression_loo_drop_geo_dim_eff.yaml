@@ -1,0 +1,17 @@
+﻿input:
+  augmented_combined_csv: outputs_exploratory/prediction_c_bronze_augmented_pilot/prediction_c_augmented_combined.csv
+  feature_cache_csv: outputs_exploratory/prediction_c_bronze_augmented_pilot/prediction_c_feature_cache.csv
+
+experiment:
+  controls:
+    - antichain_width
+    - comparable_fraction
+  features:
+    - hierarchy_integration_index
+    - layer_count
+    - mean_layer_gap
+  n_permutations: 4000
+  seed: 20260331
+
+output:
+  directory: outputs_exploratory/prediction_c_pooled_regression_loo_drop_geo_dim_eff

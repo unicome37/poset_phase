@@ -1,0 +1,30 @@
+﻿tier1:
+  raw_csvs:
+    - outputs_frozen_exact/raw_samples.csv
+  families:
+    - lorentzian_like_2d
+    - lorentzian_like_3d
+    - lorentzian_like_4d
+    - multi_layer_random
+    - KR_like
+    - transitive_percolation
+    - interval_order
+    - absolute_layered
+
+tier2:
+  pairs_csv: outputs_exploratory/mlr_survivor_matched_lor2d_expanded/mlr_survivor_matched_pairs.csv
+  residual_csv: outputs_exploratory/matched_residual_freedom_check_expanded/matched_residual_freedom_raw.csv
+
+tier3:
+  duel_csvs:
+    - outputs_exploratory/pairwise_compressibility_duel_expanded/pairwise_duel_raw.csv
+    - outputs_exploratory/frozen_exploratory_submodel_44_expanded/duel/pairwise_duel_raw.csv
+    - outputs_exploratory/frozen_exploratory_submodel_48_expanded/duel/pairwise_duel_raw.csv
+
+experiment:
+  n_permutations: 2000
+  seed: 20260401
+
+output:
+  directory: outputs_exploratory/prediction_c_comprehensive_seed20260401
+

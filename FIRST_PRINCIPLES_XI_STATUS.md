@@ -1,4 +1,4 @@
-# Ξ 第一性原理推导状态
+﻿# Ξ 第一性原理推导状态
 
 更新时间：2026-03-18
 
@@ -533,6 +533,17 @@ $$\boxed{\frac{\log H}{N} = \left(1 - \frac{\pi}{48}\right)(1-p_d)(\ln N - 1) + 
 - $\Xi_{4\to5}$ 中位误差 **0.4%**（$\pi/48$ 版）/ **0.3%**（OLS 版）
 - 自由拟合参数：**零**（如果接受 $\varepsilon = \pi/48$ 猜想）
 
+## A 线闭环总括
+
+当前 A 线已形成一条完整链条，不再是并列结果：
+
+1. 几何输入：由 Minkowski 几何得到 p_d、\kappa_d、\mathbb{E}[V_A]；
+2. 占据闭合：P_occ = 1-e^{-m_1} 作为 entropy correction 的主变量；
+3. 体积矩解释：P_occ 优于线性矩，核心在占据饱和而非均值体积本身；
+4. 区间桥接：1-\ell_d 是 interval hierarchy 的 coarse-grained summary，而非仅 C1/C0；
+5. 解析闭合：B_1+2B_0=2，并由 \varepsilon \approx \pi/48 实现零自由参数闭合。
+
+因此 A 线主问题已接近完成，后续重点是写作整合与跨文档引用，不是再补一条决定性新实验。
 ## 下一步
 
 1. ~~给出 $B_0 \approx 0.934$ 的解析来源~~ ✅ $B_0 = 1 - \pi/48$
@@ -541,3 +552,4 @@ $$\boxed{\frac{\log H}{N} = \left(1 - \frac{\pi}{48}\right)(1-p_d)(\ln N - 1) + 
 4. ~~整合 volume-moment occupancy 闭合为论文级推导（Section 5.7 替代文本）。~~ ✅ 已写入 `prediction_a_paper/prediction_a.tex`
 5. 尝试从传递闭包统计严格推导 $\varepsilon = \kappa_4/2$ 的物理起源。
 6. 在 d=6 数据上验证：如果 $\varepsilon = \kappa_4/2$ 是刚性的，那么 $\Xi_{5\to6}$ 也应在 <1% 内命中。
+

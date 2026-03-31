@@ -1,6 +1,6 @@
 # Expanded Family Robustness Test — 25 Families
 
-Date: 2026-03-27 11:35
+Date: 2026-03-31 12:20
 Families: 17 original + 8 adversarial = 25
 N values: [16, 28, 48, 64, 96]
 Reps: 20
@@ -50,21 +50,21 @@ Does any of the 8 new families beat Lor4D?
 
 | Rank | Family | Score | New? |
 |---|---|---|---|
-| 1 | Lor4D | 0.124786 |  |
-| 2 | KR_2layer | 0.158317 |  |
-| 3 | Lor5D | 0.192122 |  |
-| 4 | RandomDAG_sp | 0.195925 | ★ |
-| 5 | TransPerc | 0.229792 |  |
+| 1 | Lor4D | 0.150847 |  |
+| 2 | KR_2layer | 0.160052 |  |
+| 3 | Lor5D | 0.225178 |  |
+| 4 | RandomDAG_sp | 0.303970 | ★ |
+| 5 | TransPerc | 0.348535 |  |
 
 **Mahalanobis Top 5:**
 
 | Rank | Family | Score | New? |
 |---|---|---|---|
-| 1 | Lor4D | 2.1701 |  |
-| 2 | Lor5D | 3.1886 |  |
-| 3 | KR_2layer | 6.1785 |  |
-| 4 | Lor3D | 7.4705 |  |
-| 5 | TransPerc | 14.9078 |  |
+| 1 | Lor4D | 2.6454 |  |
+| 2 | Lor5D | 2.8551 |  |
+| 3 | KR_2layer | 6.6983 |  |
+| 4 | Lor3D | 9.3722 |  |
+| 5 | TransPerc | 17.4796 |  |
 
 ### N = 28
 
@@ -72,21 +72,21 @@ Does any of the 8 new families beat Lor4D?
 
 | Rank | Family | Score | New? |
 |---|---|---|---|
-| 1 | Lor4D | 0.038280 |  |
-| 2 | Lor5D | 0.130167 |  |
-| 3 | TransPerc | 0.331305 |  |
-| 4 | Lor3D | 0.399758 |  |
-| 5 | KR_2layer | 0.443103 |  |
+| 1 | Lor4D | 0.044577 |  |
+| 2 | Lor5D | 0.241912 |  |
+| 3 | TransPerc | 0.367415 |  |
+| 4 | RandomDAG_sp | 0.425042 | ★ |
+| 5 | KR_2layer | 0.449717 |  |
 
 **Mahalanobis Top 5:**
 
 | Rank | Family | Score | New? |
 |---|---|---|---|
 | 1 | Lor4D | 2.8500 |  |
-| 2 | Lor5D | 9.3430 |  |
-| 3 | KR_2layer | 28.4709 |  |
-| 4 | Lor3D | 29.4669 |  |
-| 5 | TransPerc | 30.1185 |  |
+| 2 | Lor5D | 12.0975 |  |
+| 3 | Lor3D | 21.0282 |  |
+| 4 | KR_2layer | 30.2761 |  |
+| 5 | RandomDAG_sp | 38.6041 | ★ |
 
 ### N = 48
 
@@ -94,21 +94,21 @@ Does any of the 8 new families beat Lor4D?
 
 | Rank | Family | Score | New? |
 |---|---|---|---|
-| 1 | Lor4D | 0.027749 |  |
-| 2 | Lor5D | 0.149514 |  |
-| 3 | Lor3D | 0.450918 |  |
-| 4 | KR_2layer | 0.652664 |  |
-| 5 | TransPerc | 0.798638 |  |
+| 1 | Lor4D | 0.033301 |  |
+| 2 | Lor5D | 0.175627 |  |
+| 3 | Lor3D | 0.389359 |  |
+| 4 | KR_2layer | 0.642443 |  |
+| 5 | TransPerc | 0.835465 |  |
 
 **Mahalanobis Top 5:**
 
 | Rank | Family | Score | New? |
 |---|---|---|---|
 | 1 | Lor4D | 2.8500 |  |
-| 2 | Lor5D | 14.7517 |  |
-| 3 | Lor3D | 31.8818 |  |
-| 4 | TransPerc | 142.1143 |  |
-| 5 | KR_2layer | 176.9593 |  |
+| 2 | Lor5D | 12.8174 |  |
+| 3 | Lor3D | 27.3339 |  |
+| 4 | KR_2layer | 63.9282 |  |
+| 5 | KR_like | 88.9372 |  |
 
 ### N = 64
 
@@ -116,21 +116,21 @@ Does any of the 8 new families beat Lor4D?
 
 | Rank | Family | Score | New? |
 |---|---|---|---|
-| 1 | Lor4D | 0.013940 |  |
-| 2 | Lor5D | 0.117024 |  |
-| 3 | Lor3D | 0.394560 |  |
-| 4 | KR_2layer | 0.722858 |  |
-| 5 | KR_like | 0.926532 |  |
+| 1 | Lor4D | 0.023016 |  |
+| 2 | Lor5D | 0.130694 |  |
+| 3 | Lor3D | 0.434425 |  |
+| 4 | KR_2layer | 0.722935 |  |
+| 5 | KR_like | 0.926001 |  |
 
 **Mahalanobis Top 5:**
 
 | Rank | Family | Score | New? |
 |---|---|---|---|
 | 1 | Lor4D | 2.8500 |  |
-| 2 | Lor5D | 25.3659 |  |
-| 3 | Lor3D | 66.6454 |  |
-| 4 | KR_2layer | 131.8658 |  |
-| 5 | KR_like | 224.3543 |  |
+| 2 | Lor5D | 13.6515 |  |
+| 3 | Lor3D | 31.5397 |  |
+| 4 | KR_like | 124.0163 |  |
+| 5 | KR_2layer | 127.6859 |  |
 
 ### N = 96
 
@@ -138,31 +138,31 @@ Does any of the 8 new families beat Lor4D?
 
 | Rank | Family | Score | New? |
 |---|---|---|---|
-| 1 | Lor4D | 0.025069 |  |
-| 2 | Lor5D | 0.109400 |  |
-| 3 | Lor3D | 0.432934 |  |
-| 4 | KR_2layer | 0.802011 |  |
-| 5 | KR_like | 0.950041 |  |
+| 1 | Lor4D | 0.017379 |  |
+| 2 | Lor5D | 0.099764 |  |
+| 3 | Lor3D | 0.438218 |  |
+| 4 | KR_2layer | 0.798785 |  |
+| 5 | KR_like | 0.953419 |  |
 
 **Mahalanobis Top 5:**
 
 | Rank | Family | Score | New? |
 |---|---|---|---|
 | 1 | Lor4D | 2.8500 |  |
-| 2 | Lor5D | 80.4814 |  |
-| 3 | Lor3D | 88.8046 |  |
-| 4 | KR_like | 293.3418 |  |
-| 5 | MLR | 306.1438 |  |
+| 2 | Lor5D | 29.7270 |  |
+| 3 | Lor3D | 79.7067 |  |
+| 4 | KR_like | 199.9651 |  |
+| 5 | RLk6_mid | 270.7065 |  |
 
 ## 4. Margin: Lor4D vs Best Non-Lorentzian
 
 | N | LSD-Well margin | Mahalanobis margin |
 |---|---|---|
-| 16 | +0.033531 | +4.0084 |
-| 28 | +0.293025 | +25.6209 |
-| 48 | +0.624914 | +139.2643 |
-| 64 | +0.708918 | +129.0158 |
-| 96 | +0.776943 | +290.4918 |
+| 16 | +0.009205 | +4.0530 |
+| 28 | +0.322837 | +27.4261 |
+| 48 | +0.609143 | +61.0782 |
+| 64 | +0.699919 | +121.1663 |
+| 96 | +0.781406 | +197.1151 |
 
 ## 5. Conclusion
 
@@ -170,4 +170,4 @@ Does any of the 8 new families beat Lor4D?
 - Lor4D LSD-Well #1 at all N: YES
 - Lor4D Mahalanobis #1 at all N: YES
 - New family challenger found: NO
-- Runtime: 9.1s
+- Runtime: 23.6s

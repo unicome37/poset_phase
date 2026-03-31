@@ -93,6 +93,7 @@ $$\text{Score} = -\beta \cdot \log H(\text{poset}) + \lambda \cdot \text{Action}
 | `prediction_a_bd_dimension.py` | BD 链接作用量维度选择 | **λ=6-8: 4D 全票** | a8e79c7 |
 | `prediction_a_bd_lorentzian_only.py` | BD Lorentzian-only 分析 | 维度级联: 5D→4D→3D→2D | a8e79c7 |
 | `prediction_a_bd_extended.py` | 扩展 BD (N=60,68, 混合) | 4D plateau N=20-68 全票 | e4d237d |
+| `prediction_a_bd_bridge.py` | BD 4D 桥接扫描 | 扫描的 `α_BD` 范围内未发现 Lor2D/Lor3D/Lor4D/Lor5D 的排序翻转；BD-inspired 修正未改写维度次序 |
 | `prediction_a_bdg_full_comparison.py` | 文献 BDG 系数 vs link-proxy | link_d2→4D; BDG_d4→5D | 6514e95 |
 | `prediction_a_bdg_component_figure.py` | BDG 组件诊断图 | C₁ 项破坏 4D 选择 | 58501cb |
 | `prediction_a_generator_robustness.py` | 三种生成器鲁棒性 | 机制跨生成器普适 | b34b8be |
@@ -185,6 +186,7 @@ $$\text{Score} = -\beta \cdot \log H(\text{poset}) + \lambda \cdot \text{Action}
   给出 Ξ₄→₅=11.31，观测 11.35，误差 **0.4%**
 - **论文整合**: Section 5.7 已改写为第一性原理推导，Discussion、Summary 同步更新
 - **辅助验证**: α 扫描确认 α*=1.000，Gamma-MGF 闭合 ℓ_d 误差 <1.2%，interval bridge R²=0.9955
+- **A 线收口说明**: occupancy closure + volume moments + interval bridge + B₀/B₁ 已形成同一闭环链路，当前以写作整合与跨文档引用为主，不再依赖新增决定性实验
 
 **Phase 10: AI 多轮审阅 + CQG 投稿 (b6379b2 → 1ee2654)**
 
@@ -301,10 +303,19 @@ Overall CV = 17.7%, Small-N median = 10.21, Large-N median = 11.83
 | `prediction_b_gamma_c_scaling.py` | γ_c(N) 有限尺寸标度 | 常数: 0.528±0.096, 95%CI [0.31, 0.74] |
 | `prediction_b_gamma_extended_analysis.py` | 扩展 γ 扫描 [0, 5.0] | N=20-44 精确窗: γ_c = 0.98-1.24 |
 | `prediction_b_gamma_extended_nearwall.py` | Near-wall N=48,52,56 | **N=56: γ_c=2.08** (扩展范围后恢复) |
+| `prediction_b_candidate_expansion.py` | 候选族扩张（layered 近邻族） | `A2_full`: Lor2D 5/42, KR_like 20/42, layered 17/42；`A2_replace_dim_with_consistency`: Lor2D 0/42 |
+| `expanded_family_robustness.py` | 25 家族广义 DAG / interval-order 扩张 | `Lor4D` 在 `N=16,28,48,64,96` 的 LSD-Well 与 Mahalanobis 均为 #1，新增 8 对手未击穿 |
+| `prediction_b_seed_reproducibility.py` | 跨 seed 鲁棒性 | `Lor4D` 在 10/10 seed base、8 个 N 上 LSD-Well 与 Mahalanobis 均保持 #1（N=16 也全中） |
+| `prediction_b_cross_validation.py` | train/test cross-validation | LSD-Well `24/24` 全中，Mahalanobis `116/120` 为 #1 |
+| `prediction_bac_bridge.py` | B/A/C 桥接分析 | B↔C: `corr(delta_hii, delta_penalty) = -0.581`, `corr(delta_hii, delta_log_H) = -0.680`; A↔C: `Lor4D` 在 HII 上不高于 `Lor2D/Lor3D`，但仍保持 A 线赢家地位 |
 
 #### 状态
 - v2.1.0 已发布
 - γ_c(N) 随 N 缓慢增长但有界
+- 候选族扩张表明：Lor2D 对一般 layered 近邻族没有稳健优势，当前 B 的更强版本应收缩到 `KR suppression + local Lorentzian competition`
+- 25 家族扩张表明：Lor4D 在当前广义 DAG / percolation / interval-order 基线上仍保持全局赢家地位，但结论仍限定于当前 library 与评分函数
+- seed reproducibility 与 CV 表明：Lor4D 的赢家地位并非单一 seed 或训练集自洽造成，而是跨复现稳定
+- B/A/C 桥接表明：B 的几何门槛与 C 的历史沉积之间存在稳定负相关，而 A 的 4D 胜出并不依赖“层级更深”这一单轴解释
 - **Zenodo DOI**: `10.5281/zenodo.19048146`
 
 ---
@@ -314,6 +325,9 @@ Overall CV = 17.7%, Small-N median = 10.21, Large-N median = 11.83
 **核心问题**: 偏序集的层级结构（hierarchy depth）是否能预测其组合熵？
 
 #### 状态: v4.0.0 已发布 (准因果证据塔)
+
+**注**: 下列 C 线条目中，
+`nearwall` / `LOCO` / `seed 复现` 属于当前双层筛选主线；`F7 large-N` 仅作为旧 `Prediction C` 的辅助验证，不作为主线结论依据。
 
 9 个实验:
 1. Stratified Fisher z 回归 (|r|~0.35-0.54)
@@ -328,6 +342,42 @@ Overall CV = 17.7%, Small-N median = 10.21, Large-N median = 11.83
 
 - **手稿**: `PredictionC_MainPaper_Unified_Draft.md` → 43 页 PDF
 - **Zenodo DOI**: `10.5281/zenodo.19048405`
+
+- **2026-03-31 C 线 nearwall 补强**:
+  - mlr_survivor_matched_lor2d_nearwall_expanded 与 matched_residual_freedom_check_nearwall_expanded 已补齐；
+  - prediction_c_pairwise_validation_nearwall_expanded：n_pairs=35，locality_dominance -> ΔlogH Pearson +0.850，hierarchy_integration -> ΔlogH Pearson -0.848；
+  - prediction_c_switch_enhancement_scan_nearwall_expanded：baseline mean zeta_cross=4.307，best mean 约 -0.365；
+  - prediction_c_switch_enhancement_scan_nearwall_p5p95：baseline mean zeta_cross=4.942，best mean 约 -0.197；
+  - prediction_c_pairwise_validation_nearwall_rescue：n_pairs=50，locality_dominance -> ΔlogH Pearson +0.840，hierarchy_integration -> ΔlogH Pearson -0.839；
+  - prediction_c_switch_enhancement_scan_nearwall_rescue：baseline mean zeta_cross=5.101，best mean 约 -0.084；
+  - 结论：nearwall 的 expanded / p5p95 / rescue 三档已形成同向闭环，主线鲁棒性补强完成。
+  - 结论：C 线在 nearwall 多口径下保持同向，已从 local pilot 推进到鲁棒性补强阶段。
+- **2026-03-31 C 线效应量张力诊断**:
+  - prediction_c_effect_size_tension.py 已完成，输出 outputs_exploratory/effect_size_tension；
+  - matched-pair (50 对) 下 layer_count/mean_layer_gap/HII 对 ΔlogH 的相关分别为 -0.8268/-0.8175/-0.8389，bootstrap 95% CI 全为负；
+  - leave-k-out 去除 15 对极端样本后仍保持 ≈-0.73~-0.75，信号并非单点驱动；
+  - 结论：matched-pair 提供强局部信号，但总体效应量应按中等强度解释（与 Fisher-z 口径一致）。
+- **2026-03-31 C 线 LOCO 混杂剥离**:
+  - 三组 leave-one-confounder-out 已完成，汇总于 outputs_exploratory/prediction_c_pooled_regression_loo_summary.csv；
+  - 在 controls_plus_n_family_fe 下，drop antichain_width 会将 HII 从 +0.086 拉到 -0.495，并显著放大 layer_count/mean_layer_gap 的负相关；
+  - drop comparable_fraction 与 drop geo_dim_eff 与 full controls 几乎同结果，提示二者在当前样本里高度冗余。
+
+- **2026-03-31 C 线 F7 large-N fresh（辅助验证，非双层筛选主线）**:
+  - prediction_c_f7_large_n.py --fresh --reps 8 --ns 20 36 52 72 100 已完成；
+  - within-cell 方向正确率 16/19=84%；
+  - per-N 跨族 pooled ρ(Σ_hist,logH) 分别为 -0.805/-0.682/-0.769/-0.743/-0.742，均为显著负相关；
+  - 结论：大 N fresh 数据继续支持旧 Prediction C 的方向判断，但仅作为辅助验证，不纳入双层筛选主线。
+
+- **2026-03-31 D 线辅助收口（large-N / weakening / convergence）**:
+  - prediction_d_large_n_verification.md 已给出大 N 验证：W1 与 ΔH_int 在控制 F7 后仍显著，控制 F7+N 后仍保持正相关且显著；
+  - prediction_d_weakening_diagnosis.md 已给出根因诊断：P_basin 方差随 N 降低，W1 的 CV 基本稳定，weakening 更像 basin variance compression 而非观测量退化；
+  - prediction_d_f7_w1_convergence.md 已给出收敛解释：F7 与 W1 在 large-N 下共享 family-level rigidity，within-family residual 相关在大 N 仍显著；
+  - 结论：D 的主体实验链已闭合，剩余 TODO 主要是写作升级与是否向“无条件准因果”推进的设计问题。
+
+- **2026-03-31 C 线独立 seed 复现**:
+  - prediction_c_comprehensive.py 以 seed=20260331 和 seed=20260401 各完成一次全链重跑；
+  - Tier2 核心相关系数保持一致：hii_delta=-0.8363，layer_count_delta=-0.8229，mean_layer_gap_delta=-0.8144；
+  - 仅置换 p 值出现千分位波动，方向与量级稳定。
 
 ---
 
@@ -537,7 +587,7 @@ a8e79c7 feat: Benincasa-Dowker action dimension selection
    - ✅ **连续Y+富残差化层内准因果检验**：`prediction_d_continuous_residualized.py` — 针对"结构共变"裁定的设计改进：(1) 5 个连续 Y 目标（Δscore_local, Δlog_H, Δpenalty_local, Δgeo_total, Δpenalty_neutral）拆分信号通道；(2) 11 维混杂变量层内 OLS 残差化（结构签名 + 基线适应度）；(3) 边界样本子分析。**突破性发现**：残差化后层内信号恢复！p05 下 Δscore_local/Δlog_H/Δpenalty_neutral 均层内显著（p=0.019/0.019/0.001）；**p20 下全部 5 个 Y 目标均达显著（含 Δpenalty_neutral all/boundary：ρ̄=-0.187,p=0.00002；ρ̄=-0.134,p=0.027）**。剂量递增确认（ρ̄ 和显著性均随扰动递增）。边界样本 p20 同样全面显著。**直接逆转 §6.5–6.6 的"层内零"结论——信号被层内混杂掩盖，非不存在。D 证据水平上修为"条件准因果"。** 产物：`outputs_exploratory/prediction_d_continuous_residualized/`
    - ✅ **最小复现锚点（n=32, mechanism-independent 连续Y）**：`prediction_d_residualized_within_stratum_test.py` — 不依赖 rich 11 维特征重建，仅用现成 `perturbation_sample_cg_n32.csv` 做层内去均值 + 基线残差化（`pen0/score0/icg0`）。`n_perm=10000` 下 stratified 结果：p05 `ρ̄≈-0.086,p≈0.0379`；p10 `ρ̄≈-0.100,p≈0.0173`；p20 `ρ̄≈-0.192,p≈1e-4`。说明“层内信号回潮”不只存在于 rich 模型，也可由轻量残差化独立复现。产物：`outputs_exploratory/prediction_d_perturbation_residualized_np10000/`
 
-   - ⏭️ **TODO（进一步巩固"条件准因果"）**：(1) 独立种子复现实验确认鲁棒性；(2) 估计残差化后各通道的效应量上限（partial ρ）；(3) 尝试 leave-one-confounder-out 分析识别关键混杂变量；(4) 考虑是否可将条件准因果升级为无条件准因果（需更多 family 和更大 N 的设计）。
+   - ⏭️ **TODO（进一步巩固"条件准因果"）**：前 3 项（独立 seed、partial ρ 上限、leave-one-confounder-out）已通过 D 线辅助收口报告部分覆盖；当前仍开放的是 (4) 是否可将条件准因果升级为无条件准因果（需更多 family 和更大 N 的设计）。
 ### 探索性
 
 8. **连续极限**: N→∞ 下 Ξ 是否收敛到精确常数？
@@ -643,3 +693,11 @@ $$S^{(4)} = N - C_0 + 9C_1 - 16C_2 + 8C_3$$
 | 3 | 0.301 | 0.618 | 0.621 | −0.393 |
 | 4 | 0.114 | 0.839 | 0.731 | −0.555 |
 | 5 | 0.034 | 1.049 | 0.773 | −0.541 |
+
+
+
+
+
+
+
+
