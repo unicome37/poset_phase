@@ -105,6 +105,21 @@ def _ci95_bounds(values: list[float]) -> dict[str, float | None]:
     }
 
 
+def _cell_key_from_record(r: dict[str, Any]) -> tuple[int, int] | None:
+    try:
+        return int(r["seed_run"]), int(r["N"])
+    except Exception:
+        return None
+
+
+def _seed_done(done_cells: set[tuple[int, int]], seed_run: int, n_grid: list[int]) -> bool:
+    return all((seed_run, int(n)) in done_cells for n in n_grid)
+
+
+def _count_completed_seed_runs(done_cells: set[tuple[int, int]], seed_runs: int, n_grid: list[int]) -> int:
+    return sum(1 for s in range(seed_runs) if _seed_done(done_cells, s, n_grid))
+
+
 def _resolve_family_names(cfg: dict[str, Any]) -> list[str]:
     registry = cfg.get("family_registry", "all")
     focus = list(cfg.get("focus_families", []))
@@ -229,6 +244,7 @@ def run(cfg: dict[str, Any]) -> dict[str, Any]:
     out_dir.mkdir(parents=True, exist_ok=True)
     output_basename = str(cfg.get("output_basename", "f2_turnon_margin_refit"))
     checkpoint_every_seed = bool(cfg.get("checkpoint_every_seed", True))
+    resume_from_partial = bool(cfg.get("resume_from_partial", True))
 
     experiment_id = str(cfg.get("experiment_id", "f2_turnon_margin_refit"))
     n_grid: list[int] = list(cfg["n_grid"])
@@ -242,14 +258,52 @@ def run(cfg: dict[str, Any]) -> dict[str, Any]:
 
     seedlog_path = out_dir / f"{output_basename}.seedlog.jsonl"
     snapshot_path = out_dir / f"{output_basename}.partial.json"
-    if checkpoint_every_seed:
-        seedlog_path.write_text("", encoding="utf-8")
-
     per_seed_records: list[dict[str, Any]] = []
     per_n_records: dict[int, list[dict[str, Any]]] = defaultdict(list)
+    done_cells: set[tuple[int, int]] = set()
+
+    if resume_from_partial and snapshot_path.exists():
+        try:
+            prev = json.loads(snapshot_path.read_text(encoding="utf-8"))
+            prev_records = prev.get("per_seed_records", [])
+
+            resume_compatible = (
+                list(prev.get("n_grid", [])) == n_grid
+                and int(prev.get("reps", reps)) == reps
+                and int(prev.get("reference_reps", reference_reps)) == reference_reps
+                and int(prev.get("total_seed_runs", seed_runs)) == seed_runs
+            )
+
+            if resume_compatible and isinstance(prev_records, list):
+                per_seed_records = prev_records
+                for r in per_seed_records:
+                    try:
+                        per_n_records[int(r["N"])].append(r)
+                    except Exception:
+                        continue
+                done_cells = {
+                    key for key in (_cell_key_from_record(r) for r in per_seed_records) if key is not None
+                }
+        except Exception:
+            per_seed_records = []
+            per_n_records = defaultdict(list)
+            done_cells = set()
+
+    if checkpoint_every_seed:
+        if not done_cells:
+            seedlog_path.write_text("", encoding="utf-8")
+        elif not seedlog_path.exists():
+            seedlog_path.write_text("", encoding="utf-8")
+
+    n_cells = seed_runs * len(n_grid)
 
     for s in range(seed_runs):
+        seed_done_before = _seed_done(done_cells, s, n_grid)
         for n in n_grid:
+            cell_key = (s, int(n))
+            if cell_key in done_cells:
+                continue
+
             seed_stats = _scores_for_seed(
                 n=n,
                 reps=reps,
@@ -266,30 +320,40 @@ def run(cfg: dict[str, Any]) -> dict[str, Any]:
             per_seed_records.append(record)
             per_n_records[n].append(record)
 
-        if checkpoint_every_seed:
+            done_cells.add(cell_key)
+
+            if checkpoint_every_seed:
+                completed_seed_runs = _count_completed_seed_runs(done_cells, seed_runs, n_grid)
+                partial = {
+                    "experiment_id": experiment_id,
+                    "output_basename": output_basename,
+                    "n_grid": n_grid,
+                    "reps": reps,
+                    "reference_reps": reference_reps,
+                    "completed_seed_runs": completed_seed_runs,
+                    "total_seed_runs": seed_runs,
+                    "completed_cells": len(done_cells),
+                    "total_cells": n_cells,
+                    "focus_families": focus_families,
+                    "family_registry": cfg.get("family_registry", "all"),
+                    "per_seed_records": per_seed_records,
+                }
+                snapshot_path.write_text(json.dumps(partial, ensure_ascii=False, indent=2), encoding="utf-8")
+
+        seed_done_after = _seed_done(done_cells, s, n_grid)
+        if checkpoint_every_seed and (not seed_done_before) and seed_done_after:
+            completed_seed_runs = _count_completed_seed_runs(done_cells, seed_runs, n_grid)
             event = {
                 "event": "seed_complete",
                 "seed_run": s,
-                "completed_seed_runs": s + 1,
+                "completed_seed_runs": completed_seed_runs,
                 "total_seed_runs": seed_runs,
+                "completed_cells": len(done_cells),
+                "total_cells": n_cells,
                 "records_so_far": len(per_seed_records),
             }
             with seedlog_path.open("a", encoding="utf-8") as f:
                 f.write(json.dumps(event, ensure_ascii=False) + "\n")
-
-            partial = {
-                "experiment_id": experiment_id,
-                "output_basename": output_basename,
-                "n_grid": n_grid,
-                "reps": reps,
-                "reference_reps": reference_reps,
-                "completed_seed_runs": s + 1,
-                "total_seed_runs": seed_runs,
-                "focus_families": focus_families,
-                "family_registry": cfg.get("family_registry", "all"),
-                "per_seed_records": per_seed_records,
-            }
-            snapshot_path.write_text(json.dumps(partial, ensure_ascii=False, indent=2), encoding="utf-8")
 
     per_n_summary: dict[str, Any] = {}
     for n in n_grid:

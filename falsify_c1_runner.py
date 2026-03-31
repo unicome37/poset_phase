@@ -88,11 +88,27 @@ def _find_consecutive(ns: list[int], hit_map: dict[int, int], min_hits: int, k: 
     return blocks
 
 
+def _cell_key_from_record(r: dict[str, Any]) -> tuple[int, int] | None:
+    try:
+        return int(r["seed_run"]), int(r["N"])
+    except Exception:
+        return None
+
+
+def _seed_done(done_cells: set[tuple[int, int]], seed_run: int, n_grid: list[int]) -> bool:
+    return all((seed_run, int(n)) in done_cells for n in n_grid)
+
+
+def _count_completed_seed_runs(done_cells: set[tuple[int, int]], seed_runs: int, n_grid: list[int]) -> int:
+    return sum(1 for s in range(seed_runs) if _seed_done(done_cells, s, n_grid))
+
+
 def run(cfg: dict[str, Any]) -> dict[str, Any]:
     out_dir = Path(cfg.get("output_dir", "outputs_carlip"))
     out_dir.mkdir(parents=True, exist_ok=True)
     output_basename = str(cfg.get("output_basename", "falsify_c1_family_pressure"))
     checkpoint_every_seed = bool(cfg.get("checkpoint_every_seed", True))
+    resume_from_partial = bool(cfg.get("resume_from_partial", True))
 
     n_grid: list[int] = list(cfg["n_grid"])
     reps: int = int(cfg.get("reps", 80))
@@ -111,18 +127,63 @@ def run(cfg: dict[str, Any]) -> dict[str, Any]:
 
     seedlog_path = out_dir / f"{output_basename}.seedlog.jsonl"
     snapshot_path = out_dir / f"{output_basename}.partial.json"
-    if checkpoint_every_seed:
-        seedlog_path.write_text("", encoding="utf-8")
 
     # per family, per N: count seed-runs where family outranks Lor4D
     outrank_counts: dict[str, dict[int, int]] = {
         f: {n: 0 for n in n_grid} for f in family_names if f != "Lor4D"
     }
 
-    # run seed-runs
-    per_seed_records = []
+    per_seed_records: list[dict[str, Any]] = []
+    done_cells: set[tuple[int, int]] = set()
+
+    if resume_from_partial and snapshot_path.exists():
+        try:
+            prev = json.loads(snapshot_path.read_text(encoding="utf-8"))
+            prev_records = prev.get("per_seed_records", [])
+            prev_outrank = prev.get("outrank_counts", {})
+
+            resume_compatible = (
+                list(prev.get("n_grid", [])) == n_grid
+                and int(prev.get("reps", reps)) == reps
+                and int(prev.get("total_seed_runs", rule.seed_runs)) == rule.seed_runs
+            )
+
+            if resume_compatible and isinstance(prev_records, list) and isinstance(prev_outrank, dict):
+                per_seed_records = prev_records
+                done_cells = {
+                    key for key in (_cell_key_from_record(r) for r in per_seed_records) if key is not None
+                }
+
+                restored_counts: dict[str, dict[int, int]] = {
+                    f: {n: 0 for n in n_grid} for f in family_names if f != "Lor4D"
+                }
+                for fam in restored_counts:
+                    fam_map = prev_outrank.get(fam, {})
+                    if isinstance(fam_map, dict):
+                        for n in n_grid:
+                            restored_counts[fam][n] = int(fam_map.get(n, fam_map.get(str(n), 0)))
+                outrank_counts = restored_counts
+        except Exception:
+            per_seed_records = []
+            done_cells = set()
+            outrank_counts = {f: {n: 0 for n in n_grid} for f in family_names if f != "Lor4D"}
+
+    if checkpoint_every_seed:
+        if not done_cells:
+            seedlog_path.write_text("", encoding="utf-8")
+        elif not seedlog_path.exists():
+            seedlog_path.write_text("", encoding="utf-8")
+
+    n_cells = rule.seed_runs * len(n_grid)
+
+    # run seed-runs (cell-level resumable)
     for s in range(rule.seed_runs):
+        seed_done_before = _seed_done(done_cells, s, n_grid)
         for n in n_grid:
+            cell_key = (s, int(n))
+            if cell_key in done_cells:
+                continue
+
             scores = _scores_for_seed(n=n, reps=reps, seed_base=seed_base + 1000000 * s + 10000 * n, family_names=family_names)
             ordered = _rank(scores)
             lor_rank = ordered.index("Lor4D") + 1
@@ -131,33 +192,43 @@ def run(cfg: dict[str, Any]) -> dict[str, Any]:
                 if ordered.index(fam) < ordered.index("Lor4D"):
                     outrank_counts[fam][n] += 1
 
-        if checkpoint_every_seed:
+            done_cells.add(cell_key)
+
+            if checkpoint_every_seed:
+                completed_seed_runs = _count_completed_seed_runs(done_cells, rule.seed_runs, n_grid)
+                partial = {
+                    "experiment_id": cfg.get("experiment_id", "falsify_c1_family_pressure"),
+                    "output_basename": output_basename,
+                    "rule": {
+                        "consecutive_n": rule.consecutive_n,
+                        "min_seed_success": rule.min_seed_success,
+                        "seed_runs": rule.seed_runs,
+                    },
+                    "n_grid": n_grid,
+                    "reps": reps,
+                    "completed_seed_runs": completed_seed_runs,
+                    "total_seed_runs": rule.seed_runs,
+                    "completed_cells": len(done_cells),
+                    "total_cells": n_cells,
+                    "outrank_counts": outrank_counts,
+                    "per_seed_records": per_seed_records,
+                }
+                snapshot_path.write_text(json.dumps(partial, ensure_ascii=False, indent=2), encoding="utf-8")
+
+        seed_done_after = _seed_done(done_cells, s, n_grid)
+        if checkpoint_every_seed and (not seed_done_before) and seed_done_after:
+            completed_seed_runs = _count_completed_seed_runs(done_cells, rule.seed_runs, n_grid)
             event = {
                 "event": "seed_complete",
                 "seed_run": s,
-                "completed_seed_runs": s + 1,
+                "completed_seed_runs": completed_seed_runs,
                 "total_seed_runs": rule.seed_runs,
+                "completed_cells": len(done_cells),
+                "total_cells": n_cells,
                 "records_so_far": len(per_seed_records),
             }
             with seedlog_path.open("a", encoding="utf-8") as f:
                 f.write(json.dumps(event, ensure_ascii=False) + "\n")
-
-            partial = {
-                "experiment_id": cfg.get("experiment_id", "falsify_c1_family_pressure"),
-                "output_basename": output_basename,
-                "rule": {
-                    "consecutive_n": rule.consecutive_n,
-                    "min_seed_success": rule.min_seed_success,
-                    "seed_runs": rule.seed_runs,
-                },
-                "n_grid": n_grid,
-                "reps": reps,
-                "completed_seed_runs": s + 1,
-                "total_seed_runs": rule.seed_runs,
-                "outrank_counts": outrank_counts,
-                "per_seed_records": per_seed_records,
-            }
-            snapshot_path.write_text(json.dumps(partial, ensure_ascii=False, indent=2), encoding="utf-8")
 
     # evaluate hard-fail
     hard_fail_families = []

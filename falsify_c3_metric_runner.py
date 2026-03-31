@@ -107,6 +107,21 @@ def _rank_of_background(label: str, score: float, base_scores: dict[str, float])
     return names.index(label) + 1
 
 
+def _cell_key_from_record(r: dict[str, Any]) -> tuple[int, int] | None:
+    try:
+        return int(r["seed_run"]), int(r["N"])
+    except Exception:
+        return None
+
+
+def _seed_done(done_cells: set[tuple[int, int]], seed_run: int, n_grid: list[int]) -> bool:
+    return all((seed_run, int(n)) in done_cells for n in n_grid)
+
+
+def _count_completed_seed_runs(done_cells: set[tuple[int, int]], n_seeds: int, n_grid: list[int]) -> int:
+    return sum(1 for s in range(n_seeds) if _seed_done(done_cells, s, n_grid))
+
+
 def run(cfg: dict[str, Any]) -> dict[str, Any]:
     out_dir = Path(cfg.get("output_dir", "outputs_carlip"))
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -141,23 +156,32 @@ def run(cfg: dict[str, Any]) -> dict[str, Any]:
     resume_from_partial = bool(cfg.get("resume_from_partial", True))
 
     records: list[dict[str, Any]] = []
-    start_seed = 0
+    done_cells: set[tuple[int, int]] = set()
 
     if resume_from_partial and snapshot_path.exists():
         try:
             prev = json.loads(snapshot_path.read_text(encoding="utf-8"))
             prev_records = prev.get("records", [])
-            prev_completed = int(prev.get("completed_seed_runs", 0))
-            if isinstance(prev_records, list) and prev_completed > 0:
+
+            resume_compatible = (
+                list(prev.get("n_grid", [])) == n_grid
+                and int(prev.get("reps", reps)) == reps
+                and int(prev.get("total_seed_runs", rule.seed_runs)) == rule.seed_runs
+                and sorted(prev.get("include_families", sorted(include_families))) == sorted(include_families)
+            )
+
+            if isinstance(prev_records, list) and resume_compatible:
                 records = prev_records
-                start_seed = min(prev_completed, rule.seed_runs)
+                done_cells = {
+                    key for key in (_cell_key_from_record(r) for r in records) if key is not None
+                }
         except Exception:
             # fall back to fresh run when snapshot is malformed
             records = []
-            start_seed = 0
+            done_cells = set()
 
     if checkpoint_every_seed:
-        if start_seed == 0:
+        if not done_cells:
             # fresh run: clear previous seed log
             seedlog_path.write_text("", encoding="utf-8")
         elif not seedlog_path.exists():
@@ -165,10 +189,15 @@ def run(cfg: dict[str, Any]) -> dict[str, Any]:
 
     n_seeds = rule.seed_runs
     n_cells = n_seeds * len(n_grid)
-    cell_done = start_seed * len(n_grid)
+    cell_done = len(done_cells)
 
-    for s in range(start_seed, n_seeds):
+    for s in range(n_seeds):
+        seed_done_before = _seed_done(done_cells, s, n_grid)
         for n in n_grid:
+            cell_key = (s, int(n))
+            if cell_key in done_cells:
+                continue
+
             cell_done += 1
             print(f"[F3] seed={s+1}/{n_seeds} N={n} ({cell_done}/{n_cells}) include={sorted(include_families)}", flush=True)
             mu, cov_inv, base_scores = _ref_stats(n=n, reps=reps, seed=seed_base + 1000000 * s + 10000 * n)
@@ -191,35 +220,67 @@ def run(cfg: dict[str, Any]) -> dict[str, Any]:
                     rank = _rank_of_background(f"Schw_p{p}", score, base_scores)
                     records.append({"seed_run": s, "N": n, "family": "schwarzschild", "param": p, "rank": rank})
 
-        if checkpoint_every_seed:
+            done_cells.add(cell_key)
+
+            if checkpoint_every_seed:
+                completed_seed_runs = _count_completed_seed_runs(done_cells, n_seeds, n_grid)
+                partial = {
+                    "experiment_id": cfg.get("experiment_id", "falsify_c2_background_response"),
+                    "output_basename": output_basename,
+                    "include_families": sorted(include_families),
+                    "family_param_counts": family_param_counts,
+                    "rule": {
+                        "min_fail_ratio": rule.min_fail_ratio,
+                        "top_k_required": rule.top_k_required,
+                        "seed_runs": rule.seed_runs,
+                    },
+                    "n_grid": n_grid,
+                    "reps": reps,
+                    "completed_seed_runs": completed_seed_runs,
+                    "total_seed_runs": n_seeds,
+                    "completed_cells": len(done_cells),
+                    "total_cells": n_cells,
+                    "records_so_far": len(records),
+                    "records": records,
+                }
+                snapshot_path.write_text(json.dumps(partial, ensure_ascii=False, indent=2), encoding="utf-8")
+
+        seed_done_after = _seed_done(done_cells, s, n_grid)
+        if checkpoint_every_seed and (not seed_done_before) and seed_done_after:
+            completed_seed_runs = _count_completed_seed_runs(done_cells, n_seeds, n_grid)
             event = {
                 "event": "seed_complete",
                 "seed_run": s,
-                "completed_cells": (s + 1) * len(n_grid),
+                "completed_cells": len(done_cells),
                 "total_cells": n_cells,
+                "completed_seed_runs": completed_seed_runs,
+                "total_seed_runs": n_seeds,
                 "records_so_far": len(records),
             }
             with seedlog_path.open("a", encoding="utf-8") as f:
                 f.write(json.dumps(event, ensure_ascii=False) + "\n")
 
-            partial = {
-                "experiment_id": cfg.get("experiment_id", "falsify_c2_background_response"),
-                "output_basename": output_basename,
-                "include_families": sorted(include_families),
-                "family_param_counts": family_param_counts,
-                "rule": {
-                    "min_fail_ratio": rule.min_fail_ratio,
-                    "top_k_required": rule.top_k_required,
-                    "seed_runs": rule.seed_runs,
-                },
-                "n_grid": n_grid,
-                "reps": reps,
-                "completed_seed_runs": s + 1,
-                "total_seed_runs": n_seeds,
-                "records_so_far": len(records),
-                "records": records,
-            }
-            snapshot_path.write_text(json.dumps(partial, ensure_ascii=False, indent=2), encoding="utf-8")
+    if checkpoint_every_seed:
+        partial = {
+            "experiment_id": cfg.get("experiment_id", "falsify_c2_background_response"),
+            "output_basename": output_basename,
+            "include_families": sorted(include_families),
+            "family_param_counts": family_param_counts,
+            "rule": {
+                "min_fail_ratio": rule.min_fail_ratio,
+                "top_k_required": rule.top_k_required,
+                "seed_runs": rule.seed_runs,
+            },
+            "n_grid": n_grid,
+            "reps": reps,
+            "completed_seed_runs": _count_completed_seed_runs(done_cells, n_seeds, n_grid),
+            "total_seed_runs": n_seeds,
+            "completed_cells": len(done_cells),
+            "total_cells": n_cells,
+            "records_so_far": len(records),
+            "records": records,
+        }
+        snapshot_path.write_text(json.dumps(partial, ensure_ascii=False, indent=2), encoding="utf-8")
 
     # aggregate fail ratio by (family,param)
     by_key: dict[tuple[str, float], dict[int, int]] = {}
