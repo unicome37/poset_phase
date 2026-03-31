@@ -26,3 +26,7 @@ strong_regime:
 
 checkpoint_every_seed: true
 resume_from_partial: true
+
+# 监控模式：无进展时打开细粒度日志，便于确认卡点位置
+verbose_progress: true
+progress_reps: false

@@ -47,17 +47,36 @@ def _load_yaml(path: Path) -> dict[str, Any]:
         return yaml.safe_load(f)
 
 
-def _ensemble_score(gen_fn, n: int, reps: int, mu: np.ndarray, cov_inv: np.ndarray, seed_base: int) -> float:
+def _ensemble_score(
+    gen_fn,
+    n: int,
+    reps: int,
+    mu: np.ndarray,
+    cov_inv: np.ndarray,
+    seed_base: int,
+    progress_tag: str | None = None,
+    progress_reps: bool = False,
+) -> float:
     feats = []
     for r in range(reps):
+        if progress_reps and progress_tag:
+            print(f"[F3][rep] {progress_tag} rep={r+1}/{reps}", flush=True)
         p = gen_fn(n, seed=seed_base + r)
         feats.append(compute_features(p, n))
     return mahalanobis_score(np.array(feats).mean(axis=0), mu, cov_inv)
 
 
-def _ref_stats(n: int, reps: int, seed: int) -> tuple[np.ndarray, np.ndarray, dict[str, float]]:
+def _ref_stats(
+    n: int,
+    reps: int,
+    seed: int,
+    verbose_progress: bool = False,
+    progress_reps: bool = False,
+) -> tuple[np.ndarray, np.ndarray, dict[str, float]]:
     ref_feats = []
     for r in range(reps):
+        if progress_reps:
+            print(f"[F3][rep] ref_Lor4D N={n} rep={r+1}/{reps}", flush=True)
         p = ALL_FAMILIES["Lor4D"](n, seed=seed + r)
         ref_feats.append(compute_features(p, n))
     ref = np.array(ref_feats)
@@ -66,8 +85,21 @@ def _ref_stats(n: int, reps: int, seed: int) -> tuple[np.ndarray, np.ndarray, di
     cov_inv = np.linalg.inv(cov)
 
     base_scores = {}
-    for name, gen_fn in ALL_FAMILIES.items():
-        base_scores[name] = _ensemble_score(gen_fn, n, reps, mu, cov_inv, seed + 10000 + hash(name) % 10000)
+    fam_items = list(ALL_FAMILIES.items())
+    fam_total = len(fam_items)
+    for i, (name, gen_fn) in enumerate(fam_items, start=1):
+        if verbose_progress:
+            print(f"[F3][base] N={n} family={i}/{fam_total} name={name}", flush=True)
+        base_scores[name] = _ensemble_score(
+            gen_fn,
+            n,
+            reps,
+            mu,
+            cov_inv,
+            seed + 10000 + hash(name) % 10000,
+            progress_tag=f"base:{name}:N={n}" if progress_reps else None,
+            progress_reps=progress_reps,
+        )
     return mu, cov_inv, base_scores
 
 
@@ -139,6 +171,8 @@ def run(cfg: dict[str, Any]) -> dict[str, Any]:
     windows = cfg["windows"]
     include_families = set(cfg.get("include_families", ["de_sitter", "flrw", "schwarzschild"]))
     flrw_mode = str(cfg.get("flrw_mode", "metric_current"))
+    verbose_progress = bool(cfg.get("verbose_progress", False))
+    progress_reps = bool(cfg.get("progress_reps", False))
     h_weak = list(windows["de_sitter_h"])
     k_weak = list(windows["flrw_kappa"])
     p_weak = list(windows["schwarz_phi0"])
@@ -200,7 +234,13 @@ def run(cfg: dict[str, Any]) -> dict[str, Any]:
 
             cell_done += 1
             print(f"[F3] seed={s+1}/{n_seeds} N={n} ({cell_done}/{n_cells}) include={sorted(include_families)}", flush=True)
-            mu, cov_inv, base_scores = _ref_stats(n=n, reps=reps, seed=seed_base + 1000000 * s + 10000 * n)
+            mu, cov_inv, base_scores = _ref_stats(
+                n=n,
+                reps=reps,
+                seed=seed_base + 1000000 * s + 10000 * n,
+                verbose_progress=verbose_progress,
+                progress_reps=progress_reps,
+            )
 
             if "de_sitter" in include_families:
                 for h in h_weak:
