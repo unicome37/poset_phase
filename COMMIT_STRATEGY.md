@@ -71,3 +71,26 @@
 - 第三步：仅暂存 paper 相关文件并提交
 
 保持每次提交可单独审阅、可回滚、可复现实验意图。
+
+## 可复制的 commit message 清单
+
+### config
+- `feat(config): add <experiment-scope> configs`
+- `fix(config): correct <scope> parameter bounds`
+- `refactor(config): normalize <scope> parameter layout`
+
+### outputs
+- `chore(outputs): sync <experiment-scope> results`
+- `docs(outputs): add <scope> audit notes`
+- `docs(outputs): update <scope> stage report`
+
+### paper
+- `docs(paper): update <paper-name> draft`
+- `docs(paper): refresh figures for <section/claim>`
+- `docs(paper): align references and captions for <paper-name>`
+
+### repo / workflow
+- `chore(repo): enforce line endings and atomic commit templates`
+- `docs(repo): add contributing guide referencing commit strategy`
+
+> 建议：同一次提交只选一个 scope；如需跨 scope，拆成多提交并按依赖顺序推送。

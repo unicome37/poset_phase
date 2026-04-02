@@ -16,6 +16,14 @@ Exact numerical framework for studying geometric phase transitions in finite par
   - `outputs_carlip/FLRW_KAPPA1_DEFENSE_BRIEF_20260330.md` — one-page FLRW defense brief
   - `outputs_carlip/REPRO_RUNBOOK_20260330.md` — reproducibility runbook for F1/F2/F3/P0
 
+## Contributing
+
+- Contribution entry: [`CONTRIBUTING.md`](./CONTRIBUTING.md)
+- Atomic commit policy: [`COMMIT_STRATEGY.md`](./COMMIT_STRATEGY.md)
+- Line-ending / binary handling policy: [`.gitattributes`](./.gitattributes)
+
+建议先阅读 `CONTRIBUTING.md`，再按 `config → outputs → paper` 顺序拆分提交。
+
 ## Preprints
 
 | Paper | DOI | Status |
