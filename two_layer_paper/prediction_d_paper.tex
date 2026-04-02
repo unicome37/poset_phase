@@ -1,0 +1,228 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[numbers]{natbib}
+
+\newcommand{\Lor}{\mathrm{Lor4D}}
+\newcommand{\Icg}{I_{\mathrm{cg}}}
+
+\title{Coarse-Graining Stability as a Cross-Scale Identity Test\\
+  for Causal Set Dimension Selection}
+
+\author{Gang Zhang}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+A robust dimension selection mechanism must produce an identity that survives
+changes of resolution.
+We test whether a 4D Lorentzian identity identified in finite causal-set
+ensembles is preserved under coarse-graining.
+Using a coarse-graining integrity index $\Icg$ that measures how well a poset
+family's ranking survives node deletion, we establish a three-layer validation
+protocol: (1)~identity retention under coarse-graining, (2)~ordering stability
+across a penalty scan, and (3)~independent gain via block permutation.
+In a frozen confirmatory window ($N=30$, keep ratio $0.6$, $\gamma=0.2$),
+$\Icg$ predicts rank improvement with Spearman $\rho\approx 0.78$ ($p\leq
+5\times 10^{-6}$, 200{,}000 permutations) across four independent replications.
+Dose-response analysis confirms monotonic tertile ordering (9/9 conditions) with
+all pooled $p<10^{-30}$.
+A tie-aware Spearman fix (v12) resolves previously reported instability at
+$N=52$, promoting it to a secondary confirmatory window ($\rho>0.55$, $p=5\times
+10^{-6}$ across all variants and replications).
+Perturbation quasi-intervention (5\%/10\%/20\% Hasse cover removal) confirms
+dose-dependent CG disruption and near-perfect mechanistic coupling
+($\rho\approx -0.98$ between $\Delta\Icg$ and $\Delta$penalty).
+Within-stratum residualized tests recover layer-internal signal at all
+perturbation doses after controlling for 11 confounders, upgrading the evidence
+level from ``structural covariation'' to ``conditional quasi-causality.''
+\end{abstract}
+
+\noindent\textbf{Keywords:}
+causal sets, coarse-graining, scale invariance, dimension selection,
+structural stability
+
+% ============================================================
+\section{Introduction}
+% ============================================================
+
+Causal set theory models spacetime as a locally finite partially ordered set
+with causal relations encoded by the order structure~\cite{Surya2019}.
+A natural question is whether a selected 4D Lorentzian identity survives
+changes of resolution:
+if we coarse-grain a poset (remove a fraction of its elements), does the
+$\Lor$ family retain its competitive advantage?
+
+This question is not merely academic.
+Any physical selection mechanism must be robust under renormalization-like
+operations; an identity that dissolves at a different resolution is not a
+genuine structural property but a scale-dependent artefact.
+
+We address this through a coarse-graining (CG) stability analysis.
+We define an integrity index $\Icg$ that measures how well a family's ranking
+survives node deletion, and test whether $\Icg$ predicts rank improvement in a
+three-layer validation protocol with pre-registered confirmatory windows.
+
+% ============================================================
+\section{Methods}
+% ============================================================
+
+\subsection{Coarse-graining operator}
+
+Given an $N$-element poset $P$, we construct a coarse-grained version
+$P_{\mathrm{cg}}$ by uniformly removing a fraction $(1-k)$ of elements
+(keep ratio $k\in\{0.4,0.5,0.6,0.7,0.8\}$) and restricting the partial order
+to the surviving elements.
+The CG penalty measures three aspects of structural change:
+drift (feature-space displacement), family switch (whether the nearest-family
+label changes), and rank shift (change in competitive ranking).
+
+\subsection{Integrity index}
+
+$\Icg := -z(\text{penalty\_cg})$ within each block of fixed experimental
+parameters.
+Three variants are tested:
+\textbf{full} (drift + switch + rank),
+\textbf{no\_switch} (drift + rank, excluding the family-switch channel), and
+\textbf{switch} (switch-only).
+
+\subsection{Three-layer validation}
+
+\textbf{Layer~1} (descriptive): Does $\Lor$ tend to retain family identity
+after CG?
+
+\textbf{Layer~2} (dynamic proxy): Is the ranking stable across a penalty scan?
+
+\textbf{Layer~3} (confirmatory): Does $\Icg$ predict rank improvement
+($\text{improve\_rank} = -\Delta\text{rank}$) under block permutation null?
+
+% ============================================================
+\section{Results}
+% ============================================================
+
+\subsection{Confirmatory window}
+
+The frozen confirmatory window is $N=30$, keep ratio $0.6$, $\gamma=0.2$.
+Four independent replications (seed offsets 172000/174000/175000/176000,
+$\text{sis\_runs}=128$) yield consistent results (Table~\ref{tab:d_frozen}):
+
+\begin{table}[h]
+\centering
+\caption{Confirmatory window results ($N=30$, $k=0.6$, $\gamma=0.2$).
+$n_{\mathrm{perm}}=200{,}000$; $p\leq 5\times 10^{-6}$ denotes floor hit.}
+\label{tab:d_frozen}
+\begin{tabular}{lcccc}
+\toprule
+Variant & v10 $\rho$ & v12 $\rho$ & $p$ (v12) & Direction \\
+\midrule
+full       & 0.704 & 0.781 & $\leq 5\times 10^{-6}$ & $\uparrow$ \\
+no\_switch & 0.501 & 0.716 & $\leq 5\times 10^{-6}$ & $\uparrow$ \\
+switch     & 0.740 & 0.810 & $\leq 5\times 10^{-6}$ & $\uparrow$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The v12 tie-aware Spearman fix uniformly increases $\rho$ by resolving
+artificial noise from tied integer ranks.
+
+\subsection{N=52 promotion}
+
+Previously reported instability at $N=52$ (rep5: no\_switch $\rho=0.096$,
+$p=0.48$) was entirely a tie-handling artefact.
+Under v12, all replications give $\rho>0.55$ and $p=5\times 10^{-6}$
+(Table~\ref{tab:d_n52}):
+
+\begin{table}[h]
+\centering
+\caption{$N=52$ under v12 tie-aware Spearman.}
+\label{tab:d_n52}
+\begin{tabular}{lccc}
+\toprule
+Rep & full $\rho$ & no\_switch $\rho$ & switch $\rho$ \\
+\midrule
+rep4 & 0.820 & 0.783 & 0.657 \\
+rep5 & 0.615 & 0.553 & 0.564 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Dose-response}
+
+Tertile binning of $\Icg$ (low/mid/high) shows monotonic increase in
+improve\_rank across all 9 conditions (3 variants $\times$ 3 $N$ values).
+All pooled $p<10^{-30}$.
+Within-block OLS slopes are uniformly positive (36/36), with median Pearson
+$r\approx 0.78$.
+
+\subsection{Perturbation quasi-intervention}
+
+Random removal of 5\%/10\%/20\% of Hasse cover relations, followed by
+transitive closure reconstruction and full CG pipeline:
+
+\begin{itemize}
+\item Dose-strength confirmed: mean $|\Delta\Icg|$ monotonically increases
+  with perturbation fraction (3/3 $N$ values).
+\item Mechanistic coupling: $\Delta\Icg \leftrightarrow \Delta$penalty at
+  $\rho\approx -0.98$ (sample-level, within-family).
+\item Residualized within-stratum test (11 confounders): at 20\% perturbation,
+  all 5 continuous $Y$ targets reach within-stratum significance
+  ($p\leq 0.00002$), reversing the earlier ``layer-internal null'' finding.
+\end{itemize}
+
+\subsection{Cross-prediction check (C $\to$ D)}
+
+Controlling for layer\_count and mean\_layer\_gap (Prediction~C indicators)
+within the frozen window, $\Icg\to\text{improve\_rank}$ remains strongly
+significant, confirming that CG stability is not merely a relabelling of
+hierarchy depth.
+
+% ============================================================
+\section{Discussion}
+% ============================================================
+
+The D-line results establish that the $\Lor$ identity is not fragile under
+resolution changes.
+The evidence level is ``conditional quasi-causality'': after residualizing
+within-stratum confounders, the perturbation-induced CG disruption predicts
+changes in competitive fitness through mechanistically independent channels.
+
+The dose-response monotonicity (9/9) and the near-perfect mechanistic coupling
+($\rho\approx -0.98$) provide strong support for the interpretation that CG
+stability reflects genuine structural quality rather than statistical artefact.
+
+\subsection{Boundaries}
+
+\begin{enumerate}
+\item The confirmatory claim is a \emph{window claim} ($N=30$, $k=0.6$,
+  $\gamma=0.2$), not a global theorem.
+\item $\gamma=0.8$ is explicitly excluded (unstable under $\text{sis\_runs}=128$).
+\item The drift-only variant shows sign flips and is not eligible for freezing.
+\item The ``conditional quasi-causality'' label reflects that within-stratum
+  signal requires residualization; raw stratified tests are null.
+\end{enumerate}
+
+% ============================================================
+\section{Conclusion}
+% ============================================================
+
+We have demonstrated that the $\Lor$ identity is robust under coarse-graining
+within a frozen confirmatory window, with dose-response monotonicity,
+mechanistic coupling, and residualized within-stratum signal recovery.
+This provides independent evidence that the finite-size Lorentzian identity is
+structurally genuine, not a scale-dependent artefact.
+
+\begin{thebibliography}{1}
+\bibitem{Surya2019}
+S.~Surya,
+\emph{The causal set approach to quantum gravity},
+\emph{Living Rev.\ Relativ.}\ \textbf{22}, 5 (2019),
+arXiv:1903.11544.
+\end{thebibliography}
+
+\end{document}

@@ -1,0 +1,241 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[numbers]{natbib}
+
+\newcommand{\SBD}{S_{\mathrm{BD}}}
+\newcommand{\Lor}{\mathrm{Lor4D}}
+
+\title{Curvature Encoding in Finite Causal Sets:\\
+  Purely Causal Observables Across de~Sitter, Schwarzschild, and FLRW Backgrounds}
+
+\author{Gang Zhang}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We present numerical evidence that finite causal sets encode background
+spacetime curvature through observables constructed solely from the partial
+order. Across 23 experiments on de~Sitter, Schwarzschild, and FLRW backgrounds
+at scales $N=16$--$1024$, we find three recurring features. First, the
+occupancy ratio exhibits a sharp gate-like response as curvature increases.
+Second, the antichain-based channel tracks the Hubble parameter more robustly
+than the spectral channel across all tested backgrounds, including local
+$H(t)$ variation in FLRW examples. Third, a calibrated two-step construction
+provides a high-fidelity bridge from causal observables to scalar curvature at
+the largest finite sizes considered, although the bridge remains sensitive to
+finite-$N$ stiffness.
+
+The evidence is consistent with the Benincasa--Dowker action carrying genuine
+curvature information at finite $N$ and with antichain observables being the
+dominant finite-size curvature carrier in the tested backgrounds. Our results
+are numerical and finite-size in nature; analytic control of the second-order
+bridge remains an open problem.
+\end{abstract}
+
+\noindent\textbf{Keywords:}
+causal sets, curvature encoding, Benincasa--Dowker action, Einstein--Hilbert
+action, de Sitter, Schwarzschild, FLRW, partial order observables
+
+% ============================================================
+\section{Introduction}
+% ============================================================
+
+A foundational question in causal set theory is whether the discrete causal
+structure of a finite poset contains enough information to recover the
+continuous geometry of the spacetime from which it was sprinkled.
+The Benincasa--Dowker (BD) action~\cite{BenincasaDowker2010} provides a
+partial answer: it reproduces the Einstein--Hilbert action in the continuum
+limit for manifold-like causal sets.
+But does this correspondence hold at \emph{finite} $N$, and does it extend
+beyond the BD action to other causal observables?
+
+This paper presents systematic evidence that finite causal sets encode
+background curvature through purely causal observables that do not use linear
+extension counts.
+
+The main physical question is whether the Benincasa--Dowker action and related
+causal observables retain curvature sensitivity at finite $N$, beyond the
+continuum limit in which the BD action is usually discussed~\cite{BenincasaDowker2010,Surya2019}.
+
+% ============================================================
+\section{Experimental Setup}
+% ============================================================
+
+\subsection{Background geometries}
+
+We generate Lorentzian causal sets by Poisson sprinkling into causal diamonds
+in three background geometries:
+
+\textbf{de~Sitter} ($d=4$): $a(t) = e^{Ht}$ with Hubble parameter
+\[
+H\in\{0, 0.01, 0.05, 0.1, 0.15, 0.2, 0.3, 0.5, 1.0, 2.0\}.
+\]
+The $H=0$ limit recovers flat Minkowski space.
+
+\textbf{Schwarzschild} ($d=4$): weak-field approximation with compactness
+parameter $\phi_0\in\{0, 0.01, 0.05, 0.1\}$.
+
+\textbf{FLRW} ($d=4$): matter-dominated expansion
+\[
+a(t)=(1+\kappa t)^{2/3}, \qquad \kappa\in\{0, 0.3, 1.0, 3.0\}.
+\]
+
+Scales: $N\in\{16, 20, 28, 36, 48, 64, 96, 128, 256, 512, 1024\}$ with
+15--40 realizations per $(N, \text{background})$ condition.
+
+\subsection{Causal observables}
+
+All observables are computed directly from the partial order, without any
+reference to $\log H$:
+\begin{itemize}
+\item Occupancy ratio $R = C_0/\binom{N}{2}$ (fraction of comparable pairs)
+\item Interval counts $C_k$ ($k=0,1,2,3$)
+\item BD action $\SBD^{(4)} = N - C_0 + 9C_1 - 16C_2 + 8C_3$
+\item Maximum antichain width $w$
+\item Spectral gap of the causal matrix
+\item Effective dimension $d_{\mathrm{eff}}$ (Myrheim--Meyer)
+\end{itemize}
+
+% ============================================================
+\section{Three-Layer Curvature Encoding}
+% ============================================================
+
+\subsection{Layer 1: Sigmoid wall (curvature upper bound)}
+
+The occupancy ratio $R$ exhibits a sigmoid response to background curvature:
+as $H$ increases from 0, $R$ initially remains near its flat-space value, then
+drops sharply beyond a critical curvature.
+This sigmoid wall functions as a \emph{geometric gate}: posets sprinkled from
+strongly curved backgrounds have $R$ values that fall outside the flat-space
+range, making them identifiable as non-flat.
+
+The wall position scales with $N$: at larger $N$, the wall sharpens and moves
+to lower $H$, consistent with the expectation that larger causal sets resolve
+curvature more finely.
+
+\subsection{Layer 2: First-order bulk recovery of \texorpdfstring{$H$}{H}}
+
+Two independent observable channels track the Hubble parameter:
+
+\textbf{Antichain channel}: The maximum antichain width $w/N$ decreases
+monotonically with $H$ (curvature compresses the spatial cross-section).
+DDT condition C2 is satisfied in 21/21 tested conditions.
+
+\textbf{Spectral channel}: The spectral gap of the causal matrix increases
+with $H$.
+DDT condition C2 is satisfied in 6/18 conditions (weaker, more noise-sensitive).
+
+The two channels converge to a single geometric degree of freedom at large $N$.
+Their correlation magnitude approaches
+$|\rho(\text{antichain}, \text{spectral})|\to 0.86$,
+confirming that both are measuring the same underlying curvature.
+
+\textbf{Local $H(t)$ tracking}: In FLRW backgrounds where $H$ varies with time,
+the antichain-based observable tracks the local expansion rate with 24/24
+anti-monotone direction consistency.
+
+\subsection{Layer 3: Second-order bridge to scalar curvature}
+
+The Einstein--Hilbert bridge connects the BD action density to the scalar
+curvature $\mathcal{R}$.
+A direct fit $\SBD/N \sim \mathcal{R}$ has poor finite-$N$ convergence.
+Reaching $\alpha_{\mathrm{eff}}\to 2$ requires $N\sim 10^9$ in the present
+fit family.
+
+We identify a viable two-step construction:
+\begin{enumerate}
+\item Calibrate a first-order observable against $H$
+  (e.g., $\hat{H} = f(w/N, N)$).
+\item Square: $\hat{\mathcal{R}} = d(d-1)\hat{H}^2$.
+\end{enumerate}
+
+This yields $R^2 = 0.987$ (OLS) and $R^2 = 0.9996$ (rank-preserving fit)
+at $N=1024$ in de~Sitter backgrounds.
+The second-order bridge is the squared amplitude of the first-order deviation
+from the flat baseline---not an independent observable channel.
+
+% ============================================================
+\section{Discussion}
+% ============================================================
+
+The present results point to a simple conclusion: finite causal sets retain
+curvature information in several observables that can be constructed purely
+from the partial order. The occupancy ratio responds sharply to background
+curvature, the antichain channel provides the most stable finite-size tracking
+of $H$, and the calibrated second-order construction produces a high-fidelity
+bridge to scalar curvature at the largest sizes tested.
+
+Among the observables considered here, the antichain channel appears to be the
+dominant carrier of curvature information in the finite-$N$ regime. The spectral
+channel is still useful, but it is noisier and less robust across the tested
+backgrounds.
+
+The Benincasa--Dowker action remains important as a benchmark because it is the
+standard local causal-set observable with a direct continuum interpretation.
+Our numerical results are consistent with the view that its finite-$N$ behavior
+contains curvature-sensitive information, but they do not provide an analytic
+derivation of that fact.
+
+The main limitation of the present study is finite-size stiffness in the
+second-order bridge. A more complete analytic understanding of why the bridge
+converges as it does, and why antichain-based observables dominate the signal,
+remains open.
+
+% ============================================================
+\section{A Note on Asymmetry Under Augmentation}
+% ============================================================
+
+A related but independent finding concerns the directionality of causal
+structure growth.
+In augmentation experiments (adding elements to an existing poset), the entropy
+change is asymmetric: future-directed augmentation (adding to the top of the
+Hasse diagram) produces larger entropy increase than past-directed augmentation
+(adding to the bottom).
+
+This structural asymmetry---future-like growth expands combinatorial freedom
+more than past-like growth compresses it---suggests a possible structural time
+arrow that does not rely on thermodynamic assumptions.
+The effect is observed across multiple families and $N$ values, though with
+substantial individual variation.
+
+We present this as an independent auxiliary observation, not as part of the
+curvature-encoding analysis.
+
+% ============================================================
+\section{Conclusion}
+% ============================================================
+
+We have shown numerically that finite causal sets encode background curvature
+through observables built solely from the partial order. The occupancy ratio
+shows a gate-like response to curvature, the antichain channel robustly tracks
+the Hubble parameter, and a calibrated two-step construction yields a
+high-fidelity bridge to scalar curvature at the finite sizes tested.
+
+The principal limitation is the finite-$N$ stiffness of the second-order
+bridge; analytic control of the large-$N$ approach remains open. These results
+indicate that finite posets retain nontrivial curvature information and that
+antichain-based observables are the strongest carriers of that signal in the
+tested examples.
+
+\begin{thebibliography}{9}
+\bibitem{BenincasaDowker2010}
+D.~M.~T.~Benincasa and F.~Dowker,
+\emph{Scalar Curvature of a Causal Set},
+\emph{Phys.\ Rev.\ Lett.}\ \textbf{104}, 181301 (2010),
+arXiv:1001.2725.
+
+\bibitem{Surya2019}
+S.~Surya,
+\emph{The causal set approach to quantum gravity},
+\emph{Living Rev.\ Relativ.}\ \textbf{22}, 5 (2019),
+arXiv:1903.11544.
+\end{thebibliography}
+
+\end{document}

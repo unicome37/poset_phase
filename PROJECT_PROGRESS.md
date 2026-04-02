@@ -4,7 +4,7 @@
 > **Git HEAD**: `1ee2654` (main)  
 > **GitHub**: `github.com/unicome37/poset_phase`  
 > **版本**: v4.0.0 (Zenodo 代码仓库)  
-> **论文版本**: Prediction A v2.6 (**已投稿 CQG, Manuscript ID: CQG-115402**), Prediction C v2 (准因果版)  
+> **论文版本**: Prediction A v2.6 (**已被 CQG desk rejection, Manuscript ID: CQG-115402**; Carlip 批评 logH 非主流物理量), Prediction C v2 (准因果版)  
 > **Zenodo DOI**: `10.5281/zenodo.19079466`
 
 ## ⚠️ 文档时效说明（2026-03-30）
@@ -214,7 +214,7 @@ $$\text{Score} = -\beta \cdot \log H(\text{poset}) + \lambda \cdot \text{Action}
   - `submission_confirmation.txt` — 投稿确认记录
 - **Zenodo**: DOI `10.5281/zenodo.19079466` (v2.4 archive, 5.13 MB)
 
-**🎉 已投稿 CQG**
+**❌ 已被 CQG desk rejection**（Carlip 批评 logH/线性延拓数不被认为是主流物理量，非物理熵的合法代理）
 - **Manuscript ID**: CQG-115402
 - **Journal**: Classical and Quantum Gravity
 - **Date Submitted**: 17-Mar-2026
@@ -355,7 +355,8 @@ Overall CV = 17.7%, Small-N median = 10.21, Large-N median = 11.83
 - **2026-03-31 C 线效应量张力诊断**:
   - prediction_c_effect_size_tension.py 已完成，输出 outputs_exploratory/effect_size_tension；
   - matched-pair (50 对) 下 layer_count/mean_layer_gap/HII 对 ΔlogH 的相关分别为 -0.8268/-0.8175/-0.8389，bootstrap 95% CI 全为负；
-  - leave-k-out 去除 15 对极端样本后仍保持 ≈-0.73~-0.75，信号并非单点驱动；
+  - leave-k-out 去除 15 对极端样本后仍保持 
+≈-0.73~-0.75，信号并非单点驱动；
   - 结论：matched-pair 提供强局部信号，但总体效应量应按中等强度解释（与 Fisher-z 口径一致）。
 - **2026-03-31 C 线 LOCO 混杂剥离**:
   - 三组 leave-one-confounder-out 已完成，汇总于 outputs_exploratory/prediction_c_pooled_regression_loo_summary.csv；

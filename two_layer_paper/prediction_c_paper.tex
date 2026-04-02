@@ -1,0 +1,258 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage[numbers]{natbib}
+
+\newcommand{\Lor}{\mathrm{Lor4D}}
+
+\title{Hierarchical Integration as the Structural Root of Identity Basin Deepening\\
+  in Causal Set Dimension Selection}
+
+\author{Gang Zhang}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+In finite causal-set dimension selection, the identity basin of 4D Lorentzian
+causal sets ($\Lor$) deepens systematically with poset size $N$.
+We investigate the structural mechanism behind this deepening.
+In matched-pair experiments controlling for geometric features (effective
+dimension, comparable fraction, antichain width), we find that deeper causal
+hierarchy---measured by layer count, mean layer gap, and a composite hierarchy
+integration index (HII)---correlates with lower combinatorial freedom at
+$r\approx -0.83$ (Pearson, $p<10^{-3}$, stable across three nearwall
+calibrations and two independent seed replications).
+Controlled regression on 544 samples with family fixed effects confirms that
+layer count (partial $r=-0.45$, $p=0.00025$) and mean layer gap (partial
+$r=-0.42$, $p=0.00025$) retain significance after controlling for width,
+comparable fraction, and effective dimension.
+Leave-one-confounder-out analysis identifies antichain width as the primary
+confounding channel.
+A screening-enhancement scan shows that incorporating hierarchy integration
+into the second screening layer reduces the crossing weight from
+$\zeta_{\mathrm{cross}}\approx 5$ to $\approx -0.1$, demonstrating that
+hierarchical depth is not merely explanatory but has screening potential.
+These results suggest that basin deepening is not purely a statistical precision
+effect but has a structural root: deeper causal integration compresses
+combinatorial degrees of freedom, making the $\Lor$ identity template
+increasingly rigid as the causal structure grows.
+\end{abstract}
+
+\noindent\textbf{Keywords:}
+causal sets, hierarchy, combinatorial entropy, historical sedimentation,
+basin deepening, structural screening
+
+% ============================================================
+\section{Introduction}
+% ============================================================
+
+Causal set theory treats spacetime as a locally finite partially ordered set,
+and dimension selection can be phrased as a competition among candidate
+families~\cite{Surya2019}.
+In our data, the identity basin of 4D Lorentzian causal sets deepens
+systematically with poset size $N$: the Mahalanobis gap grows from $+0.31$ at
+$N=10$ to $1.93\times 10^8$ at $N=1024$, and the effective potential volume
+shrinks as $V_{\mathrm{eff}}\propto N^{-1.66}$.
+
+This deepening may be interpreted as a form of structural sedimentation---the
+progressive accumulation of geometric identity through causal structure growth.
+But the question of \emph{mechanism} remains open: is the deepening purely a
+statistical precision effect (the reference manifold sharpens because more
+samples reduce variance), or does it have a structural root in the causal
+architecture itself?
+
+The present paper addresses this question.
+We show that deeper causal hierarchy---more layers, larger mean layer gap,
+stronger cross-layer integration---systematically correlates with lower
+combinatorial freedom, even after controlling for geometric confounders.
+This provides a candidate structural mechanism for basin deepening: the $\Lor$
+template becomes increasingly rigid not just because we measure it more precisely,
+but because deeper causal integration compresses the combinatorial degrees of
+freedom available to competing structures.
+
+% ============================================================
+\section{Methods}
+% ============================================================
+
+\subsection{Hierarchy indicators}
+
+For each $N$-element poset $G$, we compute:
+\begin{itemize}
+\item \textbf{Layer count}: the number of levels in the longest chain
+  decomposition.
+\item \textbf{Mean layer gap}: the average number of layers spanned by edges in
+  the transitive reduction (Hasse diagram).
+\item \textbf{Adjacent edge fraction}: fraction of Hasse edges connecting
+  adjacent layers.
+\item \textbf{Long edge fraction}: fraction of Hasse edges spanning $\geq 2$
+  layers.
+\item \textbf{Hierarchy Integration Index (HII)}: $z(\text{layer\_count}) +
+  z(\text{mean\_layer\_gap}) + z(\text{long\_edge\_fraction}) +
+  z(\text{reduction\_edge\_density}) + z(\text{interval\_depth\_mean})$,
+  where $z(\cdot)$ denotes within-sample $z$-scoring.
+\item \textbf{Locality Dominance Index (LDI)}: $z(\text{adjacent\_edge\_fraction})
+  - z(\text{long\_edge\_fraction}) - z(\text{mean\_layer\_gap}) -
+  z(\text{interval\_long\_edge\_mean})$.
+\end{itemize}
+
+\subsection{Three-layer experimental design}
+
+We test the hierarchy--entropy relationship at three levels of increasing
+stringency:
+
+\textbf{Layer~1: Matched-pair test.}
+Using Lor2D vs MLR survivor matched pairs (controlling for geometric features),
+we compute $\Delta\text{HII}$, $\Delta\text{LDI}$, and $\Delta\log H$ for each
+pair and test their correlation.
+
+\textbf{Layer~2: Controlled regression.}
+On 544 samples across multiple families and $N$ values, we regress $\log H$ on
+hierarchy indicators with controls for width, comparable fraction, effective
+dimension, $N$, and family fixed effects.
+
+\textbf{Layer~3: Screening enhancement.}
+We test whether incorporating HII or LDI into the second screening layer reduces
+the crossing weight $\zeta_{\mathrm{cross}}$.
+
+% ============================================================
+\section{Results}
+% ============================================================
+
+\subsection{Matched-pair correlations}
+
+Three nearwall calibrations and a rescue protocol yield consistent results
+(Table~\ref{tab:c_pairs}):
+
+\begin{table}[h]
+\centering
+\caption{Matched-pair correlations between hierarchy indicators and
+$\Delta\log H$ (MLR minus Lor2D). All permutation $p<0.001$.}
+\label{tab:c_pairs}
+\begin{tabular}{lccc}
+\toprule
+Calibration & $n_{\mathrm{pairs}}$ & HII$\to\Delta\log H$ & layer\_count$\to\Delta\log H$ \\
+\midrule
+Original pilot     & 22 & $-0.757$ & $-0.783$ \\
+Nearwall expanded  & 35 & $-0.848$ & $-0.835$ \\
+Nearwall rescue    & 50 & $-0.839$ & $-0.827$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Independent seed replication (seeds 20260331 and 20260401) yields identical
+Tier-2 correlations: HII $\Delta r = -0.836$, layer count $\Delta r = -0.823$.
+Leave-$k$-out removal of the 15 most extreme pairs still yields $r\approx -0.73$
+to $-0.75$, confirming the signal is not driven by outliers.
+
+\subsection{Controlled regression}
+
+On 544 samples with the strongest control model
+(width + comparable fraction + $d_{\mathrm{eff}}$ + $N$ + family fixed effects):
+
+\begin{table}[h]
+\centering
+\caption{Partial correlations under full controls.}
+\label{tab:c_regression}
+\begin{tabular}{lcc}
+\toprule
+Indicator & Partial $r$ & $p$ \\
+\midrule
+layer\_count     & $-0.450$ & 0.00025 \\
+mean\_layer\_gap & $-0.424$ & 0.00025 \\
+HII (composite)  & $+0.086$ & 0.049 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The composite HII is weakened under full controls (driven by construction
+artefacts in the composite weighting), but its constituent components
+(layer\_count, mean\_layer\_gap) retain strong negative partial correlations.
+
+\textbf{LOCO analysis.}
+Dropping antichain\_width from controls shifts HII from $+0.086$ to $-0.495$
+and layer\_count from $-0.450$ to $-0.766$, identifying antichain width as the
+primary confounding channel.
+
+\subsection{Screening enhancement}
+
+Incorporating hierarchy indicators into the second screening layer via
+$I_{\mathrm{filter2}} = \text{switch\_zscore} + \eta\cdot z(\text{HII})$
+and scanning $\eta$:
+
+\begin{table}[h]
+\centering
+\caption{Screening enhancement: baseline vs best $\zeta_{\mathrm{cross}}$.}
+\label{tab:c_enhance}
+\begin{tabular}{lcc}
+\toprule
+$N$ & Baseline $\zeta_{\mathrm{cross}}$ & Best $\zeta_{\mathrm{cross}}$ \\
+\midrule
+30 & 2.22 & $+0.03$ \\
+40 & 2.88 & $-0.52$ \\
+44 & 4.81 & $-0.50$ \\
+48 & 5.59 & $-0.69$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The crossing weight drops from $\sim 2$--$6$ to $\sim 0$ or negative,
+demonstrating that hierarchy integration has genuine screening potential beyond
+post-hoc explanation.
+
+% ============================================================
+\section{Discussion}
+% ============================================================
+
+The three-layer evidence chain supports a structural mechanism for basin
+deepening: deeper causal hierarchy compresses combinatorial degrees of freedom.
+This is not merely a restatement of ``more constraints = less entropy''; the
+matched-pair design controls for geometric features that could trivially explain
+the correlation, and the LOCO analysis identifies the specific confounding
+channel (antichain width) through which the effect operates.
+
+The screening enhancement result (Layer~3) is particularly significant: it shows
+that hierarchy integration is not just an explanatory variable but has the
+potential to enter the screening functional itself.
+Whether this potential should be realized---i.e., whether HII should be formally
+incorporated into $S_{\mathrm{MD}}$---depends on whether the enhancement
+replicates at larger sample sizes, which we leave to future work.
+
+\subsection{Connection to historical sedimentation}
+
+In this data set, basin deepening has two components:
+(1)~statistical precision (the reference manifold sharpens as $\Sigma\propto
+N^{-1}$), and
+(2)~structural rigidity (deeper causal integration makes the $\Lor$ template
+harder to imitate).
+The present paper provides evidence for component~(2).
+Together, they explain why basin deepening is not merely a measurement artefact
+but a genuine structural process.
+
+% ============================================================
+\section{Conclusion}
+% ============================================================
+
+We have shown that deeper causal hierarchy correlates with lower combinatorial
+freedom at $r\approx -0.83$ in matched-pair designs, $r\approx -0.45$ in
+controlled regressions, and produces measurable screening enhancement.
+This provides a candidate structural mechanism for the identity basin deepening
+observed in finite causal-set identity selection: the $\Lor$ template becomes
+increasingly rigid as causal integration deepens, not just because statistical
+precision improves.
+
+\begin{thebibliography}{1}
+\bibitem{Surya2019}
+S.~Surya,
+\emph{The causal set approach to quantum gravity},
+\emph{Living Rev.\ Relativ.}\ \textbf{22}, 5 (2019),
+arXiv:1903.11544.
+\end{thebibliography}
+
+\end{document}
