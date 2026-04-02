@@ -1,0 +1,31 @@
+# --- Default: normalize text, keep LF in repository ---
+* text=auto eol=lf
+
+# --- Source / config / docs ---
+*.py text eol=lf
+*.md text eol=lf
+*.tex text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
+*.ini text eol=lf
+*.sh text eol=lf
+
+# --- Windows scripts keep CRLF for native execution ---
+*.bat text eol=crlf
+*.cmd text eol=crlf
+*.ps1 text eol=crlf
+
+# --- Binary assets (never line-normalize) ---
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.pdf binary
+*.zip binary
+*.tar binary
+*.gz binary
+*.7z binary
+*.npy binary
+*.npz binary
