@@ -268,7 +268,7 @@ than most non-geometric families (Table~\ref{tab:sbd_rank}).
 This is because $\SBD$ measures average curvature correctness, not structural
 identity.
 
-\begin{table}[h]
+\begin{table}[ht!]
 \centering
 \caption{$\SBD$ rankings at selected $N$ values. $\Lor$ is consistently
 outranked by non-geometric families.}
@@ -349,7 +349,7 @@ $[+0.27,+0.35]$).
 The margin grows monotonically to $+3.14$ at $N=24$, and reaches
 $1.93\times 10^8$ at $N=1024$.
 
-\begin{table}[h]
+\begin{table}[ht!]
 \centering
 \caption{$\SMD$ turn-on and basin deepening under the F2 protocol
 (20 seeds $\times$ 120 realizations, separate reference ensemble).
@@ -450,7 +450,7 @@ Four independent diagnostics confirm systematic deepening
   \Dhist(N) &\propto N^{+1.22\pm 0.10},\quad R^2=0.892. \label{eq:gap}
 \end{align}
 
-\begin{table}[h]
+\begin{table}[ht!]
 \centering
 \caption{Basin deepening diagnostics across $N$.
 $\Veff = \sqrt{\det(\Sigma)}$; $I_F = \mathrm{tr}(\Sigma^{-1})$;
@@ -493,7 +493,7 @@ The Mahalanobis gap growth is driven by precision amplification:
 $\Sigma^{-1}\propto N$ inflates a genuine but fixed physical distance into an
 ever-larger statistical penalty.
 
-\begin{table}[h]
+\begin{table}[ht!]
 \centering
 \caption{Gap decomposition: Euclidean distance $d_E$ vs Mahalanobis gap
 $\Dhist$ and precision amplification $\sigma_A = \Dhist/d_E$.
@@ -606,7 +606,7 @@ Riemannian metric on a Gaussian family.
 Robustness against 8 adversarial families and 20-seed reproducibility have been
 verified (Table~\ref{tab:adversarial}).
 
-\begin{table}[h]
+\begin{table}[ht!]
 \centering
 \caption{Adversarial robustness: $\Lor$ margin over the best non-Lorentzian
 family in the 25-family library (17 standard + 8 adversarial).}
@@ -716,7 +716,7 @@ stands independently on its own experimental basis.
   Fig.~\ref{fig:ablation});
   we do not claim it is the unique or optimal choice.
 
-\begin{table}[h]
+\begin{table}[ht!]
 \centering
 \caption{Feature ablation at $N=128$. No single feature reliably identifies
 $\Lor$; the full triple achieves the largest margin.}
@@ -804,6 +804,48 @@ for Lorentzian sprinklings ($H = 0.82$, $0.66$, $0.45$, $0.28$ at $d = 2$--$5$;
 $N = 40$), reflecting the Alexandrov interval volume power law
 $V \propto \tau^d$.
 
+\subsubsection{Sequential screening simulation}
+
+The prohibition on additive combination raises an immediate question:
+can the two penalty classes be applied \emph{sequentially} within a single
+Boltzmann--action framework?
+We tested a two-step protocol:
+Step~1 ranks all 17~families by a soft geometric action~$A_2$ at penalty
+strength~$\gamma_1$ and retains the top-$K$ candidates;
+Step~2 re-ranks the $K$~survivors by a pure information action~$A_4$ at an
+independently chosen~$\gamma_2$.
+With $(\gamma_1,\gamma_2,K) = (0,\;0.5,\;3)$ at $N=10$ and $N=20$, and
+$(0.5,\;2.0,\;5)$ at $N=40$, this protocol achieves $\Lor$ rank~\#1 at
+\textbf{all three scales}---including $N=40$, where no single penalty mode
+alone can reach~\#1.
+Across a $4\gamma\times 4\gamma\times 3K = 144$~parameter grid,
+27~conditions yield $\Lor$~\#1, of which 8~are strict improvements
+(marked~$\star$) over every single-mode result.
+These conditions cluster in the \emph{soft pre-filter / hard selector}
+regime: $\gamma_1\leq 0.2$ (gentle geometric admission, retaining $\Lor$ in
+the shortlist) paired with $\gamma_2\geq 0.5$ (strong information
+selection).
+This provides the first quantitative validation that the two-layer principle
+operates \emph{within} the Boltzmann path-integral framework, not merely as
+a post~hoc classification.
+
+\subsubsection{Identity anchoring via \texorpdfstring{$\SMD$}{S\_MD}
+  in the action}
+
+A complementary test embeds $\SMD$ directly into the Boltzmann exponent:
+$A = -\beta\log H + \gamma\,I_{\mathrm{info}} + \alpha\,\SMD$.
+When $\gamma=0$ (no penalty at all), $A=-\log H + \alpha\,\SMD$ with
+$\alpha\geq 1.0$ suffices to select $\Lor$~\#1 at all $N$.
+Even under over-penalised conditions ($\gamma=2.0$, where $I_{\mathrm{info}}$
+alone degrades $\Lor$ to~\#3), adding $\alpha\geq 0.5$ restores $\Lor$~\#1.
+This ``identity anchor'' effect confirms that $\SMD$ captures irreducible
+structural information about $\Lor$ that is independent of any penalty
+mode's entropy--penalty trade-off.
+Because $\SMD$ is defined relative to a $\Lor$ reference manifold, its role is
+inherently second-layer (presupposing admissibility) rather than stand-alone;
+the non-circular information-theoretic penalties remain the first-layer
+complement.
+
 % ============================================================
 \section{Conclusion}
 \label{sec:conclusion}
@@ -835,6 +877,10 @@ The key results are:
   still selects $\Lor$ at moderate $\gamma$, but fails at strong $\gamma$
   and large $N$---confirming that the two layers encode complementary, not
   redundant, structural information (\S\ref{sec:info-penalty}).
+  A sequential protocol with independent penalty strengths achieves $\Lor$
+  rank~\#1 at all tested $N$ including $N=40$ where no single mode suffices,
+  quantitatively validating the layered architecture within the Boltzmann
+  path-integral framework.
 \end{enumerate}
 
 The layered screening principle---that robust dimension selection requires
