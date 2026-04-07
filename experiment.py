@@ -32,6 +32,7 @@ from generators import (
 from normalization import add_normalized_columns, add_size_scaled_columns
 from observables import neutral_penalty
 from observables_geo import geometric_penalty
+from observables_info import info_penalty
 
 
 FAMILIES = {
@@ -92,6 +93,7 @@ def run_experiment(
                     entropy_method = "sis"
                 penalty_neutral = neutral_penalty(poset)
                 penalty_geometric = geometric_penalty(poset)
+                penalty_info = info_penalty(poset)
 
                 for gamma in gammas:
                     for action_mode in action_modes:
@@ -109,6 +111,7 @@ def run_experiment(
                                 "entropy_method": entropy_method,
                                 "penalty_neutral": penalty_neutral,
                                 "penalty_geometric": penalty_geometric,
+                                "penalty_info": penalty_info,
                                 "penalty_effective": penalty_effective,
                                 "score": action_value(
                                     log_extensions=log_h_mean,

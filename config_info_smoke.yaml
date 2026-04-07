@@ -1,0 +1,30 @@
+# ──────────────────────────────────────────────────────────
+#  方向 α 冒烟测试：纯信息论惩罚替换实验
+#  action_modes:  A1 (neutral), A3 (geometric), A4 (info)
+# ──────────────────────────────────────────────────────────
+
+experiment:
+  n_values: [10, 20]
+  gammas: [0.0, 0.2, 0.5, 1.0]
+  beta: 1.0
+  samples_per_family: 2
+  sis_runs: 8
+  action_modes: [A1, A3, A4]
+  exact_threshold: 10
+
+normalization:
+  method: robust_zscore
+  group_by: [n, gamma, action_mode]
+
+bootstrap:
+  enabled: true
+  n_bootstrap: 50
+  seed: 42
+  value_col: score_norm
+  value_std_col: score_norm_std_est
+
+output:
+  directory: outputs_info_smoke
+  raw_samples_csv: raw_samples.csv
+  summary_csv: summary.csv
+  bootstrap_csv: bootstrap_summary.csv

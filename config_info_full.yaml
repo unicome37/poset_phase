@@ -1,0 +1,31 @@
+# ──────────────────────────────────────────────────────────
+#  方向 α 完整实验：纯信息论惩罚替换 vs 几何惩罚对照
+#  A1=neutral  A3=geometric  A4=info  A5=neutral+info
+#  17 families × 4 sizes × 7 γ × 4 modes × 16 samples
+# ──────────────────────────────────────────────────────────
+
+experiment:
+  n_values: [10, 20, 40, 60]
+  gammas: [0.0, 0.1, 0.2, 0.4, 0.6, 0.8, 1.0]
+  beta: 1.0
+  samples_per_family: 16
+  sis_runs: 64
+  action_modes: [A1, A3, A4, A5]
+  exact_threshold: 10
+
+normalization:
+  method: robust_zscore
+  group_by: [n, gamma, action_mode]
+
+bootstrap:
+  enabled: true
+  n_bootstrap: 200
+  seed: 2026
+  value_col: score_norm
+  value_std_col: score_norm_std_est
+
+output:
+  directory: outputs_info_full
+  raw_samples_csv: raw_samples.csv
+  summary_csv: summary.csv
+  bootstrap_csv: bootstrap_summary.csv

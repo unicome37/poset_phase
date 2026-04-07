@@ -1,8 +1,8 @@
 # Layered Structural Screening of 4D Lorentzian Causal Sets
 
 **Target**: Classical and Quantum Gravity (Full Paper)
-**Version**: Manuscript v0.9 — Curvature wording synchronized with lowN+highN falsification status
-**Date**: 2026-03-30
+**Version**: Manuscript v1.0 — Added §6.9 (information-theoretic non-circularity test) and §7 point 6
+**Date**: 2026-04-07
 
 ---
 
@@ -537,6 +537,7 @@ Synthesizing §§2–4 and the sedimentation interpretation:
 | de Sitter sprinklings ($H = 0.01$–$2.0$, $N = 16$–$1024$) | ✅ Robust for $H \leq 0.3$ at $N \leq 1024$; ranking invariant across all 50 conditions (§4.7) |
 | Schwarzschild / FLRW sprinklings (extended pilot, $N=64$–$512$) | ⚠️ Background-dependent: Schwarzschild low-$N$ split passes, but FLRW $\kappa=1.0$ already triggers top-2 failure in the current split run; strong FLRW curvature diverges further (rank #4–#5 at $\kappa=3.0$) |
 | $N > 1024$ verification | ❌ Not yet tested ($N \leq 1024$ completed; $O(N^3)$ closure limits further scaling) |
+| Information-theoretic non-circularity test | ✅ 5-term info-only penalty, $N = 10$–$100$, 17 families; Lor4D #1 at $\gamma = 0.2$; complementarity with geometric penalties confirmed; ablation identifies interval-diversity as key discriminator (§6.9) |
 
 ---
 
@@ -635,6 +636,32 @@ To avoid unconstrained post-hoc reinterpretation, we state explicit failure cond
 
 3. **Basis-sufficiency failure condition.** If a reproducible alternative feature basis of comparable interpretability strictly dominates $(d_{\mathrm{eff}}, C_1/C_0, w/N)$ across the same libraries and scales, then the current "minimal non-redundant effective basis" claim must be revised.
 
+### 6.9 Information-theoretic penalty: independent non-circularity test
+
+A separate line of evidence addresses the circularity concern from a different angle. Instead of replacing a single geometric sub-term (as in the $d_{\mathrm{consistency}}$ test of §3.3), we replace *all* geometric penalties with pure information-theoretic ones—functions that detect structural regularity without referencing any target dimension, window, or geometric template.
+
+Five penalty functions were constructed from the Hasse graph alone:
+
+| Penalty | Detects | Formula |
+|:---|:---|:---|
+| Spectral entropy deficit | Spectral degeneracy | $(1 - S_{\mathrm{vN}}/\!\ln n)^2$ |
+| Degree heterogeneity | Hub dominance | $G_{\mathrm{degree}}^2$ (Gini) |
+| Layer concentration | Non-uniform layering | $(1 - H_{\mathrm{layer}}/\!\ln K)^2$ |
+| Edge density extremity | Coverage extremity | $(1 - H_b(p)/\!\ln 2)^2$ |
+| Interval diversity deficit | Interval homogeneity | $(1 - H_{\mathrm{int}}/\!\ln m)^2$ |
+
+Under the purely information-theoretic action $A_4 = -\beta\,\log H + \gamma\,I_{\mathrm{info}}$ with 17 families, $N = 10$–$100$, and $\gamma \in [0, 1]$:
+
+(i) **At moderate penalty strength ($\gamma = 0.2$), Lor4D is rank #1 at all tested $N \geq 20$.** No geometric prior is present, yet the entropy-efficiency of Lor4D—high linear-extension count per unit informational penalty—suffices for selection.
+
+(ii) **At strong penalty ($\gamma \geq 0.5$), Lor4D drops to rank #3**, consistently behind KR\_2layer and Lor5D. These are precisely the families hit hardest by geometric penalties. Thus the information-theoretic top-3 is the geometric-penalty bottom-3: the two penalty classes encode orthogonal quality dimensions.
+
+(iii) **Ablation within the 5 info terms identifies interval diversity deficit as the sole critical discriminator** (rank improvement $\Delta = +6$ to $+11$ upon removal at $\gamma = 1.0$). The other four terms are nearly redundant ($r \approx 0.97$–$1.00$). The interval diversity deficit captures the fact that Alexandrov intervals in 4D Lorentzian sprinklings have characteristically homogeneous size distributions—a geometric signature encoded in a purely information-theoretic language.
+
+(iv) **Complementarity theorem.** Neither penalty class alone selects Lor4D uniquely at large $N$ and all $\gamma$: geometric penalties select dimension ($d = 4$) but not family type; information-theoretic penalties select family type (Lorentzian-like) but not dimension. Their conjunction—the two-layer screening architecture of the present paper—selects Lor4D uniquely.
+
+This complementarity provides independent evidence that the two-layer screening is not an artifact of a circular geometric prior, but reflects two genuinely distinct structural axes along which Lor4D must be selected.
+
 ---
 
 ## §7. Conclusion
@@ -650,6 +677,8 @@ We have presented numerical evidence for a **layered structural screening archit
 4. Beyond turn-on, the identity basin undergoes **historical sedimentation** (§5): the Mahalanobis gap grows (from $+0.308$ at $N = 10$ to $1.93 \times 10^8$ at $N = 1024$), the reference manifold sharpens ($\det(\Sigma) \propto N^{-3.31 \pm 0.14}$, $R^2 = 0.983$), and the effective basin volume contracts ($V_{\mathrm{eff}} \propto N^{-1.66 \pm 0.07}$)—making Lor4D an increasingly irreplaceable identity centre. Gap decomposition (§4.4) shows that the underlying physical separation is genuine ($d_E \approx 0.46$, flat), with the gap growth driven by statistical concentration.
 
 5. A **curvature robustness program** (§4.7) shows that the screening architecture is robust for de Sitter-like deformations but only conditionally robust beyond that class. For de Sitter, up to $H \leq 0.3$ at $N \leq 1024$, Lor4D remains #1 and dS4D remains #2 in all 50 tested $(N,H)$ conditions; the $H=0$ limit at $N=1024$ gives $\Delta=+0.001$. Split low-$N$ tests show that weak-field Schwarzschild remains within the local-basin picture, whereas matter-FLRW at $\kappa=1.0$ reaches the hard-fail threshold at low $N$ but partially recovers in completed high-$N$ runs (failure ratio $0.3<0.5$); strong FLRW curvature exits further to #4–#5. The safest current claim is therefore background-dependent robustness, not a uniform mild-curvature theorem.
+
+6. An **information-theoretic non-circularity test** (§6.9) replaces all geometric penalties with 5 pure information-theoretic measures that reference no target dimension or geometric template. At moderate penalty strength ($\gamma = 0.2$), Lor4D is selected as rank #1 from 17 families at all $N \geq 20$. At strong penalty, the information-theoretic and geometric penalties exhibit **complementarity**: they encode orthogonal quality dimensions whose conjunction uniquely selects Lor4D, confirming that the two-layer architecture reflects genuine structural axes rather than circular priors.
 
 These results support the **Layered Structural Screening Principle**: robust identification/stabilization of 4D flat Lorentzian causal structure from a discrete poset space requires at least two functionally distinct mechanisms of different orders, whose intersection is Lor4D in the tested library and whose identity basin deepens with system size.
 

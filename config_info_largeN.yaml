@@ -1,0 +1,31 @@
+# ──────────────────────────────────────────────────────────
+#  方向 α 大 N 扩展验证：n=60,80,100
+#  仅 A4 模态, 关键 γ 值, 16 样本
+#  目标: 验证 Lor4D vs KR_like 在大 N 下的趋势
+# ──────────────────────────────────────────────────────────
+
+experiment:
+  n_values: [60, 80, 100]
+  gammas: [0.0, 0.2, 0.5, 1.0]
+  beta: 1.0
+  samples_per_family: 16
+  sis_runs: 64
+  action_modes: [A4]
+  exact_threshold: 0
+
+normalization:
+  method: robust_zscore
+  group_by: [n, gamma, action_mode]
+
+bootstrap:
+  enabled: true
+  n_bootstrap: 200
+  seed: 2026
+  value_col: score_norm
+  value_std_col: score_norm_std_est
+
+output:
+  directory: outputs_info_largeN
+  raw_samples_csv: raw_samples.csv
+  summary_csv: summary.csv
+  bootstrap_csv: bootstrap_summary.csv

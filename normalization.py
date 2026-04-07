@@ -29,10 +29,16 @@ def add_normalized_columns(
     method: str = "robust_zscore",
     group_cols: tuple[str, ...] = ("n",),
 ) -> pd.DataFrame:
-    """Normalize H and penalty within each N-slice before recomputing score.
+    """Normalize H and penalty within each group before recomputing score.
 
     The normalization is intentionally performed on the two components
     separately, rather than directly on the total score.
+
+    .. note:: When the experiment uses multiple ``action_mode`` or ``gamma``
+       values whose penalty distributions differ substantially, callers should
+       set ``group_cols=("n", "gamma", "action_mode")`` (or pass the matching
+       config key ``normalization.group_by``) to avoid cross-condition
+       contamination of the z-scores.
     """
     out = df.copy()
     log_h_norm_parts = []
