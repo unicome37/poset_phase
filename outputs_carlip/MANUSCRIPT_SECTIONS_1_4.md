@@ -6,6 +6,22 @@
 
 ---
 
+## Abstract
+
+We propose a **layered structural screening architecture** for selecting 4-dimensional Lorentzian causal sets (Lor4D) from a diverse 25-family poset library spanning manifold-like, lattice, random, and adversarial structures. The architecture comprises two complementary layers:
+
+1. A **first-order admissibility layer** implemented by the Benincasa–Dowker action $S_{\mathrm{BD}}$ and a triple screening functional $S_{\mathrm{triple}}$, which eliminates non-geometric structures but cannot uniquely select Lor4D (rank 14/17 at $N = 128$).
+
+2. A **second-order identity layer** implemented by a minimum-distortion functional $S_{\mathrm{MD}}$ (Mahalanobis distance from the Lor4D reference manifold), which uniquely identifies Lor4D as the identity centre across all tested scales ($N = 10$–$1024$) with zero free parameters.
+
+The identity layer exhibits a **sharp finite-size turn-on** at $N_{\mathrm{id}} \approx 10$, followed by **historical sedimentation**: the Mahalanobis gap grows from $+0.3$ to $1.9 \times 10^8$ ($N = 10 \to 1024$), the reference manifold sharpens ($\det\Sigma \propto N^{-3.31}$), and the effective basin volume contracts ($V_{\mathrm{eff}} \propto N^{-1.66}$).
+
+To address the potential circularity objection—that geometric penalties presuppose what is to be selected—we construct five **purely information-theoretic penalties** derived solely from the partial order: spectral entropy deficit, degree heterogeneity, layer concentration, edge density extremity, and interval diversity deficit. At $N = 20$, Lor4D ranks \#1 under these penalties alone ($\gamma = 1.0$, pure info mode), yet no single penalty type achieves universal selection across all $(N, \gamma)$: geometric penalties select dimension ($d = 4$) but not family type; information-theoretic penalties select family type (Lorentzian-like) but not dimension. This **complementarity theorem** confirms the necessity of the layered architecture. Combining both penalty types additively in a single action degrades Lor4D's rank by up to 14 positions, validating sequential (layered) rather than additive application.
+
+The dominant information-theoretic discriminator—interval diversity deficit—is independently verified as the information-theoretic encoding of the Alexandrov interval volume power law $V \propto \tau^d$, with strictly monotone decreasing entropy across dimensions ($d = 2 \to 5$).
+
+---
+
 ## §1. Introduction
 
 ### 1.1 The entropy catastrophe and the dimension selection problem
