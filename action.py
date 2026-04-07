@@ -81,4 +81,8 @@ def get_action_penalty(
         return info_penalty(poset, weights=info_weights)
     if action_mode == "A5":
         return neutral_penalty(poset) + info_penalty(poset, weights=info_weights)
+    if action_mode == "A6":
+        return geometric_penalty(poset, weights=geometric_weights) + info_penalty(poset, weights=info_weights)
+    if action_mode == "A7":
+        return neutral_penalty(poset) + geometric_penalty(poset, weights=geometric_weights) + info_penalty(poset, weights=info_weights)
     raise ValueError(f"Unsupported action mode: {action_mode}")
