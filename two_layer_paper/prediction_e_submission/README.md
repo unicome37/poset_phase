@@ -12,3 +12,5 @@ Notes:
 - Framework-level references to the broader two-layer programme have been removed from the main narrative.
 - The bibliography has been normalized to use verifiable titles and arXiv identifiers where available.
 
+Zenodo (data+code bundle DOI):
+- `10.5281/zenodo.19394061`

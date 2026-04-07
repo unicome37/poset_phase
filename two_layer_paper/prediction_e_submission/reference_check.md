@@ -2,6 +2,10 @@
 
 Verified and retained:
 
+- `Bombelli1987`
+  - Title: *Space-time as a causal set*
+  - Venue: *Physical Review Letters* 59, 521 (1987)
+
 - `BenincasaDowker2010`
   - Title: *Scalar Curvature of a Causal Set*
   - Venue: *Physical Review Letters* 104, 181301 (2010)
@@ -17,3 +21,5 @@ Removed from the submission version:
 - `Carlip2024` private-communication style reference
 - `TwoLayer2026` companion-paper placeholder reference
 
+Data/code availability (Zenodo DOI):
+- `10.5281/zenodo.19394061`
