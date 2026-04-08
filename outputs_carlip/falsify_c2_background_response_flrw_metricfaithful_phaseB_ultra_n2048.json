@@ -1,0 +1,67 @@
+{
+  "experiment_id": "falsify_c2_background_response_flrw_metricfaithful_phaseB_ultra_n2048",
+  "include_families": [
+    "flrw"
+  ],
+  "family_param_counts": {
+    "de_sitter": 0,
+    "flrw": 2,
+    "schwarzschild": 0
+  },
+  "flrw_mode": "metric_current",
+  "rule": {
+    "min_fail_ratio": 0.5,
+    "top_k_required": 2,
+    "seed_runs": 3
+  },
+  "n_grid": [
+    2048
+  ],
+  "reps": 4,
+  "records": [
+    {
+      "seed_run": 0,
+      "N": 2048,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 0,
+      "N": 2048,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 7
+    },
+    {
+      "seed_run": 1,
+      "N": 2048,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 1,
+      "N": 2048,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 2
+    },
+    {
+      "seed_run": 2,
+      "N": 2048,
+      "family": "flrw",
+      "param": 0.3,
+      "rank": 2
+    },
+    {
+      "seed_run": 2,
+      "N": 2048,
+      "family": "flrw",
+      "param": 1.0,
+      "rank": 2
+    }
+  ],
+  "hard_fail": false,
+  "hard_fail_items": []
+}
