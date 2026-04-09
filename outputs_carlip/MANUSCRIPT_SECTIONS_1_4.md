@@ -745,6 +745,51 @@ The sequential screening protocol and the $S_{\mathrm{MD}}$ identity anchor (§6
 
 The sequential protocol is the *only non-circular mechanism* that achieves Lor4D \#1 at all tested $N$, at the cost of three tuning parameters. The $S_{\mathrm{MD}}$-based mechanisms achieve the same result with fewer parameters but require the Lor4D reference manifold (inherent circularity). Together, they bracket the Lor4D selection problem from both the non-circular and the reference-based directions.
 
+## §6.11. Curvature-adaptive reference prototype: $\mu(N,\kappa)$
+
+The FLRW-$\kappa=1.0$ diagnostics in §4.7 and Report §14 show a boundary-sensitive pattern: under the flat reference manifold $\mu(N,0)$, FLRW occasionally exits top-2 at intermediate scales, but recovers at larger $N$. This motivates a direct prototype of a curvature-adaptive reference manifold $\mu(N,\kappa)$.
+
+### §6.11.1 Prototype design
+
+We construct two reference manifolds at each $N$:
+
+- **Flat reference:** $\mu(N,0),\Sigma^{-1}(N,0)$ from Lor4D samples.
+- **Adaptive reference:** $\mu(N,\kappa),\Sigma^{-1}(N,\kappa)$ from FLRW($\kappa$) samples.
+
+Using the same feature vector $(d_{\mathrm{eff}}, c_1/c_0, w/N)$ and Mahalanobis score,
+we compare family ranks under both references:
+
+$$
+S_{\mathrm{MD}}^{\mathrm{flat}}(x)= (x-\mu(N,0))^\top \Sigma^{-1}(N,0)(x-\mu(N,0)),
+$$
+$$
+S_{\mathrm{MD}}^{\mathrm{adapt}}(x)= (x-\mu(N,\kappa))^\top \Sigma^{-1}(N,\kappa)(x-\mu(N,\kappa)).
+$$
+
+### §6.11.2 Medium-grid prototype result ($\kappa=1.0$)
+
+Lightweight medium grid (for feasibility confirmation):
+$N\in\{256,512,1024\}$, reference reps $=8$, evaluation reps $=4$.
+
+| $N$ | FLRW rank (flat ref) | FLRW rank (adaptive ref) | Lor4D rank (flat ref) | Lor4D rank (adaptive ref) | $\lVert\mu(N,\kappa)-\mu(N,0)\rVert_2$ |
+|---|---|---|---|---|---|
+| 256 | 2 | 1 | 1 | 2 | 0.527 |
+| 512 | 2 | 1 | 1 | 2 | 0.531 |
+| 1024 | 2 | 1 | 1 | 2 | 0.532 |
+
+The pattern is internally consistent across all tested $N$: adaptive reference shifts the identity centre toward FLRW($\kappa=1.0$), while flat reference keeps Lor4D as rank #1. This is exactly the expected behaviour if the two manifolds represent distinct background-conditioned identity centres.
+
+### §6.11.3 Interpretation and status
+
+This prototype does **not** replace the flat Lor4D reference in the main thesis. Rather, it establishes a concrete extension route:
+
+1. The flat-reference claim remains valid for the primary Lor4D-selection problem.
+2. A background-conditioned extension $\mu(N,\kappa)$ is technically feasible and empirically responsive.
+3. The observed offset magnitude $\|\Delta\mu\|\approx 0.53$ (stable from $N=256$ to $1024$) suggests non-negligible curvature-induced manifold drift.
+
+Therefore, the most conservative synthesis is:
+the current two-layer architecture is robust in a flat-reference regime, while curved-background generalisation should be formulated as a **family of reference manifolds** $\{\mu(N,\kappa)\}$ rather than a single universal centre.
+
 ---
 
 ## §7. Conclusion
