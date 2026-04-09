@@ -1,0 +1,4 @@
+﻿n,kappa,flrw_rank_flat_ref,flrw_rank_adapt_ref,lor4d_rank_flat_ref,lor4d_rank_adapt_ref,delta_mu_norm
+256,1.0,2,1,1,2,0.5280293308396607
+512,1.0,2,1,1,2,0.5449650577620344
+1024,1.0,2,1,1,2,0.5581335112844376

@@ -768,14 +768,14 @@ $$
 
 ### §6.11.2 Medium-grid prototype result ($\kappa=1.0$)
 
-Lightweight medium grid (for feasibility confirmation):
-$N\in\{256,512,1024\}$, reference reps $=8$, evaluation reps $=4$.
+Medium grid (strong-statistics rerun):
+$N\in\{256,512,1024\}$, reference reps $=20$, evaluation reps $=8$.
 
 | $N$ | FLRW rank (flat ref) | FLRW rank (adaptive ref) | Lor4D rank (flat ref) | Lor4D rank (adaptive ref) | $\lVert\mu(N,\kappa)-\mu(N,0)\rVert_2$ |
 |---|---|---|---|---|---|
-| 256 | 2 | 1 | 1 | 2 | 0.527 |
-| 512 | 2 | 1 | 1 | 2 | 0.531 |
-| 1024 | 2 | 1 | 1 | 2 | 0.532 |
+| 256 | 2 | 1 | 1 | 2 | 0.528 |
+| 512 | 2 | 1 | 1 | 2 | 0.545 |
+| 1024 | 2 | 1 | 1 | 2 | 0.558 |
 
 The pattern is internally consistent across all tested $N$: adaptive reference shifts the identity centre toward FLRW($\kappa=1.0$), while flat reference keeps Lor4D as rank #1. This is exactly the expected behaviour if the two manifolds represent distinct background-conditioned identity centres.
 
@@ -785,7 +785,7 @@ This prototype does **not** replace the flat Lor4D reference in the main thesis.
 
 1. The flat-reference claim remains valid for the primary Lor4D-selection problem.
 2. A background-conditioned extension $\mu(N,\kappa)$ is technically feasible and empirically responsive.
-3. The observed offset magnitude $\|\Delta\mu\|\approx 0.53$ (stable from $N=256$ to $1024$) suggests non-negligible curvature-induced manifold drift.
+3. The observed offset magnitude $\|\Delta\mu\|\approx 0.53\text{--}0.56$ (mildly increasing from $N=256$ to $1024$) suggests non-negligible curvature-induced manifold drift.
 
 Therefore, the most conservative synthesis is:
 the current two-layer architecture is robust in a flat-reference regime, while curved-background generalisation should be formulated as a **family of reference manifolds** $\{\mu(N,\kappa)\}$ rather than a single universal centre.

@@ -846,6 +846,36 @@ inherently second-layer (presupposing admissibility) rather than stand-alone;
 the non-circular information-theoretic penalties remain the first-layer
 complement.
 
+\subsubsection{Curvature-adaptive reference prototype: \texorpdfstring{$\mu(N,\kappa)$}{mu(N,kappa)}}
+\label{sec:mu-kappa-prototype}
+
+To probe curved-background extension without altering the main pipeline,
+we implemented a lightweight prototype that compares two reference manifolds
+at fixed $N$: a flat reference $(\mu(N,0),\Sigma^{-1}(N,0))$ estimated from
+Lor4D samples, and an adaptive reference $(\mu(N,\kappa),\Sigma^{-1}(N,\kappa))$
+estimated from FLRW($\kappa$) samples.
+Scores are evaluated with the same Mahalanobis form,
+\begin{align}
+S_{\mathrm{MD}}^{\mathrm{flat}}(x)
+&=(x-\mu(N,0))^\top\Sigma^{-1}(N,0)(x-\mu(N,0)),\\
+S_{\mathrm{MD}}^{\mathrm{adapt}}(x)
+&=(x-\mu(N,\kappa))^\top\Sigma^{-1}(N,\kappa)(x-\mu(N,\kappa)).
+\end{align}
+
+For a medium grid ($N=256,512,1024$, $\kappa=1.0$; reference reps $=20$,
+evaluation reps $=8$), the ranking pattern is consistent at all $N$:
+under flat reference, Lor4D is rank~\#1 and FLRW is rank~\#2; under adaptive
+reference, FLRW becomes rank~\#1 and Lor4D rank~\#2.
+The manifold offset norm lies in
+$\|\mu(N,\kappa)-\mu(N,0)\|_2\approx0.53\text{--}0.56$ and
+increases mildly with $N$.
+
+This does not replace the flat-reference core claim.
+Rather, it establishes technical feasibility for a background-conditioned
+reference family $\{\mu(N,\kappa)\}$ and supports the interpretation that
+curvature response is best modelled as manifold drift around the flat identity
+centre, not as failure of the layered architecture itself.
+
 % ============================================================
 \section{Conclusion}
 \label{sec:conclusion}
@@ -871,7 +901,8 @@ The key results are:
   gap $\to 1.93\times 10^8$ at $N=1024$).
 \item \textbf{Background-dependent curvature robustness.}
   De~Sitter and weak-field Schwarzschild pass; FLRW $\kappa=1.0$ is
-  boundary-sensitive.
+  boundary-sensitive. A prototype adaptive manifold $\mu(N,\kappa)$
+  indicates systematic reference-centre drift (\S\ref{sec:mu-kappa-prototype}).
 \item \textbf{Information-theoretic non-circularity.}
   Replacing geometric penalties entirely with information-theoretic measures
   still selects $\Lor$ at moderate $\gamma$, but fails at strong $\gamma$
